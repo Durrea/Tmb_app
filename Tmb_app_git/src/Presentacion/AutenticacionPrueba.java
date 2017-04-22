@@ -116,17 +116,31 @@ public class AutenticacionPrueba extends javax.swing.JFrame {
             //NombreUsuario.setVisible(false);
             String passwordUsuario =  new String (Password.getPassword());
             ArrayList resultado_autenticacion = administrador.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
-            if (resultado_autenticacion.size() > 0) {
-                String resultado = resultado_autenticacion.get(0)+":"+resultado_autenticacion.get(1);
-                ResultadoAutenticacion.setText(resultado);
-                new VentanaPrincipalRecep().setVisible(true);
-                this.setVisible(false);
-                passwordUsuario = ""; //Clareo por cuestion de seguridad.
+            if (resultado_autenticacion.size() > 0) 
+            {
+                if(resultado_autenticacion.get(1).equals("Administrador"))
+                {
+                    String resultado = resultado_autenticacion.get(0)+":"+resultado_autenticacion.get(1);
+                    ResultadoAutenticacion.setText(resultado);
+                    new VentanaPrincipalAdmin().setVisible(true);
+                    this.setVisible(false);
+                    passwordUsuario = "";//Clareo por cuestion de seguridad.
+                }
+                else
+                {
+                    String resultado = resultado_autenticacion.get(0)+":"+resultado_autenticacion.get(1);
+                    ResultadoAutenticacion.setText(resultado);
+                    new VentanaPrincipalRecep().setVisible(true);
+                    this.setVisible(false);
+                    passwordUsuario = "";//Clareo por cuestion de seguridad.
+                }
             }
             else
             {
                 passwordUsuario = ""; //Clareo por cuestion de seguridad.
                 ResultadoAutenticacion.setText("Error de autenticacion");
+                NombreUsuario.setText("");
+                Password.setText("");
             }
         } catch (SQLException ex) {
             try {
