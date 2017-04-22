@@ -5,10 +5,18 @@
  */
 package Presentacion;
 
+import java.util.ArrayList;
+import javax.swing.JTable;
+
 /**
  *
  * @author Eduardo
  */
-public class Cargue_Datos {
+public class Cargue_Datos_Fraccion extends Thread {
+    
+    public void Cargar_Datos_Fraccion(JTable tabla, ArrayList datos)
+    {
+        
+    }
     
 }
