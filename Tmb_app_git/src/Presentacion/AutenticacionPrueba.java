@@ -23,6 +23,7 @@ public class AutenticacionPrueba extends javax.swing.JFrame {
      */
     public AutenticacionPrueba() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -41,6 +42,7 @@ public class AutenticacionPrueba extends javax.swing.JFrame {
         ResultadoAutenticacion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -70,7 +72,7 @@ public class AutenticacionPrueba extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NombreUsuario)
                     .addComponent(Password)
-                    .addComponent(Ingresar, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                    .addComponent(Ingresar, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
                     .addComponent(ResultadoAutenticacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -85,20 +87,18 @@ public class AutenticacionPrueba extends javax.swing.JFrame {
                 .addComponent(Ingresar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ResultadoAutenticacion)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -113,7 +113,7 @@ public class AutenticacionPrueba extends javax.swing.JFrame {
         try {
             Servicios.Administrador administrador = new Servicios.Administrador();
             String nombreUsuario = NombreUsuario.getText();
-            NombreUsuario.setVisible(false);
+            //NombreUsuario.setVisible(false);
             String passwordUsuario =  new String (Password.getPassword());
             ArrayList resultado_autenticacion = administrador.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
             if (resultado_autenticacion.size() > 0) {
