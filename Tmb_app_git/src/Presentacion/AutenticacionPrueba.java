@@ -119,7 +119,7 @@ public class AutenticacionPrueba extends javax.swing.JFrame {
             if (resultado_autenticacion.size() > 0) {
                 String resultado = resultado_autenticacion.get(0)+":"+resultado_autenticacion.get(1);
                 ResultadoAutenticacion.setText(resultado);
-                new Prueba_PestañasLaterales().setVisible(true);
+                new VentanaPrincipalRecep().setVisible(true);
                 this.setVisible(false);
                 passwordUsuario = ""; //Clareo por cuestion de seguridad.
             }

@@ -9,12 +9,12 @@ package Presentacion;
  *
  * @author hp
  */
-public class Prueba_PestañasLaterales extends javax.swing.JFrame {
+public class VentanaPrincipalRecep extends javax.swing.JFrame {
 
     /**
      * Creates new form Prueba_PestañasLaterales
      */
-    public Prueba_PestañasLaterales() {
+    public VentanaPrincipalRecep() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
     }
@@ -77,6 +77,8 @@ public class Prueba_PestañasLaterales extends javax.swing.JFrame {
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setAutoscrolls(true);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
         jProgressBar1.setValue(66);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -97,6 +99,8 @@ public class Prueba_PestañasLaterales extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Lavadero", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton1.setText("Informe");
 
@@ -206,6 +210,8 @@ public class Prueba_PestañasLaterales extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Hotel", jPanel3);
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -218,6 +224,8 @@ public class Prueba_PestañasLaterales extends javax.swing.JFrame {
         );
 
         jTabbedPane3.addTab("Por Fracción", jPanel5);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -287,20 +295,21 @@ public class Prueba_PestañasLaterales extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Prueba_PestañasLaterales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaPrincipalRecep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Prueba_PestañasLaterales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaPrincipalRecep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Prueba_PestañasLaterales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaPrincipalRecep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Prueba_PestañasLaterales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaPrincipalRecep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Prueba_PestañasLaterales().setVisible(true);
+                new VentanaPrincipalRecep().setVisible(true);
             }
         });
     }
