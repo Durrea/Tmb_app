@@ -85,11 +85,11 @@ public class VentanaPrincipalRecep extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Placa", "Tipo Vehiculo", "Fecha Entrada", "Fecha Salida", "Valor"
+                "ID", "Placa", "Tipo Vehiculo", "Fecha Entrada", "Fecha Salida", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

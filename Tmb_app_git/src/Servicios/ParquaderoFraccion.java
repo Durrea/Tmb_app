@@ -5,10 +5,23 @@
  */
 package Servicios;
 
+import java.sql.Connection;
+import java.util.ArrayList;
+
 /**
  *
  * @author hp
  */
 public class ParquaderoFraccion {
+    
+    public ArrayList CargaInformacionPorFraccion(Connection conexion)
+    {
+        ArrayList<Modelos.Informacion_Fraccion> informacion_fraccion;
+        informacion_fraccion = new ArrayList();
+        
+        
+        
+        return informacion_fraccion;
+    }
     
 }
