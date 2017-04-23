@@ -142,14 +142,8 @@ public class AutenticacionPrueba extends javax.swing.JFrame {
                 NombreUsuario.setText("");
                 Password.setText("");
             }
-        } catch (SQLException ex) {
-            try {
-                throw new SQLException(ex);
-            } catch (SQLException ex1) {
-                Logger.getLogger(AutenticacionPrueba.class.getName()).log(Level.SEVERE, null, ex1);
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Tmb_app.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_IngresarActionPerformed
 

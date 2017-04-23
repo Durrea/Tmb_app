@@ -18,9 +18,9 @@ public class Informacion_Fraccion {
     private String vehiculo_tipo;
     private Date fecha_entrada;
     private Date fecha_salida;
-    private float valor_pagar;
+    private double valor_pagar;
 
-    public Informacion_Fraccion(int idFraccion, String vehiculo_placa, String vehiculo_tipo, Date fecha_entrada, Date fecha_salida, float valor_pagar) {
+    public Informacion_Fraccion(int idFraccion, String vehiculo_placa, String vehiculo_tipo, Date fecha_entrada, Date fecha_salida, double valor_pagar) {
         this.idFraccion = idFraccion;
         this.vehiculo_placa = vehiculo_placa;
         this.vehiculo_tipo = vehiculo_tipo;
@@ -63,11 +63,11 @@ public class Informacion_Fraccion {
         this.fecha_salida = fecha_salida;
     }
 
-    public float getValor_pagar() {
+    public double getValor_pagar() {
         return valor_pagar;
     }
 
-    public void setValor_pagar(float valor_pagar) {
+    public void setValor_pagar(double valor_pagar) {
         this.valor_pagar = valor_pagar;
     }
 

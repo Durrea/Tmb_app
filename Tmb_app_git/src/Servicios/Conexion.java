@@ -11,17 +11,15 @@ public class Conexion {
 
     private static Connection cnx = null;
 
-    public static Connection obtener() throws SQLException, ClassNotFoundException {
-        if (cnx == null) {
+    public static Connection obtener(){
+        
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 cnx = DriverManager.getConnection("jdbc:mysql://localhost/tmb_bd", "root", "1046MyS@L");
-            } catch (SQLException ex) {
-                throw new SQLException(ex);
-            } catch (ClassNotFoundException ex) {
-                throw new ClassCastException(ex.getMessage());
+            } catch (Exception ex) {
+                System.out.println("Error al crear la conexion");
             }
-        }
+        
         return cnx;
     }
 

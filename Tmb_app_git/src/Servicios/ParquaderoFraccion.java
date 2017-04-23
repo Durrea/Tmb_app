@@ -18,10 +18,11 @@ import java.util.ArrayList;
  */
 public class ParquaderoFraccion {
     
-    public ArrayList<Modelos.Informacion_Fraccion> CargaInformacionPorFraccion(Connection conexion) throws SQLException
+    public ArrayList<Modelos.Informacion_Fraccion> CargaInformacionPorFraccion(Connection conexion) 
     {
         ArrayList<Modelos.Informacion_Fraccion> informacion_fraccion;
         informacion_fraccion = new ArrayList();
+        
         try
         {
             CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_TOTAL_FRACCION()}");
@@ -35,14 +36,14 @@ public class ParquaderoFraccion {
                 String tipo = resultado_consulta.getString(3);
                 Date fecha_entrada = java.sql.Date.valueOf(resultado_consulta.getString(4));
                 Date fecha_salida = java.sql.Date.valueOf(resultado_consulta.getString(5));
-                float valor_cobrado = Float.parseFloat(resultado_consulta.getString(6));
+                double valor_cobrado = Double.parseDouble(resultado_consulta.getString(6));
                 Modelos.Informacion_Fraccion obj_info = new Modelos.Informacion_Fraccion(id_fraccion,placa,tipo,fecha_entrada,fecha_salida,valor_cobrado);
                 informacion_fraccion.add(obj_info);
             }
             
         }catch(Exception e)
         {
-            System.out.println(e.getCause());
+            System.out.println(e.getLocalizedMessage());
         }
         return informacion_fraccion;
     }

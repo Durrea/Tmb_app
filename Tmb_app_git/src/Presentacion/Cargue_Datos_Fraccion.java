@@ -8,6 +8,7 @@ package Presentacion;
 import Modelos.Informacion_Fraccion;
 import Servicios.Conexion;
 import Servicios.ParquaderoFraccion;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -31,10 +32,11 @@ public class Cargue_Datos_Fraccion {
     
     public JTable run(JTable tabla)
     {
-       
+       Connection con = null;
         try {
             ParquaderoFraccion obj_parq = new ParquaderoFraccion();
-            this.datos_fraccion = obj_parq.CargaInformacionPorFraccion(Conexion.obtener());
+            con = Conexion.obtener();
+            this.datos_fraccion = obj_parq.CargaInformacionPorFraccion(con);
             this.modelo.addColumn("ID");
             this.modelo.addColumn("Placa");
             this.modelo.addColumn("Tipo Vehiculo");
