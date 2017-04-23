@@ -23,6 +23,8 @@ public class VentanaPrincipalRecep extends javax.swing.JFrame {
         this.jTabbedPane1.setForegroundAt(0, Color.YELLOW);
         this.jTabbedPane1.setForegroundAt(1, Color.YELLOW);
         this.jTabbedPane1.setForegroundAt(2, Color.YELLOW);
+        Cargue_Datos_Fraccion hiloFraccion = new Cargue_Datos_Fraccion();
+        this.jTable1 = hiloFraccion.run(this.jTable1);
     }
 
     /**
@@ -252,6 +254,8 @@ public class VentanaPrincipalRecep extends javax.swing.JFrame {
                 new VentanaPrincipalRecep().setVisible(true);
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

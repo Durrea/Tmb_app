@@ -50,6 +50,7 @@ public class Administrador {
             // Se obtienen la salida del procedimineto almacenado
             autenticado.add(callProcedure.getString(3));
             autenticado.add(callProcedure.getString(4));
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
