@@ -5,6 +5,7 @@
  */
 package Presentacion;
 
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +26,7 @@ public class Fraccion extends javax.swing.JPanel {
         LoadDataTable(datos);
     }
     ImageIcon ii;
+    public int idRecep;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,7 +129,13 @@ public class Fraccion extends javax.swing.JPanel {
     
     
     private void jPanel_AgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseClicked
-        // TODO add your handling code here:
+        Form_Entradas_Fraccion f = new Form_Entradas_Fraccion();
+        f.idRecep = this.idRecep;
+        this.removeAll();
+        this.setLayout(new BorderLayout());
+        this.add(f,BorderLayout.CENTER);
+        this.repaint();
+        this.revalidate(); 
     }//GEN-LAST:event_jPanel_AgMouseClicked
 
     private void jPanel_AgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseEntered

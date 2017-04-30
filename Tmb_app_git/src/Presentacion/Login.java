@@ -228,7 +228,10 @@ public class Login extends javax.swing.JFrame {
                 {
                     //String resultado = resultado_autenticacion.get(0)+":"+resultado_autenticacion.get(1);
                     //ResultadoAutenticacion.setText(resultado);
-                    new PrincipalRecep().setVisible(true);
+                    PrincipalRecep obj = new PrincipalRecep();
+                    obj.setVisible(true);
+                    obj.idRecep = Integer.parseInt((String) resultado_autenticacion.get(0));
+                    //1new PrincipalRecep().setVisible(true);
                     this.setVisible(false);
                     passwordUsuario = "";//Clareo por cuestion de seguridad.
                 }

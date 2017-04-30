@@ -21,9 +21,11 @@ public class PrincipalRecep extends javax.swing.JFrame {
      */
     public PrincipalRecep() {
         initComponents();
+        
     }
     ImageIcon ii;
     static boolean maximizar=true;
+    public int idRecep;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -321,6 +323,7 @@ public class PrincipalRecep extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Parqueadero p=new Parqueadero();
+        p.idRecep = this.idRecep;
         jPanel_Principal.removeAll();
         jPanel_Principal.setLayout(new BorderLayout());
         jPanel_Principal.add(p,BorderLayout.CENTER);

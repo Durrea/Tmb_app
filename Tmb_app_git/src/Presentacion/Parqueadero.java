@@ -21,7 +21,7 @@ public class Parqueadero extends javax.swing.JPanel {
     public Parqueadero() {
         initComponents();
     }
-
+    public int idRecep;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -144,6 +144,7 @@ public class Parqueadero extends javax.swing.JPanel {
         Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();
         datos.run();
         Fraccion f=new Fraccion(datos.getDatos_fraccion());
+        f.idRecep = this.idRecep;
         jPanelFM.removeAll();
         jPanelFM.setLayout(new BorderLayout());
         jPanelFM.add(f,BorderLayout.CENTER);

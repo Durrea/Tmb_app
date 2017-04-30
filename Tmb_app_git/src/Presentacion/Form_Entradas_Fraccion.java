@@ -5,6 +5,8 @@
  */
 package Presentacion;
 
+import Servicios.Conexion;
+import Servicios.ParquaderoFraccion;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
@@ -22,8 +24,10 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
      */
     public Form_Entradas_Fraccion() {
         initComponents();
+        LoadVehiculos();
     }
     ImageIcon ii;
+    public int idRecep;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,8 +48,8 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jText_Usuario2 = new javax.swing.JTextField();
+        TipoVehiculo = new javax.swing.JComboBox<>();
+        jText_Placa = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(36, 47, 65));
@@ -69,8 +73,8 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         jPanel_Informe.add(jLabel_icn_inf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 20, 40));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel5.setText("Generar Informe Diario");
-        jPanel_Informe.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+        jLabel5.setText("Cancelar");
+        jPanel_Informe.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 20));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -131,27 +135,27 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         jLabel2.setText("Para realizar el registro de una entrada por fracción debe diligenciar la siguiente información. Los campos con (*) son obligatorios.");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
-        jComboBox1.setBackground(new java.awt.Color(0, 0, 102));
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 102));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 260, -1));
+        TipoVehiculo.setBackground(new java.awt.Color(0, 0, 102));
+        TipoVehiculo.setForeground(new java.awt.Color(0, 0, 102));
+        add(TipoVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 260, -1));
 
-        jText_Usuario2.setBackground(new java.awt.Color(36, 47, 65));
-        jText_Usuario2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Usuario2.setForeground(new java.awt.Color(255, 255, 255));
-        jText_Usuario2.setText("Ingresar Usuario");
-        jText_Usuario2.setBorder(null);
-        jText_Usuario2.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jText_Usuario2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jText_Placa.setBackground(new java.awt.Color(36, 47, 65));
+        jText_Placa.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Placa.setForeground(new java.awt.Color(255, 255, 255));
+        jText_Placa.setText("Ingresar Usuario");
+        jText_Placa.setBorder(null);
+        jText_Placa.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jText_Placa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_Usuario2MouseClicked(evt);
+                jText_PlacaMouseClicked(evt);
             }
         });
-        jText_Usuario2.addActionListener(new java.awt.event.ActionListener() {
+        jText_Placa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_Usuario2ActionPerformed(evt);
+                jText_PlacaActionPerformed(evt);
             }
         });
-        add(jText_Usuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 270, -1));
+        add(jText_Placa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 270, -1));
         add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 260, 10));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -163,6 +167,8 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     
     private void jPanel_AgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseClicked
         // TODO add your handling code here:
+        
+        System.out.println(this.idRecep);
     }//GEN-LAST:event_jPanel_AgMouseClicked
 
     private void jPanel_AgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseEntered
@@ -197,16 +203,25 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_UsuarioActionPerformed
 
-    private void jText_Usuario2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_Usuario2MouseClicked
+    private void jText_PlacaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_PlacaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jText_Usuario2MouseClicked
+    }//GEN-LAST:event_jText_PlacaMouseClicked
 
-    private void jText_Usuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_Usuario2ActionPerformed
+    private void jText_PlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_PlacaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jText_Usuario2ActionPerformed
+    }//GEN-LAST:event_jText_PlacaActionPerformed
     
+    public void LoadVehiculos()
+    {
+        ParquaderoFraccion obj = new ParquaderoFraccion();
+        ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
+        for (int i = 0; i < tipos.size(); i++) 
+        {
+            this.TipoVehiculo.addItem(tipos.get(i));
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> TipoVehiculo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -218,7 +233,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JTextField jText_Placa;
     private javax.swing.JTextField jText_Usuario;
-    private javax.swing.JTextField jText_Usuario2;
     // End of variables declaration//GEN-END:variables
 }
