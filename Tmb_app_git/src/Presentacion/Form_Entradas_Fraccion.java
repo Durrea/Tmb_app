@@ -9,6 +9,7 @@ import Servicios.Conexion;
 import Servicios.ParquaderoFraccion;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -142,7 +143,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         jText_Placa.setBackground(new java.awt.Color(36, 47, 65));
         jText_Placa.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jText_Placa.setForeground(new java.awt.Color(255, 255, 255));
-        jText_Placa.setText("Ingresar Usuario");
+        jText_Placa.setText("Placa");
         jText_Placa.setBorder(null);
         jText_Placa.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         jText_Placa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,7 +169,16 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     private void jPanel_AgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseClicked
         // TODO add your handling code here:
         
-        System.out.println(this.idRecep);
+        ParquaderoFraccion obj = new ParquaderoFraccion();
+        boolean resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Placa.getText(), (String) TipoVehiculo.getSelectedItem(), this.idRecep);
+        if(resultado)
+        {
+            JOptionPane.showMessageDialog(null, "Registro realizado con exito");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No se ha realizado el registro");
+        }
     }//GEN-LAST:event_jPanel_AgMouseClicked
 
     private void jPanel_AgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseEntered
