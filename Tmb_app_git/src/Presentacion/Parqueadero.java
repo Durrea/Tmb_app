@@ -141,7 +141,9 @@ public class Parqueadero extends javax.swing.JPanel {
 
     private void jPanel_FraccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_FraccionMouseClicked
         // TODO add your handling code here:
-        Fraccion f=new Fraccion();
+        Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();
+        datos.run();
+        Fraccion f=new Fraccion(datos.getDatos_fraccion());
         jPanelFM.removeAll();
         jPanelFM.setLayout(new BorderLayout());
         jPanelFM.add(f,BorderLayout.CENTER);

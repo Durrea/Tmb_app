@@ -16,11 +16,11 @@ public class Informacion_Fraccion {
     private int idFraccion;
     private String vehiculo_placa;
     private String vehiculo_tipo;
-    private Date fecha_entrada;
-    private Date fecha_salida;
+    private String fecha_entrada;
+    private String fecha_salida;
     private double valor_pagar;
 
-    public Informacion_Fraccion(int idFraccion, String vehiculo_placa, String vehiculo_tipo, Date fecha_entrada, Date fecha_salida, double valor_pagar) {
+    public Informacion_Fraccion(int idFraccion, String vehiculo_placa, String vehiculo_tipo, String fecha_entrada, String fecha_salida, double valor_pagar) {
         this.idFraccion = idFraccion;
         this.vehiculo_placa = vehiculo_placa;
         this.vehiculo_tipo = vehiculo_tipo;
@@ -47,19 +47,19 @@ public class Informacion_Fraccion {
         this.vehiculo_placa = vehiculo_placa;
     }
 
-    public Date getFecha_entrada() {
+    public String getFecha_entrada() {
         return fecha_entrada;
     }
 
-    public void setFecha_entrada(Date fecha_entrada) {
+    public void setFecha_entrada(String fecha_entrada) {
         this.fecha_entrada = fecha_entrada;
     }
 
-    public Date getFecha_salida() {
+    public String getFecha_salida() {
         return fecha_salida;
     }
 
-    public void setFecha_salida(Date fecha_salida) {
+    public void setFecha_salida(String fecha_salida) {
         this.fecha_salida = fecha_salida;
     }
 

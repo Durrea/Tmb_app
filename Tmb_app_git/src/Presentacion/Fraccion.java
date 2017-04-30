@@ -5,7 +5,9 @@
  */
 package Presentacion;
 
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -18,8 +20,9 @@ public class Fraccion extends javax.swing.JPanel {
     /**
      * Creates new form Fraccion
      */
-    public Fraccion() {
+    public Fraccion(ArrayList<Modelos.Informacion_Fraccion> datos) {
         initComponents();
+        LoadDataTable(datos);
     }
     ImageIcon ii;
     /**
@@ -97,18 +100,23 @@ public class Fraccion extends javax.swing.JPanel {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Placa", "Tipo Vehiculo", "Fecha Entrada", "Fecha Salida", "Valor"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 710, 363));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 770, 320));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -145,7 +153,23 @@ public class Fraccion extends javax.swing.JPanel {
          ii = new ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"));
         jLabel_icn_inf.setIcon(ii);
     }//GEN-LAST:event_jPanel_InformeMouseExited
-
+    
+    public void LoadDataTable(ArrayList<Modelos.Informacion_Fraccion> datos)
+    {
+        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        for(int i=0;i<datos.size();i++)
+            {
+                Object [] fila = new Object[6];
+                fila[0] = datos.get(i).getIdFraccion();
+                fila[1] = datos.get(i).getVehiculo_placa();
+                fila[2] = datos.get(i).getVehiculo_tipo();
+                fila[3] = datos.get(i).getFecha_entrada();
+                fila[4] = datos.get(i).getFecha_salida();
+                fila[5] = datos.get(i).getValor_pagar();
+                modelo.addRow(fila);
+            }
+        this.jTable2.setModel(modelo);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel5;

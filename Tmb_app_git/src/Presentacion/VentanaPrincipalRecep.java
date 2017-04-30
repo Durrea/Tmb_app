@@ -24,7 +24,7 @@ public class VentanaPrincipalRecep extends javax.swing.JFrame {
         this.jTabbedPane1.setForegroundAt(1, Color.YELLOW);
         this.jTabbedPane1.setForegroundAt(2, Color.YELLOW);
         Cargue_Datos_Fraccion hiloFraccion = new Cargue_Datos_Fraccion();
-        this.jTable1.setModel(hiloFraccion.run(this.jTable1));
+        //this.jTable1.setModel(hiloFraccion.run(this.jTable1));
     }
 
     /**

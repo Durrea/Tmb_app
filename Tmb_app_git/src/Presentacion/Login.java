@@ -5,10 +5,13 @@
  */
 package Presentacion;
 
+import Servicios.Conexion;
 import java.awt.Color;
 import java.awt.MouseInfo;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -205,9 +208,45 @@ public class Login extends javax.swing.JFrame {
 
     private void jPanel_AccederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AccederMouseClicked
         // TODO add your handling code here:
-        setVisible(false);
-        Principal p= new Principal();
-        p.setVisible(true);
+        try {
+            Servicios.Administrador administrador = new Servicios.Administrador();
+            String nombreUsuario = jText_Usuario.getText();
+            //NombreUsuario.setVisible(false);
+            String passwordUsuario =  new String (jText_Contrasena.getPassword());
+            ArrayList resultado_autenticacion = administrador.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
+            if (resultado_autenticacion.size() > 0) 
+            {
+                if(resultado_autenticacion.get(1).equals("Administrador"))
+                {
+                    //String resultado = resultado_autenticacion.get(0)+":"+resultado_autenticacion.get(1);
+                    //ResultadoAutenticacion.setText(resultado);
+                    new PrincipalAdmin().setVisible(true);
+                    this.setVisible(false);
+                    passwordUsuario = "";//Clareo por cuestion de seguridad.
+                }
+                else
+                {
+                    //String resultado = resultado_autenticacion.get(0)+":"+resultado_autenticacion.get(1);
+                    //ResultadoAutenticacion.setText(resultado);
+                    new PrincipalRecep().setVisible(true);
+                    this.setVisible(false);
+                    passwordUsuario = "";//Clareo por cuestion de seguridad.
+                }
+            }
+            else
+            {
+                passwordUsuario = ""; //Clareo por cuestion de seguridad.
+                JOptionPane.showMessageDialog(null,"Error de autenticacion");
+                //ResultadoAutenticacion.setText("Error de autenticacion");
+                jText_Usuario.setText("");
+                jText_Contrasena.setText("");
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        //setVisible(false);
+        //Principal p= new Principal();
+        //p.setVisible(true);
     }//GEN-LAST:event_jPanel_AccederMouseClicked
 
     private void jLabel_CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CerrarMouseClicked

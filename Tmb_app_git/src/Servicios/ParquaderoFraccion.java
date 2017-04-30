@@ -27,15 +27,14 @@ public class ParquaderoFraccion {
         {
             CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_TOTAL_FRACCION()}");
             callProcedure.execute();
-            
             ResultSet resultado_consulta = callProcedure.getResultSet();
             while(resultado_consulta.next())
             {
                 int id_fraccion = Integer.parseInt(resultado_consulta.getString(1));
                 String placa = resultado_consulta.getString(2);
                 String tipo = resultado_consulta.getString(3);
-                Date fecha_entrada = java.sql.Date.valueOf(resultado_consulta.getString(4));
-                Date fecha_salida = java.sql.Date.valueOf(resultado_consulta.getString(5));
+                String fecha_entrada = resultado_consulta.getString(4);
+                String fecha_salida = resultado_consulta.getString(5);
                 double valor_cobrado = Double.parseDouble(resultado_consulta.getString(6));
                 Modelos.Informacion_Fraccion obj_info = new Modelos.Informacion_Fraccion(id_fraccion,placa,tipo,fecha_entrada,fecha_salida,valor_cobrado);
                 informacion_fraccion.add(obj_info);

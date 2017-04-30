@@ -14,12 +14,12 @@ import javax.swing.JFrame;
  *
  * @author Santiago Ortega
  */
-public class Principal extends javax.swing.JFrame {
+public class PrincipalRecep extends javax.swing.JFrame {
 
     /**
      * Creates new form Inicio
      */
-    public Principal() {
+    public PrincipalRecep() {
         initComponents();
     }
     ImageIcon ii;
@@ -352,9 +352,9 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(maximizar){
             
-            Principal.this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            PrincipalRecep.this.setExtendedState(JFrame.MAXIMIZED_BOTH);
             GraphicsEnvironment env=GraphicsEnvironment.getLocalGraphicsEnvironment();
-            Principal.this.setMaximizedBounds(env.getMaximumWindowBounds());
+            PrincipalRecep.this.setMaximizedBounds(env.getMaximumWindowBounds());
             maximizar=false;
         }else{
             setExtendedState(JFrame.NORMAL);
@@ -444,7 +444,7 @@ public class Principal extends javax.swing.JFrame {
     private void jLabel_MinmizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MinmizarMouseClicked
         // TODO add your handling code here:
             
-        Principal.this.setExtendedState(JFrame.ICONIFIED);
+        PrincipalRecep.this.setExtendedState(JFrame.ICONIFIED);
        
     }//GEN-LAST:event_jLabel_MinmizarMouseClicked
 
@@ -465,14 +465,26 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalRecep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalRecep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalRecep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalRecep.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -481,7 +493,7 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                new PrincipalRecep().setVisible(true);
             }
         });
     }

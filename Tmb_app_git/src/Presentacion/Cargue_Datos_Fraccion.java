@@ -30,14 +30,14 @@ public class Cargue_Datos_Fraccion {
         modelo = new DefaultTableModel();
     }
     
-    public DefaultTableModel run(JTable tabla)
+    public void run()
     {
        Connection con = null;
         try {
             ParquaderoFraccion obj_parq = new ParquaderoFraccion();
             con = Conexion.obtener();
             this.datos_fraccion = obj_parq.CargaInformacionPorFraccion(con);
-            this.modelo.addColumn("ID");
+            /*this.modelo.addColumn("ID");
             this.modelo.addColumn("Placa");
             this.modelo.addColumn("Tipo Vehiculo");
             this.modelo.addColumn("Fecha Entrada");
@@ -54,11 +54,11 @@ public class Cargue_Datos_Fraccion {
                 fila[5] = this.datos_fraccion.get(i).getValor_pagar();
                 this.modelo.addRow(fila);
             }
-            tabla.setModel(this.modelo);
+            tabla.setModel(this.modelo);*/
         } catch (Exception ex) {
             System.out.println("Error JTable");
         }
-        return this.modelo;
+        //return this.datos_fraccion;
     }
 
     public ArrayList<Informacion_Fraccion> getDatos_fraccion() {
