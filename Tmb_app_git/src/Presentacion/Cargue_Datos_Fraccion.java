@@ -30,7 +30,7 @@ public class Cargue_Datos_Fraccion {
         modelo = new DefaultTableModel();
     }
     
-    public JTable run(JTable tabla)
+    public DefaultTableModel run(JTable tabla)
     {
        Connection con = null;
         try {
@@ -58,7 +58,7 @@ public class Cargue_Datos_Fraccion {
         } catch (Exception ex) {
             System.out.println("Error JTable");
         }
-        return tabla;
+        return this.modelo;
     }
 
     public ArrayList<Informacion_Fraccion> getDatos_fraccion() {
