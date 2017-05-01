@@ -7,6 +7,7 @@ package Presentacion;
 
 import Servicios.Conexion;
 import Servicios.ParquaderoFraccion;
+import Servicios.ValidadorCadenas;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -156,6 +157,11 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
                 jText_PlacaActionPerformed(evt);
             }
         });
+        jText_Placa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_PlacaKeyTyped(evt);
+            }
+        });
         add(jText_Placa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 270, -1));
         add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 260, 10));
     }// </editor-fold>//GEN-END:initComponents
@@ -168,17 +174,31 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     
     private void jPanel_AgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseClicked
         // TODO add your handling code here:
-        
-        ParquaderoFraccion obj = new ParquaderoFraccion();
-        boolean resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Placa.getText(), (String) TipoVehiculo.getSelectedItem(), this.idRecep);
-        if(resultado)
+        if(!jText_Placa.getText().equalsIgnoreCase(""))
         {
-            JOptionPane.showMessageDialog(null, "Registro realizado con exito");
+            ValidadorCadenas val = new ValidadorCadenas();
+            if(val.ValidarCadenasPlaca(jText_Placa.getText()))
+            {
+                ParquaderoFraccion obj = new ParquaderoFraccion();
+                boolean resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Placa.getText(), (String) TipoVehiculo.getSelectedItem(), this.idRecep);
+                if(resultado)
+                {
+                    JOptionPane.showMessageDialog(null, "Registro realizado con exito");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "No se ha realizado el registro");
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Formato incorrecto. Formato para las placas ej: AAA123");
+            }
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "No se ha realizado el registro");
-        }
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos requeridos");
+        }        
     }//GEN-LAST:event_jPanel_AgMouseClicked
 
     private void jPanel_AgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseEntered
@@ -220,6 +240,18 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     private void jText_PlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_PlacaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_PlacaActionPerformed
+
+    private void jText_PlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
+        
+    }//GEN-LAST:event_jText_PlacaKeyTyped
     
     public void LoadVehiculos()
     {
