@@ -52,7 +52,8 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         TipoVehiculo = new javax.swing.JComboBox<>();
         jText_Placa = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -139,13 +140,12 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
 
         TipoVehiculo.setBackground(new java.awt.Color(0, 0, 102));
         TipoVehiculo.setForeground(new java.awt.Color(0, 0, 102));
-        add(TipoVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 260, -1));
+        add(TipoVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 260, -1));
 
         jText_Placa.setBackground(new java.awt.Color(36, 47, 65));
         jText_Placa.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jText_Placa.setForeground(new java.awt.Color(255, 255, 255));
-        jText_Placa.setText("Placa");
-        jText_Placa.setBorder(null);
+        jText_Placa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jText_Placa.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         jText_Placa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -162,8 +162,17 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
                 jText_PlacaKeyTyped(evt);
             }
         });
-        add(jText_Placa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 270, -1));
-        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 260, 10));
+        add(jText_Placa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 270, -1));
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Placa");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Tipo de Vehiculo");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel_InformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseClicked
@@ -203,7 +212,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
 
     private void jPanel_AgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseEntered
         // TODO add your handling code here:
-         ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px_1.png"));
+        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px_1.png"));
         jLabel_icn_add.setIcon(ii);
     }//GEN-LAST:event_jPanel_AgMouseEntered
 
@@ -266,6 +275,8 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> TipoVehiculo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel_icn_add;
@@ -274,7 +285,6 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel_Informe;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTextField jText_Placa;
     private javax.swing.JTextField jText_Usuario;
     // End of variables declaration//GEN-END:variables

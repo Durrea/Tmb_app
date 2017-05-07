@@ -198,10 +198,14 @@ public class Fraccion extends javax.swing.JPanel {
 
     private void jPanel_Ag1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag1MouseEntered
         // TODO add your handling code here:
+        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px_1.png"));
+        jLabel_icn_add1.setIcon(ii);
     }//GEN-LAST:event_jPanel_Ag1MouseEntered
 
     private void jPanel_Ag1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag1MouseExited
         // TODO add your handling code here:
+        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px.png"));
+        jLabel_icn_add1.setIcon(ii);
     }//GEN-LAST:event_jPanel_Ag1MouseExited
 
     private void botonTerminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonTerminar1MouseClicked
@@ -210,6 +214,13 @@ public class Fraccion extends javax.swing.JPanel {
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
         jTextField1.addKeyListener(new KeyAdapter() {
             public void keyReleased(final KeyEvent e) {
                 String cadena = (jTextField1.getText());
