@@ -21,12 +21,13 @@ public class PrincipalRecep extends javax.swing.JFrame {
      */
     public PrincipalRecep() {
         initComponents();
-        
+        this.setExtendedState(MAXIMIZED_BOTH);
+
     }
     ImageIcon ii;
-    static boolean maximizar=true;
+    static boolean maximizar = false;
     public int idRecep;
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -321,52 +322,52 @@ public class PrincipalRecep extends javax.swing.JFrame {
 
     private void jPanel_ParqdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_ParqdMouseClicked
         // TODO add your handling code here:
-        
-        Parqueadero p=new Parqueadero();
+
+        Parqueadero p = new Parqueadero();
         p.idRecep = this.idRecep;
         jPanel_Principal.removeAll();
         jPanel_Principal.setLayout(new BorderLayout());
-        jPanel_Principal.add(p,BorderLayout.CENTER);
+        jPanel_Principal.add(p, BorderLayout.CENTER);
         jPanel_Principal.repaint();
-        jPanel_Principal.revalidate();    
+        jPanel_Principal.revalidate();
     }//GEN-LAST:event_jPanel_ParqdMouseClicked
 
     private void jPanel_LavdrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_LavdrMouseClicked
         // TODO add your handling code here:
-        Lavadero l=new Lavadero();
+        Lavadero l = new Lavadero();
         jPanel_Principal.removeAll();
         jPanel_Principal.setLayout(new BorderLayout());
-        jPanel_Principal.add(l,BorderLayout.CENTER);
+        jPanel_Principal.add(l, BorderLayout.CENTER);
         jPanel_Principal.repaint();
-        jPanel_Principal.revalidate();  
+        jPanel_Principal.revalidate();
     }//GEN-LAST:event_jPanel_LavdrMouseClicked
 
     private void jPanel_HotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_HotelMouseClicked
         // TODO add your handling code here:
-        Hotel h=new Hotel();
+        Hotel h = new Hotel();
         jPanel_Principal.removeAll();
         jPanel_Principal.setLayout(new BorderLayout());
-        jPanel_Principal.add(h,BorderLayout.CENTER);
+        jPanel_Principal.add(h, BorderLayout.CENTER);
         jPanel_Principal.repaint();
         jPanel_Principal.revalidate();
     }//GEN-LAST:event_jPanel_HotelMouseClicked
 
     private void jLabel_MaximizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MaximizarMouseClicked
         // TODO add your handling code here:
-        if(maximizar){
-            
+        if (maximizar) {
+
             PrincipalRecep.this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            GraphicsEnvironment env=GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             PrincipalRecep.this.setMaximizedBounds(env.getMaximumWindowBounds());
-            maximizar=false;
-        }else{
+            maximizar = false;
+        } else {
             setExtendedState(JFrame.NORMAL);
-            maximizar=true;
+            maximizar = true;
         }
-            
+
     }//GEN-LAST:event_jLabel_MaximizarMouseClicked
-    
-    
+
+
     private void jLabel_CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CerrarMouseClicked
         // TODO add your handling code here:
         System.exit(0);
@@ -440,15 +441,15 @@ public class PrincipalRecep extends javax.swing.JFrame {
 
     private void jLabel_CerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CerrarMouseExited
         // TODO add your handling code here:
-         ii = new ImageIcon(getClass().getResource("/Iconos/Close Window_20px_1.png"));
+        ii = new ImageIcon(getClass().getResource("/Iconos/Close Window_20px_1.png"));
         jLabel_Cerrar.setIcon(ii);
     }//GEN-LAST:event_jLabel_CerrarMouseExited
 
     private void jLabel_MinmizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MinmizarMouseClicked
         // TODO add your handling code here:
-            
+
         PrincipalRecep.this.setExtendedState(JFrame.ICONIFIED);
-       
+
     }//GEN-LAST:event_jLabel_MinmizarMouseClicked
 
     /**
