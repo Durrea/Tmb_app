@@ -216,7 +216,7 @@ public class Login extends javax.swing.JFrame {
             //NombreUsuario.setVisible(false);
             String passwordUsuario =  new String (jText_Contrasena.getPassword());
             //ArrayList resultado_autenticacion = administrador.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
-            //ArrayList resultado_autenticacion = instanciaSesion.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
+            instanciaSesion.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
             if (instanciaSesion.sesionActiva()) 
             {
                 if(instanciaSesion.getRolAutenticado().equals("Administrador"))
