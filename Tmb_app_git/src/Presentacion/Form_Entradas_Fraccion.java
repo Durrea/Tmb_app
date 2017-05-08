@@ -7,6 +7,7 @@ package Presentacion;
 
 import Servicios.Conexion;
 import Servicios.ParquaderoFraccion;
+import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -189,7 +190,9 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
             if(val.ValidarCadenasPlaca(jText_Placa.getText()))
             {
                 ParquaderoFraccion obj = new ParquaderoFraccion();
-                boolean resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Placa.getText(), (String) TipoVehiculo.getSelectedItem(), this.idRecep);
+                Sesion instancia = Sesion.getInstanciaSesion();
+                System.out.println(instancia.getIdentificador());
+                boolean resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Placa.getText(), (String) TipoVehiculo.getSelectedItem(), instancia.getIdentificador());
                 if(resultado)
                 {
                     JOptionPane.showMessageDialog(null, "Registro realizado con exito");

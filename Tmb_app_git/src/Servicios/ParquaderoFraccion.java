@@ -22,7 +22,7 @@ public class ParquaderoFraccion {
     public ArrayList<Modelos.Informacion_Fraccion> CargaInformacionPorFraccion(Connection conexion) 
     {
         ArrayList<Modelos.Informacion_Fraccion> informacion_fraccion;
-        informacion_fraccion = new ArrayList();
+        informacion_fraccion = new ArrayList<Modelos.Informacion_Fraccion>();
         
         try
         {

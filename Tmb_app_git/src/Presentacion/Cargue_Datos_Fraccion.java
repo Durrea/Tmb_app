@@ -26,7 +26,7 @@ public class Cargue_Datos_Fraccion {
     private DefaultTableModel modelo; 
     public Cargue_Datos_Fraccion()
     {
-        this.datos_fraccion = new ArrayList();
+        this.datos_fraccion = new ArrayList<Modelos.Informacion_Fraccion>();
         modelo = new DefaultTableModel();
     }
     
