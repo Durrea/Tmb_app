@@ -6,6 +6,7 @@
 package Presentacion;
 
 import Servicios.Conexion;
+import Servicios.Sesion;
 import java.awt.Color;
 import java.awt.MouseInfo;
 import java.awt.event.MouseAdapter;
@@ -209,14 +210,16 @@ public class Login extends javax.swing.JFrame {
     private void jPanel_AccederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AccederMouseClicked
         // TODO add your handling code here:
         try {
-            Servicios.Administrador administrador = new Servicios.Administrador();
+            //Servicios.Administrador administrador = new Servicios.Administrador();
+            Sesion instanciaSesion = Sesion.getInstanciaSesion();
             String nombreUsuario = jText_Usuario.getText();
             //NombreUsuario.setVisible(false);
             String passwordUsuario =  new String (jText_Contrasena.getPassword());
-            ArrayList resultado_autenticacion = administrador.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
-            if (resultado_autenticacion.size() > 0) 
+            //ArrayList resultado_autenticacion = administrador.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
+            //ArrayList resultado_autenticacion = instanciaSesion.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
+            if (instanciaSesion.sesionActiva()) 
             {
-                if(resultado_autenticacion.get(1).equals("Administrador"))
+                if(instanciaSesion.getRolAutenticado().equals("Administrador"))
                 {
                     //String resultado = resultado_autenticacion.get(0)+":"+resultado_autenticacion.get(1);
                     //ResultadoAutenticacion.setText(resultado);
@@ -230,7 +233,7 @@ public class Login extends javax.swing.JFrame {
                     //ResultadoAutenticacion.setText(resultado);
                     PrincipalRecep obj = new PrincipalRecep();
                     obj.setVisible(true);
-                    obj.idRecep = Integer.parseInt((String) resultado_autenticacion.get(0));
+                    obj.idRecep = instanciaSesion.getIdentificador();
                     //1new PrincipalRecep().setVisible(true);
                     this.setVisible(false);
                     passwordUsuario = "";//Clareo por cuestion de seguridad.

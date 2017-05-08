@@ -33,27 +33,4 @@ public class Administrador {
             throw new SQLException(ex);
         }
     }
-
-    public ArrayList autenticarUsuario(Connection conexion, String usuario, String contrasenia) throws SQLException {
-        ArrayList<String> autenticado;
-        autenticado = new ArrayList<>();
-        try {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_AUTENTICAR_USUARIO(?,?,?,?)}");
-            // Parametro 1 y 2 del procedimiento almacenado
-            callProcedure.setString(1, usuario);
-            callProcedure.setString(2, contrasenia);
-            // Definimos los tipos de los parametros de salida del procedimiento almacenado
-            callProcedure.registerOutParameter(3, java.sql.Types.NUMERIC);
-            callProcedure.registerOutParameter(4, java.sql.Types.VARCHAR);
-            // Ejecuta el procedimiento almacenado
-            callProcedure.execute();
-            // Se obtienen la salida del procedimineto almacenado
-            autenticado.add(callProcedure.getString(3));
-            autenticado.add(callProcedure.getString(4));
-            
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return autenticado;
-    }
 }
