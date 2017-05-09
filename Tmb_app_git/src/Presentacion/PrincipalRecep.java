@@ -5,10 +5,12 @@
  */
 package Presentacion;
 
+import Servicios.Sesion;
 import java.awt.BorderLayout;
 import java.awt.GraphicsEnvironment;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -114,6 +116,12 @@ public class PrincipalRecep extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/User_30px.png"))); // NOI18N
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jLabel_Minmizar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel_Minmizar.setForeground(new java.awt.Color(255, 255, 255));
@@ -451,6 +459,25 @@ public class PrincipalRecep extends javax.swing.JFrame {
         PrincipalRecep.this.setExtendedState(JFrame.ICONIFIED);
 
     }//GEN-LAST:event_jLabel_MinmizarMouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        //Cerrar sesion
+        Sesion instanciaSesion = Sesion.getInstanciaSesion();
+        boolean cerrarSesion = instanciaSesion.cerrarSesion();
+        if(cerrarSesion)
+        {
+            JOptionPane.showMessageDialog(null, "Sesion finalizada con exito");
+            Login obj = new Login();
+            obj.setVisible(true);
+            this.setVisible(false);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Se ha presentado un problema al cerrar sesion");
+        }
+                
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments

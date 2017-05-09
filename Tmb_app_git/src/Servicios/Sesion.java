@@ -84,7 +84,9 @@ public class Sesion {
     public boolean cerrarSesion() {
         if (sesionActiva) {
             System.out.println("La sesion esta activa");
-            sesionActiva = false;
+            this.identificador = -1;
+            this.rolAutenticado = "";
+            this.sesionActiva = false;
             return true;
         } else {
             System.out.println("La sesion no esta activa");

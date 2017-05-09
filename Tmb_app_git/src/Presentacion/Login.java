@@ -138,6 +138,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel_Acceder.setBackground(new java.awt.Color(51, 51, 51));
         jPanel_Acceder.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel_Acceder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Acceder.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_AccederMouseClicked(evt);
