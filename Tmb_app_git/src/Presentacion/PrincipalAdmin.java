@@ -50,7 +50,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jPanel_Hotel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel_icn_ht = new javax.swing.JLabel();
-        jPanel_Lavdr = new javax.swing.JPanel();
+        jPanel_Users = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel_icn_lv = new javax.swing.JLabel();
         jPanel_Parqd = new javax.swing.JPanel();
@@ -209,31 +209,31 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jLabel_icn_ht.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Play_20px.png"))); // NOI18N
         jPanel_Hotel.add(jLabel_icn_ht, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
 
-        jPanel_Lavdr.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel_Lavdr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel_Lavdr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel_Lavdr.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_Users.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel_Users.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Users.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_Users.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel_LavdrMouseClicked(evt);
+                jPanel_UsersMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_LavdrMouseEntered(evt);
+                jPanel_UsersMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_LavdrMouseExited(evt);
+                jPanel_UsersMouseExited(evt);
             }
         });
-        jPanel_Lavdr.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel_Users.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Usuarios");
-        jPanel_Lavdr.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 20));
+        jPanel_Users.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 20));
 
         jLabel_icn_lv.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel_icn_lv.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_icn_lv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Play_20px.png"))); // NOI18N
-        jPanel_Lavdr.add(jLabel_icn_lv, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
+        jPanel_Users.add(jLabel_icn_lv, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
 
         jPanel_Parqd.setBackground(new java.awt.Color(102, 102, 102));
         jPanel_Parqd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -278,7 +278,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                     .addComponent(jPanel_Parqd, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator2)
                     .addComponent(jSeparator1)
-                    .addComponent(jPanel_Lavdr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel_Users, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel_Hotel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -292,7 +292,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_Lavdr, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_Users, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -340,15 +340,15 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jPanel_Principal.revalidate();
     }//GEN-LAST:event_jPanel_ParqdMouseClicked
 
-    private void jPanel_LavdrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_LavdrMouseClicked
+    private void jPanel_UsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_UsersMouseClicked
         // TODO add your handling code here:
-        Lavadero l = new Lavadero();
+        Empleados l = new Empleados();
         jPanel_Principal.removeAll();
         jPanel_Principal.setLayout(new BorderLayout());
         jPanel_Principal.add(l, BorderLayout.CENTER);
         jPanel_Principal.repaint();
         jPanel_Principal.revalidate();
-    }//GEN-LAST:event_jPanel_LavdrMouseClicked
+    }//GEN-LAST:event_jPanel_UsersMouseClicked
 
     private void jPanel_HotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_HotelMouseClicked
         // TODO add your handling code here:
@@ -393,17 +393,17 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jLabel_icn_pq.setIcon(ii);
     }//GEN-LAST:event_jPanel_ParqdMouseExited
 
-    private void jPanel_LavdrMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_LavdrMouseEntered
+    private void jPanel_UsersMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_UsersMouseEntered
         // TODO add your handling code here:
         ii = new ImageIcon(getClass().getResource("/Iconos/Play_20px_1.png"));
         jLabel_icn_lv.setIcon(ii);
-    }//GEN-LAST:event_jPanel_LavdrMouseEntered
+    }//GEN-LAST:event_jPanel_UsersMouseEntered
 
-    private void jPanel_LavdrMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_LavdrMouseExited
+    private void jPanel_UsersMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_UsersMouseExited
         // TODO add your handling code here:
         ii = new ImageIcon(getClass().getResource("/Iconos/Play_20px.png"));
         jLabel_icn_lv.setIcon(ii);
-    }//GEN-LAST:event_jPanel_LavdrMouseExited
+    }//GEN-LAST:event_jPanel_UsersMouseExited
 
     private void jPanel_HotelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_HotelMouseEntered
         // TODO add your handling code here:
@@ -538,9 +538,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel_Hotel;
-    private javax.swing.JPanel jPanel_Lavdr;
     private javax.swing.JPanel jPanel_Parqd;
     private javax.swing.JPanel jPanel_Principal;
+    private javax.swing.JPanel jPanel_Users;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
