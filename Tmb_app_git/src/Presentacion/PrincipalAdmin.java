@@ -185,6 +185,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jPanel_Hotel.setBackground(new java.awt.Color(102, 102, 102));
         jPanel_Hotel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Hotel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Hotel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_HotelMouseClicked(evt);
@@ -210,6 +211,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jPanel_Lavdr.setBackground(new java.awt.Color(102, 102, 102));
         jPanel_Lavdr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Lavdr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Lavdr.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_LavdrMouseClicked(evt);
@@ -236,6 +238,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jPanel_Parqd.setBackground(new java.awt.Color(102, 102, 102));
         jPanel_Parqd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Parqd.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel_Parqd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Parqd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_ParqdMouseClicked(evt);
@@ -252,7 +255,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tarifas");
-        jPanel_Parqd.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 20));
+        jPanel_Parqd.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 20));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
