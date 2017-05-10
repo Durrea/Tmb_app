@@ -59,13 +59,11 @@ public class Fraccion extends javax.swing.JPanel {
         jPanel_Ag1 = new javax.swing.JPanel();
         jLabel_icn_add1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        botonTerminar1 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel_icn_add2 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jText_Usuario = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(36, 47, 65));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_Informe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Informe.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,8 +90,6 @@ public class Fraccion extends javax.swing.JPanel {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel_Informe.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
 
-        add(jPanel_Informe, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 180, 40));
-
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -111,9 +107,6 @@ public class Fraccion extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(jTable2);
-
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 770, 110));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
 
         jPanel_Ag1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Ag1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -136,35 +129,67 @@ public class Fraccion extends javax.swing.JPanel {
         jLabel9.setText("Añadir Entrada");
         jPanel_Ag1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
 
-        add(jPanel_Ag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 140, 40));
+        jLabel_icn_add2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Search_20px_1.png"))); // NOI18N
 
-        jTextField1.setBackground(new java.awt.Color(36, 47, 65));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField1KeyTyped(evt);
-            }
-        });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 126, 170, 20));
-
-        botonTerminar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        botonTerminar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jText_Usuario.setBackground(new java.awt.Color(36, 47, 65));
+        jText_Usuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Usuario.setForeground(new java.awt.Color(255, 255, 255));
+        jText_Usuario.setBorder(null);
+        jText_Usuario.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jText_Usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonTerminar1MouseClicked(evt);
+                jText_UsuarioMouseClicked(evt);
             }
         });
-        botonTerminar1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jText_Usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jText_UsuarioActionPerformed(evt);
+            }
+        });
 
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel13.setText("Terminar Ingreso");
-        botonTerminar1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, -1));
-
-        add(botonTerminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 120, 40));
-
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Buscar");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 80, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel_Ag1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(473, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel_icn_add2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jText_Usuario)
+                                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane2))
+                        .addGap(35, 35, 35))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel_Ag1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jText_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_icn_add2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(257, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel_InformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseClicked
@@ -208,31 +233,13 @@ public class Fraccion extends javax.swing.JPanel {
         jLabel_icn_add1.setIcon(ii);
     }//GEN-LAST:event_jPanel_Ag1MouseExited
 
-    private void botonTerminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonTerminar1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonTerminar1MouseClicked
+    private void jText_UsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_UsuarioMouseClicked
+        jText_Usuario.setText("");
+    }//GEN-LAST:event_jText_UsuarioMouseClicked
 
-    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+    private void jText_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_UsuarioActionPerformed
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if(Character.isLowerCase(c))
-        {
-            String cadena = (""+c).toUpperCase();
-            c = cadena.charAt(0);
-            evt.setKeyChar(c);
-        }
-        jTextField1.addKeyListener(new KeyAdapter() {
-            public void keyReleased(final KeyEvent e) {
-                String cadena = (jTextField1.getText());
-                jTextField1.setText(cadena);
-                repaint();
-                filter.setRowFilter(RowFilter.regexFilter(jTextField1.getText(), 1));
-            }
-        });
-        filter = new TableRowSorter(this.jTable2.getModel());
-        this.jTable2.setRowSorter(filter);
-        
-    }//GEN-LAST:event_jTextField1KeyTyped
+    }//GEN-LAST:event_jText_UsuarioActionPerformed
     
     public void LoadDataTable(ArrayList<Modelos.Informacion_Fraccion> datos)
     {
@@ -252,19 +259,18 @@ public class Fraccion extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel botonTerminar1;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_icn_add1;
+    private javax.swing.JLabel jLabel_icn_add2;
     private javax.swing.JLabel jLabel_icn_inf;
     private javax.swing.JPanel jPanel_Ag1;
     private javax.swing.JPanel jPanel_Informe;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jText_Usuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -44,7 +44,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jLabel_Cerrar = new javax.swing.JLabel();
         jLabel_Maximizar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel_Usuario = new javax.swing.JLabel();
         jLabel_Minmizar = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel_Hotel = new javax.swing.JPanel();
@@ -111,13 +111,19 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Usuario");
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/User_30px.png"))); // NOI18N
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel_Usuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel_Usuario.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Checked_User.png"))); // NOI18N
+        jLabel_Usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel_Usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                jLabel_UsuarioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel_UsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel_UsuarioMouseExited(evt);
             }
         });
 
@@ -154,9 +160,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel_Cerrar))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7)
-                        .addGap(0, 0, 0)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel_Usuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -169,16 +175,20 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel_Maximizar)
-                    .addComponent(jLabel_Cerrar)
-                    .addComponent(jLabel_Minmizar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel_Maximizar)
+                            .addComponent(jLabel_Cerrar)
+                            .addComponent(jLabel_Minmizar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10))
         );
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
@@ -460,7 +470,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLabel_MinmizarMouseClicked
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+    private void jLabel_UsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_UsuarioMouseClicked
         // TODO add your handling code here:
          //Cerrar sesion
         Sesion instanciaSesion = Sesion.getInstanciaSesion();
@@ -476,7 +486,19 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Se ha presentado un problema al cerrar sesion");
         }
-    }//GEN-LAST:event_jLabel7MouseClicked
+    }//GEN-LAST:event_jLabel_UsuarioMouseClicked
+
+    private void jLabel_UsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_UsuarioMouseEntered
+        // TODO add your handling code here:
+        ii = new ImageIcon(getClass().getResource("/Iconos/Remove_User.png"));
+        jLabel_Usuario.setIcon(ii);
+    }//GEN-LAST:event_jLabel_UsuarioMouseEntered
+
+    private void jLabel_UsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_UsuarioMouseExited
+        // TODO add your handling code here:
+        ii = new ImageIcon(getClass().getResource("/Iconos/Checked_User.png"));
+        jLabel_Usuario.setIcon(ii);
+    }//GEN-LAST:event_jLabel_UsuarioMouseExited
 
     /**
      * @param args the command line arguments
@@ -526,11 +548,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel_Cerrar;
     private javax.swing.JLabel jLabel_Maximizar;
     private javax.swing.JLabel jLabel_Minmizar;
+    private javax.swing.JLabel jLabel_Usuario;
     private javax.swing.JLabel jLabel_icn_ht;
     private javax.swing.JLabel jLabel_icn_lv;
     private javax.swing.JLabel jLabel_icn_pq;

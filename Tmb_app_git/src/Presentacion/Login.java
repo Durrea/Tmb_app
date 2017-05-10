@@ -8,10 +8,6 @@ package Presentacion;
 import Servicios.Conexion;
 import Servicios.Sesion;
 import java.awt.Color;
-import java.awt.MouseInfo;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -67,6 +63,11 @@ public class Login extends javax.swing.JFrame {
                 panel_ImgMouseDragged(evt);
             }
         });
+        panel_Img.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                panel_ImgMousePressed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 34)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -89,14 +90,11 @@ public class Login extends javax.swing.JFrame {
         );
 
         getContentPane().add(panel_Img, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 470));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Imágenes-de-la-Virgen-María-para-Twitter-5-copia.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 340, 470));
 
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel1MouseClicked(evt);
-            }
-        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -261,28 +259,23 @@ public class Login extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel_CerrarMouseClicked
 
-    private class DragListener extends MouseAdapter{
-        public void mouseDragged(MouseEvent e){
-            setLocation(MouseInfo.getPointerInfo().getLocation());
-        }
-    }
-    
+    int xy;
+    int xx; 
     private void panel_ImgMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_ImgMouseDragged
         // TODO add your handling code here:
-        // TODO add your handling code here:
-        DragListener dr= new DragListener();
-        dr.mouseDragged(evt);
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x-xx,y-xy);
     }//GEN-LAST:event_panel_ImgMouseDragged
 
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+    private void panel_ImgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_ImgMousePressed
         // TODO add your handling code here:
-         // TODO add your handling code here:
-        DragListener dr= new DragListener();
-        dr.mouseDragged(evt);
-    }//GEN-LAST:event_jPanel1MouseClicked
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_panel_ImgMousePressed
 
     
-        
+      
     
     /**
      * @param args the command line arguments
