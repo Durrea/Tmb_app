@@ -37,7 +37,7 @@
                               <Component id="jLabel_icn_add2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jText_Usuario" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jText_Buscador" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jSeparator4" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -61,7 +61,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                      <Component id="jText_Usuario" min="-2" max="-2" attributes="0"/>
+                      <Component id="jText_Buscador" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
@@ -249,7 +249,7 @@
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator4">
     </Component>
-    <Component class="javax.swing.JTextField" name="jText_Usuario">
+    <Component class="javax.swing.JTextField" name="jText_Buscador">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="41" green="2f" red="24" type="rgb"/>
@@ -268,8 +268,9 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jText_UsuarioMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jText_UsuarioActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jText_BuscadorMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jText_BuscadorActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jText_BuscadorKeyTyped"/>
       </Events>
     </Component>
   </SubComponents>

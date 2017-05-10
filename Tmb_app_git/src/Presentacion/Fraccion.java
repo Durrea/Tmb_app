@@ -61,7 +61,7 @@ public class Fraccion extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel_icn_add2 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jText_Usuario = new javax.swing.JTextField();
+        jText_Buscador = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(36, 47, 65));
 
@@ -131,19 +131,24 @@ public class Fraccion extends javax.swing.JPanel {
 
         jLabel_icn_add2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Search_20px_1.png"))); // NOI18N
 
-        jText_Usuario.setBackground(new java.awt.Color(36, 47, 65));
-        jText_Usuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Usuario.setForeground(new java.awt.Color(255, 255, 255));
-        jText_Usuario.setBorder(null);
-        jText_Usuario.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jText_Usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+        jText_Buscador.setBackground(new java.awt.Color(36, 47, 65));
+        jText_Buscador.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Buscador.setForeground(new java.awt.Color(255, 255, 255));
+        jText_Buscador.setBorder(null);
+        jText_Buscador.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jText_Buscador.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_UsuarioMouseClicked(evt);
+                jText_BuscadorMouseClicked(evt);
             }
         });
-        jText_Usuario.addActionListener(new java.awt.event.ActionListener() {
+        jText_Buscador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_UsuarioActionPerformed(evt);
+                jText_BuscadorActionPerformed(evt);
+            }
+        });
+        jText_Buscador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_BuscadorKeyTyped(evt);
             }
         });
 
@@ -166,7 +171,7 @@ public class Fraccion extends javax.swing.JPanel {
                                 .addComponent(jLabel_icn_add2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jText_Usuario)
+                                    .addComponent(jText_Buscador)
                                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane2))
                         .addGap(35, 35, 35))))
@@ -182,7 +187,7 @@ public class Fraccion extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(jText_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jText_Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel_icn_add2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -233,13 +238,34 @@ public class Fraccion extends javax.swing.JPanel {
         jLabel_icn_add1.setIcon(ii);
     }//GEN-LAST:event_jPanel_Ag1MouseExited
 
-    private void jText_UsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_UsuarioMouseClicked
-        jText_Usuario.setText("");
-    }//GEN-LAST:event_jText_UsuarioMouseClicked
+    private void jText_BuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_BuscadorMouseClicked
+        jText_Buscador.setText("");
+    }//GEN-LAST:event_jText_BuscadorMouseClicked
 
-    private void jText_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_UsuarioActionPerformed
+    private void jText_BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_BuscadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jText_UsuarioActionPerformed
+    }//GEN-LAST:event_jText_BuscadorActionPerformed
+
+    private void jText_BuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_BuscadorKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
+        jText_Buscador.addKeyListener(new KeyAdapter() {
+            public void keyReleased(final KeyEvent e) {
+                String cadena = (jText_Buscador.getText());
+                jText_Buscador.setText(cadena);
+                repaint();
+                filter.setRowFilter(RowFilter.regexFilter(jText_Buscador.getText(), 1));
+            }
+        });
+        filter = new TableRowSorter(this.jTable2.getModel());
+        this.jTable2.setRowSorter(filter);
+    }//GEN-LAST:event_jText_BuscadorKeyTyped
     
     public void LoadDataTable(ArrayList<Modelos.Informacion_Fraccion> datos)
     {
@@ -271,6 +297,6 @@ public class Fraccion extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jText_Usuario;
+    private javax.swing.JTextField jText_Buscador;
     // End of variables declaration//GEN-END:variables
 }
