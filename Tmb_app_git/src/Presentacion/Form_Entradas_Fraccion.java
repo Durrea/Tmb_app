@@ -73,7 +73,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         });
         jPanel_Informe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_icn_inf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"))); // NOI18N
+        jLabel_icn_inf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cancel_20px.png"))); // NOI18N
         jPanel_Informe.add(jLabel_icn_inf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 20, 40));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -227,13 +227,13 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
 
     private void jPanel_InformeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseEntered
         // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Report Card_20px_1.png"));
+        ii = new ImageIcon(getClass().getResource("/Iconos/Cancel_20px_2.png"));
         jLabel_icn_inf.setIcon(ii);
     }//GEN-LAST:event_jPanel_InformeMouseEntered
 
     private void jPanel_InformeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseExited
         // TODO add your handling code here:
-         ii = new ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"));
+         ii = new ImageIcon(getClass().getResource("/Iconos/Cancel_20px.png"));
         jLabel_icn_inf.setIcon(ii);
     }//GEN-LAST:event_jPanel_InformeMouseExited
 

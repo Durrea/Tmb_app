@@ -6,7 +6,10 @@
 package Presentacion;
 
 import java.awt.BorderLayout;
+import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
+
+
 
 
 
@@ -21,8 +24,10 @@ public class RegistroCliente extends javax.swing.JPanel {
      */
     public RegistroCliente() {
         initComponents();
+        jCombo_TipoA.setSelectedItem(null); 
     }
     ImageIcon ii;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,8 +42,6 @@ public class RegistroCliente extends javax.swing.JPanel {
         jText_Color = new javax.swing.JTextField();
         jText_Propietario = new javax.swing.JTextField();
         jText_Marca = new javax.swing.JTextField();
-        jText_FechaVen = new javax.swing.JTextField();
-        jText_FechaPago = new javax.swing.JTextField();
         jText_Telefono = new javax.swing.JTextField();
         jText_Valor = new javax.swing.JTextField();
         jPanel_Registrar = new javax.swing.JPanel();
@@ -48,6 +51,11 @@ public class RegistroCliente extends javax.swing.JPanel {
         jLabel_icn_canc = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jCombo_TipoA = new javax.swing.JComboBox<>();
+        jXDateFPago = new org.jdesktop.swingx.JXDatePicker();
+        jXDateFVen = new org.jdesktop.swingx.JXDatePicker();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
 
@@ -90,27 +98,6 @@ public class RegistroCliente extends javax.swing.JPanel {
         jText_Marca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jText_MarcaMouseClicked(evt);
-            }
-        });
-
-        jText_FechaVen.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_FechaVen.setText("Fecha Vencimiento");
-        jText_FechaVen.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_FechaVenMouseClicked(evt);
-            }
-        });
-        jText_FechaVen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_FechaVenActionPerformed(evt);
-            }
-        });
-
-        jText_FechaPago.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_FechaPago.setText("Fecha Pago");
-        jText_FechaPago.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_FechaPagoMouseClicked(evt);
             }
         });
 
@@ -179,11 +166,18 @@ public class RegistroCliente extends javax.swing.JPanel {
 
         jCombo_TipoA.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jCombo_TipoA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Automovil", "Buseta", "Camion", "Motocicleta" }));
-        jCombo_TipoA.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCombo_TipoAMouseClicked(evt);
-            }
-        });
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText(" Fecha Pago");
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText(" Fecha Vencimiento");
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText(" Tipo Vehiculo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -195,20 +189,23 @@ public class RegistroCliente extends javax.swing.JPanel {
                 .addGap(40, 40, 40))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(277, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jText_Propietario)
-                    .addComponent(jText_Telefono)
-                    .addComponent(jText_Placa)
-                    .addComponent(jText_Color)
-                    .addComponent(jText_Marca)
-                    .addComponent(jText_FechaPago)
-                    .addComponent(jText_FechaVen)
-                    .addComponent(jText_Valor, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCombo_TipoA, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jText_Propietario, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jText_Telefono, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jText_Placa, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jText_Color, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jText_Marca, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jText_Valor)
+                    .addComponent(jCombo_TipoA, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jXDateFPago, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jXDateFVen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(277, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -222,33 +219,35 @@ public class RegistroCliente extends javax.swing.JPanel {
                 .addComponent(jText_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(jText_Placa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCombo_TipoA, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jText_Color, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(jText_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(jText_FechaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jText_FechaVen, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jXDateFPago, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jXDateFVen, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jText_Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jText_ColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_ColorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_ColorActionPerformed
-
-    private void jText_FechaVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_FechaVenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_FechaVenActionPerformed
 
     private void jText_ValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_ValorActionPerformed
         // TODO add your handling code here:
@@ -280,6 +279,11 @@ public class RegistroCliente extends javax.swing.JPanel {
 
     private void jPanel_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseClicked
         // TODO add your handling code here:
+         
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String DateToStr = format.format(jXDateFPago.getDate());
+        System.out.println(DateToStr);
+
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
 
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
@@ -291,56 +295,75 @@ public class RegistroCliente extends javax.swing.JPanel {
         this.revalidate();
     }//GEN-LAST:event_jPanel_CancelarMouseClicked
 
-    private void jText_PropietarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_PropietarioMouseClicked
-        // TODO add your handling code here:
-        jText_Propietario.setText("");
-    }//GEN-LAST:event_jText_PropietarioMouseClicked
-
     private void jText_TelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_TelefonoMouseClicked
         // TODO add your handling code here:
-        jText_Telefono.setText("");
+        reiniciar();
+        if(jText_Telefono.getText().equals("Telefono")){
+        jText_Telefono.setText("");}
     }//GEN-LAST:event_jText_TelefonoMouseClicked
 
     private void jText_PlacaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_PlacaMouseClicked
         // TODO add your handling code here:
-        jText_Placa.setText("");
+        reiniciar();
+        if(jText_Placa.getText().equals("Placa")){
+        jText_Placa.setText("");}
     }//GEN-LAST:event_jText_PlacaMouseClicked
-
-    private void jCombo_TipoAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombo_TipoAMouseClicked
-        // TODO add your handling code here:
-        jCombo_TipoA.setSelectedItem(null);
-    }//GEN-LAST:event_jCombo_TipoAMouseClicked
 
     private void jText_ColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_ColorMouseClicked
         // TODO add your handling code here:
-        jText_Color.setText("");
+        reiniciar();
+        if(jText_Color.getText().equals("Color")){
+        jText_Color.setText("");}
     }//GEN-LAST:event_jText_ColorMouseClicked
 
     private void jText_MarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_MarcaMouseClicked
         // TODO add your handling code here:
-        jText_Marca.setText("");
+        reiniciar();
+        if(jText_Marca.getText().equals("Marca")){
+        jText_Marca.setText("");}
     }//GEN-LAST:event_jText_MarcaMouseClicked
-
-    private void jText_FechaPagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_FechaPagoMouseClicked
-        // TODO add your handling code here:
-        jText_FechaPago.setText("");
-    }//GEN-LAST:event_jText_FechaPagoMouseClicked
-
-    private void jText_FechaVenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_FechaVenMouseClicked
-        // TODO add your handling code here:
-        jText_FechaVen.setText("");
-    }//GEN-LAST:event_jText_FechaVenMouseClicked
 
     private void jText_ValorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_ValorMouseClicked
         // TODO add your handling code here:
-        jText_Valor.setText("");
+        reiniciar();
+        if(jText_Valor.getText().equals("Valor")){
+        jText_Valor.setText("");}
     }//GEN-LAST:event_jText_ValorMouseClicked
-
     
+    private void jText_PropietarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_PropietarioMouseClicked
+        // TODO add your handling code here:
+        reiniciar();
+        if(jText_Propietario.getText().equals("Propietario")){
+        jText_Propietario.setText("");}
+    }//GEN-LAST:event_jText_PropietarioMouseClicked
     
+    public void reiniciar(){
+        if(jText_Propietario.getText().equals("")){
+            jText_Propietario.setText("Propietario");
+        }
+        if(jText_Telefono.getText().equals("")){
+            jText_Telefono.setText("Telefono");
+        }
+        if(jText_Placa.getText().equals("")){
+            jText_Placa.setText("Placa");
+        }
+        if(jText_Color.getText().equals("")){
+            jText_Color.setText("Color");
+        }
+        if(jText_Marca.getText().equals("")){
+            jText_Marca.setText("Marca");
+        }
+        if(jText_Valor.getText().equals("")){
+            jText_Valor.setText("Valor");
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jCombo_TipoA;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -349,12 +372,12 @@ public class RegistroCliente extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel_Cancelar;
     private javax.swing.JPanel jPanel_Registrar;
     private javax.swing.JTextField jText_Color;
-    private javax.swing.JTextField jText_FechaPago;
-    private javax.swing.JTextField jText_FechaVen;
     private javax.swing.JTextField jText_Marca;
     private javax.swing.JTextField jText_Placa;
     private javax.swing.JTextField jText_Propietario;
     private javax.swing.JTextField jText_Telefono;
     private javax.swing.JTextField jText_Valor;
+    private org.jdesktop.swingx.JXDatePicker jXDateFPago;
+    private org.jdesktop.swingx.JXDatePicker jXDateFVen;
     // End of variables declaration//GEN-END:variables
 }

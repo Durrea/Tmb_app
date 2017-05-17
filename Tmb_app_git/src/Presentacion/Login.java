@@ -100,11 +100,12 @@ public class Login extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Nombre de Usuario");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 260, 10));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 260, 10));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 260, 10));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 260, 10));
 
         jText_Contrasena.setBackground(new java.awt.Color(36, 47, 65));
+        jText_Contrasena.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jText_Contrasena.setForeground(new java.awt.Color(255, 255, 255));
         jText_Contrasena.setText("jPasswordField1");
         jText_Contrasena.setBorder(null);
@@ -114,7 +115,7 @@ public class Login extends javax.swing.JFrame {
                 jText_ContrasenaFocusGained(evt);
             }
         });
-        jPanel1.add(jText_Contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 260, -1));
+        jPanel1.add(jText_Contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 274, 260, -1));
 
         jText_Usuario.setBackground(new java.awt.Color(36, 47, 65));
         jText_Usuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -132,7 +133,7 @@ public class Login extends javax.swing.JFrame {
                 jText_UsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(jText_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 270, -1));
+        jPanel1.add(jText_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 260, 20));
 
         jPanel_Acceder.setBackground(new java.awt.Color(51, 51, 51));
         jPanel_Acceder.setForeground(new java.awt.Color(51, 51, 51));
@@ -164,7 +165,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel_Acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 150, 40));
+        jPanel1.add(jPanel_Acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 150, 40));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));

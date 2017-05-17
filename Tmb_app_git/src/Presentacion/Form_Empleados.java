@@ -396,13 +396,13 @@ public class Form_Empleados extends javax.swing.JPanel {
 
     private void jPanel_InformeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseEntered
         // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Report Card_20px_1.png"));
+        ii = new ImageIcon(getClass().getResource("/Iconos/Cancel_20px_2.png"));
         jLabel_icn_inf.setIcon(ii);
     }//GEN-LAST:event_jPanel_InformeMouseEntered
 
     private void jPanel_InformeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseExited
         // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"));
+        ii = new ImageIcon(getClass().getResource("/Iconos/Cancel_20px.png"));
         jLabel_icn_inf.setIcon(ii);
     }//GEN-LAST:event_jPanel_InformeMouseExited
 
