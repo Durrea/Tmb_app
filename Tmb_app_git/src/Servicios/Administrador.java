@@ -38,7 +38,7 @@ public class Administrador {
         ArrayList<String> resultado = new ArrayList<String>();
         try
         {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_ENCABEZADO(?,?,?}");
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_ENCABEZADO(?,?,?)}");
             callProcedure.registerOutParameter(1, java.sql.Types.FLOAT);
             callProcedure.registerOutParameter(2, java.sql.Types.VARCHAR);
             callProcedure.registerOutParameter(3, java.sql.Types.VARCHAR);
@@ -49,7 +49,7 @@ public class Administrador {
             return resultado;
             
         }catch(Exception e)
-        {
+        {           
             return resultado;
         }        
     }

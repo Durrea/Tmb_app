@@ -111,7 +111,7 @@ public class ParquaderoFraccion {
         ArrayList<String> resultado = new ArrayList<String>();
         try
         {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_ULTIMO_REGISTRO_FRACCION(?,?,?,?,?,?,?}");
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_ULTIMO_REGISTRO_FRACCION(?,?,?,?,?,?,?)}");
             callProcedure.setString(1, Integer.toString(tipo));
             callProcedure.setString(2, Integer.toString(idfrac));
             callProcedure.registerOutParameter(3, java.sql.Types.VARCHAR);
@@ -119,22 +119,22 @@ public class ParquaderoFraccion {
             callProcedure.registerOutParameter(5, java.sql.Types.DATE);
             callProcedure.registerOutParameter(6, java.sql.Types.DATE);
             callProcedure.registerOutParameter(7, java.sql.Types.FLOAT);
-            callProcedure.execute();
+            callProcedure.execute();            
             for(int i=3;i<=7;i++)
             {
-                if(!callProcedure.getString(i).equalsIgnoreCase(null))
+                String val = callProcedure.getString(i);
+                if(val != null)
                 {
-                    resultado.add(callProcedure.getString(i));    
+                    resultado.add(callProcedure.getString(i));                    
                 }
                 else
                 {
                     resultado.add("---");
                 }
-            }
-            
+            }            
             return resultado;
         }catch(Exception e)
-        {
+        {            
             return resultado;
         }
     }
