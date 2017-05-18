@@ -6,6 +6,7 @@
 package Presentacion;
 
 import Servicios.Conexion;
+import Servicios.ImpresionFacturas;
 import Servicios.ParquaderoFraccion;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
@@ -195,6 +196,12 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
                 boolean resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Placa.getText(), (String) TipoVehiculo.getSelectedItem(), instancia.getIdentificador());
                 if(resultado)
                 {
+                    ImpresionFacturas impfac = new ImpresionFacturas();
+                    boolean res = impfac.FacturaFraccion(0, -1);
+                    if(!res)
+                    {
+                        JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la impresión");
+                    }
                     JOptionPane.showMessageDialog(null, "Registro realizado con exito");
                 }
                 else

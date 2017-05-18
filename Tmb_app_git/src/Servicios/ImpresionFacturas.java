@@ -26,14 +26,15 @@ import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 public class ImpresionFacturas {
     
-    public void FacturaEntradaFraccion(){
-        
+    public boolean FacturaFraccion(int tipo, int idfrac){
+        // tipo : 0 para entrada en fraccion y 1 para salida 
+        boolean resultado;
         Administrador servadmin = new Administrador();
         ParquaderoFraccion serparqfraccion = new ParquaderoFraccion();
         ArrayList<String> encabezado = new ArrayList<String>();
         encabezado = servadmin.EncabezadoRecibos(Conexion.obtener());
         ArrayList<String> ultimoregistro = new ArrayList<String>();
-        ultimoregistro = serparqfraccion.LoadLastRecord(Conexion.obtener());
+        ultimoregistro = serparqfraccion.LoadLastRecord(Conexion.obtener(), tipo, idfrac);        
         int columnas = 48;
         int lineas = 20;
         if(encabezado.size() != 0 && ultimoregistro.size() != 0)
@@ -58,21 +59,25 @@ public class ImpresionFacturas {
             printer.printTextWrap(6, 7, 1, columnas, "Fecha Entrada: " + ultimoregistro.get(2));
             printer.printTextWrap(7, 8, 1, columnas, "Fecha Salida: "+ ultimoregistro.get(3));
             printer.printTextWrap(8, 9, 1, columnas, "Valor a cobrar: " + ultimoregistro.get(4));                   
-            printer.printCharAtCol(10, 1, columnas, "=");                                                                     
+            printer.printCharAtCol(10, 1, columnas, "=");
+            imprimirFactura(printer);
+            resultado = true;
+            return resultado;
         }
         else
         {
-            
+            resultado = false;
+            return resultado;
         }                     
     }
     public void imprimirFactura(PrinterMatrix printer)
     {
         printer.toFile("impresion.txt");
-        FileInputStream inputStream = null;
+        /*FileInputStream inputStream = null;
             try {
                 inputStream = new FileInputStream("impresion.txt");
             } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
+                System.out.println(ex.getMessage());
             }
             if (inputStream == null) {
                 return;
@@ -87,10 +92,10 @@ public class ImpresionFacturas {
                     printJob.print(document, attributeSet);
 
                 } catch (Exception ex) {
-                    ex.printStackTrace();
+                    System.out.println(ex.getMessage());
                 }
             } else {
-                System.err.println("No existen impresoras instaladas");
-            }
+                System.out.println("No existen impresoras instaladas");
+            }*/
     }
 }
