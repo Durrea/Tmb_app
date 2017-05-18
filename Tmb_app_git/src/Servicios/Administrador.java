@@ -33,4 +33,24 @@ public class Administrador {
             throw new SQLException(ex);
         }
     }
+    public ArrayList<String> EncabezadoRecibos(Connection conexion)
+    {
+        ArrayList<String> resultado = new ArrayList<String>();
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_ENCABEZADO(?,?,?}");
+            callProcedure.registerOutParameter(1, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(2, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(3, java.sql.Types.VARCHAR);
+            callProcedure.execute();
+            resultado.add(callProcedure.getString(1));
+            resultado.add(callProcedure.getString(2));
+            resultado.add(callProcedure.getString(3));
+            return resultado;
+            
+        }catch(Exception e)
+        {
+            return resultado;
+        }        
+    }
 }

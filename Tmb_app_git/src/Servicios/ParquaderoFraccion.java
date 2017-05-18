@@ -106,4 +106,34 @@ public class ParquaderoFraccion {
         }
         return resultado;
     }
+    public ArrayList<String> LoadLastRecord(Connection conexion)
+    {
+        ArrayList<String> resultado = new ArrayList<String>();
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_ULTIMO_REGISTRO_FRACCION(?,?,?,?,?}");
+            callProcedure.registerOutParameter(1, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(2, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(3, java.sql.Types.DATE);
+            callProcedure.registerOutParameter(4, java.sql.Types.DATE);
+            callProcedure.registerOutParameter(5, java.sql.Types.FLOAT);
+            callProcedure.execute();
+            for(int i=0;i<5;i++)
+            {
+                if(!callProcedure.getString(i+1).equalsIgnoreCase(null))
+                {
+                    resultado.add(callProcedure.getString(i+1));    
+                }
+                else
+                {
+                    resultado.add("---");
+                }
+            }
+            
+            return resultado;
+        }catch(Exception e)
+        {
+            return resultado;
+        }
+    }
 }
