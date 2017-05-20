@@ -6,6 +6,7 @@
 package Presentacion;
 
 import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -19,7 +20,7 @@ public class Lavadero extends javax.swing.JPanel {
     public Lavadero() {
         initComponents();
     }
-
+    ImageIcon ii;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,43 +30,225 @@ public class Lavadero extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelFM = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jPanel_Informe = new javax.swing.JPanel();
+        jLabel_icn_inf = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jPanel_Ag1 = new javax.swing.JPanel();
+        jLabel_icn_add1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel_Informe2 = new javax.swing.JPanel();
+        jLabel_icn_inf2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jPanel_Ag3 = new javax.swing.JPanel();
+        jLabel_icn_add4 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(36, 47, 65));
         setFocusCycleRoot(true);
         setFocusTraversalPolicyProvider(true);
         setInheritsPopupMenu(true);
         setPreferredSize(new java.awt.Dimension(820, 610));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelFM.setBackground(new java.awt.Color(36, 47, 65));
-        jPanelFM.setPreferredSize(new java.awt.Dimension(820, 610));
-        jPanelFM.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        jPanel_Informe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Informe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_InformeMouseClicked(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_InformeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_InformeMouseExited(evt);
+            }
+        });
+        jPanel_Informe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelFM.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 590, 290));
+        jLabel_icn_inf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"))); // NOI18N
+        jPanel_Informe.add(jLabel_icn_inf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 20, 40));
 
-        add(jPanelFM, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 820, 570));
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel5.setText("Generar Informe Diario");
+        jPanel_Informe.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel_Informe.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        jPanel_Ag1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Ag1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_Ag1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_Ag1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_Ag1MouseExited(evt);
+            }
+        });
+        jPanel_Ag1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_icn_add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Add_20px.png"))); // NOI18N
+        jPanel_Ag1.add(jLabel_icn_add1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel9.setText("Añadir Entrada");
+        jPanel_Ag1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
+
+        jPanel_Informe2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Informe2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_Informe2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_Informe2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_Informe2MouseExited(evt);
+            }
+        });
+        jPanel_Informe2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_icn_inf2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"))); // NOI18N
+        jPanel_Informe2.add(jLabel_icn_inf2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 20, 40));
+
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel7.setText("Generar Informe Diario");
+        jPanel_Informe2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+
+        jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel_Informe2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        jPanel_Ag3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Ag3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_Ag3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_Ag3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_Ag3MouseExited(evt);
+            }
+        });
+        jPanel_Ag3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_icn_add4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Add_20px.png"))); // NOI18N
+        jPanel_Ag3.add(jLabel_icn_add4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
+
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel11.setText("Añadir Entrada");
+        jPanel_Ag3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
+
+        jSeparator7.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel_Ag3.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jPanel_Ag1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel_Ag3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel_Informe2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(129, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel_Informe2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel_Ag3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel_Ag1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(510, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPanel_InformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel_InformeMouseClicked
+
+    private void jPanel_InformeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseEntered
+        // TODO add your handling code here:
+        ii = new ImageIcon(getClass().getResource("/Iconos/Report Card_20px_1.png"));
+        jLabel_icn_inf.setIcon(ii);
+    }//GEN-LAST:event_jPanel_InformeMouseEntered
+
+    private void jPanel_InformeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseExited
+        // TODO add your handling code here:
+        ii = new ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"));
+        jLabel_icn_inf.setIcon(ii);
+    }//GEN-LAST:event_jPanel_InformeMouseExited
+
+    private void jPanel_Ag1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag1MouseClicked
+
+        
+    }//GEN-LAST:event_jPanel_Ag1MouseClicked
+
+    private void jPanel_Ag1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag1MouseEntered
+        // TODO add your handling code here:
+        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px_1.png"));
+        jLabel_icn_add1.setIcon(ii);
+    }//GEN-LAST:event_jPanel_Ag1MouseEntered
+
+    private void jPanel_Ag1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag1MouseExited
+        // TODO add your handling code here:
+        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px.png"));
+        jLabel_icn_add1.setIcon(ii);
+    }//GEN-LAST:event_jPanel_Ag1MouseExited
+
+    private void jPanel_Ag3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel_Ag3MouseClicked
+
+    private void jPanel_Ag3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel_Ag3MouseEntered
+
+    private void jPanel_Ag3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel_Ag3MouseExited
+
+    private void jPanel_Informe2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel_Informe2MouseClicked
+
+    private void jPanel_Informe2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel_Informe2MouseEntered
+
+    private void jPanel_Informe2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel_Informe2MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanelFM;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_icn_add1;
+    private javax.swing.JLabel jLabel_icn_add4;
+    private javax.swing.JLabel jLabel_icn_inf;
+    private javax.swing.JLabel jLabel_icn_inf2;
+    private javax.swing.JPanel jPanel_Ag1;
+    private javax.swing.JPanel jPanel_Ag3;
+    private javax.swing.JPanel jPanel_Informe;
+    private javax.swing.JPanel jPanel_Informe2;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     // End of variables declaration//GEN-END:variables
 }

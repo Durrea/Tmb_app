@@ -5,7 +5,10 @@
  */
 package Presentacion;
 
-import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,8 +19,12 @@ public class Hotel extends javax.swing.JPanel {
     /**
      * Creates new form Parqueadero
      */
+    
+    Tabla t = new Tabla();
     public Hotel() {
+        
         initComponents();
+        t.ver_tabla(jTable_Hotel);
     }
 
     /**
@@ -29,22 +36,17 @@ public class Hotel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelFM = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable_Hotel = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(36, 47, 65));
         setFocusCycleRoot(true);
         setFocusTraversalPolicyProvider(true);
         setInheritsPopupMenu(true);
         setPreferredSize(new java.awt.Dimension(820, 610));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelFM.setBackground(new java.awt.Color(36, 47, 65));
-        jPanelFM.setPreferredSize(new java.awt.Dimension(820, 610));
-        jPanelFM.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_Hotel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -55,17 +57,80 @@ public class Hotel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTable_Hotel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_HotelMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable_Hotel);
 
-        jPanelFM.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 590, 290));
+        jButton1.setText("jButton1");
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        add(jPanelFM, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 820, 570));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(305, 305, 305)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(123, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable_HotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_HotelMouseClicked
+        // TODO add your handling code here:
+        int column = jTable_Hotel.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY()/jTable_Hotel.getRowHeight();
+        
+        if(row < jTable_Hotel.getRowCount() && row >= 0 && column < jTable_Hotel.getColumnCount() && column >= 0){
+            Object value = jTable_Hotel.getValueAt(row, column);
+            if(value instanceof JButton){
+                ((JButton)value).doClick();
+                JButton boton = (JButton) value;
+
+                if(boton.getName().equals("m")){
+                    System.out.println("Click en el boton modificar");
+                    //EVENTOS MODIFICAR
+                }
+                if(boton.getName().equals("e")){
+                    JOptionPane.showConfirmDialog(null, "Desea eliminar este registro", "Confirmar", JOptionPane.OK_CANCEL_OPTION);
+                    System.out.println("Click en el boton eliminar");
+                    //EVENTOS ELIMINAR
+                }
+            }
+            if(value instanceof JCheckBox){
+                //((JCheckBox)value).doClick();
+                JCheckBox ch = (JCheckBox)value;
+                if(ch.isSelected()==true){
+                    ch.setSelected(false);
+                }
+                if(ch.isSelected()==false){
+                    ch.setSelected(true);
+                }
+                
+            }
+        }
+    }//GEN-LAST:event_jTable_HotelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanelFM;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable_Hotel;
     // End of variables declaration//GEN-END:variables
 }

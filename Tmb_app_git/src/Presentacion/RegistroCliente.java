@@ -40,10 +40,10 @@ public class RegistroCliente extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jText_Placa = new javax.swing.JTextField();
         jText_Color = new javax.swing.JTextField();
-        jText_Propietario = new javax.swing.JTextField();
+        jText_Cliente = new javax.swing.JTextField();
         jText_Marca = new javax.swing.JTextField();
         jText_Telefono = new javax.swing.JTextField();
-        jText_Valor = new javax.swing.JTextField();
+        jText_Cedula = new javax.swing.JTextField();
         jPanel_Registrar = new javax.swing.JPanel();
         jLabel_icn_add = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -51,10 +51,6 @@ public class RegistroCliente extends javax.swing.JPanel {
         jLabel_icn_canc = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jCombo_TipoA = new javax.swing.JComboBox<>();
-        jXDateFPago = new org.jdesktop.swingx.JXDatePicker();
-        jXDateFVen = new org.jdesktop.swingx.JXDatePicker();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
@@ -85,11 +81,11 @@ public class RegistroCliente extends javax.swing.JPanel {
             }
         });
 
-        jText_Propietario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Propietario.setText("Propietario");
-        jText_Propietario.addMouseListener(new java.awt.event.MouseAdapter() {
+        jText_Cliente.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Cliente.setText("Nombre");
+        jText_Cliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_PropietarioMouseClicked(evt);
+                jText_ClienteMouseClicked(evt);
             }
         });
 
@@ -109,16 +105,16 @@ public class RegistroCliente extends javax.swing.JPanel {
             }
         });
 
-        jText_Valor.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Valor.setText("Valor");
-        jText_Valor.addMouseListener(new java.awt.event.MouseAdapter() {
+        jText_Cedula.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Cedula.setText("Cedula");
+        jText_Cedula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_ValorMouseClicked(evt);
+                jText_CedulaMouseClicked(evt);
             }
         });
-        jText_Valor.addActionListener(new java.awt.event.ActionListener() {
+        jText_Cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_ValorActionPerformed(evt);
+                jText_CedulaActionPerformed(evt);
             }
         });
 
@@ -167,14 +163,6 @@ public class RegistroCliente extends javax.swing.JPanel {
         jCombo_TipoA.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jCombo_TipoA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Automovil", "Buseta", "Camion", "Motocicleta" }));
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText(" Fecha Pago");
-
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText(" Fecha Vencimiento");
-
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText(" Tipo Vehiculo");
@@ -194,17 +182,13 @@ public class RegistroCliente extends javax.swing.JPanel {
                         .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jText_Propietario, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jText_Cliente, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jText_Telefono, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jText_Placa, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jText_Color, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jText_Marca, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jText_Valor)
+                    .addComponent(jText_Cedula)
                     .addComponent(jCombo_TipoA, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jXDateFPago, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jXDateFVen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(277, Short.MAX_VALUE))
         );
@@ -213,11 +197,13 @@ public class RegistroCliente extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jText_Propietario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addGap(17, 17, 17)
+                .addComponent(jText_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jText_Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jText_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jText_Placa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
@@ -225,33 +211,19 @@ public class RegistroCliente extends javax.swing.JPanel {
                 .addComponent(jCombo_TipoA, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jText_Color, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(jText_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jXDateFPago, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jXDateFVen, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jText_Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jText_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jText_ColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_ColorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_ColorActionPerformed
-
-    private void jText_ValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_ValorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_ValorActionPerformed
 
     private void jPanel_RegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseEntered
         // TODO add your handling code here:
@@ -281,8 +253,8 @@ public class RegistroCliente extends javax.swing.JPanel {
         // TODO add your handling code here:
          
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String DateToStr = format.format(jXDateFPago.getDate());
-        System.out.println(DateToStr);
+        //String DateToStr = format.format(jXDateFPago.getDate());
+        //System.out.println(DateToStr);
 
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
 
@@ -322,24 +294,28 @@ public class RegistroCliente extends javax.swing.JPanel {
         if(jText_Marca.getText().equals("Marca")){
         jText_Marca.setText("");}
     }//GEN-LAST:event_jText_MarcaMouseClicked
-
-    private void jText_ValorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_ValorMouseClicked
-        // TODO add your handling code here:
-        reiniciar();
-        if(jText_Valor.getText().equals("Valor")){
-        jText_Valor.setText("");}
-    }//GEN-LAST:event_jText_ValorMouseClicked
     
-    private void jText_PropietarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_PropietarioMouseClicked
+    private void jText_ClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_ClienteMouseClicked
         // TODO add your handling code here:
         reiniciar();
-        if(jText_Propietario.getText().equals("Propietario")){
-        jText_Propietario.setText("");}
-    }//GEN-LAST:event_jText_PropietarioMouseClicked
+        if(jText_Cliente.getText().equals("Nombre")){
+        jText_Cliente.setText("");}
+    }//GEN-LAST:event_jText_ClienteMouseClicked
+
+    private void jText_CedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_CedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jText_CedulaActionPerformed
+
+    private void jText_CedulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_CedulaMouseClicked
+        // TODO add your handling code here:
+        reiniciar();
+        if(jText_Cedula.getText().equals("Cedula")){
+            jText_Cedula.setText("");}
+    }//GEN-LAST:event_jText_CedulaMouseClicked
     
     public void reiniciar(){
-        if(jText_Propietario.getText().equals("")){
-            jText_Propietario.setText("Propietario");
+        if(jText_Cliente.getText().equals("")){
+            jText_Cliente.setText("Nombre");
         }
         if(jText_Telefono.getText().equals("")){
             jText_Telefono.setText("Telefono");
@@ -353,16 +329,14 @@ public class RegistroCliente extends javax.swing.JPanel {
         if(jText_Marca.getText().equals("")){
             jText_Marca.setText("Marca");
         }
-        if(jText_Valor.getText().equals("")){
-            jText_Valor.setText("Valor");
+        if(jText_Cedula.getText().equals("")){
+            jText_Cedula.setText("Cedula");
         }
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jCombo_TipoA;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
@@ -371,13 +345,11 @@ public class RegistroCliente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel_icn_canc;
     private javax.swing.JPanel jPanel_Cancelar;
     private javax.swing.JPanel jPanel_Registrar;
+    private javax.swing.JTextField jText_Cedula;
+    private javax.swing.JTextField jText_Cliente;
     private javax.swing.JTextField jText_Color;
     private javax.swing.JTextField jText_Marca;
     private javax.swing.JTextField jText_Placa;
-    private javax.swing.JTextField jText_Propietario;
     private javax.swing.JTextField jText_Telefono;
-    private javax.swing.JTextField jText_Valor;
-    private org.jdesktop.swingx.JXDatePicker jXDateFPago;
-    private org.jdesktop.swingx.JXDatePicker jXDateFVen;
     // End of variables declaration//GEN-END:variables
 }

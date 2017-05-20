@@ -6,15 +6,19 @@
 package Presentacion;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.RowFilter;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -33,6 +37,7 @@ public class Fraccion extends javax.swing.JPanel {
     ImageIcon ii;
     public int idRecep;
     TableRowSorter filter;
+    int rown = -1;
     
     public Fraccion(ArrayList<Modelos.Informacion_Fraccion> datos) {
         initComponents();
@@ -95,15 +100,20 @@ public class Fraccion extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Placa", "Tipo Vehiculo", "Fecha Entrada", "Fecha Salida", "Valor"
+                "ID", "Placa", "Tipo Vehiculo", "Fecha Entrada", "Fecha Salida", "Valor", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(jTable2);
@@ -163,11 +173,11 @@ public class Fraccion extends javax.swing.JPanel {
                         .addComponent(jPanel_Ag1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(473, Short.MAX_VALUE))
+                        .addContainerGap(475, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(0, 590, Short.MAX_VALUE)
                                 .addComponent(jLabel_icn_add2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -183,7 +193,7 @@ public class Fraccion extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel_Ag1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
@@ -193,7 +203,7 @@ public class Fraccion extends javax.swing.JPanel {
                     .addComponent(jLabel_icn_add2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -266,21 +276,58 @@ public class Fraccion extends javax.swing.JPanel {
         filter = new TableRowSorter(this.jTable2.getModel());
         this.jTable2.setRowSorter(filter);
     }//GEN-LAST:event_jText_BuscadorKeyTyped
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        rown = jTable2.rowAtPoint(evt.getPoint());
+
+        int column = jTable2.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY()/jTable2.getRowHeight();
+        
+        if(row < jTable2.getRowCount() && row >= 0 && column < jTable2.getColumnCount() && column >= 0){
+            Object value = jTable2.getValueAt(row, column);
+            if(value instanceof JButton){
+                ((JButton)value).doClick();
+                JButton boton = (JButton) value;
+                
+                String placa = ""+jTable2.getValueAt(rown, 1);
+                
+                if(boton.getName().equals("t")){
+                     try{
+                         
+                        JOptionPane.showMessageDialog(null, "Recibo Terminado Placa: "+ placa);
+                        
+                     }catch(Exception ex){
+                        System.out.println(ex.getMessage());
+                     }
+                    
+                }
+            }
+ 
+
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
     
     public void LoadDataTable(ArrayList<Modelos.Informacion_Fraccion> datos)
     {
+        jTable2.setDefaultRenderer(Object.class, new RenderTabla());
         DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        
+        JButton btn_visualizar = new JButton("Terminar Recibo");
+        btn_visualizar.setName("t");
+        
         for(int i=0;i<datos.size();i++)
-            {
-                Object [] fila = new Object[6];
-                fila[0] = datos.get(i).getIdFraccion();
-                fila[1] = datos.get(i).getVehiculo_placa();
-                fila[2] = datos.get(i).getVehiculo_tipo();
-                fila[3] = datos.get(i).getFecha_entrada();
-                fila[4] = datos.get(i).getFecha_salida();
-                fila[5] = datos.get(i).getValor_pagar();
-                modelo.addRow(fila);
-            }
+        {
+            Object [] fila = new Object[7];
+            fila[0] = datos.get(i).getIdFraccion();
+            fila[1] = datos.get(i).getVehiculo_placa();
+            fila[2] = datos.get(i).getVehiculo_tipo();
+            fila[3] = datos.get(i).getFecha_entrada();
+            fila[4] = datos.get(i).getFecha_salida();
+            fila[5] = datos.get(i).getValor_pagar();
+            fila[6] = btn_visualizar;
+            modelo.addRow(fila);
+        }
         this.jTable2.setModel(modelo);
     }
 
