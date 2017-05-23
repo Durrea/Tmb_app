@@ -21,6 +21,10 @@ public class Lavadero extends javax.swing.JPanel {
      */
     public Lavadero() {
         initComponents();
+        //ESTO ES UNA PRUEBA PARA LA
+        // PERRA DE CERON
+        // EL CAMBIO SE MANTIENE
+        // ZZZZZZZZZZZZZZZZZZZZZZZZZZZ
     }
     ImageIcon ii;
     /**
