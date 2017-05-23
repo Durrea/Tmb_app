@@ -30,8 +30,7 @@ public class Prueba {
         //System.out.println(cadena.toUpperCase());
         ValidadorCadenas obj = new ValidadorCadenas();
         System.out.println(obj.ValidarCadenasPlaca(cadena));
-        System.out.println("Este es un cambio");
-        System.out.println("Este es un cambio");
+        System.out.println("Cambio Santiago");
     }
     //Esto es un comentario
 }
