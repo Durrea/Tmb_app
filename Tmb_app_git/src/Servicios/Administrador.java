@@ -59,6 +59,13 @@ public class Administrador {
         try
         {
             CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_RECEPCIONISTA()}");
+            callProcedure.execute();
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+            while(resultado_consulta.next())
+            {
+                Recepcionista rec = new Recepcionista(Integer.parseInt(resultado_consulta.getString(1)),resultado_consulta.getString(2),resultado_consulta.getString(3));
+                listarecep.add(rec);
+            }
             return listarecep;
         }catch(Exception e)
         {

@@ -32,6 +32,13 @@ public class Recepcionista {
         this.recepcionista_usuario = recepcionista_usuario;
         this.recepcionista_contrasenia = recepcionista_contrasenia;
     }
+    public Recepcionista(int idRecepcionista, String recepcionista_nombres, String 
+            recepcionista_apellidos)
+    {
+        this.idRecepcionista = idRecepcionista;
+        this.recepcionista_nombres = recepcionista_nombres;
+        this.recepcionista_apellidos = recepcionista_apellidos;        
+    }
 
     //Getter's and Setter's
     /**

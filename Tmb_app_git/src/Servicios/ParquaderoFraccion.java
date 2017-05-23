@@ -155,4 +155,35 @@ public class ParquaderoFraccion {
             return resultado;
         }
     }
+    public ArrayList<Modelos.Informacion_Fraccion> LoadInfoPerRecepcionista(Connection conexion, String fecha, int idrecep)
+    {
+        ArrayList<Modelos.Informacion_Fraccion> informacion = new ArrayList<Modelos.Informacion_Fraccion>();
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_INGRESO_FRACCION(?,?)}");
+            callProcedure.setString(1, fecha);
+            callProcedure.setString(2, Integer.toString(idrecep));
+            callProcedure.execute(); 
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+            while(resultado_consulta.next())
+            {
+                Modelos.Informacion_Fraccion obj;
+                if(resultado_consulta.getString(4) == null && resultado_consulta.getString(5) == null)
+                {
+                    obj = new Modelos.Informacion_Fraccion(Integer.parseInt(resultado_consulta.getString(1)),
+                    resultado_consulta.getString(2),"",resultado_consulta.getString(3),"",0.0);
+                }
+                else
+                {
+                    obj = new Modelos.Informacion_Fraccion(Integer.parseInt(resultado_consulta.getString(1)),
+                    resultado_consulta.getString(2),"",resultado_consulta.getString(3),resultado_consulta.getString(4),Double.parseDouble(resultado_consulta.getString(5)));
+                }
+                informacion.add(obj);
+            }
+            return informacion;
+        }catch(Exception e)
+        {
+            return informacion;
+        }
+    }
 }

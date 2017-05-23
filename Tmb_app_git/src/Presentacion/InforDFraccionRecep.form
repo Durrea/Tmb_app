@@ -41,7 +41,7 @@
                       <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jXDatePicker1" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="fechaInforme" min="-2" pref="192" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -59,7 +59,7 @@
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jXDatePicker1" min="-2" max="-2" attributes="0"/>
+              <Component id="fechaInforme" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jPanel_Informe" min="-2" max="-2" attributes="0"/>
@@ -209,7 +209,7 @@
         <Property name="text" type="java.lang.String" value="Fecha"/>
       </Properties>
     </Component>
-    <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePicker1">
+    <Component class="org.jdesktop.swingx.JXDatePicker" name="fechaInforme">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="14" style="0"/>

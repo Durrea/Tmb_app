@@ -45,8 +45,8 @@ public class InforDFraccionRecep extends javax.swing.JPanel {
     
     public InforDFraccionRecep() {
         initComponents();
-        this.jXDatePicker1.setFormats("yyyy-MM-dd");
-        this.jXDatePicker1.getEditor().setEditable(false);
+        this.fechaInforme.setFormats("yyyy-MM-dd");
+        this.fechaInforme.getEditor().setEditable(false);
     }
     
     /**
@@ -69,7 +69,7 @@ public class InforDFraccionRecep extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        fechaInforme = new org.jdesktop.swingx.JXDatePicker();
 
         setBackground(new java.awt.Color(36, 47, 65));
 
@@ -131,7 +131,7 @@ public class InforDFraccionRecep extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Fecha");
 
-        jXDatePicker1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        fechaInforme.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -154,7 +154,7 @@ public class InforDFraccionRecep extends javax.swing.JPanel {
                         .addGap(317, 317, 317)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(fechaInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -167,7 +167,7 @@ public class InforDFraccionRecep extends javax.swing.JPanel {
                 .addGap(56, 56, 56)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fechaInforme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(201, 201, 201)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -177,7 +177,21 @@ public class InforDFraccionRecep extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel_InformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseClicked
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
+        if(!fechaInforme.getEditor().getText().equalsIgnoreCase(""))
+        {
+            ResultaInfFraccion f = new ResultaInfFraccion(fechaInforme.getEditor().getText());
+            //f.idRecep = this.idRecep;
+            this.removeAll();
+            this.setLayout(new BorderLayout());
+            this.add(f,BorderLayout.CENTER);
+            this.repaint();
+            this.revalidate();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fecha");
+        }
     }//GEN-LAST:event_jPanel_InformeMouseClicked
 
     
@@ -219,6 +233,7 @@ public class InforDFraccionRecep extends javax.swing.JPanel {
         
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jdesktop.swingx.JXDatePicker fechaInforme;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -230,6 +245,5 @@ public class InforDFraccionRecep extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel_Informe;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     // End of variables declaration//GEN-END:variables
 }
