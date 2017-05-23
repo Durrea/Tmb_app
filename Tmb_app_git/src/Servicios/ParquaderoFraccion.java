@@ -106,6 +106,23 @@ public class ParquaderoFraccion {
         }
         return resultado;
     }
+    public boolean CheckOutFraccion(Connection conexion, String placa, String tipo, int recep)
+    {
+        boolean resultado; 
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_REGISTRAR_SALIDAS_FRACCION(?,?,?)}");
+            callProcedure.setString(1, placa);
+            callProcedure.setString(2, tipo);
+            callProcedure.setString(3, Integer.toString(recep)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          );
+            callProcedure.execute();
+            resultado = true;
+        }catch(Exception e)
+        {
+            resultado = false;
+        }
+        return resultado;
+    }
     public ArrayList<String> LoadLastRecord(Connection conexion, int tipo, int idfrac)
     {
         ArrayList<String> resultado = new ArrayList<String>();

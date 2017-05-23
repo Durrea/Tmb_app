@@ -5,6 +5,9 @@
  */
 package Presentacion;
 
+import Servicios.Conexion;
+import Servicios.ParquaderoFraccion;
+import Servicios.Sesion;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -291,15 +294,30 @@ public class Fraccion extends javax.swing.JPanel {
                 JButton boton = (JButton) value;
                 
                 String placa = ""+jTable2.getValueAt(rown, 1);
-                
+                String tipo = ""+jTable2.getValueAt(rown, 2);
                 if(boton.getName().equals("t")){
-                     try{
-                         
-                        JOptionPane.showMessageDialog(null, "Recibo Terminado Placa: "+ placa);
-                        
-                     }catch(Exception ex){
+                     
+                    try{
+                        ParquaderoFraccion obj = new ParquaderoFraccion();
+                        Sesion instancia = Sesion.getInstanciaSesion(); 
+                        boolean resultado = obj.CheckOutFraccion(Conexion.obtener(), placa, tipo, instancia.getIdentificador());
+                        if(resultado)
+                        {
+                            JOptionPane.showMessageDialog(null, "Se ha registrado la salida");                            
+                            //jTable2.remove(rown);                            
+                            //Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();
+                            //datos.run();
+                            //LoadDataTable(datos.getDatos_fraccion());
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "Ha ocurrido un error en el registro de la salida");
+                        }
+                        //JOptionPane.showMessageDialog(null, "Recibo Terminado Placa: "+ placa);
+                                           
+                    }catch(Exception ex){
                         System.out.println(ex.getMessage());
-                     }
+                    }
                     
                 }
             }

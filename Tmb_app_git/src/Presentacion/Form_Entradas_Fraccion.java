@@ -192,7 +192,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
             {
                 ParquaderoFraccion obj = new ParquaderoFraccion();
                 Sesion instancia = Sesion.getInstanciaSesion();
-                System.out.println(instancia.getIdentificador());
+                //System.out.println(instancia.getIdentificador());
                 boolean resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Placa.getText(), (String) TipoVehiculo.getSelectedItem(), instancia.getIdentificador());
                 if(resultado)
                 {
