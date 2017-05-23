@@ -196,12 +196,16 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
                 boolean resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Placa.getText(), (String) TipoVehiculo.getSelectedItem(), instancia.getIdentificador());
                 if(resultado)
                 {
-                    ImpresionFacturas impfac = new ImpresionFacturas();
-                    boolean res = impfac.FacturaFraccion(0, -1);
-                    if(!res)
+                    int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?");
+                    if(resultopcion == 0)
                     {
-                        JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la impresión");
-                    }
+                        ImpresionFacturas impfac = new ImpresionFacturas();
+                        boolean res = impfac.FacturaFraccion(0, -1);
+                        if(!res)
+                        {
+                            JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la impresión");
+                        }
+                    }                                        
                     JOptionPane.showMessageDialog(null, "Registro realizado con exito");
                 }
                 else

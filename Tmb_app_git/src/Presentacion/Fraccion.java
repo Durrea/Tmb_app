@@ -213,6 +213,12 @@ public class Fraccion extends javax.swing.JPanel {
 
     private void jPanel_InformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseClicked
         // TODO add your handling code here:
+        InforDFraccionRecep informes = new InforDFraccionRecep();
+        this.removeAll();
+        this.setLayout(new BorderLayout());
+        this.add(informes,BorderLayout.CENTER);
+        this.repaint();
+        this.revalidate(); 
     }//GEN-LAST:event_jPanel_InformeMouseClicked
 
     
@@ -305,12 +311,16 @@ public class Fraccion extends javax.swing.JPanel {
                         boolean resultado = obj.CheckOutFraccion(Conexion.obtener(), placa, tipo, instancia.getIdentificador());
                         if(resultado)
                         {
-                            ImpresionFacturas impfac = new ImpresionFacturas();
-                            boolean res = impfac.FacturaFraccion(1, idfrac);
-                            if(!res)
+                            int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?");                            
+                            if(resultopcion == 0)
                             {
-                                JOptionPane.showMessageDialog(null, "Error en la impresion");
-                            }
+                                ImpresionFacturas impfac = new ImpresionFacturas();
+                                boolean res = impfac.FacturaFraccion(1, idfrac);
+                                if(!res)
+                                {
+                                    JOptionPane.showMessageDialog(null, "Error en la impresion");
+                                }
+                            }                            
                             JOptionPane.showMessageDialog(null, "Se ha registrado la salida");                            
                             //jTable2.remove(rown);                            
                             //Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();

@@ -2,11 +2,11 @@
                     LA VIRGEN                   
                     800-23232232                
                     Ley 2000 de 2017            
- Placa: IUU567                                  
+ Placa: CIA323                                  
  Tipo de vehiculo: CAMION                       
- Fecha Entrada: 2017-05-22 21:05:18             
- Fecha Salida: 2017-05-22 22:06:19              
- Valor a cobrar: 2033.333251953125              
+ Fecha Entrada: 2017-05-22 22:28:46             
+ Fecha Salida: ---                              
+ Valor a cobrar: ---                            
 ================================================
                                                 
                                                 

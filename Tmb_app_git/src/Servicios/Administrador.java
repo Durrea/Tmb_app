@@ -53,4 +53,16 @@ public class Administrador {
             return resultado;
         }        
     }
+    public ArrayList<Recepcionista> GetInfoRecepcionista(Connection conexion)
+    {
+        ArrayList<Recepcionista> listarecep = new ArrayList<Recepcionista>();
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_RECEPCIONISTA()}");
+            return listarecep;
+        }catch(Exception e)
+        {
+            return listarecep;
+        }
+    }
 }
