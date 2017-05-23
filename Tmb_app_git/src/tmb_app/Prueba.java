@@ -32,7 +32,6 @@ public class Prueba {
         System.out.println(obj.ValidarCadenasPlaca(cadena));
         System.out.println("Este es un cambio");
         System.out.println("Este es un cambio");
-        System.out.println("Este es un cambio hecho por Eduardo");
     }
     //Esto es un comentario
 }
