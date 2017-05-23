@@ -30,20 +30,7 @@ public class Prueba {
         //System.out.println(cadena.toUpperCase());
         ValidadorCadenas obj = new ValidadorCadenas();
         System.out.println(obj.ValidarCadenasPlaca(cadena));
-        System.out.println("Este es un cambio");
-        System.out.println("Este es un cambio");
-        System.out.println("Este es un cambio hecho por Eduardo");
-        System.out.println("Este es otro cambio hecho por Eduardo");
-        System.out.println("Este es otro cambio hecho por Eduardo 2");
-        System.out.println("Cambio Santiago");
-        System.out.println("Prueba");
-        System.out.println("Prueba");
-        System.out.println("Prueba");
         
-        for(int i=0;i<10;i++)
-        {
-            System.out.println("Santiago es una puta");
-        }
         
     }
     //Esto es un comentario

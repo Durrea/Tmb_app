@@ -10,6 +10,7 @@ import Servicios.ImpresionFacturas;
 import Servicios.ParquaderoFraccion;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -42,11 +43,10 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel_Informe = new javax.swing.JPanel();
+        jPanel_Cancelar = new javax.swing.JPanel();
         jLabel_icn_inf = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jText_Usuario = new javax.swing.JTextField();
         jPanel_Ag = new javax.swing.JPanel();
         jLabel_icn_add = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -59,52 +59,32 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel_Informe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel_Informe.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel_InformeMouseClicked(evt);
+                jPanel_CancelarMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_InformeMouseEntered(evt);
+                jPanel_CancelarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_InformeMouseExited(evt);
+                jPanel_CancelarMouseExited(evt);
             }
         });
-        jPanel_Informe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel_Cancelar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_icn_inf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cancel_20px.png"))); // NOI18N
-        jPanel_Informe.add(jLabel_icn_inf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 20, 40));
+        jPanel_Cancelar.add(jLabel_icn_inf, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Cancelar");
-        jPanel_Informe.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 20));
+        jPanel_Cancelar.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 20));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel_Informe.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        jText_Usuario.setBackground(new java.awt.Color(36, 47, 65));
-        jText_Usuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Usuario.setForeground(new java.awt.Color(255, 255, 255));
-        jText_Usuario.setText("Ingresar Usuario");
-        jText_Usuario.setBorder(null);
-        jText_Usuario.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jText_Usuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_UsuarioMouseClicked(evt);
-            }
-        });
-        jText_Usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_UsuarioActionPerformed(evt);
-            }
-        });
-        jPanel_Informe.add(jText_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 270, -1));
-
-        add(jPanel_Informe, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 180, 40));
+        jPanel_Cancelar.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
 
         jPanel_Ag.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Ag.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,25 +105,21 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel8.setText("Añadir Entrada");
-        jPanel_Ag.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
-
-        add(jPanel_Ag, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 140, 40));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
+        jPanel_Ag.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 20));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Registro entradas por fraccion");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Para realizar el registro de una entrada por fracción debe diligenciar la siguiente información. Los campos con (*) son obligatorios.");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Para realizar el registro de una entrada por fracción debe diligenciar la siguiente información.");
 
         TipoVehiculo.setBackground(new java.awt.Color(0, 0, 102));
         TipoVehiculo.setForeground(new java.awt.Color(0, 0, 102));
-        add(TipoVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 260, -1));
 
         jText_Placa.setBackground(new java.awt.Color(36, 47, 65));
         jText_Placa.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -165,22 +141,75 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
                 jText_PlacaKeyTyped(evt);
             }
         });
-        add(jText_Placa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 270, -1));
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Placa");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Tipo de Vehiculo");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(97, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(97, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jPanel_Ag, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                            .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jText_Placa)
+                        .addComponent(TipoVehiculo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jText_Placa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel_Ag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(181, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel_InformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseClicked
+    private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel_InformeMouseClicked
+        Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();
+        datos.run();
+        Fraccion f=new Fraccion(datos.getDatos_fraccion());
+        this.removeAll();
+        this.setLayout(new BorderLayout());
+        this.add(f,BorderLayout.CENTER);
+        this.repaint();
+        this.revalidate();
+    }//GEN-LAST:event_jPanel_CancelarMouseClicked
 
     
     
@@ -208,6 +237,14 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
                         }
                     }                                        
                     JOptionPane.showMessageDialog(null, "Registro realizado con exito");
+                    Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();
+                    datos.run();
+                    Fraccion f=new Fraccion(datos.getDatos_fraccion());
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(f,BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();
                 }
                 else
                 {
@@ -222,7 +259,9 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         else
         {
             JOptionPane.showMessageDialog(null, "Debe llenar los campos requeridos");
-        }        
+        }       
+        
+        
     }//GEN-LAST:event_jPanel_AgMouseClicked
 
     private void jPanel_AgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseEntered
@@ -237,25 +276,17 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         jLabel_icn_add.setIcon(ii);
     }//GEN-LAST:event_jPanel_AgMouseExited
 
-    private void jPanel_InformeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseEntered
+    private void jPanel_CancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseEntered
         // TODO add your handling code here:
         ii = new ImageIcon(getClass().getResource("/Iconos/Cancel_20px_2.png"));
         jLabel_icn_inf.setIcon(ii);
-    }//GEN-LAST:event_jPanel_InformeMouseEntered
+    }//GEN-LAST:event_jPanel_CancelarMouseEntered
 
-    private void jPanel_InformeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseExited
+    private void jPanel_CancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseExited
         // TODO add your handling code here:
          ii = new ImageIcon(getClass().getResource("/Iconos/Cancel_20px.png"));
         jLabel_icn_inf.setIcon(ii);
-    }//GEN-LAST:event_jPanel_InformeMouseExited
-
-    private void jText_UsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_UsuarioMouseClicked
-        jText_Usuario.setText("");
-    }//GEN-LAST:event_jText_UsuarioMouseClicked
-
-    private void jText_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_UsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_UsuarioActionPerformed
+    }//GEN-LAST:event_jPanel_CancelarMouseExited
 
     private void jText_PlacaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_PlacaMouseClicked
         // TODO add your handling code here:
@@ -297,10 +328,9 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel_icn_add;
     private javax.swing.JLabel jLabel_icn_inf;
     private javax.swing.JPanel jPanel_Ag;
-    private javax.swing.JPanel jPanel_Informe;
+    private javax.swing.JPanel jPanel_Cancelar;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jText_Placa;
-    private javax.swing.JTextField jText_Usuario;
     // End of variables declaration//GEN-END:variables
 }
