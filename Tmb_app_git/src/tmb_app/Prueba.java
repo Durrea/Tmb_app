@@ -34,9 +34,6 @@ public class Prueba {
         System.out.println("Prueba");
         System.out.println("Prueba");
         System.out.println("Prueba");
-        System.out.println("Prueba de nuevo");
-        System.out.println("Prueba de nuevo");
-        System.out.println("Prueba de nuevo");
         
     }
     //Esto es un comentario
