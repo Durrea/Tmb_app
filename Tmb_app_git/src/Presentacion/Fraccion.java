@@ -6,6 +6,7 @@
 package Presentacion;
 
 import Servicios.Conexion;
+import Servicios.ImpresionFacturas;
 import Servicios.ParquaderoFraccion;
 import Servicios.Sesion;
 import java.awt.BorderLayout;
@@ -295,6 +296,7 @@ public class Fraccion extends javax.swing.JPanel {
                 
                 String placa = ""+jTable2.getValueAt(rown, 1);
                 String tipo = ""+jTable2.getValueAt(rown, 2);
+                int idfrac = Integer.parseInt(jTable2.getValueAt(rown, 0).toString());
                 if(boton.getName().equals("t")){
                      
                     try{
@@ -303,6 +305,12 @@ public class Fraccion extends javax.swing.JPanel {
                         boolean resultado = obj.CheckOutFraccion(Conexion.obtener(), placa, tipo, instancia.getIdentificador());
                         if(resultado)
                         {
+                            ImpresionFacturas impfac = new ImpresionFacturas();
+                            boolean res = impfac.FacturaFraccion(1, idfrac);
+                            if(!res)
+                            {
+                                JOptionPane.showMessageDialog(null, "Error en la impresion");
+                            }
                             JOptionPane.showMessageDialog(null, "Se ha registrado la salida");                            
                             //jTable2.remove(rown);                            
                             //Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();
