@@ -29,6 +29,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     public Form_Entradas_Fraccion() {
         initComponents();
         LoadVehiculos();
+        //hhhhhh
     }
     ImageIcon ii;
     public int idRecep;
