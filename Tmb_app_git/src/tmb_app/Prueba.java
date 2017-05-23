@@ -40,6 +40,11 @@ public class Prueba {
         System.out.println("Prueba");
         System.out.println("Prueba");
         
+        for(int i=0;i<10;i++)
+        {
+            System.out.println("Santiago es una puta");
+        }
+        
     }
     //Esto es un comentario
 }
