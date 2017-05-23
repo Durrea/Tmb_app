@@ -31,6 +31,9 @@ public class Prueba {
         ValidadorCadenas obj = new ValidadorCadenas();
         System.out.println(obj.ValidarCadenasPlaca(cadena));
         System.out.println("Cambio Santiago");
+        System.out.println("Cambio Santiago");
+        System.out.println("Cambio Santiago");
+        
     }
     //Esto es un comentario
 }
