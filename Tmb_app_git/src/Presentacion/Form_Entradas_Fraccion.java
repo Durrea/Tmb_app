@@ -30,6 +30,13 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
      */
     public Form_Entradas_Fraccion() {
         initComponents();
+        //this.setLayout(new BorderLayout());
+        //this.add(this.jLabel1,BorderLayout.NORTH);
+        //this.add(this.jLabel2,BorderLayout.NORTH);
+        //this.add(this.jLabel3,BorderLayout.CENTER);
+        //this.add(this.jText_Placa,BorderLayout.CENTER);
+        //this.add(this.jLabel4,BorderLayout.CENTER);
+        //this.add(this.TipoVehiculo,BorderLayout.CENTER);
         LoadVehiculos();
         //hhhhhh
     }
@@ -60,6 +67,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
+        setLayout(null);
 
         jPanel_Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -87,6 +95,9 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel_Cancelar.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
 
+        add(jPanel_Cancelar);
+        jPanel_Cancelar.setBounds(371, 390, 140, 40);
+
         jPanel_Ag.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Ag.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -108,19 +119,30 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         jLabel8.setText("Añadir Entrada");
         jPanel_Ag.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 20));
 
+        add(jPanel_Ag);
+        jPanel_Ag.setBounds(198, 390, 140, 40);
+        add(jSeparator1);
+        jSeparator1.setBounds(5, 75, 1, 2);
+
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Registro entradas por fraccion");
+        add(jLabel1);
+        jLabel1.setBounds(238, 40, 261, 37);
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Para realizar el registro de una entrada por fracción debe diligenciar la siguiente información.");
+        add(jLabel2);
+        jLabel2.setBounds(10, 110, 703, 24);
 
         TipoVehiculo.setBackground(new java.awt.Color(0, 0, 102));
         TipoVehiculo.setForeground(new java.awt.Color(0, 0, 102));
+        add(TipoVehiculo);
+        TipoVehiculo.setBounds(198, 313, 313, 34);
 
         jText_Placa.setBackground(new java.awt.Color(36, 47, 65));
         jText_Placa.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -138,66 +160,27 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
             }
         });
         jText_Placa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jText_PlacaKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jText_PlacaKeyTyped(evt);
             }
         });
+        add(jText_Placa);
+        jText_Placa.setBounds(198, 225, 313, 34);
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Placa");
+        add(jLabel3);
+        jLabel3.setBounds(198, 203, 313, 16);
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Tipo de Vehiculo");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jPanel_Ag, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                            .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jText_Placa)
-                        .addComponent(TipoVehiculo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jText_Placa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel_Ag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(181, Short.MAX_VALUE))
-        );
+        add(jLabel4);
+        jLabel4.setBounds(198, 291, 313, 16);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
@@ -219,7 +202,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         if(!jText_Placa.getText().equalsIgnoreCase(""))
         {
             ValidadorCadenas val = new ValidadorCadenas();
-            if(val.ValidarCadenasPlaca(jText_Placa.getText()))
+            if(val.ValidarCadenasPlaca(jText_Placa.getText())!=0)
             {
                 ParquaderoFraccion obj = new ParquaderoFraccion();
                 Sesion instancia = Sesion.getInstanciaSesion();
@@ -302,20 +285,58 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         char c = evt.getKeyChar();
         if(Character.isLowerCase(c))
         {
-            String cadena = (""+c).toUpperCase();
+            String cadena = (""+c).toUpperCase();            
             c = cadena.charAt(0);
-            evt.setKeyChar(c);
-        }
-        
+            evt.setKeyChar(c);            
+        }        
     }//GEN-LAST:event_jText_PlacaKeyTyped
+
+    private void jText_PlacaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyReleased
+        // TODO add your handling code here:
+        String cadena = this.jText_Placa.getText();
+        ValidadorCadenas val = new ValidadorCadenas();
+            int res = val.ValidarCadenasPlaca(cadena);
+            if(res !=0)
+            {
+                if(res == 1)
+                {
+                    LoadMotos();
+                }
+                else
+                {
+                    LoadVehiculos();
+                }
+            }
+            else
+            {
+                this.TipoVehiculo.removeAllItems();
+            }
+    }//GEN-LAST:event_jText_PlacaKeyReleased
     
     public void LoadVehiculos()
     {
+        this.TipoVehiculo.removeAllItems();
         Administrador obj = new Administrador();        
         ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
         for (int i = 0; i < tipos.size(); i++) 
         {
-            this.TipoVehiculo.addItem(tipos.get(i));
+            if(!tipos.get(i).equalsIgnoreCase("MOTO"))
+            {
+                this.TipoVehiculo.addItem(tipos.get(i));
+            }            
+        }
+    }
+    public void LoadMotos()
+    {
+        this.TipoVehiculo.removeAllItems();
+        Administrador obj = new Administrador();        
+        ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
+        for (int i = 0; i < tipos.size(); i++) 
+        {
+            if(tipos.get(i).equalsIgnoreCase("MOTO"))
+            {
+                this.TipoVehiculo.addItem(tipos.get(i));
+            }            
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -365,7 +365,7 @@ public class Form_Empleados extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (!jText_Nombres.getText().equalsIgnoreCase("")) {
             ValidadorCadenas val = new ValidadorCadenas();
-            if (val.ValidarCadenasPlaca(jText_Nombres.getText())) {
+            if (val.ValidarCadenasPlaca(jText_Nombres.getText())!=0) {
                 ParquaderoFraccion obj = new ParquaderoFraccion();
                 Sesion instancia = Sesion.getInstanciaSesion();
                 System.out.println(instancia.getIdentificador());
