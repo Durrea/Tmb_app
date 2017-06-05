@@ -7,6 +7,7 @@ package Presentacion;
 
 import Servicios.*;
 import Modelos.*;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import static java.awt.Cursor.HAND_CURSOR;
@@ -139,6 +140,12 @@ public class Hotel extends javax.swing.JPanel {
         for (int i = 0; i < habitaciones.size(); i++) {
             if (habitaciones.get(i).getHabitacion_numero() == Integer.parseInt(numHab)) {
                 JOptionPane.showMessageDialog(this, "La habitación se encuentra: " + habitaciones.get(i).getHabitacion_estado());
+                Form_Hotel h = new Form_Hotel();
+                this.removeAll();
+                this.setLayout(new BorderLayout());
+                this.add(h, BorderLayout.CENTER);
+                this.repaint();
+                this.revalidate();
             }
         }
 

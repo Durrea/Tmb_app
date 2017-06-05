@@ -61,8 +61,6 @@ public class Form_Hotel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        FechaEntrada = new org.jdesktop.swingx.JXDatePicker();
-        FechaSalida = new org.jdesktop.swingx.JXDatePicker();
         Date date1 = new Date();
         SpinnerDateModel sm1 =
         new SpinnerDateModel(date1,null,null,Calendar.HOUR_OF_DAY);
@@ -185,17 +183,11 @@ public class Form_Hotel extends javax.swing.JPanel {
         jLabel7.setText("Salida");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
 
-        FechaEntrada.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        add(FechaEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 270, 30));
-
-        FechaSalida.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        add(FechaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 270, 30));
-
-        JSpinner.DateEditor de1 = new JSpinner.DateEditor(jText_Salida,"HH:mm:ss");
+        JSpinner.DateEditor de1 = new JSpinner.DateEditor(jText_Salida,"yyyy-MM-dd HH:mm:ss");
         jText_Salida.setEditor(de1);
         add(jText_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 270, 30));
 
-        JSpinner.DateEditor de = new JSpinner.DateEditor(jText_Entrada,"HH:mm:ss");
+        JSpinner.DateEditor de = new JSpinner.DateEditor(jText_Entrada,"yyyy-MM-dd HH:mm:ss");
         jText_Entrada.setEditor(de);
         add(jText_Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 270, 30));
         add(jText_NumeroPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 270, 30));
@@ -271,25 +263,15 @@ public class Form_Hotel extends javax.swing.JPanel {
         int tipo = TipoHospedaje.getSelectedIndex();
         System.out.println("Seleccion:" + tipo);
         if (tipo == 0) {
-            FechaEntrada.setVisible(true);
-            FechaSalida.setVisible(true);
-            jText_Salida.setVisible(false);
-            jText_Entrada.setVisible(false);
-
+           
         } else {
 
-            FechaEntrada.setVisible(false);
-            FechaSalida.setVisible(false);
-            jText_Salida.setVisible(true);
-            jText_Entrada.setVisible(true);
         }
 
     }//GEN-LAST:event_TipoHospedajeActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.jdesktop.swingx.JXDatePicker FechaEntrada;
-    private org.jdesktop.swingx.JXDatePicker FechaSalida;
     private javax.swing.JComboBox<String> TipoHospedaje;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
