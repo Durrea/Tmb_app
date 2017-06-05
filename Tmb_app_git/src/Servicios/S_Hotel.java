@@ -44,5 +44,12 @@ public class S_Hotel {
         }
         return habitaciones;
     }
+    
+    public ArrayList<Integer> ocuparHabitacion(Connection conexion, Habitacion habitacion)
+    {
+        ArrayList<Integer> retorno = new ArrayList<>();
+        
+        return retorno;
+    }
 
 }
