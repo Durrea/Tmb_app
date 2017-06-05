@@ -5,11 +5,14 @@
  */
 package Presentacion;
 
+import Modelos.Habitacion;
 import Servicios.Conexion;
 import Servicios.ParquaderoFraccion;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.ImageIcon;
@@ -28,13 +31,18 @@ public class Form_Hotel extends javax.swing.JPanel {
     /**
      * Creates new form Fraccion
      */
-    public Form_Hotel() {
+    
+    private Habitacion habitacion;
+    
+    public Form_Hotel(Habitacion habitacion) {
         initComponents();
         LoadTipo();
+        this.habitacion = habitacion;
         //LoadVehiculos();
     }
     ImageIcon ii;
     public int idRecep;
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -75,6 +83,7 @@ public class Form_Hotel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_CancelarMouseClicked(evt);
@@ -120,6 +129,7 @@ public class Form_Hotel extends javax.swing.JPanel {
         add(jPanel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 400, 180, 40));
 
         jPanel_Aceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Aceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Aceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_AceptarMouseClicked(evt);
@@ -224,6 +234,10 @@ public class Form_Hotel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "Debe llenar los campos requeridos");
         }*/
+        JOptionPane.showMessageDialog(this, "Habitación a ocupar " +  habitacion.getHabitacion_numero());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        JOptionPane.showMessageDialog(this, "Entrada: " +  dateFormat.format(jText_Entrada.getValue()));
+        
     }//GEN-LAST:event_jPanel_AceptarMouseClicked
 
     private void jPanel_AceptarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AceptarMouseEntered

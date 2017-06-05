@@ -140,12 +140,16 @@ public class Hotel extends javax.swing.JPanel {
         for (int i = 0; i < habitaciones.size(); i++) {
             if (habitaciones.get(i).getHabitacion_numero() == Integer.parseInt(numHab)) {
                 JOptionPane.showMessageDialog(this, "La habitación se encuentra: " + habitaciones.get(i).getHabitacion_estado());
-                Form_Hotel h = new Form_Hotel();
-                this.removeAll();
-                this.setLayout(new BorderLayout());
-                this.add(h, BorderLayout.CENTER);
-                this.repaint();
-                this.revalidate();
+                if (habitaciones.get(i).getHabitacion_estado().equalsIgnoreCase("OCUPADA")) {
+                } else {
+                    Form_Hotel h = new Form_Hotel(habitaciones.get(i));
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(h, BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();
+                }
+
             }
         }
 

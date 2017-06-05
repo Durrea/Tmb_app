@@ -17,6 +17,7 @@ public class Habitacion {
     private int habitacion_capacidad;
     private String habitacion_estado;
     
+    
     //Constructor por defecto
     public Habitacion()
     {}
