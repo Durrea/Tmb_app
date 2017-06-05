@@ -72,4 +72,24 @@ public class Administrador {
             return listarecep;
         }
     }
+    public ArrayList<String> LoadTiposVehiculos(Connection conexion)
+    {
+        ArrayList<String> tipos = new ArrayList();
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_TIPOS_VEHICULOS()}");
+            callProcedure.execute();
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+            while(resultado_consulta.next())
+            {
+                String tipo = resultado_consulta.getString(1);
+                tipos.add(tipo);
+            }
+            
+        }catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return tipos;
+    }
 }

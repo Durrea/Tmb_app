@@ -65,28 +65,7 @@ public class ParquaderoFraccion {
             System.out.println(e.getLocalizedMessage());
         }
         return informacion_fraccion;
-    }
-    
-    public ArrayList<String> LoadTiposVehiculos(Connection conexion)
-    {
-        ArrayList<String> tipos = new ArrayList();
-        try
-        {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_TIPOS_VEHICULOS()}");
-            callProcedure.execute();
-            ResultSet resultado_consulta = callProcedure.getResultSet();
-            while(resultado_consulta.next())
-            {
-                String tipo = resultado_consulta.getString(1);
-                tipos.add(tipo);
-            }
-            
-        }catch(Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
-        return tipos;
-    }
+    }        
     public boolean RegisterEntryFraccion(Connection conexion, String placa, String tipo, int recep)
     {
         boolean resultado; 

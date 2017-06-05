@@ -5,6 +5,7 @@
  */
 package Presentacion;
 
+import Servicios.Administrador;
 import Servicios.Conexion;
 import Servicios.ImpresionFacturas;
 import Servicios.ParquaderoFraccion;
@@ -310,7 +311,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     
     public void LoadVehiculos()
     {
-        ParquaderoFraccion obj = new ParquaderoFraccion();
+        Administrador obj = new Administrador();        
         ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
         for (int i = 0; i < tipos.size(); i++) 
         {

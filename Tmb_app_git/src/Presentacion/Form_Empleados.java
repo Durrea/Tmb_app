@@ -5,6 +5,7 @@
  */
 package Presentacion;
 
+import Servicios.Administrador;
 import Servicios.Conexion;
 import Servicios.ParquaderoFraccion;
 import Servicios.Sesion;
@@ -529,7 +530,7 @@ public class Form_Empleados extends javax.swing.JPanel {
     }//GEN-LAST:event_jText_CodigoLavadorMouseClicked
 
     public void LoadVehiculos() {
-        ParquaderoFraccion obj = new ParquaderoFraccion();
+        Administrador obj = new Administrador();
         ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
         for (int i = 0; i < tipos.size(); i++) {
             this.TipoEmpleado.addItem(tipos.get(i));

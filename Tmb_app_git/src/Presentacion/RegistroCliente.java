@@ -5,8 +5,11 @@
  */
 package Presentacion;
 
+import Servicios.Administrador;
+import Servicios.Conexion;
 import java.awt.BorderLayout;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 
@@ -24,7 +27,8 @@ public class RegistroCliente extends javax.swing.JPanel {
      */
     public RegistroCliente() {
         initComponents();
-        jCombo_TipoA.setSelectedItem(null); 
+        LoadVehiculos();
+        //jCombo_TipoA.setSelectedItem(null); 
     }
     ImageIcon ii;
     
@@ -161,7 +165,6 @@ public class RegistroCliente extends javax.swing.JPanel {
         jPanel_Cancelar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 20));
 
         jCombo_TipoA.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jCombo_TipoA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Automovil", "Buseta", "Camion", "Motocicleta" }));
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -333,6 +336,15 @@ public class RegistroCliente extends javax.swing.JPanel {
             jText_Cedula.setText("Cedula");
         }
         
+    }
+    public void LoadVehiculos()
+    {
+        Administrador obj = new Administrador();        
+        ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
+        for (int i = 0; i < tipos.size(); i++) 
+        {
+            this.jCombo_TipoA.addItem(tipos.get(i));
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
