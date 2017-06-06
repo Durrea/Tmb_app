@@ -15,6 +15,7 @@ public class Cliente {
     private int idCliente;
     private String cliente_nombre;
     private String cliente_telefono;
+    private String cliente_cedula;
     
     //Constructor por defecto
     public Cliente()
@@ -63,6 +64,22 @@ public class Cliente {
      */
     public void setCliente_telefono(String cliente_telefono) {
         this.cliente_telefono = cliente_telefono;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getCliente_cedula() {
+        return cliente_cedula;
+    }
+
+    public void setCliente_cedula(String cliente_cedula) {
+        this.cliente_cedula = cliente_cedula;
     }
     
     

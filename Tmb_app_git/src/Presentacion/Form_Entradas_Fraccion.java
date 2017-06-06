@@ -37,7 +37,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         //this.add(this.jText_Placa,BorderLayout.CENTER);
         //this.add(this.jLabel4,BorderLayout.CENTER);
         //this.add(this.TipoVehiculo,BorderLayout.CENTER);
-        LoadVehiculos();
+        LoadAllVehiculos();
         //hhhhhh
     }
     ImageIcon ii;
@@ -313,6 +313,17 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
             }
     }//GEN-LAST:event_jText_PlacaKeyReleased
     
+    
+    public void LoadAllVehiculos()
+    {
+        this.TipoVehiculo.removeAllItems();
+        Administrador obj = new Administrador();        
+        ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
+        for (int i = 0; i < tipos.size(); i++) 
+        {
+            this.TipoVehiculo.addItem(tipos.get(i));                       
+        }
+    }
     public void LoadVehiculos()
     {
         this.TipoVehiculo.removeAllItems();
