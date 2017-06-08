@@ -34,7 +34,7 @@ public class Prueba {
         //System.out.println(cadena.toUpperCase());
         //ValidadorCadenas obj = new ValidadorCadenas();
         //System.out.println(obj.ValidarCadenasPlaca(cadena));
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        /*DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
         System.out.println(dateFormat.format(cal.getTime()));
         dateFormat.format(cal.getTime());
@@ -48,6 +48,12 @@ public class Prueba {
         else
         {
             System.out.println("Antes");
+        }*/
+        double valor;
+        for(int i=0;i<100;i++)
+        {
+            valor = Math.random()*5;
+            System.out.println(valor);
         }
     }
     //Esto es un comentario
