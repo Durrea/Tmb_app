@@ -246,6 +246,8 @@ public class Form_Hotel extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "Debe llenar los campos requeridos");
         }*/
+        
+        //validarFormular();
         JOptionPane.showMessageDialog(this, "Habitación a ocupar " + habitacion.getHabitacion_numero());
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         JOptionPane.showMessageDialog(this, "Entrada: " + dateFormat.format(jText_Entrada.getValue()));
