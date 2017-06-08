@@ -7,10 +7,12 @@ package Presentacion;
 
 import Servicios.Administrador;
 import Servicios.Conexion;
+import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 
 
@@ -27,7 +29,7 @@ public class RegistroCliente extends javax.swing.JPanel {
      */
     public RegistroCliente() {
         initComponents();
-        LoadVehiculos();
+        LoadAllVehiculos();
         //jCombo_TipoA.setSelectedItem(null); 
     }
     ImageIcon ii;
@@ -69,6 +71,14 @@ public class RegistroCliente extends javax.swing.JPanel {
         jText_Placa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jText_PlacaMouseClicked(evt);
+            }
+        });
+        jText_Placa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jText_PlacaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_PlacaKeyTyped(evt);
             }
         });
 
@@ -254,11 +264,25 @@ public class RegistroCliente extends javax.swing.JPanel {
 
     private void jPanel_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseClicked
         // TODO add your handling code here:
-         
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        //String DateToStr = format.format(jXDateFPago.getDate());
-        //System.out.println(DateToStr);
-
+        ValidadorCadenas val = new ValidadorCadenas();
+        if(!this.jText_Cliente.getText().equalsIgnoreCase("")&&!this.jText_Cedula.getText().equalsIgnoreCase("")&&
+           !this.jText_Telefono.getText().equalsIgnoreCase("")&&!this.jText_Placa.getText().equalsIgnoreCase("")&&
+           !this.jCombo_TipoA.getSelectedItem().toString().equalsIgnoreCase("")&&!this.jText_Color.getText().equalsIgnoreCase("")&&
+           !this.jText_Marca.getText().equalsIgnoreCase(""))
+        {
+            if(val.ValidarCadenasPlaca(this.jText_Placa.getText())!=0)
+            {
+                
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Formato incorrecto. Formato para las placas ej: AAA123");
+            }
+        }
+        else
+        {
+            JOptionPane.showConfirmDialog(null, "Debe llenar los campos requeridos");
+        }
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
 
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
@@ -315,6 +339,39 @@ public class RegistroCliente extends javax.swing.JPanel {
         if(jText_Cedula.getText().equals("Cedula")){
             jText_Cedula.setText("");}
     }//GEN-LAST:event_jText_CedulaMouseClicked
+
+    private void jText_PlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();            
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);            
+        } 
+    }//GEN-LAST:event_jText_PlacaKeyTyped
+
+    private void jText_PlacaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyReleased
+        // TODO add your handling code here:
+        String cadena = this.jText_Placa.getText();
+        ValidadorCadenas val = new ValidadorCadenas();
+            int res = val.ValidarCadenasPlaca(cadena);
+            if(res !=0)
+            {
+                if(res == 1)
+                {
+                    LoadMotos();
+                }
+                else
+                {
+                    LoadVehiculos();
+                }
+            }
+            else
+            {
+                this.jCombo_TipoA.removeAllItems();
+            }
+    }//GEN-LAST:event_jText_PlacaKeyReleased
     
     public void reiniciar(){
         if(jText_Cliente.getText().equals("")){
@@ -339,11 +396,38 @@ public class RegistroCliente extends javax.swing.JPanel {
     }
     public void LoadVehiculos()
     {
+        this.jCombo_TipoA.removeAllItems();
         Administrador obj = new Administrador();        
         ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
         for (int i = 0; i < tipos.size(); i++) 
         {
-            this.jCombo_TipoA.addItem(tipos.get(i));
+            if(!tipos.get(i).equalsIgnoreCase("MOTO"))
+            {
+                this.jCombo_TipoA.addItem(tipos.get(i));
+            }            
+        }
+    }
+    public void LoadMotos()
+    {
+        this.jCombo_TipoA.removeAllItems();
+        Administrador obj = new Administrador();        
+        ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
+        for (int i = 0; i < tipos.size(); i++) 
+        {
+            if(tipos.get(i).equalsIgnoreCase("MOTO"))
+            {
+                this.jCombo_TipoA.addItem(tipos.get(i));
+            }            
+        }
+    }
+    public void LoadAllVehiculos()
+    {
+        this.jCombo_TipoA.removeAllItems();
+        Administrador obj = new Administrador();        
+        ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
+        for (int i = 0; i < tipos.size(); i++) 
+        {
+            this.jCombo_TipoA.addItem(tipos.get(i));                       
         }
     }
 

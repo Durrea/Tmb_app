@@ -74,7 +74,7 @@ public class ParquaderoFraccion {
             CallableStatement callProcedure = conexion.prepareCall("{call PRO_REGISTRAR_ENTRADAS_FRACCION(?,?,?)}");
             callProcedure.setString(1, placa);
             callProcedure.setString(2, tipo);
-            callProcedure.setString(3, Integer.toString(recep)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          );
+            callProcedure.setString(3, Integer.toString(recep));
             callProcedure.execute();
             resultado = true;
             
