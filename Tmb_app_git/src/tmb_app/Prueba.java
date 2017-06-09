@@ -50,12 +50,6 @@ public class Prueba {
         {
             System.out.println("Antes");
         }*/
-        double valor;
-        for(int i=0;i<100;i++)
-        {
-            valor = Math.random()*5;
-            System.out.println(valor);
-        }
         //System.out.println(isNumeric("dasda"));
 
     }
