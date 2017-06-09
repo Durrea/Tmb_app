@@ -232,37 +232,9 @@ public class Form_Hotel extends javax.swing.JPanel {
 
     private void jPanel_AceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AceptarMouseClicked
         // TODO add your handling code here:
-        /*if (!jText_Entrada.getText().equalsIgnoreCase("")) {
-            ValidadorCadenas val = new ValidadorCadenas();
-            if (val.ValidarCadenasPlaca(jText_Entrada.getText())) {
-                ParquaderoFraccion obj = new ParquaderoFraccion();
-                Sesion instancia = Sesion.getInstanciaSesion();
-                System.out.println(instancia.getIdentificador());
-                boolean resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Entrada.getText(), (String) TipoHospedaje.getSelectedItem(), instancia.getIdentificador());
-                if (resultado) {
-                    JOptionPane.showMessageDialog(null, "Registro realizado con exito");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se ha realizado el registro");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Formato incorrecto. Formato para las placas ej: AAA123");
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe llenar los campos requeridos");
-        }*/
-        
-        
-        //JOptionPane.showMessageDialog(this, "Habitación a ocupar " + habitacion.getHabitacion_numero());
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //JOptionPane.showMessageDialog(this, "Entrada: " + dateFormat.format(jText_Entrada.getValue()));
-        //JOptionPane.showMessageDialog(null, Float.parseFloat(extra.getValue().toString()));
         boolean formularioCorrecto = servicio.validarFormular();
         ArrayList entradas = servicio.ocuparHabitacion(Conexion.obtener(), habitacion, TipoHospedaje.getSelectedItem().toString(), Integer.parseInt(jText_numeroPersonas.getValue().toString()), dateFormat.format(jText_Entrada.getValue()), dateFormat.format(jText_Salida.getValue()), Float.parseFloat(extra.getValue().toString()));
-
-        //System.out.println("habitacion: " + habitacion.getHabitacion_numero());
-        //System.out.println("habitacion: " + habitacion.getHabitacion_capacidad());
-        //System.out.println("habitacion: " + habitacion.getHabitacion_estado());
-        
         Form_RegistroRealizado h = new Form_RegistroRealizado(entradas, habitacion);
         this.removeAll();
         this.setLayout(new BorderLayout());
@@ -300,7 +272,7 @@ public class Form_Hotel extends javax.swing.JPanel {
         jText_Usuario.setText("");
     }//GEN-LAST:event_jText_UsuarioMouseClicked
 
-    
+
     private void jText_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_UsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_UsuarioActionPerformed
