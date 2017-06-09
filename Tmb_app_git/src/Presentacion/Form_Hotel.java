@@ -175,44 +175,48 @@ public class Form_Hotel extends javax.swing.JPanel {
                 TipoHospedajeActionPerformed(evt);
             }
         });
-        add(TipoHospedaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 270, 30));
+        add(TipoHospedaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 270, 30));
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Tipo de hospedaje");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Cargo extra");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Entrada");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Salida");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
 
         JSpinner.DateEditor de1 = new JSpinner.DateEditor(jText_Salida,"yyyy-MM-dd HH:mm:ss");
         jText_Salida.setEditor(de1);
-        add(jText_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 270, 30));
+        add(jText_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 270, 30));
 
         JSpinner.DateEditor de = new JSpinner.DateEditor(jText_Entrada,"yyyy-MM-dd HH:mm:ss");
         jText_Entrada.setEditor(de);
-        add(jText_Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 270, 30));
-        add(jText_numeroPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 270, 30));
+        add(jText_Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 270, 30));
+
+        jText_numeroPersonas.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jText_numeroPersonas.setEditor(new javax.swing.JSpinner.NumberEditor(jText_numeroPersonas, ""));
+        add(jText_numeroPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 270, 30));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Número de personas");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
 
-        extra.setModel(new javax.swing.SpinnerNumberModel(0, null, null, 5000));
-        add(extra, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 270, 30));
+        extra.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
+        extra.setEditor(new javax.swing.JSpinner.NumberEditor(extra, ""));
+        add(extra, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 270, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
@@ -247,16 +251,17 @@ public class Form_Hotel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Debe llenar los campos requeridos");
         }*/
         
-        //validarFormular();
-        JOptionPane.showMessageDialog(this, "Habitación a ocupar " + habitacion.getHabitacion_numero());
+        
+        //JOptionPane.showMessageDialog(this, "Habitación a ocupar " + habitacion.getHabitacion_numero());
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        JOptionPane.showMessageDialog(this, "Entrada: " + dateFormat.format(jText_Entrada.getValue()));
-        JOptionPane.showMessageDialog(null, Float.parseFloat(extra.getValue().toString()));
+        //JOptionPane.showMessageDialog(this, "Entrada: " + dateFormat.format(jText_Entrada.getValue()));
+        //JOptionPane.showMessageDialog(null, Float.parseFloat(extra.getValue().toString()));
+        boolean formularioCorrecto = servicio.validarFormular();
         ArrayList entradas = servicio.ocuparHabitacion(Conexion.obtener(), habitacion, TipoHospedaje.getSelectedItem().toString(), Integer.parseInt(jText_numeroPersonas.getValue().toString()), dateFormat.format(jText_Entrada.getValue()), dateFormat.format(jText_Salida.getValue()), Float.parseFloat(extra.getValue().toString()));
 
-        System.out.println("habitacion: " + habitacion.getHabitacion_numero());
-        System.out.println("habitacion: " + habitacion.getHabitacion_capacidad());
-        System.out.println("habitacion: " + habitacion.getHabitacion_estado());
+        //System.out.println("habitacion: " + habitacion.getHabitacion_numero());
+        //System.out.println("habitacion: " + habitacion.getHabitacion_capacidad());
+        //System.out.println("habitacion: " + habitacion.getHabitacion_estado());
         
         Form_RegistroRealizado h = new Form_RegistroRealizado(entradas, habitacion);
         this.removeAll();
@@ -295,6 +300,7 @@ public class Form_Hotel extends javax.swing.JPanel {
         jText_Usuario.setText("");
     }//GEN-LAST:event_jText_UsuarioMouseClicked
 
+    
     private void jText_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_UsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_UsuarioActionPerformed

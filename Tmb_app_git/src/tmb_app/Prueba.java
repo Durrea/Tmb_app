@@ -8,6 +8,7 @@ package tmb_app;
 import Servicios.ValidadorCadenas;
 import java.sql.Date;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.regex.Matcher;
@@ -55,6 +56,9 @@ public class Prueba {
             valor = Math.random()*5;
             System.out.println(valor);
         }
+        //System.out.println(isNumeric("dasda"));
+
     }
+
     //Esto es un comentario
 }
