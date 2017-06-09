@@ -72,6 +72,8 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         cupoExcedido = new javax.swing.JLabel();
         numhabitacion = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        capacidadHabitacion = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -120,7 +122,7 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
         });
         jPanel_Cancelar.add(jText_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 270, -1));
 
-        add(jPanel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 180, 40));
+        add(jPanel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 180, 40));
 
         jPanel_Aceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Aceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -144,7 +146,7 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
         jLabel8.setText("Añadir Entrada");
         jPanel_Aceptar.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
 
-        add(jPanel_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 140, 40));
+        add(jPanel_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 140, 40));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -161,17 +163,17 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
         costoTotal.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         costoTotal.setForeground(new java.awt.Color(255, 255, 255));
         costoTotal.setText(".");
-        add(costoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 40, -1));
+        add(costoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 130, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Cupo excedido");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Costo total calculado");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -181,12 +183,22 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
         cupoExcedido.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         cupoExcedido.setForeground(new java.awt.Color(255, 255, 255));
         cupoExcedido.setText(".");
-        add(cupoExcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 30, -1));
+        add(cupoExcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 120, -1));
 
         numhabitacion.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         numhabitacion.setForeground(new java.awt.Color(255, 255, 255));
         numhabitacion.setText(".");
-        add(numhabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 40, -1));
+        add(numhabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 120, -1));
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Capacidad de la habitación");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, 10));
+
+        capacidadHabitacion.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        capacidadHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        capacidadHabitacion.setText(".");
+        add(capacidadHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 120, 10));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
@@ -205,24 +217,15 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
 
     private void jPanel_AceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AceptarMouseClicked
         // TODO add your handling code here:
-        /*if (!jText_Entrada.getText().equalsIgnoreCase("")) {
-            ValidadorCadenas val = new ValidadorCadenas();
-            if (val.ValidarCadenasPlaca(jText_Entrada.getText())) {
-                ParquaderoFraccion obj = new ParquaderoFraccion();
-                Sesion instancia = Sesion.getInstanciaSesion();
-                System.out.println(instancia.getIdentificador());
-                boolean resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Entrada.getText(), (String) TipoHospedaje.getSelectedItem(), instancia.getIdentificador());
-                if (resultado) {
-                    JOptionPane.showMessageDialog(null, "Registro realizado con exito");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se ha realizado el registro");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Formato incorrecto. Formato para las placas ej: AAA123");
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe llenar los campos requeridos");
-        }*/
+
+        JOptionPane.showMessageDialog(this, "Registro exitoso.");
+
+        Hotel h = new Hotel();
+        this.removeAll();
+        this.setLayout(new BorderLayout());
+        this.add(h, BorderLayout.CENTER);
+        this.repaint();
+        this.revalidate();
 
     }//GEN-LAST:event_jPanel_AceptarMouseClicked
 
@@ -260,9 +263,11 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel capacidadHabitacion;
     private javax.swing.JLabel costoTotal;
     private javax.swing.JLabel cupoExcedido;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -285,8 +290,9 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
         } else {
             cupoExcedido.setText("Sí");
         }
-        costoTotal.setText(Float.toString(entradas.get(2)));
-
+        costoTotal.setText(Long.toString(entradas.get(2).longValue()));
+        numhabitacion.setText(Integer.toString(habitacion.getHabitacion_numero()));
+        capacidadHabitacion.setText(Integer.toString(habitacion.getHabitacion_capacidad()));
     }
 }
 
