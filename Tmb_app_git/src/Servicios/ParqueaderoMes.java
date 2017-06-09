@@ -6,9 +6,13 @@
 package Servicios;
 
 import Modelos.Cliente;
+import Modelos.Informacion_Total_Mensual;
 import Modelos.Vehiculo;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
 
 /**
  *
@@ -39,5 +43,37 @@ public class ParqueaderoMes {
         }
         return resultado;
     }
-    
+    public ArrayList<Object> LoadInformacionTotalMensual(Connection conexion)
+    {
+        ArrayList<Object> resultado_lista = new ArrayList<Object>();        
+        ArrayList<String> columnas = new ArrayList<String>();
+        try
+        {            
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_TOTAL_MENSUAL()}");
+            System.out.println("Paso por aqui");
+            callProcedure.execute();
+            System.out.println("Paso por aqui");
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+            System.out.println("Paso por aqui");
+            ResultSetMetaData columnas_consulta = resultado_consulta.getMetaData();            
+            for(int i=0;i<columnas_consulta.getColumnCount();i++)
+            {
+                columnas.add(columnas_consulta.getColumnLabel(i+1));
+            }
+            resultado_lista.add(columnas);
+            while(resultado_consulta.next())
+            {
+                ArrayList<String> fila = new ArrayList<String>();
+                for(int i =0;i<columnas_consulta.getColumnCount();i++)
+                {
+                    fila.add(resultado_consulta.getString(i+1));
+                }
+                resultado_lista.add(fila);
+            }            
+            return resultado_lista;
+        }catch(Exception e)
+        {            
+            return resultado_lista;
+        }
+    }    
 }
