@@ -140,7 +140,7 @@ public class Hotel extends javax.swing.JPanel {
         for (int i = 0; i < habitaciones.size(); i++) {
             if (habitaciones.get(i).getHabitacion_numero() == Integer.parseInt(numHab)) {
                 if (habitaciones.get(i).getHabitacion_estado().equalsIgnoreCase("OCUPADA")) {
-                  int result =  JOptionPane.showConfirmDialog(this, "Liberar habitación","¿Desea liberar esta habitación?", JOptionPane.YES_NO_OPTION);
+                  int result =  JOptionPane.showConfirmDialog(this, "¿Desea liberar esta habitación?", "Liberar habitación",JOptionPane.YES_NO_OPTION);
                  //int result = JOptionPane.showConfirmDialog(this, "¿Liberar habitacion?");
                  if(result==0)
                  {
