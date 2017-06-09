@@ -76,6 +76,8 @@ public class S_Hotel {
             //JOptionPane.showMessageDialog(null, idRegistro + " - " + excedida);
 
         } catch (Exception e) {
+            //System.out.println("Error al ocupar");
+            JOptionPane.showMessageDialog(null,"Registro fallido");
         }
         return retorno;
     }
@@ -91,9 +93,8 @@ public class S_Hotel {
         }
 
     }
-    
-    public void liberarHabitacion (Connection conexion, int numHab)
-    {
+
+    public void liberarHabitacion(Connection conexion, int numHab) {
         try {
             CallableStatement callProdecure = conexion.prepareCall("{call PRO_LIBERAR_HABITACION(?)}");
             callProdecure.setInt(1, numHab);
@@ -102,5 +103,10 @@ public class S_Hotel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Liberacion fallida");
         }
+    }
+
+    public boolean validarFormular() {
+
+        return false;
     }
 }

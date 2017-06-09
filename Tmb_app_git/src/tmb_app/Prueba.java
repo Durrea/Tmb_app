@@ -8,6 +8,7 @@ package tmb_app;
 import Servicios.ValidadorCadenas;
 import java.sql.Date;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.regex.Matcher;
@@ -34,7 +35,7 @@ public class Prueba {
         //System.out.println(cadena.toUpperCase());
         //ValidadorCadenas obj = new ValidadorCadenas();
         //System.out.println(obj.ValidarCadenasPlaca(cadena));
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        /*DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
         System.out.println(dateFormat.format(cal.getTime()));
         dateFormat.format(cal.getTime());
@@ -48,7 +49,10 @@ public class Prueba {
         else
         {
             System.out.println("Antes");
-        }
+        }*/
+        //System.out.println(isNumeric("dasda"));
+
     }
+
     //Esto es un comentario
 }

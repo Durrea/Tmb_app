@@ -280,13 +280,10 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void cargarDatos() {
-        System.out.println("--habitacion: " + habitacion.getHabitacion_numero());
-        System.out.println("--habitacion: " + habitacion.getHabitacion_capacidad());
-        System.out.println("--habitacion: " + habitacion.getHabitacion_estado());
         if (entradas.get(1) == 0) {
-            cupoExcedido.setText("Sí");
-        } else {
             cupoExcedido.setText("No");
+        } else {
+            cupoExcedido.setText("Sí");
         }
         costoTotal.setText(Float.toString(entradas.get(2)));
 
