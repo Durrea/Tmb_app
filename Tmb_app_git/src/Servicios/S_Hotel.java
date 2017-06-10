@@ -8,8 +8,12 @@ package Servicios;
 import Modelos.Habitacion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,12 +48,65 @@ public class S_Hotel {
         }
         return habitaciones;
     }
-    
-    public ArrayList<Integer> ocuparHabitacion(Connection conexion, Habitacion habitacion)
-    {
-        ArrayList<Integer> retorno = new ArrayList<>();
-        
+
+    public ArrayList<Float>
+            ocuparHabitacion(Connection conexion, Habitacion habitacion, String tipo, int numP, String entrada, String salida, float extra) {
+        ArrayList<Float> retorno = new ArrayList<>();
+        Sesion sesion = Sesion.getInstanciaSesion();
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_OCUPAR_HABITACION(?,?,?,?,?,?,?,?,?,?,?)}");
+            callProcedure.setInt(1, sesion.getIdentificador());
+            callProcedure.setInt(2, habitacion.getIdHabitacion());
+            callProcedure.setInt(3, habitacion.getHabitacion_numero());
+            callProcedure.setString(4, entrada);
+            callProcedure.setString(5, salida);
+            callProcedure.setInt(6, numP);
+            callProcedure.setString(7, tipo);
+            callProcedure.registerOutParameter(8, java.sql.Types.NUMERIC);
+            callProcedure.registerOutParameter(9, java.sql.Types.NUMERIC);
+            callProcedure.setFloat(10, extra);
+            callProcedure.registerOutParameter(11, java.sql.Types.FLOAT);
+            callProcedure.execute();
+            int idRegistro = callProcedure.getInt(8);
+            int excedida = callProcedure.getInt(9);
+            float costo = callProcedure.getFloat(11);
+            retorno.add((float) idRegistro);
+            retorno.add((float) excedida);
+            retorno.add(costo);
+            //JOptionPane.showMessageDialog(null, idRegistro + " - " + excedida);
+
+        } catch (Exception e) {
+            //System.out.println("Error al ocupar");
+            JOptionPane.showMessageDialog(null,"Registro fallido");
+        }
         return retorno;
     }
 
+    public void cancelarRegistro(Connection conexion, int idRegistro) {
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CANCELAR_REGISTRO_HABITACION(?)}");
+            callProcedure.setInt(1, idRegistro);
+            callProcedure.execute();
+            JOptionPane.showMessageDialog(null, "Cancelación exitosa");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cancelación fallida");
+        }
+
+    }
+
+    public void liberarHabitacion(Connection conexion, int numHab) {
+        try {
+            CallableStatement callProdecure = conexion.prepareCall("{call PRO_LIBERAR_HABITACION(?)}");
+            callProdecure.setInt(1, numHab);
+            callProdecure.execute();
+            JOptionPane.showMessageDialog(null, "Liberacion exitosa");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Liberacion fallida");
+        }
+    }
+
+    public boolean validarFormular() {
+
+        return false;
+    }
 }

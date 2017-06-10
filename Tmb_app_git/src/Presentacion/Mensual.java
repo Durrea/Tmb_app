@@ -5,8 +5,13 @@
  */
 package Presentacion;
 
+import Modelos.Informacion_Total_Mensual;
+import Servicios.Conexion;
+import Servicios.ParqueaderoMes;
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -21,6 +26,7 @@ public class Mensual extends javax.swing.JPanel {
      */
     public Mensual() {
         initComponents();
+        Cargar_Datos();
     }
     ImageIcon ii;
     /**
@@ -270,7 +276,31 @@ public class Mensual extends javax.swing.JPanel {
         ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px.png"));
         jLabel_icn_addE.setIcon(ii);
     }//GEN-LAST:event_jPanel_AñadirMouseExited
-
+    
+    public void Cargar_Datos()
+    {
+        ParqueaderoMes obj = new ParqueaderoMes();
+        ArrayList<Object> lista = new ArrayList<Object>();
+        lista = obj.LoadInformacionTotalMensual(Conexion.obtener());
+        ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
+        DefaultTableModel modelo = new DefaultTableModel();
+        for(int i=0;i<columnas.size();i++)
+        {
+            modelo.addColumn(columnas.get(i));
+        }
+        for(int i=1;i<lista.size();i++)
+        {
+            ArrayList<String> lista_info = new ArrayList<String>();
+            lista_info = (ArrayList<String>) lista.get(i);
+            Object [] fila = new Object[lista_info.size()];
+            for(int j=0;j<lista_info.size();j++)
+            {
+                fila [j] = lista_info.get(j);
+            }
+            modelo.addRow(fila);
+        }
+        this.jTable2.setModel(modelo);        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel5;

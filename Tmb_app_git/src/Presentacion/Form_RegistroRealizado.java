@@ -22,29 +22,29 @@ import javax.swing.table.DefaultTableModel;
 import java.util.Date;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
-import javax.swing.SpinnerNumberModel;
 
 /**
  *
  * @author Santiago Ortega
  */
-public class Form_Hotel extends javax.swing.JPanel {
+public class Form_RegistroRealizado extends javax.swing.JPanel {
 
     /**
      * Creates new form Fraccion
      */
     private Habitacion habitacion;
     private S_Hotel servicio;
+    private ArrayList<Float> entradas;
 
-    public Form_Hotel(Habitacion habitacion) {
+    public Form_RegistroRealizado(ArrayList<Float> entradas, Habitacion hab) {
         initComponents();
-        LoadTipo();
-        this.habitacion = habitacion;
+        this.habitacion = hab;
         servicio = new S_Hotel();
+        this.entradas = entradas;
+        cargarDatos();
         //LoadVehiculos();
     }
     ImageIcon ii;
-    public int idRecep;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,22 +66,14 @@ public class Form_Hotel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        TipoHospedaje = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        costoTotal = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        Date date1 = new Date();
-        SpinnerDateModel sm1 =
-        new SpinnerDateModel(date1,null,null,Calendar.HOUR_OF_DAY);
-        jText_Salida = new javax.swing.JSpinner(sm1);
-        Date date = new Date();
-        SpinnerDateModel sm =
-        new SpinnerDateModel(date,null,null,Calendar.HOUR_OF_DAY);
-        jText_Entrada = new javax.swing.JSpinner(sm);
-        jText_numeroPersonas = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
-        extra = new javax.swing.JSpinner();
+        cupoExcedido = new javax.swing.JLabel();
+        numhabitacion = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        capacidadHabitacion = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -130,7 +122,7 @@ public class Form_Hotel extends javax.swing.JPanel {
         });
         jPanel_Cancelar.add(jText_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 270, -1));
 
-        add(jPanel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, 180, 40));
+        add(jPanel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 180, 40));
 
         jPanel_Aceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Aceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -154,7 +146,7 @@ public class Form_Hotel extends javax.swing.JPanel {
         jLabel8.setText("Añadir Entrada");
         jPanel_Aceptar.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
 
-        add(jPanel_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 140, 40));
+        add(jPanel_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 140, 40));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -165,62 +157,55 @@ public class Form_Hotel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Para realizar el registro de un hospedaje debe diligenciar la siguiente información. Los campos con (*) son obligatorios.");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
+        jLabel2.setText("El registro ha sido realizado de manera exitosa, a continuación encontrará el costo total calculado.");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
 
-        TipoHospedaje.setBackground(new java.awt.Color(0, 0, 102));
-        TipoHospedaje.setForeground(new java.awt.Color(0, 0, 102));
-        TipoHospedaje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TipoHospedajeActionPerformed(evt);
-            }
-        });
-        add(TipoHospedaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 270, 30));
+        costoTotal.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        costoTotal.setForeground(new java.awt.Color(255, 255, 255));
+        costoTotal.setText(".");
+        add(costoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 130, -1));
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Tipo de hospedaje");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Cargo extra");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Entrada");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+        jLabel6.setText("Cupo excedido");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Salida");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
+        jLabel7.setText("Costo total calculado");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, -1, -1));
 
-        JSpinner.DateEditor de1 = new JSpinner.DateEditor(jText_Salida,"yyyy-MM-dd HH:mm:ss");
-        jText_Salida.setEditor(de1);
-        add(jText_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 270, 30));
-
-        JSpinner.DateEditor de = new JSpinner.DateEditor(jText_Entrada,"yyyy-MM-dd HH:mm:ss");
-        jText_Entrada.setEditor(de);
-        add(jText_Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 270, 30));
-
-        jText_numeroPersonas.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        jText_numeroPersonas.setEditor(new javax.swing.JSpinner.NumberEditor(jText_numeroPersonas, ""));
-        add(jText_numeroPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 270, 30));
-
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Número de personas");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
+        jLabel9.setText("Habitación a ocupar");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
 
-        extra.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
-        extra.setEditor(new javax.swing.JSpinner.NumberEditor(extra, ""));
-        add(extra, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 270, 30));
+        cupoExcedido.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        cupoExcedido.setForeground(new java.awt.Color(255, 255, 255));
+        cupoExcedido.setText(".");
+        add(cupoExcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 120, -1));
+
+        numhabitacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        numhabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        numhabitacion.setText(".");
+        add(numhabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 120, -1));
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Capacidad de la habitación");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, 20));
+
+        capacidadHabitacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        capacidadHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        capacidadHabitacion.setText(".");
+        add(capacidadHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 120, 10));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
         // TODO add your handling code here:
+
+        servicio.cancelarRegistro(Conexion.obtener(), Math.round(entradas.get(0)));
+
         Hotel h = new Hotel();
         this.removeAll();
         this.setLayout(new BorderLayout());
@@ -232,10 +217,10 @@ public class Form_Hotel extends javax.swing.JPanel {
 
     private void jPanel_AceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AceptarMouseClicked
         // TODO add your handling code here:
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        boolean formularioCorrecto = servicio.validarFormular();
-        ArrayList entradas = servicio.ocuparHabitacion(Conexion.obtener(), habitacion, TipoHospedaje.getSelectedItem().toString(), Integer.parseInt(jText_numeroPersonas.getValue().toString()), dateFormat.format(jText_Entrada.getValue()), dateFormat.format(jText_Salida.getValue()), Float.parseFloat(extra.getValue().toString()));
-        Form_RegistroRealizado h = new Form_RegistroRealizado(entradas, habitacion);
+
+        JOptionPane.showMessageDialog(this, "Registro exitoso.");
+
+        Hotel h = new Hotel();
         this.removeAll();
         this.setLayout(new BorderLayout());
         this.add(h, BorderLayout.CENTER);
@@ -272,31 +257,18 @@ public class Form_Hotel extends javax.swing.JPanel {
         jText_Usuario.setText("");
     }//GEN-LAST:event_jText_UsuarioMouseClicked
 
-
     private void jText_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_UsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_UsuarioActionPerformed
 
-    private void TipoHospedajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoHospedajeActionPerformed
-        // TODO add your handling code here:
-        int tipo = TipoHospedaje.getSelectedIndex();
-        System.out.println("Seleccion:" + tipo);
-        if (tipo == 0) {
-
-        } else {
-
-        }
-
-    }//GEN-LAST:event_TipoHospedajeActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> TipoHospedaje;
-    private javax.swing.JSpinner extra;
+    private javax.swing.JLabel capacidadHabitacion;
+    private javax.swing.JLabel costoTotal;
+    private javax.swing.JLabel cupoExcedido;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -308,14 +280,20 @@ public class Form_Hotel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel_Cancelar;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSpinner jText_Entrada;
-    private javax.swing.JSpinner jText_Salida;
     private javax.swing.JTextField jText_Usuario;
-    private javax.swing.JSpinner jText_numeroPersonas;
+    private javax.swing.JLabel numhabitacion;
     // End of variables declaration//GEN-END:variables
 
-    private void LoadTipo() {
-        TipoHospedaje.addItem("DIA");
-        TipoHospedaje.addItem("HORA");
+    private void cargarDatos() {
+        if (entradas.get(1) == 0) {
+            cupoExcedido.setText("No");
+        } else {
+            cupoExcedido.setText("Sí");
+        }
+        costoTotal.setText(Long.toString(entradas.get(2).longValue()));
+        numhabitacion.setText(Integer.toString(habitacion.getHabitacion_numero()));
+        capacidadHabitacion.setText(Integer.toString(habitacion.getHabitacion_capacidad()));
     }
 }
+
+//Administración de Empresas|Antropología|Arquitectura|Artes Plásticas|Biología|Ciencia Política|Comunicación Social|Contaduría Pública|Derecho|Diseño Gráfico|Dirección de Banda|Economía|Enfermería|Filosofía|Fisioterapia|Fonoaudiología|Geografía del desarrollo regional y ambiental|Geo tecnología|Historia|Ingeniería Agroindustrial|Ingeniería Agropecuaria|Ingeniería Ambiental|Ingeniería Civil|Ingeniería Electrónica y Telecomunicaciones|Ingeniería Forestal|Ingeniería Física|Ingeniería de Sistemas|Ingeniería en Automática Industrial|Licenciatura en Lenguas Modernas, Inglés-Francés|Licenciatura en Educación Básica con Énfasis en Ciencias Naturales y Educación Ambiental|Licenciatura en Educación Básica con Énfasis en Educación Artística|Licenciatura en Educación Básica con Énfasis en Educación Física, Recreación y Deportes|Licenciatura en Educación Básica con Énfasis en Lengua Castellana e Inglés|Licenciatura en Español y Literatura|Licenciatura en Etnoeducación|Licenciatura en Lingüística y Semiótica|Licenciatura en Matemáticas|Licenciatura en Música|Música Instrumental|Matemáticas|Medicina|Química|Tecnología en Gestión ambiental|Tecnología en Telemática|Turismo
