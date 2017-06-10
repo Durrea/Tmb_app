@@ -21,10 +21,6 @@ public class Lavadero extends javax.swing.JPanel {
      */
     public Lavadero() {
         initComponents();
-        //ESTO ES UNA PRUEBA PARA LA
-        // PERRA DE CERON
-        // EL CAMBIO SE MANTIENE
-        // ZZZZZZZZZZZZZZZZZZZZZZZZZZZ
     }
     ImageIcon ii;
     /**
@@ -233,12 +229,7 @@ public class Lavadero extends javax.swing.JPanel {
 
     private void jPanel_CDeudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CDeudaMouseClicked
         // TODO add your handling code here:
-        AddEntradaMensual ent=new AddEntradaMensual();
-        this.removeAll();
-        this.setLayout(new BorderLayout());
-        this.add(ent,BorderLayout.CENTER);
-        this.repaint();
-        this.revalidate();
+       
     }//GEN-LAST:event_jPanel_CDeudaMouseClicked
 
     private void jPanel_InformeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseExited
@@ -271,10 +262,10 @@ public class Lavadero extends javax.swing.JPanel {
 
     private void jPanel_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseClicked
         // TODO add your handling code here:
-        RegistroCliente r=new RegistroCliente();
+        RegistroLavada l=new RegistroLavada();
         this.removeAll();
         this.setLayout(new BorderLayout());
-        this.add(r,BorderLayout.CENTER);
+        this.add(l,BorderLayout.CENTER);
         this.repaint();
         this.revalidate();
 
