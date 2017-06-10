@@ -49,12 +49,9 @@ public class ParqueaderoMes {
         ArrayList<String> columnas = new ArrayList<String>();
         try
         {            
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_TOTAL_MENSUAL()}");
-            System.out.println("Paso por aqui");
-            callProcedure.execute();
-            System.out.println("Paso por aqui");
-            ResultSet resultado_consulta = callProcedure.getResultSet();
-            System.out.println("Paso por aqui");
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_TOTAL_MENSUAL()}");            
+            callProcedure.execute();            
+            ResultSet resultado_consulta = callProcedure.getResultSet();            
             ResultSetMetaData columnas_consulta = resultado_consulta.getMetaData();            
             for(int i=0;i<columnas_consulta.getColumnCount();i++)
             {
