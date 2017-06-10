@@ -7,11 +7,22 @@ package Presentacion;
 
 import Modelos.Informacion_Total_Mensual;
 import Servicios.Conexion;
+import Servicios.ImpresionFacturas;
+import Servicios.ParquaderoFraccion;
 import Servicios.ParqueaderoMes;
+import Servicios.Sesion;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 
 
@@ -24,6 +35,8 @@ public class Mensual extends javax.swing.JPanel {
     /**
      * Creates new form Fraccion
      */
+    TableRowSorter filter;
+    int rown = -1;
     public Mensual() {
         initComponents();
         Cargar_Datos();
@@ -50,7 +63,7 @@ public class Mensual extends javax.swing.JPanel {
         jTable2 = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel_icn_add1 = new javax.swing.JLabel();
-        jText_Usuario = new javax.swing.JTextField();
+        jText_Buscador = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jPanel_Añadir = new javax.swing.JPanel();
         jLabel_icn_addE = new javax.swing.JLabel();
@@ -123,19 +136,24 @@ public class Mensual extends javax.swing.JPanel {
 
         jLabel_icn_add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Search_20px_1.png"))); // NOI18N
 
-        jText_Usuario.setBackground(new java.awt.Color(36, 47, 65));
-        jText_Usuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Usuario.setForeground(new java.awt.Color(255, 255, 255));
-        jText_Usuario.setBorder(null);
-        jText_Usuario.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jText_Usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+        jText_Buscador.setBackground(new java.awt.Color(36, 47, 65));
+        jText_Buscador.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Buscador.setForeground(new java.awt.Color(255, 255, 255));
+        jText_Buscador.setBorder(null);
+        jText_Buscador.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jText_Buscador.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_UsuarioMouseClicked(evt);
+                jText_BuscadorMouseClicked(evt);
             }
         });
-        jText_Usuario.addActionListener(new java.awt.event.ActionListener() {
+        jText_Buscador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_UsuarioActionPerformed(evt);
+                jText_BuscadorActionPerformed(evt);
+            }
+        });
+        jText_Buscador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_BuscadorKeyTyped(evt);
             }
         });
 
@@ -171,7 +189,7 @@ public class Mensual extends javax.swing.JPanel {
                         .addComponent(jLabel_icn_add1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jText_Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(jText_Buscador, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                             .addComponent(jSeparator4)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
@@ -198,7 +216,7 @@ public class Mensual extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(jText_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jText_Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -247,13 +265,13 @@ public class Mensual extends javax.swing.JPanel {
         jLabel_icn_inf.setIcon(ii);
     }//GEN-LAST:event_jPanel_InformeMouseExited
 
-    private void jText_UsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_UsuarioMouseClicked
-        jText_Usuario.setText("");
-    }//GEN-LAST:event_jText_UsuarioMouseClicked
+    private void jText_BuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_BuscadorMouseClicked
+        jText_Buscador.setText("");
+    }//GEN-LAST:event_jText_BuscadorMouseClicked
 
-    private void jText_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_UsuarioActionPerformed
+    private void jText_BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_BuscadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jText_UsuarioActionPerformed
+    }//GEN-LAST:event_jText_BuscadorActionPerformed
 
     private void jPanel_AñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AñadirMouseClicked
         // TODO add your handling code here:
@@ -276,9 +294,31 @@ public class Mensual extends javax.swing.JPanel {
         ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px.png"));
         jLabel_icn_addE.setIcon(ii);
     }//GEN-LAST:event_jPanel_AñadirMouseExited
+
+    private void jText_BuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_BuscadorKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
+        jText_Buscador.addKeyListener(new KeyAdapter() {
+            public void keyReleased(final KeyEvent e) {
+                String cadena = (jText_Buscador.getText());
+                jText_Buscador.setText(cadena);
+                repaint();
+                filter.setRowFilter(RowFilter.regexFilter(jText_Buscador.getText(), 1));
+            }
+        });
+        filter = new TableRowSorter(this.jTable2.getModel());
+        this.jTable2.setRowSorter(filter);
+    }//GEN-LAST:event_jText_BuscadorKeyTyped
     
     public void Cargar_Datos()
     {
+        jTable2.setDefaultRenderer(Object.class, new RenderTabla());
         ParqueaderoMes obj = new ParqueaderoMes();
         ArrayList<Object> lista = new ArrayList<Object>();
         lista = obj.LoadInformacionTotalMensual(Conexion.obtener());
@@ -288,15 +328,33 @@ public class Mensual extends javax.swing.JPanel {
         {
             modelo.addColumn(columnas.get(i));
         }
+        modelo.addColumn("ACCIONES");
+        modelo.addColumn("ACCIONES");
         for(int i=1;i<lista.size();i++)
         {
             ArrayList<String> lista_info = new ArrayList<String>();
+            JButton btn_visualizar = new JButton("Ver Perfil");
+            btn_visualizar.setName("perfil");
+            JButton btn_visualizar_2 = new JButton("Realizar Pago");
+            btn_visualizar.setName("pago");
             lista_info = (ArrayList<String>) lista.get(i);
-            Object [] fila = new Object[lista_info.size()];
+            Object [] fila = new Object[lista_info.size()+2];
             for(int j=0;j<lista_info.size();j++)
             {
                 fila [j] = lista_info.get(j);
             }
+            btn_visualizar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Boton presionado");
+            }
+        });
+            fila[lista_info.size()] = btn_visualizar;
+            btn_visualizar_2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Boton presionado");
+            }
+        });
+            fila[lista_info.size()+1] = btn_visualizar_2;            
             modelo.addRow(fila);
         }
         this.jTable2.setModel(modelo);        
@@ -319,6 +377,20 @@ public class Mensual extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jText_Usuario;
+    private javax.swing.JTextField jText_Buscador;
     // End of variables declaration//GEN-END:variables
+    class ActionLPagarMensual implements ActionListener{
+
+        private String placa;
+        public ActionLPagarMensual(String p)
+        {
+            placa = p;
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) 
+        {
+            JOptionPane.showMessageDialog(null, placa);
+        }
+
+    }
 }
