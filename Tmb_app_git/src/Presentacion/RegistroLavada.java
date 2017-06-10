@@ -26,7 +26,7 @@ public class RegistroLavada extends javax.swing.JPanel {
     public RegistroLavada() {
         initComponents();
         LoadLavadores();
-        LoadVehiculos();
+        LoadAllVehiculos();
         LoadLavadas();
         calcularValor();
         jText_TipoLavada.setVisible(false);
@@ -485,6 +485,17 @@ public class RegistroLavada extends javax.swing.JPanel {
             jCombo_TpoLvda.addItem(tipos.get(i));
         }
         jCombo_TpoLvda.addItem("Otro");
+    }
+    
+    public final void LoadAllVehiculos()
+    {
+        jCombo_TipoA.removeAllItems();
+        SLavadero obj = new SLavadero();        
+        ArrayList<String> tipos = obj.loadTiposVehiculos(Conexion.obtener());
+        for (int i = 0; i < tipos.size(); i++) 
+        {
+            jCombo_TipoA.addItem(tipos.get(i));                       
+        }
     }
     
     public final void calcularValor(){
