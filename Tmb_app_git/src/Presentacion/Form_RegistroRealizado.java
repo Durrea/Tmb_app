@@ -160,42 +160,42 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
         jLabel2.setText("El registro ha sido realizado de manera exitosa, a continuación encontrará el costo total calculado.");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
 
-        costoTotal.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        costoTotal.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         costoTotal.setForeground(new java.awt.Color(255, 255, 255));
         costoTotal.setText(".");
         add(costoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 130, -1));
 
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Cupo excedido");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Costo total calculado");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Habitación a ocupar");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
 
-        cupoExcedido.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        cupoExcedido.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         cupoExcedido.setForeground(new java.awt.Color(255, 255, 255));
         cupoExcedido.setText(".");
         add(cupoExcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 120, -1));
 
-        numhabitacion.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        numhabitacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         numhabitacion.setForeground(new java.awt.Color(255, 255, 255));
         numhabitacion.setText(".");
         add(numhabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 120, -1));
 
-        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Capacidad de la habitación");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, 10));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, 20));
 
-        capacidadHabitacion.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        capacidadHabitacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         capacidadHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         capacidadHabitacion.setText(".");
         add(capacidadHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 120, 10));
