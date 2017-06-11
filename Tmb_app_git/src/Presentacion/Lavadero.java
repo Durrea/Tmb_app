@@ -53,6 +53,7 @@ public class Lavadero extends javax.swing.JPanel {
         setBackground(new java.awt.Color(36, 47, 65));
 
         jPanel_Informe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Informe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Informe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_InformeMouseClicked(evt);
@@ -82,6 +83,7 @@ public class Lavadero extends javax.swing.JPanel {
         jPanel_Informe.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 0, 0, 40));
 
         jPanel_Registrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Registrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_RegistrarMouseClicked(evt);
@@ -121,6 +123,7 @@ public class Lavadero extends javax.swing.JPanel {
         });
 
         jPanel_CDeuda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_CDeuda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_CDeuda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_CDeudaMouseClicked(evt);

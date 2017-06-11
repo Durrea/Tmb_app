@@ -181,6 +181,7 @@ public class Login extends javax.swing.JFrame {
         jLabel_Cerrar.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cancel_20px_1.png"))); // NOI18N
         jLabel_Cerrar.setText("X");
+        jLabel_Cerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel_Cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel_CerrarMouseClicked(evt);

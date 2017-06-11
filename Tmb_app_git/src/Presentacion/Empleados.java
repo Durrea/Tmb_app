@@ -68,6 +68,7 @@ public class Empleados extends javax.swing.JPanel {
         jPanelFM.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 590, 150));
 
         jPanel_Ag1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Ag1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Ag1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_Ag1MouseClicked(evt);

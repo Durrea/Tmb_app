@@ -62,6 +62,7 @@ public class Parqueadero extends javax.swing.JPanel {
 
         jPanel_Fraccion.setBackground(new java.awt.Color(102, 102, 102));
         jPanel_Fraccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Fraccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Fraccion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_FraccionMouseClicked(evt);
@@ -85,6 +86,7 @@ public class Parqueadero extends javax.swing.JPanel {
 
         jPanel_Mensual.setBackground(new java.awt.Color(102, 102, 102));
         jPanel_Mensual.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Mensual.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Mensual.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_MensualMouseClicked(evt);

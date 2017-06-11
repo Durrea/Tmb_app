@@ -73,6 +73,7 @@ public class Fraccion extends javax.swing.JPanel {
         jText_Buscador = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(36, 47, 65));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jPanel_Informe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Informe.addMouseListener(new java.awt.event.MouseAdapter() {
