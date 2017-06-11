@@ -70,6 +70,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         setLayout(null);
 
         jPanel_Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_CancelarMouseClicked(evt);
@@ -99,6 +100,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         jPanel_Cancelar.setBounds(371, 390, 140, 40);
 
         jPanel_Ag.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Ag.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Ag.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_AgMouseClicked(evt);
