@@ -17,19 +17,23 @@ import Servicios.Sesion;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
@@ -189,30 +193,32 @@ public class ResultaInfHotel extends javax.swing.JPanel {
             nombrerecepcionista.setText("Recepcionista: " + listarecep.get(i).getRecepcionista_nombres() + " " + listarecep.get(i).getRecepcionista_apellidos());
             nombrerecepcionista.setForeground(Color.WHITE);
             nombrerecepcionista.setFont(new java.awt.Font("Century Gothic", 1, 14));
-            nombrerecepcionista.setSize(nombrerecepcionista.getPreferredSize());
-            //this.jPanel2.add(nombrerecepcionista);
+            JPanel panel_title = new JPanel();
+            GridLayout layout = new GridLayout();
+            layout.setColumns(1);
+            layout.setRows(0);
+            panel_title.setLayout(layout);
+            TitledBorder border = BorderFactory.createTitledBorder("Recepcionista: " + listarecep.get(i).getRecepcionista_nombres() + " " + listarecep.get(i).getRecepcionista_apellidos());
+            border.setTitleColor(Color.WHITE);
+            panel_title.setBorder(border);
             inforecep = objHotel.LoadInfoPerRecepcionista(Conexion.obtener(), fecha, listarecep.get(i).getIdRecepcionista());
             JTable tabla;
             tabla = BuildTable(inforecep);
-            tabla.setSize(tabla.getPreferredSize());
             JScrollPane scroll = new JScrollPane(tabla);
-            this.jPanel2.add(scroll);
+            panel_title.add(scroll);
+            panel_title.setBackground(new Color(36, 47, 65));
+            this.jPanel2.add(panel_title);
         }
-        this.jPanel2.setSize(this.jPanel2.getPreferredSize());
-        this.jScrollPane2.setSize(this.jScrollPane2.getPreferredSize());
         this.jPanel2.updateUI();
     }
 
     public JTable BuildTable(ArrayList<Informacion_hotel> infoHotel) {
-        JTable tabla = new JTable(0, 0);
+        JTable tabla = new JTable();
         DefaultTableModel modelo = new DefaultTableModel();
         long valorTotal = 0;
-        modelo.addColumn("Recepcionista:");
-        modelo.addColumn("Camila Zambrano");
+        modelo.addColumn("N° habitación");
+        modelo.addColumn("Valor total");
         Object[] fila = new Object[2];
-        fila[0] = "N° habitación";
-        fila[1] = "Valor total";
-        modelo.addRow(fila);
         for (int i = 0; i < infoHotel.size(); i++) {
             fila[0] = infoHotel.get(i).getNumHabitacion();
             fila[1] = infoHotel.get(i).getTotalPagado();
@@ -223,7 +229,6 @@ public class ResultaInfHotel extends javax.swing.JPanel {
         fila[1] = valorTotal;
         modelo.addRow(fila);
         tabla.setModel(modelo);
-        //tabla.setEnabled(false);
         tabla.setVisible(true);
         return tabla;
     }

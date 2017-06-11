@@ -37,8 +37,6 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 
-
-
 /**
  *
  * @author Santiago Ortega
@@ -48,19 +46,18 @@ public class ResultaInfFraccion extends javax.swing.JPanel {
     /**
      * Creates new form Fraccion
      */
-    
     ImageIcon ii;
     public int idRecep;
     TableRowSorter filter;
     int rown = -1;
-    String fecha; 
-    
+    String fecha;
+
     public ResultaInfFraccion(String fecha) {
         initComponents();
         this.fecha = fecha;
         this.InformeDiarioFraccion(fecha);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -159,17 +156,15 @@ public class ResultaInfFraccion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+
     private void jPanel_Ag1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag1MouseClicked
-        
-        
+
         InforDFraccionRecep informes = new InforDFraccionRecep();
         this.removeAll();
         this.setLayout(new BorderLayout());
-        this.add(informes,BorderLayout.CENTER);
+        this.add(informes, BorderLayout.CENTER);
         this.repaint();
-        this.revalidate(); 
+        this.revalidate();
     }//GEN-LAST:event_jPanel_Ag1MouseClicked
 
     private void jPanel_Ag1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag1MouseEntered
@@ -183,18 +178,16 @@ public class ResultaInfFraccion extends javax.swing.JPanel {
         ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px.png"));
         jLabel_icn_add1.setIcon(ii);
     }//GEN-LAST:event_jPanel_Ag1MouseExited
-    public void InformeDiarioFraccion(String fecha)
-    {
+    public void InformeDiarioFraccion(String fecha) {
         Administrador objadmin = new Administrador();
         ParquaderoFraccion objfraccion = new ParquaderoFraccion();
         ArrayList<Recepcionista> listarecep = new ArrayList<Recepcionista>();
         ArrayList<Informacion_Fraccion> inforecep = new ArrayList<Informacion_Fraccion>();
         listarecep = objadmin.GetInfoRecepcionista(Conexion.obtener());
-        this.jLabel3.setText("Fecha: "+fecha);
-        for(int i = 0; i< listarecep.size();i++)
-        {
+        this.jLabel3.setText("Fecha: " + fecha);
+        for (int i = 0; i < listarecep.size(); i++) {
             JLabel nombrerecepcionista = new JLabel();
-            nombrerecepcionista.setText("Recepcionsita: "+listarecep.get(i).getRecepcionista_nombres()+" "+listarecep.get(i).getRecepcionista_apellidos());
+            nombrerecepcionista.setText("Recepcionista: " + listarecep.get(i).getRecepcionista_nombres() + " " + listarecep.get(i).getRecepcionista_apellidos());
             nombrerecepcionista.setForeground(Color.WHITE);
             nombrerecepcionista.setFont(new java.awt.Font("Century Gothic", 1, 14));
             JPanel panel_title = new JPanel();
@@ -202,10 +195,10 @@ public class ResultaInfFraccion extends javax.swing.JPanel {
             layout.setColumns(1);
             layout.setRows(0);
             panel_title.setLayout(layout);
-            
+
             //panel_title.add(nombrerecepcionista);
             //this.jPanel2.add(nombrerecepcionista);
-            TitledBorder border = BorderFactory.createTitledBorder("Recepcionsita: "+listarecep.get(i).getRecepcionista_nombres()+" "+listarecep.get(i).getRecepcionista_apellidos());
+            TitledBorder border = BorderFactory.createTitledBorder("Recepcionista: " + listarecep.get(i).getRecepcionista_nombres() + " " + listarecep.get(i).getRecepcionista_apellidos());
             border.setTitleColor(Color.WHITE);
             panel_title.setBorder(border);
             //JPanel panel_cuerpo = new JPanel();
@@ -215,24 +208,23 @@ public class ResultaInfFraccion extends javax.swing.JPanel {
             JScrollPane scroll = new JScrollPane(tabla);
             panel_title.add(scroll);
             //this.jPanel2.add(panel_title);
-            panel_title.setBackground(new Color(36,47,65));
+            panel_title.setBackground(new Color(36, 47, 65));
             //panel_cuerpo.add(scroll);
             this.jPanel2.add(panel_title);
             //this.jPanel2.add(scroll);
-        }        
+        }
         this.jPanel2.updateUI();
     }
-    public JTable BuildTable(ArrayList<Informacion_Fraccion> inforecep)
-    {
-        JTable tabla = new JTable();       
+
+    public JTable BuildTable(ArrayList<Informacion_Fraccion> inforecep) {
+        JTable tabla = new JTable();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Placa");
         modelo.addColumn("Fecha Entrada");
         modelo.addColumn("Fecha Salida");
         modelo.addColumn("Valor cobrado");
-        Object [] fila = new Object[4];
-        for(int i = 0;i<inforecep.size();i++)
-        {
+        Object[] fila = new Object[4];
+        for (int i = 0; i < inforecep.size(); i++) {
             fila[0] = inforecep.get(i).getVehiculo_placa();
             fila[1] = inforecep.get(i).getFecha_entrada();
             fila[2] = inforecep.get(i).getFecha_salida();
@@ -241,7 +233,7 @@ public class ResultaInfFraccion extends javax.swing.JPanel {
         }
         tabla.setModel(modelo);
         //tabla.setEnabled(false);
-        tabla.setVisible(true);        
+        tabla.setVisible(true);
         return tabla;
     }
 
