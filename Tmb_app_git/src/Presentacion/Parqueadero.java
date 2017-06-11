@@ -48,6 +48,7 @@ public class Parqueadero extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(820, 610));
 
         jPanelFM.setBackground(new java.awt.Color(36, 47, 65));
+        jPanelFM.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout jPanelFMLayout = new javax.swing.GroupLayout(jPanelFM);
         jPanelFM.setLayout(jPanelFMLayout);

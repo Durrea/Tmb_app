@@ -48,6 +48,7 @@ public class AddEntradaMensual extends javax.swing.JPanel {
         jText_Placa = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(36, 47, 65));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));

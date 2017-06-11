@@ -69,9 +69,11 @@ public class PrincipalRecep extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel_Principal.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel_Principal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel_Principal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanel3MouseDragged(evt);
@@ -204,6 +206,7 @@ public class PrincipalRecep extends javax.swing.JFrame {
         );
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel_Hotel.setBackground(new java.awt.Color(102, 102, 102));
         jPanel_Hotel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
