@@ -77,7 +77,7 @@ public class S_Hotel {
 
         } catch (Exception e) {
             //System.out.println("Error al ocupar");
-            JOptionPane.showMessageDialog(null,"Registro fallido");
+            JOptionPane.showMessageDialog(null, "Registro fallido");
         }
         return retorno;
     }
@@ -105,8 +105,30 @@ public class S_Hotel {
         }
     }
 
-    public boolean validarFormular() {
-
-        return false;
+    public ArrayList<Modelos.Informacion_hotel> LoadInfoPerRecepcionista(Connection conexion, String fecha, int idrecep) {
+        ArrayList<Modelos.Informacion_hotel> informacion = new ArrayList<Modelos.Informacion_hotel>();
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORME_HOTEL(?,?,?,?)}");
+            callProcedure.setString(1, Integer.toString(idrecep));
+            callProcedure.setString(2, fecha);
+            callProcedure.registerOutParameter(3, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(4, java.sql.Types.NUMERIC);
+            callProcedure.execute();
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+            while (resultado_consulta.next()) {
+                Modelos.Informacion_hotel obj;
+                if (resultado_consulta.getString(2) == null) {
+                    obj = new Modelos.Informacion_hotel(Integer.parseInt(resultado_consulta.getString(1)),
+                            0);
+                } else {
+                    obj = new Modelos.Informacion_hotel(Integer.parseInt(resultado_consulta.getString(1)),
+                            Float.parseFloat(resultado_consulta.getString(2)));
+                }
+                informacion.add(obj);
+            }
+            return informacion;
+        } catch (Exception e) {
+            return informacion;
+        }
     }
 }

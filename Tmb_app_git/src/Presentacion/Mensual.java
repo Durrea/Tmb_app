@@ -132,6 +132,7 @@ public class Mensual extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable2.setName(""); // NOI18N
         jScrollPane2.setViewportView(jTable2);
 
         jLabel_icn_add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Search_20px_1.png"))); // NOI18N
