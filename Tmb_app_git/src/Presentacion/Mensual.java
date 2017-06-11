@@ -376,7 +376,7 @@ public class Mensual extends javax.swing.JPanel {
         for(int i=1;i<lista.size();i++)
         {
             ArrayList<String> lista_info = new ArrayList<String>();                        
-            JButton btn_visualizar_2 = new JButton("Ver Perfil");
+            JButton btn_visualizar_2 = new JButton("Realizar Pago");
             btn_visualizar_2.setName("t");
             btn_visualizar_2.setBounds(0, 0, 60, 30);
             lista_info = (ArrayList<String>) lista.get(i);
