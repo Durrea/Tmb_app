@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="41" green="2f" red="24" type="rgb"/>
@@ -162,7 +162,9 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
             <Property name="columns" type="int" value="1"/>
+            <Property name="horizontalGap" type="int" value="30"/>
             <Property name="rows" type="int" value="0"/>
+            <Property name="verticalGap" type="int" value="30"/>
           </Layout>
         </Container>
       </SubComponents>

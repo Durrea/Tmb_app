@@ -15,19 +15,23 @@ import Servicios.Sesion;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -113,7 +117,7 @@ public class ResultaInfFraccion extends javax.swing.JPanel {
         jLabel3.setText("Fecha: ");
 
         jPanel2.setBackground(new java.awt.Color(36, 47, 65));
-        jPanel2.setLayout(new java.awt.GridLayout(0, 1));
+        jPanel2.setLayout(new java.awt.GridLayout(0, 1, 30, 30));
         jScrollPane2.setViewportView(jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -193,12 +197,28 @@ public class ResultaInfFraccion extends javax.swing.JPanel {
             nombrerecepcionista.setText("Recepcionsita: "+listarecep.get(i).getRecepcionista_nombres()+" "+listarecep.get(i).getRecepcionista_apellidos());
             nombrerecepcionista.setForeground(Color.WHITE);
             nombrerecepcionista.setFont(new java.awt.Font("Century Gothic", 1, 14));
-            this.jPanel2.add(nombrerecepcionista);
+            JPanel panel_title = new JPanel();
+            GridLayout layout = new GridLayout();
+            layout.setColumns(1);
+            layout.setRows(0);
+            panel_title.setLayout(layout);
+            
+            //panel_title.add(nombrerecepcionista);
+            //this.jPanel2.add(nombrerecepcionista);
+            TitledBorder border = BorderFactory.createTitledBorder("Recepcionsita: "+listarecep.get(i).getRecepcionista_nombres()+" "+listarecep.get(i).getRecepcionista_apellidos());
+            border.setTitleColor(Color.WHITE);
+            panel_title.setBorder(border);
+            //JPanel panel_cuerpo = new JPanel();
             inforecep = objfraccion.LoadInfoPerRecepcionista(Conexion.obtener(), fecha, listarecep.get(i).getIdRecepcionista());
             JTable tabla;
             tabla = BuildTable(inforecep);
             JScrollPane scroll = new JScrollPane(tabla);
-            this.jPanel2.add(scroll);
+            panel_title.add(scroll);
+            //this.jPanel2.add(panel_title);
+            panel_title.setBackground(new Color(36,47,65));
+            //panel_cuerpo.add(scroll);
+            this.jPanel2.add(panel_title);
+            //this.jPanel2.add(scroll);
         }        
         this.jPanel2.updateUI();
     }
