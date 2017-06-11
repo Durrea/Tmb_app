@@ -46,7 +46,7 @@ public class Fraccion extends javax.swing.JPanel {
     public Fraccion(ArrayList<Modelos.Informacion_Fraccion> datos) {
         initComponents();
         LoadDataTable(datos);
-        
+        this.jTable2.setRowHeight(40);
     }
     
     /**

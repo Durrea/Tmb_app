@@ -40,6 +40,8 @@ public class Mensual extends javax.swing.JPanel {
     public Mensual() {
         initComponents();
         Cargar_Datos();
+        this.jTable2.setRowHeight(40);
+        //this.jTable2.setEnabled(false);
     }
     ImageIcon ii;
     /**
@@ -131,8 +133,21 @@ public class Mensual extends javax.swing.JPanel {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable2.setName(""); // NOI18N
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jLabel_icn_add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Search_20px_1.png"))); // NOI18N
@@ -316,6 +331,28 @@ public class Mensual extends javax.swing.JPanel {
         filter = new TableRowSorter(this.jTable2.getModel());
         this.jTable2.setRowSorter(filter);
     }//GEN-LAST:event_jText_BuscadorKeyTyped
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        rown = jTable2.rowAtPoint(evt.getPoint());
+
+        int column = jTable2.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY()/jTable2.getRowHeight();
+        
+        if(row < jTable2.getRowCount() && row >= 0 && column < jTable2.getColumnCount() && column >= 0){
+            Object value = jTable2.getValueAt(row, column);
+            if(value instanceof JButton){
+                ((JButton)value).doClick();
+                JButton boton = (JButton) value;
+                
+                String placa = ""+jTable2.getValueAt(rown, 1);                                
+                if(boton.getName().equals("t"))
+                {
+                    JOptionPane.showMessageDialog(null, placa);
+                }
+            }
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
     
     public void Cargar_Datos()
     {
@@ -324,39 +361,28 @@ public class Mensual extends javax.swing.JPanel {
         ArrayList<Object> lista = new ArrayList<Object>();
         lista = obj.LoadInformacionTotalMensual(Conexion.obtener());
         ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
-        DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel(){
+        public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
         for(int i=0;i<columnas.size();i++)
         {
-            modelo.addColumn(columnas.get(i));
+            modelo.addColumn(columnas.get(i));            
         }
         modelo.addColumn("ACCIONES");
-        modelo.addColumn("ACCIONES");
+        
         for(int i=1;i<lista.size();i++)
         {
-            ArrayList<String> lista_info = new ArrayList<String>();
-            JButton btn_visualizar = new JButton("Ver Perfil");
-            btn_visualizar.setName("perfil");
-            JButton btn_visualizar_2 = new JButton("Realizar Pago");
-            btn_visualizar.setName("pago");
+            ArrayList<String> lista_info = new ArrayList<String>();                        
+            JButton btn_visualizar_2 = new JButton("Ver Perfil");
+            btn_visualizar_2.setName("t");
+            btn_visualizar_2.setBounds(0, 0, 60, 30);
             lista_info = (ArrayList<String>) lista.get(i);
-            Object [] fila = new Object[lista_info.size()+2];
+            Object [] fila = new Object[lista_info.size()+1];
             for(int j=0;j<lista_info.size();j++)
             {
                 fila [j] = lista_info.get(j);
-            }
-            btn_visualizar.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                System.out.println("Boton presionado");
-            }
-        });
-            fila[lista_info.size()] = btn_visualizar;
-            btn_visualizar_2.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                System.out.println("Boton presionado");
-            }
-        });
-            fila[lista_info.size()+1] = btn_visualizar_2;            
-            modelo.addRow(fila);
+            }                                  
+            fila[lista_info.size()] = btn_visualizar_2;            
+            modelo.addRow(fila);            
         }
         this.jTable2.setModel(modelo);        
     }
@@ -380,18 +406,5 @@ public class Mensual extends javax.swing.JPanel {
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jText_Buscador;
     // End of variables declaration//GEN-END:variables
-    class ActionLPagarMensual implements ActionListener{
-
-        private String placa;
-        public ActionLPagarMensual(String p)
-        {
-            placa = p;
-        }
-        @Override
-        public void actionPerformed(ActionEvent e) 
-        {
-            JOptionPane.showMessageDialog(null, placa);
-        }
-
-    }
+    
 }
