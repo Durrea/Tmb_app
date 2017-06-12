@@ -73,5 +73,37 @@ public class ParqueaderoMes {
         {            
             return resultado_lista;
         }
-    }    
+    }
+    public String BuscadorPlacaMensual(Connection conexion, String placa)
+    {
+        String resultado;
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_BUSCADOR_VEHICULO_MENSUAL(?)}");
+            callProcedure.setString(1, placa);            
+            callProcedure.execute();            
+            resultado = "Registrado";
+            return resultado;
+        }catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+            resultado = e.getMessage();
+        }
+        return resultado;
+    }
+    public String RegistrarEntradaDiaria(Connection conexion, String placa)
+    {
+        String resultado;
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_REGISTRAR_ENTRADA_MENSUAL(?)}");
+            callProcedure.setString(1, placa);            
+            callProcedure.execute();
+            resultado = "Exitoso";
+        }catch(Exception e)
+        {
+            resultado = e.getMessage();
+        }
+        return resultado;
+    }
 }
