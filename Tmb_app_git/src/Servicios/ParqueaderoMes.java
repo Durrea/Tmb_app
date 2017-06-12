@@ -19,12 +19,10 @@ import java.util.ArrayList;
  * @author hp
  */
 public class ParqueaderoMes {
-    
-    public boolean RegisterCustomer(Connection conexion, Cliente cliente, Vehiculo vehiculo)
-    {
+
+    public boolean RegisterCustomer(Connection conexion, Cliente cliente, Vehiculo vehiculo) {
         boolean resultado;
-        try
-        {
+        try {
             CallableStatement callProcedure = conexion.prepareCall("{call PRO_REGISTRO_CLIENTE(?,?,?,?,?,?,?,?)}");
             callProcedure.setString(1, cliente.getCliente_nombre());
             callProcedure.setString(2, cliente.getCliente_cedula());
@@ -37,41 +35,74 @@ public class ParqueaderoMes {
             callProcedure.execute();
             System.out.println(callProcedure.getString(8));
             resultado = true;
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             resultado = false;
         }
         return resultado;
     }
-    public ArrayList<Object> LoadInformacionTotalMensual(Connection conexion)
-    {
-        ArrayList<Object> resultado_lista = new ArrayList<Object>();        
+
+    public ArrayList<Object> LoadInformacionTotalMensual(Connection conexion) {
+        ArrayList<Object> resultado_lista = new ArrayList<Object>();
         ArrayList<String> columnas = new ArrayList<String>();
-        try
-        {            
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_TOTAL_MENSUAL()}");            
-            callProcedure.execute();            
-            ResultSet resultado_consulta = callProcedure.getResultSet();            
-            ResultSetMetaData columnas_consulta = resultado_consulta.getMetaData();            
-            for(int i=0;i<columnas_consulta.getColumnCount();i++)
-            {
-                columnas.add(columnas_consulta.getColumnLabel(i+1));
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_TOTAL_MENSUAL()}");
+            callProcedure.execute();
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+            ResultSetMetaData columnas_consulta = resultado_consulta.getMetaData();
+            for (int i = 0; i < columnas_consulta.getColumnCount(); i++) {
+                columnas.add(columnas_consulta.getColumnLabel(i + 1));
             }
             resultado_lista.add(columnas);
-            while(resultado_consulta.next())
-            {
+            while (resultado_consulta.next()) {
                 ArrayList<String> fila = new ArrayList<String>();
-                for(int i =0;i<columnas_consulta.getColumnCount();i++)
-                {
-                    fila.add(resultado_consulta.getString(i+1));
+                for (int i = 0; i < columnas_consulta.getColumnCount(); i++) {
+                    fila.add(resultado_consulta.getString(i + 1));
                 }
                 resultado_lista.add(fila);
-            }            
+            }
             return resultado_lista;
-        }catch(Exception e)
-        {            
+        } catch (Exception e) {
             return resultado_lista;
         }
-    }    
+    }
+
+    public static boolean updateTarifa(Connection conect, String string, String ID) {
+        try {
+            CallableStatement callProcedure = conect.prepareCall("{call PRO_MODIFICAR_TARIFA_PARQUEADERO(?,?)}");
+            callProcedure.setString(1, string);
+            callProcedure.setInt(2, Integer.parseInt(ID));
+            callProcedure.execute();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
+    public ArrayList<Object> LoadInformacionTarifaParqueadero(Connection conexion) {
+        ArrayList<Object> resultado_lista = new ArrayList<Object>();
+        ArrayList<String> columnas = new ArrayList<String>();
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_TARIFA_PARQUEADERO()}");
+            callProcedure.execute();
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+            ResultSetMetaData columnas_consulta = resultado_consulta.getMetaData();
+            for (int i = 0; i < columnas_consulta.getColumnCount(); i++) {
+                columnas.add(columnas_consulta.getColumnLabel(i + 1));
+            }
+            resultado_lista.add(columnas);
+            while (resultado_consulta.next()) {
+                ArrayList<String> fila = new ArrayList<String>();
+                for (int i = 0; i < columnas_consulta.getColumnCount(); i++) {
+                    fila.add(resultado_consulta.getString(i + 1));
+                }
+                resultado_lista.add(fila);
+            }
+            return resultado_lista;
+        } catch (Exception e) {
+            return resultado_lista;
+        }
+    }
+
 }

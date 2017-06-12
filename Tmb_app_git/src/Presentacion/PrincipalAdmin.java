@@ -378,20 +378,20 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private void jPanel_EmpldsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_EmpldsMouseClicked
         // TODO add your handling code here:
 
-        Parqueadero p = new Parqueadero();
+        Empleados e = new Empleados();
         jPanel_Principal.removeAll();
         jPanel_Principal.setLayout(new BorderLayout());
-        jPanel_Principal.add(p, BorderLayout.CENTER);
+        jPanel_Principal.add(e, BorderLayout.CENTER);
         jPanel_Principal.repaint();
         jPanel_Principal.revalidate();
     }//GEN-LAST:event_jPanel_EmpldsMouseClicked
 
     private void jPanel_TarfsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_TarfsMouseClicked
         // TODO add your handling code here:
-        Empleados l = new Empleados();
+        Tarifas t = new Tarifas();
         jPanel_Principal.removeAll();
         jPanel_Principal.setLayout(new BorderLayout());
-        jPanel_Principal.add(l, BorderLayout.CENTER);
+        jPanel_Principal.add(t, BorderLayout.CENTER);
         jPanel_Principal.repaint();
         jPanel_Principal.revalidate();
     }//GEN-LAST:event_jPanel_TarfsMouseClicked
