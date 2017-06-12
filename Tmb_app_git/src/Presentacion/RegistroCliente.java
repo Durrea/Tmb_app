@@ -5,8 +5,11 @@
  */
 package Presentacion;
 
+import Modelos.Cliente;
+import Modelos.Vehiculo;
 import Servicios.Administrador;
 import Servicios.Conexion;
+import Servicios.ParqueaderoMes;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
 import java.text.SimpleDateFormat;
@@ -265,7 +268,7 @@ public class RegistroCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel_CancelarMouseExited
 
     private void jPanel_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseClicked
-        // TODO add your handling code here:
+       // TODO add your handling code here:
         ValidadorCadenas val = new ValidadorCadenas();
         if(!this.jText_Cliente.getText().equalsIgnoreCase("")&&!this.jText_Cedula.getText().equalsIgnoreCase("")&&
            !this.jText_Telefono.getText().equalsIgnoreCase("")&&!this.jText_Placa.getText().equalsIgnoreCase("")&&
@@ -274,7 +277,32 @@ public class RegistroCliente extends javax.swing.JPanel {
         {
             if(val.ValidarCadenasPlaca(this.jText_Placa.getText())!=0)
             {
-                
+                if(val.validarNumeros(this.jText_Cedula.getText()) &&val.validarNumeros(this.jText_Telefono.getText()))
+                {
+                    ParqueaderoMes obj = new ParqueaderoMes();
+                    Cliente cliente = new Cliente();
+                    cliente.setCliente_nombre(this.jText_Cliente.getText());
+                    cliente.setCliente_cedula(this.jText_Cedula.getText());
+                    cliente.setCliente_telefono(this.jText_Telefono.getText());
+                    Vehiculo vehiculo = new Vehiculo();
+                    vehiculo.setVehiculo_placa(this.jText_Placa.getText());
+                    vehiculo.setVehiculo_tipo((String) this.jCombo_TipoA.getSelectedItem());
+                    vehiculo.setVehiculo_color(this.jText_Color.getText());
+                    vehiculo.setVehiculo_marca(this.jText_Marca.getText());
+                    boolean res = obj.RegisterCustomer(Conexion.obtener(), cliente, vehiculo);
+                    if(res)
+                    {
+                        JOptionPane.showMessageDialog(null, "Registro realizado con exito");
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Ha ocurrido un error en el registro");
+                    }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Los campos cedula y telefono deben ser numericos");
+                }
             }
             else
             {

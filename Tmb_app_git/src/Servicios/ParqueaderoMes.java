@@ -39,6 +39,7 @@ public class ParqueaderoMes {
             resultado = true;
         }catch(Exception e)
         {
+            System.out.println(e.getMessage());
             resultado = false;
         }
         return resultado;

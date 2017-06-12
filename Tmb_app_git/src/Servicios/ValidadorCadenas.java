@@ -99,5 +99,18 @@ public class ValidadorCadenas {
         }
         return resultado;
     }
-    
+    public boolean validarNumeros(String num)
+    {
+        boolean resultado;
+        try
+        {
+            long valor = Long.parseLong(num);
+            resultado = true;
+        }catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+            resultado = false;
+        }
+        return resultado;
+    }
 }
