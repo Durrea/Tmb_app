@@ -206,36 +206,40 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
             ValidadorCadenas val = new ValidadorCadenas();
             if(val.ValidarCadenasPlaca(jText_Placa.getText())!=0)
             {
-                ParquaderoFraccion obj = new ParquaderoFraccion();
-                Sesion instancia = Sesion.getInstanciaSesion();
-                //System.out.println(instancia.getIdentificador());
-                boolean resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Placa.getText(), (String) TipoVehiculo.getSelectedItem(), instancia.getIdentificador());
-                if(resultado)
+                int resultopcion_registrar = JOptionPane.showConfirmDialog(null, "¿Desea realizar el registro?");
+                if(resultopcion_registrar == 0)
                 {
-                    int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?");
-                    if(resultopcion == 0)
+                    ParquaderoFraccion obj = new ParquaderoFraccion();
+                    Sesion instancia = Sesion.getInstanciaSesion();
+                    //System.out.println(instancia.getIdentificador());
+                    String resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Placa.getText(), (String) TipoVehiculo.getSelectedItem(), instancia.getIdentificador());
+                    if(resultado.equalsIgnoreCase("Se ha realizado el registro"))
                     {
-                        ImpresionFacturas impfac = new ImpresionFacturas();
-                        boolean res = impfac.FacturaFraccion(0, -1);
-                        if(!res)
+                        JOptionPane.showMessageDialog(null, resultado);
+                        int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?");
+                        if(resultopcion == 0)
                         {
-                            JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la impresión");
-                        }
-                    }                                        
-                    JOptionPane.showMessageDialog(null, "Registro realizado con exito");
-                    Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();
-                    datos.run();
-                    Fraccion f=new Fraccion(datos.getDatos_fraccion());
-                    this.removeAll();
-                    this.setLayout(new BorderLayout());
-                    this.add(f,BorderLayout.CENTER);
-                    this.repaint();
-                    this.revalidate();
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null, "No se ha realizado el registro");
-                }
+                            ImpresionFacturas impfac = new ImpresionFacturas();
+                            boolean res = impfac.FacturaFraccion(0, -1);
+                            if(!res)
+                            {
+                                JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la impresión");
+                            }
+                        }                                                                
+                        Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();
+                        datos.run();
+                        Fraccion f=new Fraccion(datos.getDatos_fraccion());
+                        this.removeAll();
+                        this.setLayout(new BorderLayout());
+                        this.add(f,BorderLayout.CENTER);
+                        this.repaint();
+                        this.revalidate();
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, resultado);
+                    }
+                }                
             }
             else
             {

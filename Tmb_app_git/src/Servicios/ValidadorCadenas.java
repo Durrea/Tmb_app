@@ -16,9 +16,7 @@ public class ValidadorCadenas {
         //Devuelve 0 si la cadena es incorrecta
         //Devuelve 1 si la cadena corresponde a tipo vehiculo moto
         //Devulve 2 si la cadena corresponde a tipo vehiculo carro
-        int resultado;
-        System.out.println("tamaño cadena"+ cadena.length());
-        System.out.println("cadena"+ cadena);        
+        int resultado;                
         if(cadena.length() == 6 || cadena.length() == 5)
         {
             if(cadena.length() == 6)

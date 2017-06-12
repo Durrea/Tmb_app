@@ -66,22 +66,22 @@ public class ParquaderoFraccion {
         }
         return informacion_fraccion;
     }        
-    public boolean RegisterEntryFraccion(Connection conexion, String placa, String tipo, int recep)
+    public String RegisterEntryFraccion(Connection conexion, String placa, String tipo, int recep)
     {
-        boolean resultado; 
+        String resultado; 
         try
         {
             CallableStatement callProcedure = conexion.prepareCall("{call PRO_REGISTRAR_ENTRADAS_FRACCION(?,?,?)}");
             callProcedure.setString(1, placa);
             callProcedure.setString(2, tipo);
             callProcedure.setString(3, Integer.toString(recep));
-            callProcedure.execute();
-            resultado = true;
+            callProcedure.execute();            
+            resultado = "Se ha realizado el registro";
             
         }catch(Exception e)
         {
-            //JOptionPane.showMessageDialog(null, e.getMessage());
-            resultado = false;
+            //JOptionPane.showMessageDialog(null, e.getMessage());                        
+            resultado = e.getMessage();
         }
         return resultado;
     }

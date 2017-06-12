@@ -370,12 +370,8 @@ public class Form_Empleados extends javax.swing.JPanel {
                 ParquaderoFraccion obj = new ParquaderoFraccion();
                 Sesion instancia = Sesion.getInstanciaSesion();
                 System.out.println(instancia.getIdentificador());
-                boolean resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Nombres.getText(), (String) TipoEmpleado.getSelectedItem(), instancia.getIdentificador());
-                if (resultado) {
-                    JOptionPane.showMessageDialog(null, "Registro realizado con exito");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se ha realizado el registro");
-                }
+                String resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Nombres.getText(), (String) TipoEmpleado.getSelectedItem(), instancia.getIdentificador());
+                JOptionPane.showMessageDialog(null, resultado);                                                    
             } else {
                 JOptionPane.showMessageDialog(null, "Formato incorrecto. Formato para las placas ej: AAA123");
             }
