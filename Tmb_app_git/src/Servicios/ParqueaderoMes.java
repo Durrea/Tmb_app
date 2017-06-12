@@ -19,10 +19,12 @@ import java.util.ArrayList;
  * @author hp
  */
 public class ParqueaderoMes {
-
-    public boolean RegisterCustomer(Connection conexion, Cliente cliente, Vehiculo vehiculo) {
-        boolean resultado;
-        try {
+    
+    public String RegisterCustomer(Connection conexion, Cliente cliente, Vehiculo vehiculo)
+    {
+        String resultado;
+        try
+        {
             CallableStatement callProcedure = conexion.prepareCall("{call PRO_REGISTRO_CLIENTE(?,?,?,?,?,?,?,?)}");
             callProcedure.setString(1, cliente.getCliente_nombre());
             callProcedure.setString(2, cliente.getCliente_cedula());
@@ -34,40 +36,78 @@ public class ParqueaderoMes {
             callProcedure.registerOutParameter(8, java.sql.Types.VARCHAR);
             callProcedure.execute();
             System.out.println(callProcedure.getString(8));
-            resultado = true;
-        } catch (Exception e) {
+            resultado = "Registro realizado con exito";
+        }catch(Exception e)
+        {
             System.out.println(e.getMessage());
-            resultado = false;
+            resultado = e.getMessage();
+        }
+        return resultado;
+    }
+    public ArrayList<Object> LoadInformacionTotalMensual(Connection conexion)
+    {
+        ArrayList<Object> resultado_lista = new ArrayList<Object>();        
+        ArrayList<String> columnas = new ArrayList<String>();
+        try
+        {            
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_TOTAL_MENSUAL()}");            
+            callProcedure.execute();            
+            ResultSet resultado_consulta = callProcedure.getResultSet();            
+            ResultSetMetaData columnas_consulta = resultado_consulta.getMetaData();            
+            for(int i=0;i<columnas_consulta.getColumnCount();i++)
+            {
+                columnas.add(columnas_consulta.getColumnLabel(i+1));
+            }
+            resultado_lista.add(columnas);
+            while(resultado_consulta.next())
+            {
+                ArrayList<String> fila = new ArrayList<String>();
+                for(int i =0;i<columnas_consulta.getColumnCount();i++)
+                {
+                    fila.add(resultado_consulta.getString(i+1));
+                }
+                resultado_lista.add(fila);
+            }            
+            return resultado_lista;
+        }catch(Exception e)
+        {            
+            return resultado_lista;
+        }
+    }
+    public String BuscadorPlacaMensual(Connection conexion, String placa)
+    {
+        String resultado;
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_BUSCADOR_VEHICULO_MENSUAL(?)}");
+            callProcedure.setString(1, placa);            
+            callProcedure.execute();            
+            resultado = "Registrado";
+            return resultado;
+        }catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+            resultado = e.getMessage();
+        }
+        return resultado;
+    }
+    public String RegistrarEntradaDiaria(Connection conexion, String placa)
+    {
+        String resultado;
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_REGISTRAR_ENTRADA_MENSUAL(?)}");
+            callProcedure.setString(1, placa);            
+            callProcedure.execute();
+            resultado = "Exitoso";
+        }catch(Exception e)
+        {
+            resultado = e.getMessage();
         }
         return resultado;
     }
 
-    public ArrayList<Object> LoadInformacionTotalMensual(Connection conexion) {
-        ArrayList<Object> resultado_lista = new ArrayList<Object>();
-        ArrayList<String> columnas = new ArrayList<String>();
-        try {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_TOTAL_MENSUAL()}");
-            callProcedure.execute();
-            ResultSet resultado_consulta = callProcedure.getResultSet();
-            ResultSetMetaData columnas_consulta = resultado_consulta.getMetaData();
-            for (int i = 0; i < columnas_consulta.getColumnCount(); i++) {
-                columnas.add(columnas_consulta.getColumnLabel(i + 1));
-            }
-            resultado_lista.add(columnas);
-            while (resultado_consulta.next()) {
-                ArrayList<String> fila = new ArrayList<String>();
-                for (int i = 0; i < columnas_consulta.getColumnCount(); i++) {
-                    fila.add(resultado_consulta.getString(i + 1));
-                }
-                resultado_lista.add(fila);
-            }
-            return resultado_lista;
-        } catch (Exception e) {
-            return resultado_lista;
-        }
-    }
-
-    public static boolean updateTarifa(Connection conect, String string, String ID) {
+public static boolean updateTarifa(Connection conect, String string, String ID) {
         try {
             CallableStatement callProcedure = conect.prepareCall("{call PRO_MODIFICAR_TARIFA_PARQUEADERO(?,?)}");
             callProcedure.setString(1, string);

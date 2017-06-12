@@ -5,8 +5,12 @@
  */
 package Presentacion;
 
+import Servicios.Conexion;
+import Servicios.ParqueaderoMes;
+import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -63,6 +67,9 @@ public class AddEntradaMensual extends javax.swing.JPanel {
         jPanel_Añadir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Añadir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel_Añadir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_AñadirMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel_AñadirMouseEntered(evt);
             }
@@ -106,6 +113,11 @@ public class AddEntradaMensual extends javax.swing.JPanel {
         jText_Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jText_BuscarMouseClicked(evt);
+            }
+        });
+        jText_Buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_BuscarKeyTyped(evt);
             }
         });
 
@@ -232,8 +244,75 @@ public class AddEntradaMensual extends javax.swing.JPanel {
 
     private void jPanel_BuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_BuscarMouseClicked
         // TODO add your handling code here:
-        jText_Placa.setText("Hola Mundo");
+        //jText_Placa.setText("Hola Mundo");
+        ValidadorCadenas val = new ValidadorCadenas();
+        if(!this.jText_Buscar.getText().equalsIgnoreCase(""))
+        {
+            if(val.ValidarCadenasPlaca(this.jText_Buscar.getText())!=0)
+            {
+                ParqueaderoMes obj = new ParqueaderoMes();
+                String res = obj.BuscadorPlacaMensual(Conexion.obtener(), this.jText_Buscar.getText());
+                if(!res.equalsIgnoreCase("Registrado"))
+                {
+                    this.jText_Placa.setText(res);
+                }
+                else
+                {
+                    this.jText_Placa.setText(this.jText_Buscar.getText());
+                    this.jText_Buscar.setEnabled(false);
+                    this.jPanel_Buscar.setEnabled(false);                    
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Formato de placa incorrecto");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"El campo placa no puede estar vacio");
+        }
     }//GEN-LAST:event_jPanel_BuscarMouseClicked
+
+    private void jText_BuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_BuscarKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();            
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);            
+        }
+    }//GEN-LAST:event_jText_BuscarKeyTyped
+
+    private void jPanel_AñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AñadirMouseClicked
+        // TODO add your handling code here:
+        ValidadorCadenas val = new ValidadorCadenas();
+        if(!this.jText_Placa.getText().equalsIgnoreCase(""))
+        {
+            if(val.ValidarCadenasPlaca(this.jText_Placa.getText()) != 0)
+            {
+                ParqueaderoMes obj = new ParqueaderoMes();
+                String res = obj.RegistrarEntradaDiaria(Conexion.obtener(), this.jText_Placa.getText());
+                if(res.equalsIgnoreCase("Exitoso"))                    
+                {
+                    JOptionPane.showMessageDialog(null, "Registro "+res);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, res);
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, this.jText_Placa.getText());
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Debe buscar un vehiculo por la placa");
+        }
+    }//GEN-LAST:event_jPanel_AñadirMouseClicked
         
     
 
