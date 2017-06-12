@@ -289,15 +289,8 @@ public class RegistroCliente extends javax.swing.JPanel {
                     vehiculo.setVehiculo_tipo((String) this.jCombo_TipoA.getSelectedItem());
                     vehiculo.setVehiculo_color(this.jText_Color.getText());
                     vehiculo.setVehiculo_marca(this.jText_Marca.getText());
-                    boolean res = obj.RegisterCustomer(Conexion.obtener(), cliente, vehiculo);
-                    if(res)
-                    {
-                        JOptionPane.showMessageDialog(null, "Registro realizado con exito");
-                    }
-                    else
-                    {
-                        JOptionPane.showMessageDialog(null, "Ha ocurrido un error en el registro");
-                    }
+                    String res = obj.RegisterCustomer(Conexion.obtener(), cliente, vehiculo);
+                    JOptionPane.showMessageDialog(null, res);
                 }
                 else
                 {

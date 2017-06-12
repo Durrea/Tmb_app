@@ -20,9 +20,9 @@ import java.util.ArrayList;
  */
 public class ParqueaderoMes {
     
-    public boolean RegisterCustomer(Connection conexion, Cliente cliente, Vehiculo vehiculo)
+    public String RegisterCustomer(Connection conexion, Cliente cliente, Vehiculo vehiculo)
     {
-        boolean resultado;
+        String resultado;
         try
         {
             CallableStatement callProcedure = conexion.prepareCall("{call PRO_REGISTRO_CLIENTE(?,?,?,?,?,?,?,?)}");
@@ -36,11 +36,11 @@ public class ParqueaderoMes {
             callProcedure.registerOutParameter(8, java.sql.Types.VARCHAR);
             callProcedure.execute();
             System.out.println(callProcedure.getString(8));
-            resultado = true;
+            resultado = "Registro realizado con exito";
         }catch(Exception e)
         {
             System.out.println(e.getMessage());
-            resultado = false;
+            resultado = e.getMessage();
         }
         return resultado;
     }
