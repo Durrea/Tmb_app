@@ -364,31 +364,40 @@ public class Mensual extends javax.swing.JPanel {
         ParqueaderoMes obj = new ParqueaderoMes();
         ArrayList<Object> lista = new ArrayList<Object>();
         lista = obj.LoadInformacionTotalMensual(Conexion.obtener());
-        ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
-        DefaultTableModel modelo = new DefaultTableModel(){
-        public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
-        for(int i=0;i<columnas.size();i++)
+        if(lista.size() == 0)
         {
-            modelo.addColumn(columnas.get(i));            
+            DefaultTableModel modelo = new DefaultTableModel(){
+            public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
+            modelo.addColumn("No hay registros");
         }
-        modelo.addColumn("ACCIONES");
-        
-        for(int i=1;i<lista.size();i++)
+        else
         {
-            ArrayList<String> lista_info = new ArrayList<String>();                        
-            JButton btn_visualizar_2 = new JButton("Realizar Pago");
-            btn_visualizar_2.setName("t");
-            btn_visualizar_2.setBounds(0, 0, 60, 30);
-            lista_info = (ArrayList<String>) lista.get(i);
-            Object [] fila = new Object[lista_info.size()+1];
-            for(int j=0;j<lista_info.size();j++)
+            ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
+            DefaultTableModel modelo = new DefaultTableModel(){
+            public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
+            for(int i=0;i<columnas.size();i++)
             {
-                fila [j] = lista_info.get(j);
-            }                                  
-            fila[lista_info.size()] = btn_visualizar_2;            
-            modelo.addRow(fila);            
-        }
-        this.jTable2.setModel(modelo);        
+                modelo.addColumn(columnas.get(i));            
+            }
+            modelo.addColumn("ACCIONES");
+
+            for(int i=1;i<lista.size();i++)
+            {
+                ArrayList<String> lista_info = new ArrayList<String>();                        
+                JButton btn_visualizar_2 = new JButton("Realizar Pago");
+                btn_visualizar_2.setName("t");
+                btn_visualizar_2.setBounds(0, 0, 60, 30);
+                lista_info = (ArrayList<String>) lista.get(i);
+                Object [] fila = new Object[lista_info.size()+1];
+                for(int j=0;j<lista_info.size();j++)
+                {
+                    fila [j] = lista_info.get(j);
+                }                                  
+                fila[lista_info.size()] = btn_visualizar_2;            
+                modelo.addRow(fila);            
+            }
+            this.jTable2.setModel(modelo);
+        }                
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
