@@ -5,16 +5,17 @@
  */
 package Presentacion;
 
-import Servicios.Administrador;
+import Modelos.Lavador;
+import Modelos.Tarifa_lavadero;
+import Modelos.Vehiculo;
+
 import Servicios.Conexion;
 import Servicios.SLavadero;
+import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -34,8 +35,8 @@ public class RegistroLavada extends javax.swing.JPanel {
         LoadAllVehiculos();
         LoadLavadas();
         calcularValor();
-        jText_TipoLavada.setVisible(false);
-        jText_IngresarValor.setVisible(false);
+        jText_TpLavOtro.setVisible(false);
+        jText_ValorOtro.setVisible(false);
     }
     ImageIcon ii;
     
@@ -56,15 +57,15 @@ public class RegistroLavada extends javax.swing.JPanel {
         jPanel_Cancelar = new javax.swing.JPanel();
         jLabel_icn_canc = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jCombo_TipoA = new javax.swing.JComboBox<>();
+        jCombo_TipoV = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jCombo_TpoLvador = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jCombo_TpoLvda = new javax.swing.JComboBox<>();
-        jText_TipoLavada = new javax.swing.JTextField();
-        jText_IngresarValor = new javax.swing.JTextField();
-        jText_Valor = new javax.swing.JTextField();
+        jText_TpLavOtro = new javax.swing.JTextField();
+        jText_ValorOtro = new javax.swing.JTextField();
+        jText_ValorLavdo = new javax.swing.JTextField();
         jLabelVTipoLavado = new javax.swing.JLabel();
         jText_MarcaV = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -138,15 +139,15 @@ public class RegistroLavada extends javax.swing.JPanel {
         jLabel9.setText("Cancelar");
         jPanel_Cancelar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 20));
 
-        jCombo_TipoA.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jCombo_TipoA.addMouseListener(new java.awt.event.MouseAdapter() {
+        jCombo_TipoV.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jCombo_TipoV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCombo_TipoAMouseClicked(evt);
+                jCombo_TipoVMouseClicked(evt);
             }
         });
-        jCombo_TipoA.addActionListener(new java.awt.event.ActionListener() {
+        jCombo_TipoV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCombo_TipoAActionPerformed(evt);
+                jCombo_TipoVActionPerformed(evt);
             }
         });
 
@@ -181,32 +182,32 @@ public class RegistroLavada extends javax.swing.JPanel {
             }
         });
 
-        jText_TipoLavada.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_TipoLavada.addMouseListener(new java.awt.event.MouseAdapter() {
+        jText_TpLavOtro.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_TpLavOtro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_TipoLavadaMouseClicked(evt);
+                jText_TpLavOtroMouseClicked(evt);
             }
         });
-        jText_TipoLavada.addKeyListener(new java.awt.event.KeyAdapter() {
+        jText_TpLavOtro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jText_TipoLavadaKeyTyped(evt);
+                jText_TpLavOtroKeyTyped(evt);
             }
         });
 
-        jText_IngresarValor.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_IngresarValor.addMouseListener(new java.awt.event.MouseAdapter() {
+        jText_ValorOtro.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_ValorOtro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_IngresarValorMouseClicked(evt);
+                jText_ValorOtroMouseClicked(evt);
             }
         });
-        jText_IngresarValor.addKeyListener(new java.awt.event.KeyAdapter() {
+        jText_ValorOtro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jText_IngresarValorKeyTyped(evt);
+                jText_ValorOtroKeyTyped(evt);
             }
         });
 
-        jText_Valor.setEditable(false);
-        jText_Valor.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_ValorLavdo.setEditable(false);
+        jText_ValorLavdo.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         jLabelVTipoLavado.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabelVTipoLavado.setForeground(new java.awt.Color(255, 255, 255));
@@ -252,13 +253,13 @@ public class RegistroLavada extends javax.swing.JPanel {
                 .addContainerGap(276, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jText_Placa)
-                    .addComponent(jCombo_TipoA, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCombo_TipoV, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jCombo_TpoLvador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jCombo_TpoLvda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jText_TipoLavada, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jText_IngresarValor, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jText_TpLavOtro, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jText_ValorOtro, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelVTipoLavado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jText_MarcaV)
@@ -266,7 +267,7 @@ public class RegistroLavada extends javax.swing.JPanel {
                         .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                    .addComponent(jText_Valor)
+                    .addComponent(jText_ValorLavdo)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelTipoLavado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelVTipoLavadoN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -289,7 +290,7 @@ public class RegistroLavada extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCombo_TipoA, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCombo_TipoV, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -301,15 +302,15 @@ public class RegistroLavada extends javax.swing.JPanel {
                 .addGap(11, 11, 11)
                 .addComponent(jLabelVTipoLavado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jText_Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jText_ValorLavdo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelTipoLavado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jText_TipoLavada, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jText_TpLavOtro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelVTipoLavadoN)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jText_IngresarValor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jText_ValorOtro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel_Registrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -345,12 +346,72 @@ public class RegistroLavada extends javax.swing.JPanel {
     private void jPanel_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseClicked
         // TODO add your handling code here:
          
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        //String DateToStr = format.format(jXDateFPago.getDate());
-        //System.out.println(DateToStr);
-
+        String res=validar();
+        
+        if(!res.equals("Por favor Ingresar:"))
+        {
+           JOptionPane.showMessageDialog(null,res,"Error",JOptionPane.ERROR_MESSAGE);
+        }else{
+            SLavadero obj = new SLavadero(); 
+            Sesion instancia = Sesion.getInstanciaSesion();
+            Lavador lavador=new Lavador();
+            lavador.setLavador_codigo(Integer.valueOf((String)jCombo_TpoLvador.getSelectedItem()));
+            Vehiculo vehiculo = new Vehiculo();
+            vehiculo.setVehiculo_placa(jText_Placa.getText());
+            vehiculo.setVehiculo_tipo((String)jCombo_TipoV.getSelectedItem());
+            vehiculo.setVehiculo_marca(jText_MarcaV.getText());
+            Tarifa_lavadero tarifa=new Tarifa_lavadero();
+            
+            if(jCombo_TpoLvda.getSelectedIndex()!=-1){
+                if(jCombo_TpoLvda.getSelectedItem().equals("Otro")){
+                    tarifa.setTipo_lavada(jText_TpLavOtro.getText());
+                    tarifa.setValor_lavada(Float.valueOf(jText_ValorOtro.getText()));
+                }else{
+                    tarifa.setTipo_lavada((String) jCombo_TpoLvda.getSelectedItem());
+                    tarifa.setValor_lavada(Float.valueOf(jText_ValorLavdo.getText()));
+                }
+            }
+            String msj = obj.registerLavadores(Conexion.obtener(),lavador,vehiculo,tarifa,instancia.getIdentificador());
+            JOptionPane.showMessageDialog(null, msj);
+            
+            Lavadero lavadero=new Lavadero();
+            this.removeAll();
+            this.setLayout(new BorderLayout());
+            this.add(lavadero,BorderLayout.CENTER);
+            this.repaint();
+            this.revalidate();
+            
+        }
+        
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
-
+    
+    public final String validar(){
+        
+        String res="Por favor Ingresar:";
+        
+        if(jCombo_TpoLvador.getSelectedIndex()==-1){res+="\nTipo Lavador";}
+        if(jText_Placa.getText().equals("")){res+="\nPlaca Vehiculo";}
+        if(jCombo_TipoV.getSelectedIndex()==-1){res+="\nTipo Vehiculo";}
+        if(jText_MarcaV.getText().equals("")){res+="\nMarca Vehiculo";}
+        
+        if(jCombo_TpoLvda.getSelectedIndex()!=-1){
+            if(jCombo_TpoLvda.getSelectedItem().equals("Otro")){
+                if(jText_TpLavOtro.getText().equals("")){
+                    res+="\nTipo Lavado Otro";
+                }
+                if(jText_ValorOtro.getText().equals("")){
+                    res+="\nValor Lavado Otro";
+                }
+            }else{
+                if(jText_ValorLavdo.getText().equals("") ){
+                    res+="\nValor Lavado Otro";
+                }
+            }
+        }
+        return res;
+    }
+   
+    
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
         Lavadero m=new Lavadero();
         this.removeAll();
@@ -369,9 +430,9 @@ public class RegistroLavada extends javax.swing.JPanel {
     private void jCombo_TpoLvdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombo_TpoLvdaActionPerformed
         // TODO add your handling code here:
         if(jCombo_TpoLvda.getSelectedItem().equals("Otro")){
-            jText_TipoLavada.setVisible(true);
-            jText_IngresarValor.setVisible(true);
-            jText_Valor.setVisible(false);
+            jText_TpLavOtro.setVisible(true);
+            jText_ValorOtro.setVisible(true);
+            jText_ValorLavdo.setVisible(false);
             jLabelVTipoLavado.setVisible(false);
             jLabelTipoLavado.setVisible(true);
             jLabelVTipoLavadoN.setVisible(true);
@@ -380,11 +441,11 @@ public class RegistroLavada extends javax.swing.JPanel {
             
         }else{
             
-            jText_TipoLavada.setVisible(false);
-            jText_IngresarValor.setVisible(false);
+            jText_TpLavOtro.setVisible(false);
+            jText_ValorOtro.setVisible(false);
             jLabelTipoLavado.setVisible(false);
             jLabelVTipoLavadoN.setVisible(false);
-            jText_Valor.setVisible(true);   
+            jText_ValorLavdo.setVisible(true);   
             jLabelVTipoLavado.setVisible(true);
             calcularValor();
             this.revalidate();
@@ -392,11 +453,11 @@ public class RegistroLavada extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jCombo_TpoLvdaActionPerformed
 
-    private void jText_TipoLavadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_TipoLavadaMouseClicked
+    private void jText_TpLavOtroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_TpLavOtroMouseClicked
         // TODO add your handling code here:
-        if(jText_TipoLavada.getText().equals("Ingresar Tipo de Lavada")){
-        jText_TipoLavada.setText("");}
-    }//GEN-LAST:event_jText_TipoLavadaMouseClicked
+        if(jText_TpLavOtro.getText().equals("Ingresar Tipo de Lavada")){
+        jText_TpLavOtro.setText("");}
+    }//GEN-LAST:event_jText_TpLavOtroMouseClicked
 
     private void jText_MarcaVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_MarcaVMouseClicked
         // TODO add your handling code here:
@@ -409,9 +470,9 @@ public class RegistroLavada extends javax.swing.JPanel {
               
     }//GEN-LAST:event_jCombo_TpoLvadorMouseClicked
 
-    private void jCombo_TipoAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombo_TipoAMouseClicked
+    private void jCombo_TipoVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombo_TipoVMouseClicked
         // TODO add your handling code here:  
-    }//GEN-LAST:event_jCombo_TipoAMouseClicked
+    }//GEN-LAST:event_jCombo_TipoVMouseClicked
 
     private void jCombo_TpoLvdaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombo_TpoLvdaMouseClicked
         // TODO add your handling code here:
@@ -419,18 +480,18 @@ public class RegistroLavada extends javax.swing.JPanel {
         //reiniciar();
     }//GEN-LAST:event_jCombo_TpoLvdaMouseClicked
 
-    private void jText_IngresarValorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_IngresarValorMouseClicked
+    private void jText_ValorOtroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_ValorOtroMouseClicked
         // TODO add your handling code here:
-        if(jText_IngresarValor.getText().equals("Ingresar Valor Tipo de Lavada")){
-        jText_IngresarValor.setText("");}
-    }//GEN-LAST:event_jText_IngresarValorMouseClicked
+        if(jText_ValorOtro.getText().equals("Ingresar Valor Tipo de Lavada")){
+        jText_ValorOtro.setText("");}
+    }//GEN-LAST:event_jText_ValorOtroMouseClicked
 
-    private void jCombo_TipoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombo_TipoAActionPerformed
+    private void jCombo_TipoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombo_TipoVActionPerformed
         // TODO add your handling code here:
         calcularValor();
         this.revalidate();
         this.repaint();
-    }//GEN-LAST:event_jCombo_TipoAActionPerformed
+    }//GEN-LAST:event_jCombo_TipoVActionPerformed
 
     private void jText_PlacaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyReleased
         // TODO add your handling code here:
@@ -450,8 +511,8 @@ public class RegistroLavada extends javax.swing.JPanel {
             }
             else
             {
-                jCombo_TipoA.removeAllItems();
-                jText_Valor.setText("");
+                jCombo_TipoV.removeAllItems();
+                jText_ValorLavdo.setText("");
             }
     }//GEN-LAST:event_jText_PlacaKeyReleased
 
@@ -475,46 +536,46 @@ public class RegistroLavada extends javax.swing.JPanel {
                 
     }//GEN-LAST:event_jText_MarcaVKeyTyped
 
-    private void jText_TipoLavadaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TipoLavadaKeyTyped
+    private void jText_TpLavOtroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TpLavOtroKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
         if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
             evt.consume();
         }
-    }//GEN-LAST:event_jText_TipoLavadaKeyTyped
+    }//GEN-LAST:event_jText_TpLavOtroKeyTyped
 
-    private void jText_IngresarValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_IngresarValorKeyTyped
+    private void jText_ValorOtroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ValorOtroKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
         if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
             evt.consume();
         }
-    }//GEN-LAST:event_jText_IngresarValorKeyTyped
+    }//GEN-LAST:event_jText_ValorOtroKeyTyped
         
     
     public final void LoadVehiculos()
     {
-        jCombo_TipoA.removeAllItems();
+        jCombo_TipoV.removeAllItems();
         SLavadero obj = new SLavadero();
         ArrayList<String> tipos = obj.loadTiposVehiculos(Conexion.obtener());
         for (int i = 0; i < tipos.size(); i++) 
         {
             if(!tipos.get(i).equalsIgnoreCase("MOTO"))
             {
-                jCombo_TipoA.addItem(tipos.get(i));
+                jCombo_TipoV.addItem(tipos.get(i));
             }
         }   
     }
     public void LoadMotos()
     {
-        jCombo_TipoA.removeAllItems();
+        jCombo_TipoV.removeAllItems();
         SLavadero obj = new SLavadero();      
         ArrayList<String> tipos = obj.loadTiposVehiculos(Conexion.obtener());
         for (int i = 0; i < tipos.size(); i++) 
         {
             if(tipos.get(i).equalsIgnoreCase("MOTO"))
             {
-                this.jCombo_TipoA.addItem(tipos.get(i));
+                this.jCombo_TipoV.addItem(tipos.get(i));
             }            
         }
     }
@@ -545,28 +606,28 @@ public class RegistroLavada extends javax.swing.JPanel {
     
     public final void LoadAllVehiculos()
     {
-        jCombo_TipoA.removeAllItems();
+        jCombo_TipoV.removeAllItems();
         SLavadero obj = new SLavadero();        
         ArrayList<String> tipos = obj.loadTiposVehiculos(Conexion.obtener());
         for (int i = 0; i < tipos.size(); i++) 
         {
-            jCombo_TipoA.addItem(tipos.get(i));                       
+            jCombo_TipoV.addItem(tipos.get(i));                       
         }
     }
     
     public final void calcularValor(){
         
-        if(jCombo_TipoA.getSelectedItem()!=null&& jCombo_TpoLvda.getSelectedItem()!=null){
+        if(jCombo_TipoV.getSelectedItem()!=null&& jCombo_TpoLvda.getSelectedItem()!=null){
             SLavadero obj = new SLavadero();
             if(jCombo_TpoLvda.getSelectedItem().equals("Otro")){
-               jText_Valor.setVisible(false);
+               jText_ValorLavdo.setVisible(false);
             }else{
 
                 float valor=obj.costoLavada(Conexion.obtener(),
-                        String.valueOf(jCombo_TipoA.getSelectedItem()),
+                        String.valueOf(jCombo_TipoV.getSelectedItem()),
                         String.valueOf(jCombo_TpoLvda.getSelectedItem()) );
                 if(valor!=0){
-                    jText_Valor.setText(Float.toString(valor));
+                    jText_ValorLavdo.setText(Float.toString(valor));
                 }else{
                     JOptionPane.showMessageDialog(new JPanel(), "Tarifa no Existe", "Error", JOptionPane.ERROR_MESSAGE);
                     jCombo_TpoLvda.removeAllItems();
@@ -578,13 +639,11 @@ public class RegistroLavada extends javax.swing.JPanel {
         
     }
     
-    public final void reset(){
-        
-    }
+  
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jCombo_TipoA;
+    private javax.swing.JComboBox<String> jCombo_TipoV;
     private javax.swing.JComboBox<String> jCombo_TpoLvador;
     private javax.swing.JComboBox<String> jCombo_TpoLvda;
     private javax.swing.JLabel jLabel10;
@@ -602,10 +661,10 @@ public class RegistroLavada extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel_icn_canc;
     private javax.swing.JPanel jPanel_Cancelar;
     private javax.swing.JPanel jPanel_Registrar;
-    private javax.swing.JTextField jText_IngresarValor;
     private javax.swing.JTextField jText_MarcaV;
     private javax.swing.JTextField jText_Placa;
-    private javax.swing.JTextField jText_TipoLavada;
-    private javax.swing.JTextField jText_Valor;
+    private javax.swing.JTextField jText_TpLavOtro;
+    private javax.swing.JTextField jText_ValorLavdo;
+    private javax.swing.JTextField jText_ValorOtro;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,8 +5,21 @@
  */
 package Presentacion;
 
+import Modelos.Informacion_Lavadero;
+import Servicios.Conexion;
+import Servicios.SLavadero;
 import java.awt.BorderLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import static java.util.Locale.filter;
+import static java.util.Locale.filter;
+import static java.util.Locale.filter;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 
 
@@ -19,8 +32,11 @@ public class Lavadero extends javax.swing.JPanel {
     /**
      * Creates new form Fraccion
      */
+    TableRowSorter filter;
+    
     public Lavadero() {
         initComponents();
+        LoadDataTable();
     }
     ImageIcon ii;
     /**
@@ -49,6 +65,7 @@ public class Lavadero extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jText_Buscador = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(36, 47, 65));
 
@@ -149,18 +166,40 @@ public class Lavadero extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Placa", "Tipo Vehiculo", "Fecha Entrada", "Fecha Salida", "Valor", "Acciones"
+                "Codigo Lavador", "Fecha Lavada", "Placa", "Marca", "Tipo Vehiculo", "Tipo Lavada", "Valor Lavada", "Estado Pago", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTable2.setRowHeight(40);
         jScrollPane2.setViewportView(jTable2);
+
+        jText_Buscador.setBackground(new java.awt.Color(36, 47, 65));
+        jText_Buscador.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Buscador.setForeground(new java.awt.Color(255, 255, 255));
+        jText_Buscador.setBorder(null);
+        jText_Buscador.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jText_Buscador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jText_BuscadorMouseClicked(evt);
+            }
+        });
+        jText_Buscador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jText_BuscadorActionPerformed(evt);
+            }
+        });
+        jText_Buscador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_BuscadorKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -185,7 +224,8 @@ public class Lavadero extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jText_Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(jSeparator4))))
+                            .addComponent(jSeparator4)
+                            .addComponent(jText_Buscador))))
                 .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
@@ -201,7 +241,9 @@ public class Lavadero extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(8, 8, 8)
+                        .addComponent(jText_Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel_icn_add1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
@@ -274,6 +316,61 @@ public class Lavadero extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
 
+    private void jText_BuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_BuscadorMouseClicked
+        jText_Buscador.setText("");
+    }//GEN-LAST:event_jText_BuscadorMouseClicked
+
+    private void jText_BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_BuscadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jText_BuscadorActionPerformed
+
+    private void jText_BuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_BuscadorKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
+        jText_Buscador.addKeyListener(new KeyAdapter() {
+            public void keyReleased(final KeyEvent e) {
+                String cadena = (jText_Buscador.getText());
+                jText_Buscador.setText(cadena);
+                repaint();
+                filter.setRowFilter(RowFilter.regexFilter(jText_Buscador.getText(), 1));
+            }
+        });
+        filter = new TableRowSorter(this.jTable2.getModel());
+        this.jTable2.setRowSorter(filter);
+    }//GEN-LAST:event_jText_BuscadorKeyTyped
+
+    public final void LoadDataTable()
+    {
+        SLavadero obj = new SLavadero();   
+        ArrayList<Informacion_Lavadero> datos=obj.loadInformacionLavadero(Conexion.obtener());
+        jTable2.setDefaultRenderer(Object.class, new RenderTabla());
+        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        
+        JButton btn_visualizar = new JButton("Realizar Pago");
+        btn_visualizar.setName("t");
+        
+        for(int i=0;i<datos.size();i++)
+        {
+            Object [] fila = new Object[9];
+            fila[0] = datos.get(i).getLavadorCodigo();
+            fila[1] = datos.get(i).getFecha_lavada();
+            fila[2] = datos.get(i).getVehiculo_placa();
+            fila[3] = datos.get(i).getVehiculo_tipo();
+            fila[4] = datos.get(i).getVehiculo_marca();
+            fila[5] = datos.get(i).getTipo_lavada();
+            fila[6] = datos.get(i).getValor_lavada();
+            fila[7] = datos.get(i).getEstado_pago();
+            fila[8] = btn_visualizar;
+            modelo.addRow(fila);
+        }
+        this.jTable2.setModel(modelo);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel5;
@@ -292,6 +389,7 @@ public class Lavadero extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jText_Buscador;
     private javax.swing.JTextField jText_Usuario;
     // End of variables declaration//GEN-END:variables
 }
