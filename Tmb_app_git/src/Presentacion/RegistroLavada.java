@@ -362,7 +362,7 @@ public class RegistroLavada extends javax.swing.JPanel {
             vehiculo.setVehiculo_marca(jText_MarcaV.getText());
             Tarifa_lavadero tarifa=new Tarifa_lavadero();
             
-            if(jCombo_TpoLvda.getSelectedIndex()!=-1){
+            if(jCombo_TpoLvda.getSelectedIndex()!=-1 && jCombo_TpoLvda.getItemCount()!=0){
                 if(jCombo_TpoLvda.getSelectedItem().equals("Otro")){
                     tarifa.setTipo_lavada(jText_TpLavOtro.getText());
                     tarifa.setValor_lavada(Float.valueOf(jText_ValorOtro.getText()));
@@ -389,12 +389,12 @@ public class RegistroLavada extends javax.swing.JPanel {
         
         String res="Por favor Ingresar:";
         
-        if(jCombo_TpoLvador.getSelectedIndex()==-1){res+="\nTipo Lavador";}
+        if(jCombo_TpoLvador.getSelectedIndex()==-1 && jCombo_TpoLvador.getItemCount()==0){res+="\nTipo Lavador";}
         if(jText_Placa.getText().equals("")){res+="\nPlaca Vehiculo";}
-        if(jCombo_TipoV.getSelectedIndex()==-1){res+="\nTipo Vehiculo";}
+        if(jCombo_TipoV.getSelectedIndex()==-1 && jCombo_TipoV.getItemCount()==0){res+="\nTipo Vehiculo";}
         if(jText_MarcaV.getText().equals("")){res+="\nMarca Vehiculo";}
         
-        if(jCombo_TpoLvda.getSelectedIndex()!=-1){
+        if(jCombo_TpoLvda.getSelectedIndex()!=-1 && jCombo_TpoLvda.getItemCount()!=0){
             if(jCombo_TpoLvda.getSelectedItem().equals("Otro")){
                 if(jText_TpLavOtro.getText().equals("")){
                     res+="\nTipo Lavado Otro";
@@ -406,6 +406,11 @@ public class RegistroLavada extends javax.swing.JPanel {
                 if(jText_ValorLavdo.getText().equals("") ){
                     res+="\nValor Lavado Otro";
                 }
+            }
+        }else{
+            res+="\nTipo Lavado";
+            if(jText_ValorLavdo.getText().equals("")){
+                res+="\nValor Lavado";
             }
         }
         return res;
@@ -421,35 +426,31 @@ public class RegistroLavada extends javax.swing.JPanel {
         this.revalidate();
     }//GEN-LAST:event_jPanel_CancelarMouseClicked
 
-    private void jText_PlacaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_PlacaMouseClicked
-        // TODO add your handling code here:
-        if(jText_Placa.getText().equals("Ingresar Placa Vehiculo")){
-        jText_Placa.setText("");}
-    }//GEN-LAST:event_jText_PlacaMouseClicked
-
     private void jCombo_TpoLvdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombo_TpoLvdaActionPerformed
         // TODO add your handling code here:
-        if(jCombo_TpoLvda.getSelectedItem().equals("Otro")){
-            jText_TpLavOtro.setVisible(true);
-            jText_ValorOtro.setVisible(true);
-            jText_ValorLavdo.setVisible(false);
-            jLabelVTipoLavado.setVisible(false);
-            jLabelTipoLavado.setVisible(true);
-            jLabelVTipoLavadoN.setVisible(true);
-            this.revalidate();
-            this.repaint();
-            
-        }else{
-            
-            jText_TpLavOtro.setVisible(false);
-            jText_ValorOtro.setVisible(false);
-            jLabelTipoLavado.setVisible(false);
-            jLabelVTipoLavadoN.setVisible(false);
-            jText_ValorLavdo.setVisible(true);   
-            jLabelVTipoLavado.setVisible(true);
-            calcularValor();
-            this.revalidate();
-            this.repaint();
+        if(jCombo_TpoLvda.getItemCount()!=0){
+            if(jCombo_TpoLvda.getSelectedItem().equals("Otro")){
+                jText_TpLavOtro.setVisible(true);
+                jText_ValorOtro.setVisible(true);
+                jText_ValorLavdo.setVisible(false);
+                jLabelVTipoLavado.setVisible(false);
+                jLabelTipoLavado.setVisible(true);
+                jLabelVTipoLavadoN.setVisible(true);
+                this.revalidate();
+                this.repaint();
+
+            }else{
+
+                jText_TpLavOtro.setVisible(false);
+                jText_ValorOtro.setVisible(false);
+                jLabelTipoLavado.setVisible(false);
+                jLabelVTipoLavadoN.setVisible(false);
+                jText_ValorLavdo.setVisible(true);   
+                jLabelVTipoLavado.setVisible(true);
+                calcularValor();
+                this.revalidate();
+                this.repaint();
+            }
         }
     }//GEN-LAST:event_jCombo_TpoLvdaActionPerformed
 
@@ -474,12 +475,6 @@ public class RegistroLavada extends javax.swing.JPanel {
         // TODO add your handling code here:  
     }//GEN-LAST:event_jCombo_TipoVMouseClicked
 
-    private void jCombo_TpoLvdaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombo_TpoLvdaMouseClicked
-        // TODO add your handling code here:
-        
-        //reiniciar();
-    }//GEN-LAST:event_jCombo_TpoLvdaMouseClicked
-
     private void jText_ValorOtroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_ValorOtroMouseClicked
         // TODO add your handling code here:
         if(jText_ValorOtro.getText().equals("Ingresar Valor Tipo de Lavada")){
@@ -502,17 +497,24 @@ public class RegistroLavada extends javax.swing.JPanel {
             {
                 if(res == 1)
                 {
+                    
                     LoadMotos();
+                    LoadLavadas();
+                    calcularValor();
                 }
                 else
                 {
+                    
                     LoadVehiculos();
+                    LoadLavadas();
+                    calcularValor();
                 }
             }
             else
             {
                 jCombo_TipoV.removeAllItems();
                 jText_ValorLavdo.setText("");
+                jCombo_TpoLvda.removeAllItems();
             }
     }//GEN-LAST:event_jText_PlacaKeyReleased
 
@@ -551,6 +553,18 @@ public class RegistroLavada extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_jText_ValorOtroKeyTyped
+
+    private void jText_PlacaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_PlacaMouseClicked
+        // TODO add your handling code here:
+        if(jText_Placa.getText().equals("Ingresar Placa Vehiculo")){
+            jText_Placa.setText("");}
+    }//GEN-LAST:event_jText_PlacaMouseClicked
+
+    private void jCombo_TpoLvdaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombo_TpoLvdaMouseClicked
+        // TODO add your handling code here:
+
+        //reiniciar();
+    }//GEN-LAST:event_jCombo_TpoLvdaMouseClicked
         
     
     public final void LoadVehiculos()
@@ -595,13 +609,15 @@ public class RegistroLavada extends javax.swing.JPanel {
     
     public final void LoadLavadas()
     {
-        SLavadero obj = new SLavadero();
-        ArrayList<String> tipos = obj.loadTiposLavadas(Conexion.obtener());
-        for (int i = 0; i < tipos.size(); i++) 
-        {
-            jCombo_TpoLvda.addItem(tipos.get(i));
+        if(jCombo_TipoV.getItemCount()!=0){
+            SLavadero obj = new SLavadero();
+            ArrayList<String> tipos = obj.loadTiposLavadas(Conexion.obtener());
+            for (int i = 0; i < tipos.size(); i++) 
+            {
+                jCombo_TpoLvda.addItem(tipos.get(i));
+            }
+            jCombo_TpoLvda.addItem("Otro");
         }
-        jCombo_TpoLvda.addItem("Otro");
     }
     
     public final void LoadAllVehiculos()
@@ -617,7 +633,7 @@ public class RegistroLavada extends javax.swing.JPanel {
     
     public final void calcularValor(){
         
-        if(jCombo_TipoV.getSelectedItem()!=null&& jCombo_TpoLvda.getSelectedItem()!=null){
+        if(jCombo_TipoV.getItemCount()!=0&& jCombo_TpoLvda.getItemCount()!=0){
             SLavadero obj = new SLavadero();
             if(jCombo_TpoLvda.getSelectedItem().equals("Otro")){
                jText_ValorLavdo.setVisible(false);

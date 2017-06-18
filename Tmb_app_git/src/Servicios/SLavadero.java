@@ -5,6 +5,7 @@
  */
 package Servicios;
 
+import Modelos.Lava;
 import Modelos.Lavador;
 import Modelos.Tarifa_lavadero;
 import Modelos.Vehiculo;
@@ -180,6 +181,25 @@ public class SLavadero {
         return lst_lavadero;
     }        
     
+    public String realizarPago(Connection conexion,int recep,int codLavador,String placa,float valorLavada,String tipo_pago){
+        String resultado;
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_REALIZAR_PAGO_LAVADERO(?,?,?,?,?)}");
+            callProcedure.setString(1, Integer.toString(recep));
+            callProcedure.setString(2, Integer.toString(codLavador));
+            callProcedure.setString(3, placa);
+            callProcedure.setString(4, Float.toString(valorLavada));
+            callProcedure.setString(5, tipo_pago);
+            callProcedure.execute();
+            resultado = "Pago realizado con exito";
+        }catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+            resultado = e.getMessage(); 
+        }
+        return resultado;
+    }
     
 
 }

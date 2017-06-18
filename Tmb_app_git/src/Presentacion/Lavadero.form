@@ -42,8 +42,7 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jText_Usuario" pref="140" max="32767" attributes="0"/>
-                          <Component id="jSeparator4" max="32767" attributes="0"/>
+                          <Component id="jSeparator4" pref="140" max="32767" attributes="0"/>
                           <Component id="jText_Buscador" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -56,13 +55,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jText_Usuario" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jPanel_Registrar" max="32767" attributes="0"/>
-                      <Component id="jPanel_Informe" max="32767" attributes="0"/>
-                      <Component id="jPanel_CDeuda" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jPanel_Registrar" max="32767" attributes="0"/>
+                  <Component id="jPanel_Informe" max="32767" attributes="0"/>
+                  <Component id="jPanel_CDeuda" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -74,9 +70,9 @@
                   </Group>
                   <Component id="jLabel_icn_add1" min="-2" pref="43" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-              <Component id="jScrollPane2" min="-2" pref="163" max="-2" attributes="0"/>
-              <EmptySpace pref="140" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="227" max="-2" attributes="0"/>
+              <EmptySpace pref="76" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -213,29 +209,6 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jText_Usuario">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="41" green="2f" red="24" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Century Gothic" size="12" style="0"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
-        <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="cc" red="cc" type="rgb"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jText_UsuarioMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jText_UsuarioActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator4">
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel_CDeuda">
@@ -300,8 +273,8 @@
                 <Column editable="false" title="Codigo Lavador" type="java.lang.Object"/>
                 <Column editable="false" title="Fecha Lavada" type="java.lang.Object"/>
                 <Column editable="false" title="Placa" type="java.lang.Object"/>
-                <Column editable="false" title="Marca" type="java.lang.Object"/>
                 <Column editable="false" title="Tipo Vehiculo" type="java.lang.Object"/>
+                <Column editable="false" title="Marca" type="java.lang.Object"/>
                 <Column editable="false" title="Tipo Lavada" type="java.lang.Object"/>
                 <Column editable="false" title="Valor Lavada" type="java.lang.Object"/>
                 <Column editable="false" title="Estado Pago" type="java.lang.Object"/>
@@ -362,6 +335,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable2MouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
