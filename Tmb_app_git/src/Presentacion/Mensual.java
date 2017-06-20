@@ -349,10 +349,20 @@ public class Mensual extends javax.swing.JPanel {
                 ((JButton)value).doClick();
                 JButton boton = (JButton) value;
                 
-                String placa = ""+jTable2.getValueAt(rown, 1);                                
+                String placa = ""+jTable2.getValueAt(rown, 1);
+                String deuda = ""+jTable2.getValueAt(rown, 6);
+                double valor_deuda = Double.parseDouble(deuda);
                 if(boton.getName().equals("t"))
                 {
-                    JOptionPane.showMessageDialog(null, placa);
+                    RegistrarAbonoMensual obj=new RegistrarAbonoMensual();
+                    obj.placa = placa;
+                    obj.deuda = valor_deuda;
+                    obj.setLabels();
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(obj,BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();
                 }
             }
         }

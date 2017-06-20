@@ -111,4 +111,17 @@ public class ValidadorCadenas {
         }
         return resultado;
     }
+    public boolean validarPrecio(String valor)
+    {
+        boolean resultado;
+        try
+        {
+            double precio = Double.parseDouble(valor);
+            resultado = true;
+        }catch(Exception e)
+        {
+            resultado = false;
+        }
+        return resultado;
+    }
 }
