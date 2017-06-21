@@ -156,7 +156,7 @@ public static boolean updateTarifa(Connection conect, String string, String ID) 
             callProcedure.execute();
             resultado = "Se ha realizado el abono de la mensualidad con exito";
         }catch(Exception e)
-        {
+        {            
             resultado = e.getMessage();
         }
         return resultado;

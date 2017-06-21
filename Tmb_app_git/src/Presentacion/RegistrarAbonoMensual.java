@@ -203,7 +203,7 @@ public class RegistrarAbonoMensual extends javax.swing.JPanel {
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "El valor escrito debe ser numerico");
+                JOptionPane.showMessageDialog(null, "El valor escrito debe ser numerico y multiplico de 50");
             }
         }
         else
