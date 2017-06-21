@@ -145,4 +145,17 @@ public static boolean updateTarifa(Connection conect, String string, String ID) 
         }
     }
 
+    public boolean registrarTarifa(Connection conect, String tipoV, int costoHora, int costoDia, int costoMes) {
+        try {
+            CallableStatement callProcedure = conect.prepareCall("{call PRO_REGISTRAR_TARIFA_PARQUEADERO(?,?,?,?)}");
+            callProcedure.setString(1,tipoV);
+            callProcedure.setFloat(2, costoMes);
+            callProcedure.setFloat(3, costoDia);
+            callProcedure.setFloat(4, costoHora);
+            callProcedure.execute();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

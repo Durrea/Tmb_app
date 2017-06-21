@@ -169,4 +169,17 @@ public class S_Hotel {
             return false;
         }
     }
+
+    public boolean registrarTarifa(Connection conect, int habitacion, int costoHora, int costoDia) {
+        try {
+            CallableStatement callProcedure = conect.prepareCall("{call PRO_REGISTRAR_TARIFA_HOTEL(?,?,?)}");
+            callProcedure.setInt(1, habitacion);
+            callProcedure.setFloat(2, costoHora);
+            callProcedure.setFloat(3, costoDia);
+            callProcedure.execute();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

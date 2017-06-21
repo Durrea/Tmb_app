@@ -201,5 +201,16 @@ public class SLavadero {
         return resultado;
     }
     
-
+    public boolean registrarTarifa(Connection conect, String tipoV, int valorL, String tipoL) {
+        try {
+            CallableStatement callProcedure = conect.prepareCall("{call PRO_REGISTRAR_TARIFA_LAVADERO(?,?,?)}");
+            callProcedure.setString(1,tipoV);
+            callProcedure.setFloat(2, valorL);
+            callProcedure.setString(3, tipoL);
+            callProcedure.execute();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

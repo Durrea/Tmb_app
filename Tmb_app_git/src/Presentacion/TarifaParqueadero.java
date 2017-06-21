@@ -40,12 +40,9 @@ public class TarifaParqueadero extends javax.swing.JPanel {
     public TarifaParqueadero() {
         initComponents();
         Cargar_Datos();
+        //Ocultar campos del formulario
+        ocultarFormulario();
         this.jTable2.setRowHeight(40);
-        //oculta columna ID
-        jTable2.getColumnModel().getColumn(0).setMaxWidth(0);
-        jTable2.getColumnModel().getColumn(0).setMinWidth(0);
-        jTable2.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
-        jTable2.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
         //editor de caldas
         jTable2.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditor("PARQUEADERO", "TIPO_VEHICULO"));
         jTable2.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditor("PARQUEADERO", "VALOR_HORA"));
@@ -81,6 +78,16 @@ public class TarifaParqueadero extends javax.swing.JPanel {
         jPanel_Añadir = new javax.swing.JPanel();
         jLabel_icn_addE = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel_TipoV = new javax.swing.JLabel();
+        registrar_mes = new javax.swing.JSpinner();
+        jLabel_Dia = new javax.swing.JLabel();
+        registrar_dia = new javax.swing.JSpinner();
+        jLabel_Hora = new javax.swing.JLabel();
+        registrar_hora = new javax.swing.JSpinner();
+        jButton_aceptar = new javax.swing.JButton();
+        jButton_cancelar = new javax.swing.JButton();
+        registrar_tipoV = new javax.swing.JTextField();
+        jLabel_Mes = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -209,6 +216,61 @@ public class TarifaParqueadero extends javax.swing.JPanel {
         jLabel9.setText("Añadir Entrada");
         jPanel_Añadir.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 100, -1));
 
+        jLabel_TipoV.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel_TipoV.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_TipoV.setText("Tipo Vehiculo");
+
+        registrar_mes.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
+        registrar_mes.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_mes, ""));
+
+        jLabel_Dia.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel_Dia.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Dia.setText("Dia");
+
+        registrar_dia.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
+        registrar_dia.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_dia, ""));
+
+        jLabel_Hora.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel_Hora.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Hora.setText("Hora");
+
+        registrar_hora.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
+        registrar_hora.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_hora, ""));
+
+        jButton_aceptar.setText("Aceptar");
+        jButton_aceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_aceptarMouseClicked(evt);
+            }
+        });
+        jButton_aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_aceptarActionPerformed(evt);
+            }
+        });
+
+        jButton_cancelar.setText("Cancelar");
+        jButton_cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_cancelarMouseClicked(evt);
+            }
+        });
+        jButton_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_cancelarActionPerformed(evt);
+            }
+        });
+
+        registrar_tipoV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrar_tipoVActionPerformed(evt);
+            }
+        });
+
+        jLabel_Mes.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel_Mes.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Mes.setText("Mes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -222,17 +284,40 @@ public class TarifaParqueadero extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jText_Buscador, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                             .addComponent(jSeparator4)))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(jPanel_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, 0)
+                                        .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, 0)
+                                        .addComponent(jPanel_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(registrar_tipoV, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel_TipoV))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel_Mes)
+                                            .addComponent(registrar_mes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel_Dia)
+                                            .addComponent(registrar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel_Hora)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(registrar_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton_aceptar)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton_cancelar)))))
+                                .addGap(0, 61, Short.MAX_VALUE)))))
                 .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
@@ -251,9 +336,31 @@ public class TarifaParqueadero extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel_icn_add1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel_TipoV)
+                                .addComponent(jLabel_Mes))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(registrar_mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(registrar_tipoV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel_Dia)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(registrar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel_Hora)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(registrar_hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_aceptar)
+                            .addComponent(jButton_cancelar))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -263,13 +370,7 @@ public class TarifaParqueadero extends javax.swing.JPanel {
 
     private void jPanel_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseClicked
         // TODO add your handling code here:
-        RegistroCliente r = new RegistroCliente();
-        this.removeAll();
-        this.setLayout(new BorderLayout());
-        this.add(r, BorderLayout.CENTER);
-        this.repaint();
-        this.revalidate();
-
+        habilitarFormulario();
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
 
     private void jPanel_RegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseEntered
@@ -350,6 +451,38 @@ public class TarifaParqueadero extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable2MouseClicked
 
+    private void jButton_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_cancelarActionPerformed
+
+    private void registrar_tipoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_tipoVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registrar_tipoVActionPerformed
+
+    private void jButton_cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_cancelarMouseClicked
+        // TODO add your handling code here:
+        ocultarFormulario();
+    }//GEN-LAST:event_jButton_cancelarMouseClicked
+
+    private void jButton_aceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_aceptarMouseClicked
+        // TODO add your handling code here:
+        habilitarFormulario();
+    }//GEN-LAST:event_jButton_aceptarMouseClicked
+
+    private void jButton_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_aceptarActionPerformed
+        // TODO add your handling code here:
+        ParqueaderoMes obj = new ParqueaderoMes();
+        if(obj.registrarTarifa(Conexion.obtener(), registrar_tipoV.getText().toUpperCase(),(int)registrar_mes.getValue(),(int)registrar_dia.getValue(),(int)registrar_hora.getValue()))
+        {
+            JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
+            Cargar_Datos();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
+        }
+    }//GEN-LAST:event_jButton_aceptarActionPerformed
+
     public void Cargar_Datos() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());
         ParqueaderoMes obj = new ParqueaderoMes();
@@ -357,6 +490,9 @@ public class TarifaParqueadero extends javax.swing.JPanel {
         lista = obj.LoadInformacionTarifaParqueadero(Conexion.obtener());
         ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
         DefaultTableModel modelo = new DefaultTableModel() {
+            public boolean isCellEditable(int fila, int columna) {
+                return columna == 0 || columna == 1 ? false : true;
+            }
         };
 
         for (int i = 0; i < columnas.size(); i++) {
@@ -373,12 +509,23 @@ public class TarifaParqueadero extends javax.swing.JPanel {
             modelo.addRow(fila);
         }
         this.jTable2.setModel(modelo);
+        //oculta columna ID
+        jTable2.getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable2.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable2.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable2.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_aceptar;
+    private javax.swing.JButton jButton_cancelar;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_Dia;
+    private javax.swing.JLabel jLabel_Hora;
+    private javax.swing.JLabel jLabel_Mes;
+    private javax.swing.JLabel jLabel_TipoV;
     private javax.swing.JLabel jLabel_icn_add;
     private javax.swing.JLabel jLabel_icn_add1;
     private javax.swing.JLabel jLabel_icn_addE;
@@ -393,6 +540,35 @@ public class TarifaParqueadero extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jText_Buscador;
+    private javax.swing.JSpinner registrar_dia;
+    private javax.swing.JSpinner registrar_hora;
+    private javax.swing.JSpinner registrar_mes;
+    private javax.swing.JTextField registrar_tipoV;
     // End of variables declaration//GEN-END:variables
 
+     private void ocultarFormulario() {
+        jLabel_Dia.setVisible(false);
+        jLabel_Hora.setVisible(false);
+        jLabel_Mes.setVisible(false);
+        jLabel_TipoV.setVisible(false);
+        registrar_dia.setVisible(false);
+        registrar_hora.setVisible(false);
+        registrar_mes.setVisible(false);
+        registrar_tipoV.setVisible(false);
+        jButton_aceptar.setVisible(false);
+        jButton_cancelar.setVisible(false);
+    }
+
+    private void habilitarFormulario() {
+        jLabel_Dia.setVisible(true);
+        jLabel_Hora.setVisible(true);
+        jLabel_Mes.setVisible(true);
+        jLabel_TipoV.setVisible(true);
+        registrar_dia.setVisible(true);
+        registrar_hora.setVisible(true);
+        registrar_mes.setVisible(true);
+        registrar_tipoV.setVisible(true);
+        jButton_aceptar.setVisible(true);
+        jButton_cancelar.setVisible(true);
+    }
 }
