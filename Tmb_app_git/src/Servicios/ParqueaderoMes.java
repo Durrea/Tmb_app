@@ -144,6 +144,23 @@ public static boolean updateTarifa(Connection conect, String string, String ID) 
             return resultado_lista;
         }
     }
+    public String RegistrarAbonoMensual(Connection conexion, double valor, String placa, int recepcionista)
+    {
+        String resultado = "";
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_REGISTRAR_ABONO_MENSUALIDAD(?,?,?)}");
+            callProcedure.setString(1, Double.toString(valor));
+            callProcedure.setString(2, placa);
+            callProcedure.setString(3, Integer.toString(recepcionista));
+            callProcedure.execute();
+            resultado = "Se ha realizado el abono de la mensualidad con exito";
+        }catch(Exception e)
+        {            
+            resultado = e.getMessage();
+        }
+        return resultado;
+    }
 
     public boolean registrarTarifa(Connection conect, String tipoV, int costoHora, int costoDia, int costoMes) {
         try {

@@ -70,6 +70,11 @@ public class Mensual extends javax.swing.JPanel {
         jPanel_Añadir = new javax.swing.JPanel();
         jLabel_icn_addE = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jPanel_Informe1 = new javax.swing.JPanel();
+        jLabel_icn_inf1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(36, 47, 65));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -198,6 +203,36 @@ public class Mensual extends javax.swing.JPanel {
         jLabel9.setText("Añadir Entrada");
         jPanel_Añadir.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 100, -1));
 
+        jPanel_Informe1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Informe1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_Informe1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_Informe1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_Informe1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_Informe1MouseExited(evt);
+            }
+        });
+        jPanel_Informe1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_icn_inf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"))); // NOI18N
+        jPanel_Informe1.add(jLabel_icn_inf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel6.setText("Ingresos Diarios");
+        jPanel_Informe1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+
+        jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel_Informe1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel_Informe1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 0, 0, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -220,18 +255,22 @@ public class Mensual extends javax.swing.JPanel {
                                 .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jPanel_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel_Informe1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 61, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2))))
                 .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel_Registrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_Informe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_Añadir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel_Registrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel_Informe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel_Añadir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel_Informe1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -349,14 +388,36 @@ public class Mensual extends javax.swing.JPanel {
                 ((JButton)value).doClick();
                 JButton boton = (JButton) value;
                 
-                String placa = ""+jTable2.getValueAt(rown, 1);                                
+                String placa = ""+jTable2.getValueAt(rown, 1);
+                String deuda = ""+jTable2.getValueAt(rown, 6);
+                double valor_deuda = Double.parseDouble(deuda);
                 if(boton.getName().equals("t"))
                 {
-                    JOptionPane.showMessageDialog(null, placa);
+                    RegistrarAbonoMensual obj=new RegistrarAbonoMensual();
+                    obj.placa = placa;
+                    obj.deuda = valor_deuda;
+                    obj.setLabels();
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(obj,BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();
                 }
             }
         }
     }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jPanel_Informe1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel_Informe1MouseClicked
+
+    private void jPanel_Informe1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel_Informe1MouseEntered
+
+    private void jPanel_Informe1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel_Informe1MouseExited
     
     public void Cargar_Datos()
     {
@@ -402,20 +463,25 @@ public class Mensual extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_icn_add;
     private javax.swing.JLabel jLabel_icn_add1;
     private javax.swing.JLabel jLabel_icn_addE;
     private javax.swing.JLabel jLabel_icn_inf;
+    private javax.swing.JLabel jLabel_icn_inf1;
     private javax.swing.JPanel jPanel_Añadir;
     private javax.swing.JPanel jPanel_Informe;
+    private javax.swing.JPanel jPanel_Informe1;
     private javax.swing.JPanel jPanel_Registrar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jText_Buscador;
     // End of variables declaration//GEN-END:variables
