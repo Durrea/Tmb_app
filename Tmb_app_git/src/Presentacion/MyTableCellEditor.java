@@ -52,8 +52,7 @@ public class MyTableCellEditor extends AbstractCellEditor implements TableCellEd
                         ((JTextField) component).setText(OldValue);
                     }
                 }
-            }
-            else if (isNumeric(NewValue)) {
+            } else if (isNumeric(NewValue)) {
                 if (!NewValue.equals(OldValue)) {
                     if (!S_Hotel.updateTarifa(Conexion.obtener(), NameColum + "='" + NewValue + "' ", ID)) {   //Si existe algun error al actualizar, escribe viejo valor en la celda
                         JOptionPane.showMessageDialog(null, "Error: No se puede actualizar");
@@ -99,9 +98,20 @@ public class MyTableCellEditor extends AbstractCellEditor implements TableCellEd
     public static boolean isNumeric(String s) {
         try {
             double y = Double.parseDouble(s);
-            return true;
+            if (y > -1 && esMultiplo(y, 50)) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (NumberFormatException err) {
             return false;
         }
     }
+    
+    public static boolean esMultiplo(double n1,double n2){
+	if (n1%n2==0)
+		return true;
+	else
+		return false;
+}
 }
