@@ -153,7 +153,9 @@ public class Hotel extends javax.swing.JPanel {
 
     private void cargarTablero() {
         for (Habitacion habitacion : habitaciones) {
-            JButton button = new JButton(Integer.toString(habitacion.getHabitacion_numero()));
+            //JButton button = new JButton("Habitacion n°: " + Integer.toString(habitacion.getHabitacion_numero()) + "Capacidad: " + Integer.toString(habitacion.getHabitacion_capacidad()));
+            JButton button = new JButton("<html>Habitacion: " + Integer.toString(habitacion.getHabitacion_numero())+ "<br><br> Capacidad: "+ Integer.toString(habitacion.getHabitacion_capacidad())+"</html>");
+            button.setName(Integer.toString(habitacion.getHabitacion_numero()));
             button.setCursor(new Cursor(HAND_CURSOR));
             if (habitacion.getHabitacion_estado().equalsIgnoreCase("LIBRE")) {
                 button.setBackground(new java.awt.Color(102, 102, 102));
@@ -166,7 +168,7 @@ public class Hotel extends javax.swing.JPanel {
                 public void actionPerformed(ActionEvent ae) {
                     if (ae.getSource().equals(button)) {
                         //JOptionPane.showMessageDialog(null, button.getText());
-                        eventoHabitacion(button.getText());
+                        eventoHabitacion(button.getName());
                     }
                 }
             };
@@ -185,7 +187,7 @@ public class Hotel extends javax.swing.JPanel {
                  //int result = JOptionPane.showConfirmDialog(this, "¿Liberar habitacion?");
                  if(result==0)
                  {
-                     servicios.liberarHabitacion(Conexion.obtener(), habitaciones.get(i).getHabitacion_numero());
+                    servicios.liberarHabitacion(Conexion.obtener(), habitaciones.get(i).getHabitacion_numero());
                     Hotel h = new Hotel();
                     this.removeAll();
                     this.setLayout(new BorderLayout());
