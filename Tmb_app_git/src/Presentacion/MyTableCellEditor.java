@@ -107,11 +107,12 @@ public class MyTableCellEditor extends AbstractCellEditor implements TableCellEd
             return false;
         }
     }
-    
-    public static boolean esMultiplo(double n1,double n2){
-	if (n1%n2==0)
-		return true;
-	else
-		return false;
-}
+
+    public static boolean esMultiplo(double n1, double n2) {
+        if (n1 % n2 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

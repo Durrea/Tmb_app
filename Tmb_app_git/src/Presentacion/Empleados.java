@@ -10,6 +10,7 @@ import Servicios.Conexion;
 import Servicios.ImpresionFacturas;
 import Servicios.ParquaderoFraccion;
 import Servicios.ParqueaderoMes;
+import Servicios.S_Empleados;
 import Servicios.S_Hotel;
 import Servicios.Sesion;
 import java.awt.BorderLayout;
@@ -39,9 +40,8 @@ public class Empleados extends javax.swing.JPanel {
 
     public Empleados() {
         initComponents();
-        Cargar_Datos();
-        //Ocultar campos del formulario
-        ocultarFormulario();
+        Cargar_Datos_Lavador();
+        Cargar_Datos_Recepcionista();
         this.jTable2.setRowHeight(40);
         //editor de caldas
         //jTable2.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditor("HOTEL", "NUMERO_HABITACION"));//Columna Nombre
@@ -77,14 +77,8 @@ public class Empleados extends javax.swing.JPanel {
         jPanel_Añadir = new javax.swing.JPanel();
         jLabel_icn_addE = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        registrar_habitacion = new javax.swing.JSpinner();
-        jLabel_habitacion = new javax.swing.JLabel();
-        registrar_hora = new javax.swing.JSpinner();
-        jLabel_hora = new javax.swing.JLabel();
-        registrar_dia = new javax.swing.JSpinner();
-        jLabel_dia = new javax.swing.JLabel();
-        jButton_aceptar = new javax.swing.JButton();
-        jButton_cancelar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(36, 47, 65));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -213,45 +207,32 @@ public class Empleados extends javax.swing.JPanel {
         jLabel9.setText("Añadir Entrada");
         jPanel_Añadir.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 100, -1));
 
-        registrar_habitacion.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
-        registrar_habitacion.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_habitacion, ""));
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        jLabel_habitacion.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jLabel_habitacion.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_habitacion.setText("N° habitación");
-
-        registrar_hora.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
-        registrar_hora.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_hora, ""));
-
-        jLabel_hora.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jLabel_hora.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_hora.setText("Hora");
-
-        registrar_dia.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
-        registrar_dia.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_dia, ""));
-
-        jLabel_dia.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jLabel_dia.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_dia.setText("Día");
-
-        jButton_aceptar.setText("Aceptar");
-        jButton_aceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_aceptarActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-
-        jButton_cancelar.setText("Cancelar");
-        jButton_cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTable3.setName(""); // NOI18N
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton_cancelarMouseClicked(evt);
+                jTable3MouseClicked(evt);
             }
         });
-        jButton_cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_cancelarActionPerformed(evt);
-            }
-        });
+        jScrollPane3.setViewportView(jTable3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -266,32 +247,23 @@ public class Empleados extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jText_Buscador)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(jPanel_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel_habitacion)
-                                .addComponent(registrar_habitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel_hora)
-                                .addComponent(registrar_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel_dia)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(registrar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton_aceptar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton_cancelar))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jPanel_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(208, 208, 208)))
                 .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(53, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(29, 29, 29)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,27 +281,14 @@ public class Empleados extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel_icn_add1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel_habitacion)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(registrar_habitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel_hora)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(registrar_hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel_dia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(registrar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_aceptar)
-                            .addComponent(jButton_cancelar))))
-                .addGap(29, 29, 29))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(144, 144, 144)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(204, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -339,7 +298,12 @@ public class Empleados extends javax.swing.JPanel {
 
     private void jPanel_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseClicked
         // TODO add your handling code here:
-        habilitarFormulario();
+        Form_Empleados ent = new Form_Empleados();
+        this.removeAll();
+        this.setLayout(new BorderLayout());
+        this.add(ent, BorderLayout.CENTER);
+        this.repaint();
+        this.revalidate();
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
 
     private void jPanel_RegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseEntered
@@ -414,40 +378,22 @@ public class Empleados extends javax.swing.JPanel {
         });
         filter = new TableRowSorter(this.jTable2.getModel());
         this.jTable2.setRowSorter(filter);
+        
     }//GEN-LAST:event_jText_BuscadorKeyTyped
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable2MouseClicked
 
-    private void jButton_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cancelarActionPerformed
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_cancelarActionPerformed
+    }//GEN-LAST:event_jTable3MouseClicked
 
-    private void jButton_cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_cancelarMouseClicked
-        // TODO add your handling code here:
-        ocultarFormulario();
-    }//GEN-LAST:event_jButton_cancelarMouseClicked
-
-    private void jButton_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_aceptarActionPerformed
-        // TODO add your handling code here:
-        S_Hotel obj = new S_Hotel();
-        if(obj.registrarTarifa(Conexion.obtener(), (int) registrar_habitacion.getValue(), (int) registrar_hora.getValue(),(int) registrar_dia.getValue()))
-        {
-            JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
-            Cargar_Datos();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
-        }
-    }//GEN-LAST:event_jButton_aceptarActionPerformed
-
-    public void Cargar_Datos() {
+    public void Cargar_Datos_Lavador() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());
-        S_Hotel obj = new S_Hotel();
+        S_Empleados obj = new S_Empleados();
         ArrayList<Object> lista = new ArrayList<Object>();
-        lista = obj.LoadInformacionTarifaHotel(Conexion.obtener());
+        lista = obj.LoadInformacionLavadores(Conexion.obtener());
         ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
         DefaultTableModel modelo = new DefaultTableModel() {
             public boolean isCellEditable(int fila, int columna) {
@@ -479,18 +425,52 @@ public class Empleados extends javax.swing.JPanel {
         jTable2.getColumnModel().getColumn(0).setMinWidth(0);
         jTable2.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
         jTable2.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
-        
+
+    }
+
+    public void Cargar_Datos_Recepcionista() {
+        jTable3.setDefaultRenderer(Object.class, new RenderTabla());
+        S_Empleados obj = new S_Empleados();
+        ArrayList<Object> lista = new ArrayList<Object>();
+        lista = obj.LoadInformacionRecepcionista(Conexion.obtener());
+        ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
+        DefaultTableModel modelo = new DefaultTableModel() {
+            public boolean isCellEditable(int fila, int columna) {
+                return columna == 0 || columna == 1 ? false : true;
+            }
+            //public boolean isCellEditable(int rowIndex,int columnIndex){return false;}
+        };
+        for (int i = 0; i < columnas.size(); i++) {
+            modelo.addColumn(columnas.get(i));
+        }
+        //modelo.addColumn("ACCIONES");
+
+        for (int i = 1; i < lista.size(); i++) {
+            ArrayList<String> lista_info = new ArrayList<String>();
+            //JButton btn_visualizar_2 = new JButton("Realizar Pago");
+            //btn_visualizar_2.setName("t");
+            //btn_visualizar_2.setBounds(0, 0, 60, 30);
+            lista_info = (ArrayList<String>) lista.get(i);
+            Object[] fila = new Object[lista_info.size() + 1];
+            for (int j = 0; j < lista_info.size(); j++) {
+                fila[j] = lista_info.get(j);
+            }
+            //fila[lista_info.size()] = btn_visualizar_2;            
+            modelo.addRow(fila);
+        }
+        this.jTable3.setModel(modelo);
+        //oculta columna ID
+        jTable3.getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable3.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable3.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable3.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_aceptar;
-    private javax.swing.JButton jButton_cancelar;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabel_dia;
-    private javax.swing.JLabel jLabel_habitacion;
-    private javax.swing.JLabel jLabel_hora;
     private javax.swing.JLabel jLabel_icn_add;
     private javax.swing.JLabel jLabel_icn_add1;
     private javax.swing.JLabel jLabel_icn_addE;
@@ -499,37 +479,14 @@ public class Empleados extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel_Informe;
     private javax.swing.JPanel jPanel_Registrar;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jText_Buscador;
-    private javax.swing.JSpinner registrar_dia;
-    private javax.swing.JSpinner registrar_habitacion;
-    private javax.swing.JSpinner registrar_hora;
     // End of variables declaration//GEN-END:variables
-
-    private void ocultarFormulario() {
-        jLabel_dia.setVisible(false);
-        jLabel_hora.setVisible(false);
-        jLabel_habitacion.setVisible(false);
-        registrar_dia.setVisible(false);
-        registrar_hora.setVisible(false);
-        registrar_habitacion.setVisible(false);
-        jButton_aceptar.setVisible(false);
-        jButton_cancelar.setVisible(false);
-    }
-
-    private void habilitarFormulario() {
-        jLabel_dia.setVisible(true);
-        jLabel_hora.setVisible(true);
-        jLabel_habitacion.setVisible(true);
-        registrar_dia.setVisible(true);
-        registrar_hora.setVisible(true);
-        registrar_habitacion.setVisible(true);
-        jButton_aceptar.setVisible(true);
-        jButton_cancelar.setVisible(true);
-    }
 
 }

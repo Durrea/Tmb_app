@@ -432,14 +432,13 @@ public class TarifaHotel extends javax.swing.JPanel {
     private void jButton_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_aceptarActionPerformed
         // TODO add your handling code here:
         S_Hotel obj = new S_Hotel();
-        if(obj.registrarTarifa(Conexion.obtener(), (int) registrar_habitacion.getValue(), (int) registrar_hora.getValue(),(int) registrar_dia.getValue()))
-        {
+        if (obj.registrarTarifa(Conexion.obtener(), (int) registrar_habitacion.getValue(), (int) registrar_hora.getValue(), (int) registrar_dia.getValue()) && validarRegistro()) {
             JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
             Cargar_Datos();
-        }
-        else
-        {
+            ocultarFormulario();
+        } else {
             JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
+            registrar_habitacion.setValue(0);
         }
     }//GEN-LAST:event_jButton_aceptarActionPerformed
 
@@ -479,7 +478,7 @@ public class TarifaHotel extends javax.swing.JPanel {
         jTable2.getColumnModel().getColumn(0).setMinWidth(0);
         jTable2.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
         jTable2.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -525,6 +524,10 @@ public class TarifaHotel extends javax.swing.JPanel {
         registrar_habitacion.setVisible(false);
         jButton_aceptar.setVisible(false);
         jButton_cancelar.setVisible(false);
+        registrar_dia.setValue(0);
+        registrar_hora.setValue(0);
+        registrar_habitacion.setValue(0);
+        
     }
 
     private void habilitarFormulario() {
@@ -536,6 +539,22 @@ public class TarifaHotel extends javax.swing.JPanel {
         registrar_habitacion.setVisible(true);
         jButton_aceptar.setVisible(true);
         jButton_cancelar.setVisible(true);
+    }
+
+    public static boolean validarNum(int n1, int n2) {
+        if (n1 % n2 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean validarRegistro() {
+        if (validarNum((int) registrar_dia.getValue(), 50) && validarNum((int) registrar_hora.getValue(), 50)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
