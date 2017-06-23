@@ -40,13 +40,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jPanel_Registrar" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="jPanel_Informe" min="-2" pref="200" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanel_Informe" min="-2" pref="162" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel_Añadir" min="-2" pref="155" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel_Informe1" min="-2" pref="145" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="61" max="32767" attributes="0"/>
+                              <Component id="jPanel_Informe_Entradas_Diarias" min="-2" pref="163" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="69" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" max="32767" attributes="0"/>
                       </Group>
@@ -66,7 +66,7 @@
                       <Component id="jPanel_Informe" max="32767" attributes="0"/>
                       <Component id="jPanel_Añadir" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jPanel_Informe1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPanel_Informe_Entradas_Diarias" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -124,7 +124,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Generar Reporte Entrada"/>
+            <Property name="text" type="java.lang.String" value="Ingresos Diarios"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -155,6 +155,18 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="206" y="0" width="0" height="40"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_icn_inf2">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Iconos/Report Card_20px.png"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="120" y="0" width="20" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -316,7 +328,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel_Informe1">
+    <Container class="javax.swing.JPanel" name="jPanel_Informe_Entradas_Diarias">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -328,9 +340,9 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel_Informe1MouseClicked"/>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel_Informe1MouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel_Informe1MouseExited"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel_Informe_Entradas_DiariasMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel_Informe_Entradas_DiariasMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel_Informe_Entradas_DiariasMouseExited"/>
       </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -345,7 +357,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="110" y="0" width="20" height="40"/>
+              <AbsoluteConstraints x="130" y="0" width="20" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -354,7 +366,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ingresos Diarios"/>
+            <Property name="text" type="java.lang.String" value="Entradas Mensuales"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

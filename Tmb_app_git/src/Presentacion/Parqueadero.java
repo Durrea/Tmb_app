@@ -146,8 +146,7 @@ public class Parqueadero extends javax.swing.JPanel {
         // TODO add your handling code here:
         Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();
         datos.run();
-        Fraccion f=new Fraccion(datos.getDatos_fraccion());
-        f.idRecep = this.idRecep;
+        Fraccion f=new Fraccion(datos.getDatos_fraccion());        
         jPanelFM.removeAll();
         jPanelFM.setLayout(new BorderLayout());
         jPanelFM.add(f,BorderLayout.CENTER);
