@@ -58,6 +58,7 @@ public class Mensual extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel_icn_inf2 = new javax.swing.JLabel();
         jPanel_Registrar = new javax.swing.JPanel();
         jLabel_icn_add = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -70,7 +71,7 @@ public class Mensual extends javax.swing.JPanel {
         jPanel_Añadir = new javax.swing.JPanel();
         jLabel_icn_addE = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jPanel_Informe1 = new javax.swing.JPanel();
+        jPanel_Informe_Entradas_Diarias = new javax.swing.JPanel();
         jLabel_icn_inf1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
@@ -98,7 +99,7 @@ public class Mensual extends javax.swing.JPanel {
         jPanel_Informe.add(jLabel_icn_inf, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 20, 40));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel5.setText("Generar Reporte Entrada");
+        jLabel5.setText("Ingresos Diarios");
         jPanel_Informe.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
@@ -108,6 +109,9 @@ public class Mensual extends javax.swing.JPanel {
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel_Informe.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 0, 0, 40));
+
+        jLabel_icn_inf2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"))); // NOI18N
+        jPanel_Informe.add(jLabel_icn_inf2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 20, 40));
 
         jPanel_Registrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -203,35 +207,35 @@ public class Mensual extends javax.swing.JPanel {
         jLabel9.setText("Añadir Entrada");
         jPanel_Añadir.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 100, -1));
 
-        jPanel_Informe1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel_Informe1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel_Informe1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_Informe_Entradas_Diarias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Informe_Entradas_Diarias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_Informe_Entradas_Diarias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel_Informe1MouseClicked(evt);
+                jPanel_Informe_Entradas_DiariasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_Informe1MouseEntered(evt);
+                jPanel_Informe_Entradas_DiariasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_Informe1MouseExited(evt);
+                jPanel_Informe_Entradas_DiariasMouseExited(evt);
             }
         });
-        jPanel_Informe1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel_Informe_Entradas_Diarias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_icn_inf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"))); // NOI18N
-        jPanel_Informe1.add(jLabel_icn_inf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
+        jPanel_Informe_Entradas_Diarias.add(jLabel_icn_inf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 20, 40));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel6.setText("Ingresos Diarios");
-        jPanel_Informe1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+        jLabel6.setText("Entradas Mensuales");
+        jPanel_Informe_Entradas_Diarias.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel_Informe1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+        jPanel_Informe_Entradas_Diarias.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
 
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel_Informe1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 0, 0, 40));
+        jPanel_Informe_Entradas_Diarias.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 0, 0, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -251,13 +255,13 @@ public class Mensual extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel_Informe1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 61, Short.MAX_VALUE))
+                                .addComponent(jPanel_Informe_Entradas_Diarias, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 69, Short.MAX_VALUE))
                             .addComponent(jScrollPane2))))
                 .addGap(35, 35, 35))
         );
@@ -270,7 +274,7 @@ public class Mensual extends javax.swing.JPanel {
                         .addComponent(jPanel_Registrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel_Informe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel_Añadir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel_Informe1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel_Informe_Entradas_Diarias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -287,6 +291,12 @@ public class Mensual extends javax.swing.JPanel {
 
     private void jPanel_InformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseClicked
         // TODO add your handling code here:
+        InforDMensualRecep f = new InforDMensualRecep();        
+        this.removeAll();
+        this.setLayout(new BorderLayout());
+        this.add(f,BorderLayout.CENTER);
+        this.repaint();
+        this.revalidate(); 
     }//GEN-LAST:event_jPanel_InformeMouseClicked
     
     private void jPanel_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseClicked
@@ -407,17 +417,23 @@ public class Mensual extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTable2MouseClicked
 
-    private void jPanel_Informe1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe1MouseClicked
+    private void jPanel_Informe_Entradas_DiariasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe_Entradas_DiariasMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel_Informe1MouseClicked
+        InforEntradasMensual obj=new InforEntradasMensual();                    
+        this.removeAll();
+        this.setLayout(new BorderLayout());
+        this.add(obj,BorderLayout.CENTER);
+        this.repaint();
+        this.revalidate();
+    }//GEN-LAST:event_jPanel_Informe_Entradas_DiariasMouseClicked
 
-    private void jPanel_Informe1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe1MouseEntered
+    private void jPanel_Informe_Entradas_DiariasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe_Entradas_DiariasMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel_Informe1MouseEntered
+    }//GEN-LAST:event_jPanel_Informe_Entradas_DiariasMouseEntered
 
-    private void jPanel_Informe1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe1MouseExited
+    private void jPanel_Informe_Entradas_DiariasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe_Entradas_DiariasMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel_Informe1MouseExited
+    }//GEN-LAST:event_jPanel_Informe_Entradas_DiariasMouseExited
     
     public void Cargar_Datos()
     {
@@ -471,9 +487,10 @@ public class Mensual extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel_icn_addE;
     private javax.swing.JLabel jLabel_icn_inf;
     private javax.swing.JLabel jLabel_icn_inf1;
+    private javax.swing.JLabel jLabel_icn_inf2;
     private javax.swing.JPanel jPanel_Añadir;
     private javax.swing.JPanel jPanel_Informe;
-    private javax.swing.JPanel jPanel_Informe1;
+    private javax.swing.JPanel jPanel_Informe_Entradas_Diarias;
     private javax.swing.JPanel jPanel_Registrar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
