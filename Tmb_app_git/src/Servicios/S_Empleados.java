@@ -19,8 +19,8 @@ public class S_Empleados {
 
     public S_Empleados() {
     }
-    
-        public ArrayList<Object> LoadInformacionLavadores(Connection conexion) {
+
+    public ArrayList<Object> LoadInformacionLavadores(Connection conexion) {
         ArrayList<Object> resultado_lista = new ArrayList<Object>();
         ArrayList<String> columnas = new ArrayList<String>();
         try {
@@ -44,8 +44,8 @@ public class S_Empleados {
             return resultado_lista;
         }
     }
-        
-        public ArrayList<Object> LoadInformacionRecepcionista(Connection conexion) {
+
+    public ArrayList<Object> LoadInformacionRecepcionista(Connection conexion) {
         ArrayList<Object> resultado_lista = new ArrayList<Object>();
         ArrayList<String> columnas = new ArrayList<String>();
         try {
@@ -67,6 +67,24 @@ public class S_Empleados {
             return resultado_lista;
         } catch (Exception e) {
             return resultado_lista;
+        }
+    }
+
+    public boolean registrarEmpleado(Connection conect, int tipoEmpleado, String nombre, String apellido, String usuario, String contra, String telefono, String documento, int CodigoLavador) {
+        try {
+            CallableStatement callProcedure = conect.prepareCall("{call PRO_REGISTRAR_EMPLEADO(?,?,?,?,?,?,?,?)}");
+            callProcedure.setInt(1, tipoEmpleado);
+            callProcedure.setString(2, nombre);
+            callProcedure.setString(3, apellido);
+            callProcedure.setString(4, usuario);
+            callProcedure.setString(5, contra);
+            callProcedure.setString(6, telefono);
+            callProcedure.setString(7, documento);
+            callProcedure.setInt(8, CodigoLavador);
+            callProcedure.execute();
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 
