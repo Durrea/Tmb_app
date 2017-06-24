@@ -56,7 +56,7 @@ public class ParqueaderoMes {
             ResultSetMetaData columnas_consulta = resultado_consulta.getMetaData();            
             for(int i=0;i<columnas_consulta.getColumnCount();i++)
             {
-                columnas.add(columnas_consulta.getColumnLabel(i+1));
+                columnas.add(columnas_consulta.getColumnLabel(i+1));                
             }
             resultado_lista.add(columnas);
             while(resultado_consulta.next())

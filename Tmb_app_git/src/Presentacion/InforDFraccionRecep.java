@@ -212,8 +212,7 @@ public class InforDFraccionRecep extends javax.swing.JPanel {
 
     private void jPanel_Ag1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag1MouseClicked
         
-        Form_Entradas_Fraccion f = new Form_Entradas_Fraccion();
-        f.idRecep = this.idRecep;
+        Fraccion f = new Fraccion();        
         this.removeAll();
         this.setLayout(new BorderLayout());
         this.add(f,BorderLayout.CENTER);

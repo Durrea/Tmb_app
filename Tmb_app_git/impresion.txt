@@ -2,11 +2,11 @@
                     LA VIRGEN                   
                     800-23232232                
                     Ley 2000 de 2017            
- Placa: UUU34                                   
+ Placa: IOI23                                   
  Tipo de vehiculo: MOTO                         
- Fecha Entrada: 2017-06-20 23:57:01             
- Fecha Salida: 2017-06-20 23:59:31              
- Valor a cobrar: 33.33333206176758              
+ Fecha Entrada: 2017-06-23 21:03:16             
+ Fecha Salida: ---                              
+ Valor a cobrar: ---                            
 ================================================
                                                 
                                                 
