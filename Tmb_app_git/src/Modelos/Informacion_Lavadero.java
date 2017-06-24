@@ -11,6 +11,7 @@ package Modelos;
  */
 public class Informacion_Lavadero {
     
+    int id_lava;
     int lavador_codigo;
     String fecha_lavada;
     String vehiculo_placa;
@@ -20,7 +21,8 @@ public class Informacion_Lavadero {
     float valor_lavada;
     String estado_pago;
 
-    public Informacion_Lavadero(int lavador_codigo, String fecha_lavada, String vehiculo_placa, String vehiculo_tipo, String vehiculo_marca, String tipo_lavada, float valor_lavada, String estado_pago) {
+    public Informacion_Lavadero(int id_lava,int lavador_codigo, String fecha_lavada, String vehiculo_placa, String vehiculo_tipo, String vehiculo_marca, String tipo_lavada, float valor_lavada, String estado_pago) {
+        this.id_lava=id_lava;
         this.lavador_codigo = lavador_codigo;
         this.fecha_lavada = fecha_lavada;
         this.vehiculo_placa = vehiculo_placa;
@@ -31,7 +33,13 @@ public class Informacion_Lavadero {
         this.estado_pago = estado_pago;
     }
 
-    
+    public int getId_lava() {
+        return id_lava;
+    }
+
+    public void setId_lava(int id_lava) {
+        this.id_lava = id_lava;
+    }
     
     public int getLavadorCodigo() {
         return lavador_codigo;

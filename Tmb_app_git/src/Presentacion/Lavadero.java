@@ -137,7 +137,7 @@ public class Lavadero extends javax.swing.JPanel {
         });
         jPanel_CDeuda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_icn_addE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Add_20px.png"))); // NOI18N
+        jLabel_icn_addE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Refund_20px.png"))); // NOI18N
         jPanel_CDeuda.add(jLabel_icn_addE, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 20, 40));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -149,11 +149,11 @@ public class Lavadero extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Codigo Lavador", "Fecha Lavada", "Placa", "Tipo Vehiculo", "Marca", "Tipo Lavada", "Valor Lavada", "Estado Pago", "Acciones"
+                "ID", "Codigo Lavador", "Fecha Lavada", "Placa", "Tipo Vehiculo", "Marca", "Tipo Lavada", "Valor Lavada", "Estado Pago", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -200,20 +200,20 @@ public class Lavadero extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 618, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 610, Short.MAX_VALUE)
                                 .addComponent(jLabel_icn_add1))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(jPanel_CDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel_CDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                             .addComponent(jText_Buscador))))
-                .addGap(35, 35, 35))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,19 +239,24 @@ public class Lavadero extends javax.swing.JPanel {
     
     private void jPanel_CDeudaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CDeudaMouseExited
         // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px.png"));
+        ii = new ImageIcon(getClass().getResource("/Iconos/Refund_20px.png"));
         jLabel_icn_addE.setIcon(ii);
     }//GEN-LAST:event_jPanel_CDeudaMouseExited
 
     private void jPanel_CDeudaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CDeudaMouseEntered
         // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px_1.png"));
+        ii = new ImageIcon(getClass().getResource("/Iconos/Refund_20px_1.png"));
         jLabel_icn_addE.setIcon(ii);
     }//GEN-LAST:event_jPanel_CDeudaMouseEntered
 
     private void jPanel_CDeudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CDeudaMouseClicked
         // TODO add your handling code here:
-       
+        DeudaLavadero d=new DeudaLavadero();
+        this.removeAll();
+        this.setLayout(new BorderLayout());
+        this.add(d,BorderLayout.CENTER);
+        this.repaint();
+        this.revalidate();
     }//GEN-LAST:event_jPanel_CDeudaMouseClicked
 
     private void jPanel_InformeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseExited
@@ -335,9 +340,9 @@ public class Lavadero extends javax.swing.JPanel {
                 ((JButton)value).doClick();
                 JButton boton = (JButton) value;
                 
-                int codLavador = Integer.parseInt(jTable2.getValueAt(rown, 0).toString());
-                String placa = ""+jTable2.getValueAt(rown, 2);
-                float valor_lavada=Float.valueOf(jTable2.getValueAt(rown, 6).toString());
+                int id_lava = Integer.parseInt(jTable2.getValueAt(rown, 0).toString());
+                int codLavador = Integer.parseInt(jTable2.getValueAt(rown, 1).toString());            
+                float valor_lavada=Float.valueOf(jTable2.getValueAt(rown, 7).toString());
                 
                 if(boton.getName().equals("t")){
                      
@@ -357,7 +362,7 @@ public class Lavadero extends javax.swing.JPanel {
                         
                         if(!tipo_pago.equals("")){
                             String resultado=obj.realizarPago(Conexion.obtener(),instancia.getIdentificador(), 
-                                                          codLavador, placa, valor_lavada, tipo_pago);
+                                                          codLavador, id_lava, valor_lavada, tipo_pago);
                             JOptionPane.showMessageDialog(null, resultado);
                             
                             Lavadero l=new Lavadero();
@@ -389,19 +394,23 @@ public class Lavadero extends javax.swing.JPanel {
         
         for(int i=0;i<datos.size();i++)
         {
-            Object [] fila = new Object[9];
-            fila[0] = datos.get(i).getLavadorCodigo();
-            fila[1] = datos.get(i).getFecha_lavada();
-            fila[2] = datos.get(i).getVehiculo_placa();
-            fila[3] = datos.get(i).getVehiculo_tipo();
-            fila[4] = datos.get(i).getVehiculo_marca();
-            fila[5] = datos.get(i).getTipo_lavada();
-            fila[6] = datos.get(i).getValor_lavada();
-            fila[7] = datos.get(i).getEstado_pago();
-            fila[8] = btn_visualizar;
+            Object [] fila = new Object[10];
+            fila[0] = datos.get(i).getId_lava();
+            fila[1] = datos.get(i).getLavadorCodigo();
+            fila[2] = datos.get(i).getFecha_lavada();
+            fila[3] = datos.get(i).getVehiculo_placa();
+            fila[4] = datos.get(i).getVehiculo_tipo();
+            fila[5] = datos.get(i).getVehiculo_marca();
+            fila[6] = datos.get(i).getTipo_lavada();
+            fila[7] = datos.get(i).getValor_lavada();
+            fila[8] = datos.get(i).getEstado_pago();
+            fila[9] = btn_visualizar;
             modelo.addRow(fila);
         }
+        
         this.jTable2.setModel(modelo);
+        this.jTable2.getColumnModel().getColumn(0).setMinWidth(0);
+        this.jTable2.getColumnModel().getColumn(0).setMaxWidth(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
