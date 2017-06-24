@@ -41,7 +41,7 @@ public class Form_Hotel extends javax.swing.JPanel {
         LoadTipo();
         this.habitacion = habitacion;
         servicio = new S_Hotel();
-        //LoadVehiculos();
+        jText_numeroPersonas.setValue(habitacion.getHabitacion_capacidad());
     }
     ImageIcon ii;
     public int idRecep;
@@ -205,7 +205,8 @@ public class Form_Hotel extends javax.swing.JPanel {
         jText_Entrada.setEditor(de);
         add(jText_Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 270, 30));
 
-        jText_numeroPersonas.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        jText_numeroPersonas.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
+        jText_numeroPersonas.setToolTipText("");
         jText_numeroPersonas.setEditor(new javax.swing.JSpinner.NumberEditor(jText_numeroPersonas, ""));
         add(jText_numeroPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 270, 30));
 

@@ -26,7 +26,7 @@ import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 public class ImpresionFacturas {
     
-    public boolean FacturaFraccion(int tipo, int idfrac){
+    public boolean FacturaFraccion(int tipo, String placa){
         // tipo : 0 para entrada en fraccion y 1 para salida 
         boolean resultado;
         Administrador servadmin = new Administrador();
@@ -34,7 +34,7 @@ public class ImpresionFacturas {
         ArrayList<String> encabezado = new ArrayList<String>();
         encabezado = servadmin.EncabezadoRecibos(Conexion.obtener());
         ArrayList<String> ultimoregistro = new ArrayList<String>();
-        ultimoregistro = serparqfraccion.LoadLastRecord(Conexion.obtener(), tipo, idfrac);        
+        ultimoregistro = serparqfraccion.LoadLastRecord(Conexion.obtener(), tipo, placa);        
         int columnas = 48;
         int lineas = 20;
         if(encabezado.size() != 0 && ultimoregistro.size() != 0)

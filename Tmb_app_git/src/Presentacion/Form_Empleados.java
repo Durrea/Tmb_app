@@ -8,8 +8,10 @@ package Presentacion;
 import Servicios.Administrador;
 import Servicios.Conexion;
 import Servicios.ParquaderoFraccion;
+import Servicios.S_Empleados;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -359,22 +361,57 @@ public class Form_Empleados extends javax.swing.JPanel {
 
     private void jPanel_InformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseClicked
         // TODO add your handling code here:
+        Empleados ent = new Empleados();
+        this.removeAll();
+        this.setLayout(new BorderLayout());
+        this.add(ent, BorderLayout.CENTER);
+        this.repaint();
+        this.revalidate();
     }//GEN-LAST:event_jPanel_InformeMouseClicked
 
 
     private void jPanel_AgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseClicked
         // TODO add your handling code here:
-        if (!jText_Nombres.getText().equalsIgnoreCase("")) {
-            ValidadorCadenas val = new ValidadorCadenas();
-            if (val.ValidarCadenasPlaca(jText_Nombres.getText())!=0) {
-                ParquaderoFraccion obj = new ParquaderoFraccion();
-                Sesion instancia = Sesion.getInstanciaSesion();
-                System.out.println(instancia.getIdentificador());
-                String resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Nombres.getText(), (String) TipoEmpleado.getSelectedItem(), instancia.getIdentificador());
-                JOptionPane.showMessageDialog(null, resultado);                                                    
+        if (!jText_Nombres.getText().equalsIgnoreCase("") && !jText_Apellidos.getText().equalsIgnoreCase("") && !jText_Documento.getText().equalsIgnoreCase("") && !jText_Telefono.getText().equalsIgnoreCase("")) {
+            if (TipoEmpleado.getSelectedIndex() == 0) {
+                if (!jText_NombreUsuario.getText().equalsIgnoreCase("") && !jText_Contrasenia.getText().equalsIgnoreCase("")) {
+                    //Se registra la recepcionista
+                    S_Empleados obj = new S_Empleados();
+                    if (obj.registrarEmpleado(Conexion.obtener(), TipoEmpleado.getSelectedIndex(), jText_Nombres.getText(), jText_Apellidos.getText(), jText_NombreUsuario.getText(), jText_Contrasenia.getText(), jText_Telefono.getText(), jText_Documento.getText(), Integer.parseInt("-1"))) {
+                        JOptionPane.showMessageDialog(null, "Registro realizado con exito");
+                        Empleados ent = new Empleados();
+                        this.removeAll();
+                        this.setLayout(new BorderLayout());
+                        this.add(ent, BorderLayout.CENTER);
+                        this.repaint();
+                        this.revalidate();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El registro no ha sido realizado");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Los campos Usuario y Contraseña con necesarios para el registro de una nueva recepcionista");
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Formato incorrecto. Formato para las placas ej: AAA123");
+                if (isNumeric(jText_CodigoLavador.getText())) {
+                    //Se registra el lavador
+                    S_Empleados obj = new S_Empleados();
+                    if (obj.registrarEmpleado(Conexion.obtener(), TipoEmpleado.getSelectedIndex(), jText_Nombres.getText(), jText_Apellidos.getText(), jText_NombreUsuario.getText(), jText_Contrasenia.getText(), jText_Telefono.getText(), jText_Documento.getText(), Integer.parseInt(jText_CodigoLavador.getText()))) {
+                        JOptionPane.showMessageDialog(null, "Registro realizado con exito");
+                        Empleados ent = new Empleados();
+                        this.removeAll();
+                        this.setLayout(new BorderLayout());
+                        this.add(ent, BorderLayout.CENTER);
+                        this.repaint();
+                        this.revalidate();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El registro no ha sido realizado");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "El campo Codigo debe ser numerico");
+                }
+
             }
+
         } else {
             JOptionPane.showMessageDialog(null, "Debe llenar los campos requeridos");
         }
@@ -566,5 +603,18 @@ public class Form_Empleados extends javax.swing.JPanel {
     private void LoadTipo() {
         TipoEmpleado.addItem("Recepcionista");
         TipoEmpleado.addItem("Lavador");
+    }
+
+    public static boolean isNumeric(String s) {
+        try {
+            double y = Double.parseDouble(s);
+            if (y > -1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (NumberFormatException err) {
+            return false;
+        }
     }
 }

@@ -43,9 +43,9 @@ public class Fraccion extends javax.swing.JPanel {
     TableRowSorter filter;
     int rown = -1;
     
-    public Fraccion(ArrayList<Modelos.Informacion_Fraccion> datos) {
+    public Fraccion() {
         initComponents();
-        LoadDataTable(datos);
+        LoadDataTable();
         this.jTable2.setRowHeight(40);
     }
     
@@ -303,39 +303,49 @@ public class Fraccion extends javax.swing.JPanel {
                 ((JButton)value).doClick();
                 JButton boton = (JButton) value;
                 
-                String placa = ""+jTable2.getValueAt(rown, 1);
-                String tipo = ""+jTable2.getValueAt(rown, 2);
-                int idfrac = Integer.parseInt(jTable2.getValueAt(rown, 0).toString());
+                String placa = ""+jTable2.getValueAt(rown, 0);
+                String tipo = ""+jTable2.getValueAt(rown, 1);                
                 if(boton.getName().equals("t")){
                      
                     try{
                         ParquaderoFraccion obj = new ParquaderoFraccion();
-                        Sesion instancia = Sesion.getInstanciaSesion(); 
-                        boolean resultado = obj.CheckOutFraccion(Conexion.obtener(), placa, tipo, instancia.getIdentificador());
-                        if(resultado)
+                        Sesion instancia = Sesion.getInstanciaSesion();
+                        int result =  JOptionPane.showConfirmDialog(this, "¿Desea terminar la estadia de este vehiculo?", "Terminar Recibo",JOptionPane.YES_NO_OPTION);
+                        if (result == 0)
                         {
-                            int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?");                            
-                            if(resultopcion == 0)
+                            boolean resultado = obj.CheckOutFraccion(Conexion.obtener(), placa, tipo, instancia.getIdentificador());
+                            if(resultado)
                             {
-                                ImpresionFacturas impfac = new ImpresionFacturas();
-                                boolean res = impfac.FacturaFraccion(1, idfrac);
-                                if(!res)
+                                int resultopcion = JOptionPane.showConfirmDialog(this, "¿Desea imprimir el recibo correspondiente?","Imprimir Recibo",JOptionPane.YES_NO_OPTION);                            
+                                if(resultopcion == 0)
                                 {
-                                    JOptionPane.showMessageDialog(null, "Error en la impresion");
-                                }
-                            }                            
-                            JOptionPane.showMessageDialog(null, "Se ha registrado la salida");                            
-                            //jTable2.remove(rown);                            
-                            //Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();
-                            //datos.run();
-                            //LoadDataTable(datos.getDatos_fraccion());
-                        }
-                        else
-                        {
-                            JOptionPane.showMessageDialog(null, "Ha ocurrido un error en el registro de la salida");
-                        }
-                        //JOptionPane.showMessageDialog(null, "Recibo Terminado Placa: "+ placa);
-                                           
+                                    ImpresionFacturas impfac = new ImpresionFacturas();
+                                    boolean res = impfac.FacturaFraccion(1, placa);
+                                    if(!res)
+                                    {
+                                        JOptionPane.showMessageDialog(null, "Error en la impresion");
+                                    }                                    
+                                }    
+                                JOptionPane.showMessageDialog(null, "Se ha registrado la salida");
+                                Fraccion f=new Fraccion();
+                                this.removeAll();
+                                this.setLayout(new BorderLayout());
+                                this.add(f,BorderLayout.CENTER);
+                                this.repaint();
+                                this.revalidate();
+                            }
+                            else
+                            {
+                                JOptionPane.showMessageDialog(null, "Ha ocurrido un error en el registro de la salida");
+                                Fraccion f=new Fraccion();
+                                this.removeAll();
+                                this.setLayout(new BorderLayout());
+                                this.add(f,BorderLayout.CENTER);
+                                this.repaint();
+                                this.revalidate();
+                            }
+                        }                                                
+                        //JOptionPane.showMessageDialog(null, "Recibo Terminado Placa: "+ placa);                                           
                     }catch(Exception ex){
                         System.out.println(ex.getMessage());
                     }
@@ -347,27 +357,46 @@ public class Fraccion extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTable2MouseClicked
     
-    public void LoadDataTable(ArrayList<Modelos.Informacion_Fraccion> datos)
+    public void LoadDataTable()
     {
-        jTable2.setDefaultRenderer(Object.class, new RenderTabla());
-        DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
+        jTable2.setDefaultRenderer(Object.class, new RenderTabla());        
         
-        JButton btn_visualizar = new JButton("Terminar Recibo");
-        btn_visualizar.setName("t");
-        
-        for(int i=0;i<datos.size();i++)
+        ParquaderoFraccion obj = new ParquaderoFraccion();
+        ArrayList<Object> datos = new ArrayList();
+        datos = obj.CargaInformacionPorFraccion(Conexion.obtener());
+        if(datos.size() == 0)
         {
-            Object [] fila = new Object[7];
-            fila[0] = datos.get(i).getIdFraccion();
-            fila[1] = datos.get(i).getVehiculo_placa();
-            fila[2] = datos.get(i).getVehiculo_tipo();
-            fila[3] = datos.get(i).getFecha_entrada();
-            fila[4] = datos.get(i).getFecha_salida();
-            fila[5] = datos.get(i).getValor_pagar();
-            fila[6] = btn_visualizar;
-            modelo.addRow(fila);
+            DefaultTableModel modelo = new DefaultTableModel(){
+            public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
+            modelo.addColumn("No hay registros");
         }
-        this.jTable2.setModel(modelo);
+        else
+        {
+            ArrayList<String> columnas = (ArrayList<String>) datos.get(0);
+            DefaultTableModel modelo = new DefaultTableModel(){
+            public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
+            for(int i=0;i<columnas.size();i++)
+            {
+                modelo.addColumn(columnas.get(i));            
+            }
+            modelo.addColumn("ACCIONES");
+            for(int i=1;i<datos.size();i++)
+            {
+                ArrayList<String> lista_info = new ArrayList<String>();                        
+                JButton btn_visualizar_2 = new JButton("Terminar Recibo");
+                btn_visualizar_2.setName("t");
+                btn_visualizar_2.setBounds(0, 0, 60, 30);
+                lista_info = (ArrayList<String>) datos.get(i);
+                Object [] fila = new Object[lista_info.size()+1];
+                for(int j=0;j<lista_info.size();j++)
+                {
+                    fila [j] = lista_info.get(j);
+                }                                  
+                fila[lista_info.size()] = btn_visualizar_2;            
+                modelo.addRow(fila);            
+            }
+            this.jTable2.setModel(modelo);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -164,7 +164,7 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
         costoTotal.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         costoTotal.setForeground(new java.awt.Color(255, 255, 255));
         costoTotal.setText(".");
-        add(costoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 130, -1));
+        add(costoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 329, 130, 20));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -184,7 +184,7 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
         cupoExcedido.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         cupoExcedido.setForeground(new java.awt.Color(255, 255, 255));
         cupoExcedido.setText(".");
-        add(cupoExcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 120, -1));
+        add(cupoExcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 120, 30));
 
         numhabitacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         numhabitacion.setForeground(new java.awt.Color(255, 255, 255));
@@ -199,7 +199,7 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
         capacidadHabitacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         capacidadHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         capacidadHabitacion.setText(".");
-        add(capacidadHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 120, 10));
+        add(capacidadHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 120, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked

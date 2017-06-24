@@ -25,8 +25,6 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-
-
 /**
  *
  * @author Santiago Ortega
@@ -38,22 +36,21 @@ public class TarifaHotel extends javax.swing.JPanel {
      */
     TableRowSorter filter;
     int rown = -1;
+
     public TarifaHotel() {
         initComponents();
         Cargar_Datos();
+        //Ocultar campos del formulario
+        ocultarFormulario();
         this.jTable2.setRowHeight(40);
-        //oculta columna ID
-        jTable2.getColumnModel().getColumn(0).setMaxWidth(0);
-        jTable2.getColumnModel().getColumn(0).setMinWidth(0);
-        jTable2.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
-        jTable2.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
         //editor de caldas
-        jTable2.getColumnModel().getColumn( 1 ).setCellEditor(new MyTableCellEditor("HOTEL","NUMERO_HABITACION"));//Columna Nombre
-        jTable2.getColumnModel().getColumn( 2 ).setCellEditor(new MyTableCellEditor("HOTEL","COSTO_HORA"));//Columna Apellido
-        jTable2.getColumnModel().getColumn( 3 ).setCellEditor(new MyTableCellEditor("HOTEL","COSTO_DIA"));//Columna Edad
+        jTable2.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditor("HOTEL", "NUMERO_HABITACION"));//Columna Nombre
+        jTable2.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditor("HOTEL", "COSTO_HORA"));//Columna Apellido
+        jTable2.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditor("HOTEL", "COSTO_DIA"));//Columna Edad
         //this.jTable2.setEnabled(false);
     }
     ImageIcon ii;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,11 +60,6 @@ public class TarifaHotel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel_Informe = new javax.swing.JPanel();
-        jLabel_icn_inf = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jPanel_Registrar = new javax.swing.JPanel();
         jLabel_icn_add = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -77,42 +69,17 @@ public class TarifaHotel extends javax.swing.JPanel {
         jLabel_icn_add1 = new javax.swing.JLabel();
         jText_Buscador = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
-        jPanel_Añadir = new javax.swing.JPanel();
-        jLabel_icn_addE = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        registrar_habitacion = new javax.swing.JSpinner();
+        jLabel_habitacion = new javax.swing.JLabel();
+        registrar_hora = new javax.swing.JSpinner();
+        jLabel_hora = new javax.swing.JLabel();
+        registrar_dia = new javax.swing.JSpinner();
+        jLabel_dia = new javax.swing.JLabel();
+        jButton_aceptar = new javax.swing.JButton();
+        jButton_cancelar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(36, 47, 65));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jPanel_Informe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel_Informe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel_Informe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel_InformeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_InformeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_InformeMouseExited(evt);
-            }
-        });
-        jPanel_Informe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel_icn_inf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"))); // NOI18N
-        jPanel_Informe.add(jLabel_icn_inf, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 20, 40));
-
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel5.setText("Generar Reporte Entrada");
-        jPanel_Informe.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
-
-        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel_Informe.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel_Informe.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 0, 0, 40));
 
         jPanel_Registrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -133,7 +100,7 @@ public class TarifaHotel extends javax.swing.JPanel {
         jPanel_Registrar.add(jLabel_icn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 20, 40));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel8.setText("Registrar Cliente");
+        jLabel8.setText("Registrar tarifa");
         jPanel_Registrar.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 100, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -186,89 +153,121 @@ public class TarifaHotel extends javax.swing.JPanel {
             }
         });
 
-        jPanel_Añadir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel_Añadir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel_Añadir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel_AñadirMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_AñadirMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_AñadirMouseExited(evt);
+        registrar_habitacion.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        registrar_habitacion.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_habitacion, ""));
+
+        jLabel_habitacion.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel_habitacion.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_habitacion.setText("N° habitación");
+
+        registrar_hora.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
+        registrar_hora.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_hora, ""));
+
+        jLabel_hora.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel_hora.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_hora.setText("Hora");
+
+        registrar_dia.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
+        registrar_dia.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_dia, ""));
+
+        jLabel_dia.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel_dia.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_dia.setText("Día");
+
+        jButton_aceptar.setText("Aceptar");
+        jButton_aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_aceptarActionPerformed(evt);
             }
         });
-        jPanel_Añadir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_icn_addE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Add_20px.png"))); // NOI18N
-        jPanel_Añadir.add(jLabel_icn_addE, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 20, 40));
-
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel9.setText("Añadir Entrada");
-        jPanel_Añadir.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 100, -1));
+        jButton_cancelar.setText("Cancelar");
+        jButton_cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_cancelarMouseClicked(evt);
+            }
+        });
+        jButton_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_cancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel_icn_add1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jText_Buscador, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(jSeparator4)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(jPanel_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE))))
-                .addGap(35, 35, 35))
+                            .addComponent(jText_Buscador)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel_habitacion)
+                                .addComponent(registrar_habitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel_hora)
+                                .addComponent(registrar_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel_dia)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(registrar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton_aceptar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton_cancelar))))))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel_Registrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_Informe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel_Añadir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20)
+                .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jText_Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel_icn_add1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel_habitacion)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(registrar_habitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel_hora)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(registrar_hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel_dia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(registrar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_aceptar)
+                            .addComponent(jButton_cancelar))))
+                .addGap(29, 29, 29))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel_InformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel_InformeMouseClicked
-    
     private void jPanel_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseClicked
         // TODO add your handling code here:
-        RegistroCliente r=new RegistroCliente();
-        this.removeAll();
-        this.setLayout(new BorderLayout());
-        this.add(r,BorderLayout.CENTER);
-        this.repaint();
-        this.revalidate();
-        
+        habilitarFormulario();
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
 
     private void jPanel_RegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseEntered
@@ -283,18 +282,6 @@ public class TarifaHotel extends javax.swing.JPanel {
         jLabel_icn_add.setIcon(ii);
     }//GEN-LAST:event_jPanel_RegistrarMouseExited
 
-    private void jPanel_InformeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseEntered
-        // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Report Card_20px_1.png"));
-        jLabel_icn_inf.setIcon(ii);
-    }//GEN-LAST:event_jPanel_InformeMouseEntered
-
-    private void jPanel_InformeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseExited
-        // TODO add your handling code here:
-         ii = new ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"));
-        jLabel_icn_inf.setIcon(ii);
-    }//GEN-LAST:event_jPanel_InformeMouseExited
-
     private void jText_BuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_BuscadorMouseClicked
         jText_Buscador.setText("");
     }//GEN-LAST:event_jText_BuscadorMouseClicked
@@ -303,34 +290,11 @@ public class TarifaHotel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_BuscadorActionPerformed
 
-    private void jPanel_AñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AñadirMouseClicked
-        // TODO add your handling code here:
-        AddEntradaMensual ent=new AddEntradaMensual();
-        this.removeAll();
-        this.setLayout(new BorderLayout());
-        this.add(ent,BorderLayout.CENTER);
-        this.repaint();
-        this.revalidate();
-    }//GEN-LAST:event_jPanel_AñadirMouseClicked
-
-    private void jPanel_AñadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AñadirMouseEntered
-        // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px_1.png"));
-        jLabel_icn_addE.setIcon(ii);
-    }//GEN-LAST:event_jPanel_AñadirMouseEntered
-
-    private void jPanel_AñadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AñadirMouseExited
-        // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px.png"));
-        jLabel_icn_addE.setIcon(ii);
-    }//GEN-LAST:event_jPanel_AñadirMouseExited
-
     private void jText_BuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_BuscadorKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(Character.isLowerCase(c))
-        {
-            String cadena = (""+c).toUpperCase();
+        if (Character.isLowerCase(c)) {
+            String cadena = ("" + c).toUpperCase();
             c = cadena.charAt(0);
             evt.setKeyChar(c);
         }
@@ -349,59 +313,128 @@ public class TarifaHotel extends javax.swing.JPanel {
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable2MouseClicked
-    
-    public void Cargar_Datos()
-    {
+
+    private void jButton_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_cancelarActionPerformed
+
+    private void jButton_cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_cancelarMouseClicked
+        // TODO add your handling code here:
+        ocultarFormulario();
+    }//GEN-LAST:event_jButton_cancelarMouseClicked
+
+    private void jButton_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_aceptarActionPerformed
+        // TODO add your handling code here:
+        S_Hotel obj = new S_Hotel();
+        if (obj.registrarTarifa(Conexion.obtener(), (int) registrar_habitacion.getValue(), (int) registrar_hora.getValue(), (int) registrar_dia.getValue()) && validarRegistro()) {
+            JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
+            Cargar_Datos();
+            ocultarFormulario();
+        } else {
+            JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
+            registrar_habitacion.setValue(0);
+        }
+    }//GEN-LAST:event_jButton_aceptarActionPerformed
+
+    public void Cargar_Datos() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());
         S_Hotel obj = new S_Hotel();
         ArrayList<Object> lista = new ArrayList<Object>();
         lista = obj.LoadInformacionTarifaHotel(Conexion.obtener());
         ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
-        DefaultTableModel modelo = new DefaultTableModel(){
-        //public boolean isCellEditable(int rowIndex,int columnIndex){return false;}
+        DefaultTableModel modelo = new DefaultTableModel() {
+            public boolean isCellEditable(int fila, int columna) {
+                return columna == 0 || columna == 1 ? false : true;
+            }
+            //public boolean isCellEditable(int rowIndex,int columnIndex){return false;}
         };
-        for(int i=0;i<columnas.size();i++)
-        {
-            modelo.addColumn(columnas.get(i));            
+        for (int i = 0; i < columnas.size(); i++) {
+            modelo.addColumn(columnas.get(i));
         }
         //modelo.addColumn("ACCIONES");
-        
-        for(int i=1;i<lista.size();i++)
-        {
-            ArrayList<String> lista_info = new ArrayList<String>();                        
+
+        for (int i = 1; i < lista.size(); i++) {
+            ArrayList<String> lista_info = new ArrayList<String>();
             //JButton btn_visualizar_2 = new JButton("Realizar Pago");
             //btn_visualizar_2.setName("t");
             //btn_visualizar_2.setBounds(0, 0, 60, 30);
             lista_info = (ArrayList<String>) lista.get(i);
-            Object [] fila = new Object[lista_info.size()+1];
-            for(int j=0;j<lista_info.size();j++)
-            {
-                fila [j] = lista_info.get(j);
-            }                                  
+            Object[] fila = new Object[lista_info.size() + 1];
+            for (int j = 0; j < lista_info.size(); j++) {
+                fila[j] = lista_info.get(j);
+            }
             //fila[lista_info.size()] = btn_visualizar_2;            
-            modelo.addRow(fila);            
+            modelo.addRow(fila);
         }
-        this.jTable2.setModel(modelo);        
+        this.jTable2.setModel(modelo);
+        //oculta columna ID
+        jTable2.getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable2.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable2.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable2.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton jButton_aceptar;
+    private javax.swing.JButton jButton_cancelar;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_dia;
+    private javax.swing.JLabel jLabel_habitacion;
+    private javax.swing.JLabel jLabel_hora;
     private javax.swing.JLabel jLabel_icn_add;
     private javax.swing.JLabel jLabel_icn_add1;
-    private javax.swing.JLabel jLabel_icn_addE;
-    private javax.swing.JLabel jLabel_icn_inf;
-    private javax.swing.JPanel jPanel_Añadir;
-    private javax.swing.JPanel jPanel_Informe;
     private javax.swing.JPanel jPanel_Registrar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jText_Buscador;
+    private javax.swing.JSpinner registrar_dia;
+    private javax.swing.JSpinner registrar_habitacion;
+    private javax.swing.JSpinner registrar_hora;
     // End of variables declaration//GEN-END:variables
-    
+
+    private void ocultarFormulario() {
+        jLabel_dia.setVisible(false);
+        jLabel_hora.setVisible(false);
+        jLabel_habitacion.setVisible(false);
+        registrar_dia.setVisible(false);
+        registrar_hora.setVisible(false);
+        registrar_habitacion.setVisible(false);
+        jButton_aceptar.setVisible(false);
+        jButton_cancelar.setVisible(false);
+        registrar_dia.setValue(0);
+        registrar_hora.setValue(0);
+        registrar_habitacion.setValue(0);
+        
+    }
+
+    private void habilitarFormulario() {
+        jLabel_dia.setVisible(true);
+        jLabel_hora.setVisible(true);
+        jLabel_habitacion.setVisible(true);
+        registrar_dia.setVisible(true);
+        registrar_hora.setVisible(true);
+        registrar_habitacion.setVisible(true);
+        jButton_aceptar.setVisible(true);
+        jButton_cancelar.setVisible(true);
+    }
+
+    public static boolean validarNum(int n1, int n2) {
+        if (n1 % n2 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean validarRegistro() {
+        if (validarNum((int) registrar_dia.getValue(), 50) && validarNum((int) registrar_hora.getValue(), 50)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

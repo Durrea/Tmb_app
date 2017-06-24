@@ -56,7 +56,7 @@ public class ParqueaderoMes {
             ResultSetMetaData columnas_consulta = resultado_consulta.getMetaData();            
             for(int i=0;i<columnas_consulta.getColumnCount();i++)
             {
-                columnas.add(columnas_consulta.getColumnLabel(i+1));
+                columnas.add(columnas_consulta.getColumnLabel(i+1));                
             }
             resultado_lista.add(columnas);
             while(resultado_consulta.next())
@@ -160,5 +160,74 @@ public static boolean updateTarifa(Connection conect, String string, String ID) 
             resultado = e.getMessage();
         }
         return resultado;
+    }
+
+    public boolean registrarTarifa(Connection conect, String tipoV, int costoHora, int costoDia, int costoMes) {
+        try {
+            CallableStatement callProcedure = conect.prepareCall("{call PRO_REGISTRAR_TARIFA_PARQUEADERO(?,?,?,?)}");
+            callProcedure.setString(1,tipoV);
+            callProcedure.setFloat(2, costoMes);
+            callProcedure.setFloat(3, costoDia);
+            callProcedure.setFloat(4, costoHora);
+            callProcedure.execute();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public ArrayList<String> InformeEntradasMensual(Connection conexion,String placa, String fecha)
+    {
+        ArrayList<String> resultado;
+        try
+        {
+            resultado = new ArrayList();
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORME_ENTRADAS_MENSUAL(?,?)}");
+            callProcedure.setString(1, placa);
+            callProcedure.setString(2, fecha);
+            callProcedure.execute();
+            ResultSet rs = callProcedure.getResultSet();
+            while(rs.next())
+            {
+                resultado.add(rs.getString(1));
+            }
+            System.out.println("Try");
+            
+        }catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+            resultado = new ArrayList();            
+        }
+        return resultado;
+    }
+    public ArrayList<Object> CargarInformacionPorRecepcionista(Connection conexion, String fecha, int idrecep)
+    {
+        ArrayList<Object> resultado_lista;
+        ArrayList<String> columnas = new ArrayList<String>();
+        try
+        {
+            resultado_lista = new ArrayList();
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_MENSUALIDAD_RECEP(?,?)}");
+            callProcedure.setString(1, fecha);
+            callProcedure.setString(2, Integer.toString(idrecep));
+            callProcedure.execute();
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+            ResultSetMetaData columnas_consulta = resultado_consulta.getMetaData();
+            for (int i = 0; i < columnas_consulta.getColumnCount(); i++) {
+                columnas.add(columnas_consulta.getColumnLabel(i + 1));
+            }
+            resultado_lista.add(columnas);
+            while (resultado_consulta.next()) {
+                ArrayList<String> fila = new ArrayList<String>();
+                for (int i = 0; i < columnas_consulta.getColumnCount(); i++) {
+                    fila.add(resultado_consulta.getString(i + 1));
+                }
+                resultado_lista.add(fila);
+            }
+            
+        }catch(Exception e)
+        {
+            resultado_lista = new ArrayList();
+        }
+        return resultado_lista;
     }
 }
