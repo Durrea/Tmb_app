@@ -186,10 +186,8 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
-        // TODO add your handling code here:
-        Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();
-        datos.run();
-        Fraccion f=new Fraccion(datos.getDatos_fraccion());
+        // TODO add your handling code here:        
+        Fraccion f=new Fraccion();
         this.removeAll();
         this.setLayout(new BorderLayout());
         this.add(f,BorderLayout.CENTER);
@@ -220,15 +218,13 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
                         if(resultopcion == 0)
                         {
                             ImpresionFacturas impfac = new ImpresionFacturas();
-                            boolean res = impfac.FacturaFraccion(0, -1);
+                            boolean res = impfac.FacturaFraccion(0, jText_Placa.getText());
                             if(!res)
                             {
                                 JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la impresión");
                             }
-                        }                                                                
-                        Cargue_Datos_Fraccion datos = new Cargue_Datos_Fraccion();
-                        datos.run();
-                        Fraccion f=new Fraccion(datos.getDatos_fraccion());
+                        }                                                                                        
+                        Fraccion f=new Fraccion();
                         this.removeAll();
                         this.setLayout(new BorderLayout());
                         this.add(f,BorderLayout.CENTER);
