@@ -283,7 +283,7 @@ public class Fraccion extends javax.swing.JPanel {
                 String cadena = (jText_Buscador.getText());
                 jText_Buscador.setText(cadena);
                 repaint();
-                filter.setRowFilter(RowFilter.regexFilter(jText_Buscador.getText(), 1));
+                filter.setRowFilter(RowFilter.regexFilter(jText_Buscador.getText(), 0));
             }
         });
         filter = new TableRowSorter(this.jTable2.getModel());
