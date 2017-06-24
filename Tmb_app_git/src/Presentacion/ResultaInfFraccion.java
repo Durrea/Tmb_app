@@ -185,33 +185,32 @@ public class ResultaInfFraccion extends javax.swing.JPanel {
         ArrayList<Informacion_Fraccion> inforecep = new ArrayList<Informacion_Fraccion>();
         listarecep = objadmin.GetInfoRecepcionista(Conexion.obtener());
         this.jLabel3.setText("Fecha: " + fecha);
-        for (int i = 0; i < listarecep.size(); i++) {
-            JLabel nombrerecepcionista = new JLabel();
-            nombrerecepcionista.setText("Recepcionista: " + listarecep.get(i).getRecepcionista_nombres() + " " + listarecep.get(i).getRecepcionista_apellidos());
-            nombrerecepcionista.setForeground(Color.WHITE);
-            nombrerecepcionista.setFont(new java.awt.Font("Century Gothic", 1, 14));
-            JPanel panel_title = new JPanel();
-            GridLayout layout = new GridLayout();
-            layout.setColumns(1);
-            layout.setRows(0);
-            panel_title.setLayout(layout);
-
-            //panel_title.add(nombrerecepcionista);
-            //this.jPanel2.add(nombrerecepcionista);
-            TitledBorder border = BorderFactory.createTitledBorder("Recepcionista: " + listarecep.get(i).getRecepcionista_nombres() + " " + listarecep.get(i).getRecepcionista_apellidos());
-            border.setTitleColor(Color.WHITE);
-            panel_title.setBorder(border);
-            //JPanel panel_cuerpo = new JPanel();
+        for (int i = 0; i < listarecep.size(); i++) {                        
             inforecep = objfraccion.LoadInfoPerRecepcionista(Conexion.obtener(), fecha, listarecep.get(i).getIdRecepcionista());
-            JTable tabla;
-            tabla = BuildTable(inforecep);
-            JScrollPane scroll = new JScrollPane(tabla);
-            panel_title.add(scroll);
-            //this.jPanel2.add(panel_title);
-            panel_title.setBackground(new Color(36, 47, 65));
-            //panel_cuerpo.add(scroll);
-            this.jPanel2.add(panel_title);
-            //this.jPanel2.add(scroll);
+            if(inforecep.size() != 0)
+            {
+                JPanel panel_title = new JPanel();
+                GridLayout layout = new GridLayout();
+                layout.setColumns(1);
+                layout.setRows(0);
+                panel_title.setLayout(layout);
+
+                //panel_title.add(nombrerecepcionista);
+                //this.jPanel2.add(nombrerecepcionista);
+                TitledBorder border = BorderFactory.createTitledBorder("Recepcionista: " + listarecep.get(i).getRecepcionista_nombres() + " " + listarecep.get(i).getRecepcionista_apellidos());
+                border.setTitleColor(Color.WHITE);
+                panel_title.setBorder(border);
+                //JPanel panel_cuerpo = new JPanel();
+                JTable tabla;
+                tabla = BuildTable(inforecep);
+                JScrollPane scroll = new JScrollPane(tabla);
+                panel_title.add(scroll);
+                //this.jPanel2.add(panel_title);
+                panel_title.setBackground(new Color(36, 47, 65));
+                //panel_cuerpo.add(scroll);
+                this.jPanel2.add(panel_title);
+                //this.jPanel2.add(scroll);
+            }            
         }
         this.jPanel2.updateUI();
     }

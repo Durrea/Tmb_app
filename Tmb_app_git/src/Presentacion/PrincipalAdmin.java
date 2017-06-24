@@ -538,6 +538,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void jPanel_InfmsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InfmsMouseClicked
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jPanel_InfmsMouseClicked
 
     private void jPanel_InfmsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InfmsMouseEntered

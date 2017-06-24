@@ -203,6 +203,7 @@ public class SLavadero {
     }
     
 
+
     public float loadDeuda(Connection conexion) {
         
         float valor = 0;
@@ -277,5 +278,7 @@ public class SLavadero {
             return false;
         }
     }
+
+
 
 }
