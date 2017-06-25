@@ -539,6 +539,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void jPanel_InfmsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InfmsMouseClicked
         // TODO add your handling code here:
+        Informes e = new Informes();
+        jPanel_Principal.removeAll();
+        jPanel_Principal.setLayout(new BorderLayout());
+        jPanel_Principal.add(e, BorderLayout.CENTER);
+        jPanel_Principal.repaint();
+        jPanel_Principal.revalidate();
         
     }//GEN-LAST:event_jPanel_InfmsMouseClicked
 
