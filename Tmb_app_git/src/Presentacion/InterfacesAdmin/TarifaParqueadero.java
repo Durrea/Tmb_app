@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentacion;
+package Presentacion.InterfacesAdmin;
 
+import Presentacion.*;
 import Modelos.Informacion_Total_Mensual;
 import Servicios.Conexion;
 import Servicios.ImpresionFacturas;
 import Servicios.ParquaderoFraccion;
 import Servicios.ParqueaderoMes;
-import Servicios.SLavadero;
 import Servicios.S_Hotel;
 import Servicios.Sesion;
 import java.awt.BorderLayout;
@@ -30,7 +30,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author Santiago Ortega
  */
-public class TarifaLavadero extends javax.swing.JPanel {
+public class TarifaParqueadero extends javax.swing.JPanel {
 
     /**
      * Creates new form Fraccion
@@ -38,16 +38,17 @@ public class TarifaLavadero extends javax.swing.JPanel {
     TableRowSorter filter;
     int rown = -1;
 
-    public TarifaLavadero() {
+    public TarifaParqueadero() {
         initComponents();
         Cargar_Datos();
         //Ocultar campos del formulario
         ocultarFormulario();
         this.jTable2.setRowHeight(40);
         //editor de caldas
-        jTable2.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditor("LAVADERO", "TIPO_VEHICULO"));
-        jTable2.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditor("LAVADERO", "VALOR_LAVADA"));
-        jTable2.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditor("LAVADERO", "TIPO_LAVADA"));
+        jTable2.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditor("PARQUEADERO", "TIPO_VEHICULO"));
+        jTable2.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditor("PARQUEADERO", "VALOR_HORA"));
+        jTable2.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditor("PARQUEADERO", "VALOR_DIA"));
+        jTable2.getColumnModel().getColumn(4).setCellEditor(new MyTableCellEditor("PARQUEADERO", "VALOR_MES"));
         //this.jTable2.setEnabled(false);
     }
     ImageIcon ii;
@@ -70,14 +71,16 @@ public class TarifaLavadero extends javax.swing.JPanel {
         jLabel_icn_add1 = new javax.swing.JLabel();
         jText_Buscador = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
-        jLabel_tipoV = new javax.swing.JLabel();
-        jLabel_valor = new javax.swing.JLabel();
-        registrar_valor = new javax.swing.JSpinner();
-        jLabel_tipoL = new javax.swing.JLabel();
+        jLabel_TipoV = new javax.swing.JLabel();
+        registrar_mes = new javax.swing.JSpinner();
+        jLabel_Dia = new javax.swing.JLabel();
+        registrar_dia = new javax.swing.JSpinner();
+        jLabel_Hora = new javax.swing.JLabel();
+        registrar_hora = new javax.swing.JSpinner();
         jButton_aceptar = new javax.swing.JButton();
         jButton_cancelar = new javax.swing.JButton();
         registrar_tipoV = new javax.swing.JTextField();
-        registrar_tipoL = new javax.swing.JTextField();
+        jLabel_Mes = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -154,22 +157,33 @@ public class TarifaLavadero extends javax.swing.JPanel {
             }
         });
 
-        jLabel_tipoV.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jLabel_tipoV.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_tipoV.setText("Tipo Vehiculo");
+        jLabel_TipoV.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel_TipoV.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_TipoV.setText("Tipo Vehiculo");
 
-        jLabel_valor.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jLabel_valor.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_valor.setText("Valor lavada");
+        registrar_mes.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
+        registrar_mes.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_mes, ""));
 
-        registrar_valor.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
-        registrar_valor.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_valor, ""));
+        jLabel_Dia.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel_Dia.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Dia.setText("Dia");
 
-        jLabel_tipoL.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jLabel_tipoL.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_tipoL.setText("Tipo lavada");
+        registrar_dia.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
+        registrar_dia.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_dia, ""));
+
+        jLabel_Hora.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel_Hora.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Hora.setText("Hora");
+
+        registrar_hora.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
+        registrar_hora.setEditor(new javax.swing.JSpinner.NumberEditor(registrar_hora, ""));
 
         jButton_aceptar.setText("Aceptar");
+        jButton_aceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_aceptarMouseClicked(evt);
+            }
+        });
         jButton_aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_aceptarActionPerformed(evt);
@@ -194,6 +208,10 @@ public class TarifaLavadero extends javax.swing.JPanel {
             }
         });
 
+        jLabel_Mes.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel_Mes.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Mes.setText("Mes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -210,32 +228,32 @@ public class TarifaLavadero extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel_tipoV)
-                                                .addGap(54, 54, 54))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(registrar_tipoV, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel_valor)
-                                            .addComponent(registrar_valor, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(registrar_tipoV, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel_TipoV))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel_tipoL)
+                                            .addComponent(jLabel_Mes)
+                                            .addComponent(registrar_mes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel_Dia)
+                                            .addComponent(registrar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel_Hora)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(2, 2, 2)
-                                                .addComponent(registrar_tipoL, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(registrar_hora, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jButton_aceptar)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton_cancelar))))
-                                    .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                                .addComponent(jButton_cancelar)))))
+                                .addGap(0, 61, Short.MAX_VALUE)))))
                 .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
@@ -245,41 +263,43 @@ public class TarifaLavadero extends javax.swing.JPanel {
                 .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_icn_add1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jText_Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_icn_add1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel_tipoV)
-                            .addGap(26, 26, 26))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel_valor)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel_TipoV)
+                                .addComponent(jLabel_Mes))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(registrar_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(registrar_tipoV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel_tipoL)
+                                .addComponent(registrar_mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(registrar_tipoV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel_Dia)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(registrar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel_Hora)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(registrar_hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton_aceptar)
-                            .addComponent(jButton_cancelar)
-                            .addComponent(registrar_tipoL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                            .addComponent(jButton_cancelar))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseClicked
         // TODO add your handling code here:
         habilitarFormulario();
-
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
 
     private void jPanel_RegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseEntered
@@ -339,34 +359,43 @@ public class TarifaLavadero extends javax.swing.JPanel {
         ocultarFormulario();
     }//GEN-LAST:event_jButton_cancelarMouseClicked
 
+    private void jButton_aceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_aceptarMouseClicked
+        // TODO add your handling code here:
+        habilitarFormulario();
+    }//GEN-LAST:event_jButton_aceptarMouseClicked
+
     private void jButton_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_aceptarActionPerformed
         // TODO add your handling code here:
-        SLavadero obj = new SLavadero();
-        if (obj.registrarTarifa(Conexion.obtener(), registrar_tipoV.getText().toUpperCase(), (int) registrar_valor.getValue(), registrar_tipoL.getText().toUpperCase()) && validarRegistro()) {
+        ParqueaderoMes obj = new ParqueaderoMes();
+        if(obj.registrarTarifa(Conexion.obtener(), registrar_tipoV.getText().toUpperCase(),(int)registrar_mes.getValue(),(int)registrar_dia.getValue(),(int)registrar_hora.getValue()) && validarRegistro())
+        {
             JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
             Cargar_Datos();
             ocultarFormulario();
-        } else {
+        }
+        else
+        {
             JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
-            registrar_tipoL.setText("");
             registrar_tipoV.setText("");
         }
     }//GEN-LAST:event_jButton_aceptarActionPerformed
 
     public void Cargar_Datos() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());
-        SLavadero obj = new SLavadero();
+        ParqueaderoMes obj = new ParqueaderoMes();
         ArrayList<Object> lista = new ArrayList<Object>();
-        lista = obj.LoadInformacionTarifaLavadero(Conexion.obtener());
+        lista = obj.LoadInformacionTarifaParqueadero(Conexion.obtener());
         ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
         DefaultTableModel modelo = new DefaultTableModel() {
             public boolean isCellEditable(int fila, int columna) {
-                return columna == 0 || columna == 1 || columna == 3 ? false : true;
+                return columna == 0 || columna == 1 ? false : true;
             }
         };
+
         for (int i = 0; i < columnas.size(); i++) {
             modelo.addColumn(columnas.get(i));
         }
+
         for (int i = 1; i < lista.size(); i++) {
             ArrayList<String> lista_info = new ArrayList<String>();
             lista_info = (ArrayList<String>) lista.get(i);
@@ -388,48 +417,54 @@ public class TarifaLavadero extends javax.swing.JPanel {
     private javax.swing.JButton jButton_aceptar;
     private javax.swing.JButton jButton_cancelar;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel_Dia;
+    private javax.swing.JLabel jLabel_Hora;
+    private javax.swing.JLabel jLabel_Mes;
+    private javax.swing.JLabel jLabel_TipoV;
     private javax.swing.JLabel jLabel_icn_add;
     private javax.swing.JLabel jLabel_icn_add1;
-    private javax.swing.JLabel jLabel_tipoL;
-    private javax.swing.JLabel jLabel_tipoV;
-    private javax.swing.JLabel jLabel_valor;
     private javax.swing.JPanel jPanel_Registrar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jText_Buscador;
-    private javax.swing.JTextField registrar_tipoL;
+    private javax.swing.JSpinner registrar_dia;
+    private javax.swing.JSpinner registrar_hora;
+    private javax.swing.JSpinner registrar_mes;
     private javax.swing.JTextField registrar_tipoV;
-    private javax.swing.JSpinner registrar_valor;
     // End of variables declaration//GEN-END:variables
 
-    private void ocultarFormulario() {
-        jLabel_tipoL.setVisible(false);
-        jLabel_tipoV.setVisible(false);
-        jLabel_valor.setVisible(false);
-        registrar_tipoL.setVisible(false);
+     private void ocultarFormulario() {
+        jLabel_Dia.setVisible(false);
+        jLabel_Hora.setVisible(false);
+        jLabel_Mes.setVisible(false);
+        jLabel_TipoV.setVisible(false);
+        registrar_dia.setVisible(false);
+        registrar_hora.setVisible(false);
+        registrar_mes.setVisible(false);
         registrar_tipoV.setVisible(false);
-        registrar_valor.setVisible(false);
         jButton_aceptar.setVisible(false);
         jButton_cancelar.setVisible(false);
-        registrar_tipoL.setText("");
+        registrar_dia.setValue(0);
+        registrar_hora.setValue(0);
+        registrar_mes.setValue(0);
         registrar_tipoV.setText("");
-        registrar_valor.setValue(0);
-
     }
 
     private void habilitarFormulario() {
-        jLabel_tipoL.setVisible(true);
-        jLabel_tipoV.setVisible(true);
-        jLabel_valor.setVisible(true);
-        registrar_tipoL.setVisible(true);
+        jLabel_Dia.setVisible(true);
+        jLabel_Hora.setVisible(true);
+        jLabel_Mes.setVisible(true);
+        jLabel_TipoV.setVisible(true);
+        registrar_dia.setVisible(true);
+        registrar_hora.setVisible(true);
+        registrar_mes.setVisible(true);
         registrar_tipoV.setVisible(true);
-        registrar_valor.setVisible(true);
         jButton_aceptar.setVisible(true);
         jButton_cancelar.setVisible(true);
     }
-
+    
     public static boolean validarNum(int n1, int n2) {
         if (n1 % n2 == 0) {
             return true;
@@ -439,7 +474,7 @@ public class TarifaLavadero extends javax.swing.JPanel {
     }
 
     private boolean validarRegistro() {
-        if (validarNum((int) registrar_valor.getValue(), 50)) {
+        if (validarNum((int) registrar_dia.getValue(), 50) && validarNum((int) registrar_hora.getValue(), 50) && validarNum((int) registrar_mes.getValue(), 50)) {
             return true;
         } else {
             return false;
