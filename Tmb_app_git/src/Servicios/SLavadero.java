@@ -171,7 +171,7 @@ public class SLavadero {
                 String estado_pago=resultado_consulta.getString(9);
                                
                 Modelos.Informacion_Lavadero obj_info = new Modelos.Informacion_Lavadero
-                       (id_lava,lavador_codigo,fecha_lavada,vehiculo_placa,vehiculo_tipo,vehiculo_marca,tipo_lavada,valor_lavada,estado_pago);
+                       (id_lava,lavador_codigo,fecha_lavada,vehiculo_placa,vehiculo_tipo,vehiculo_marca,tipo_lavada,valor_lavada,0,estado_pago);
                 lst_lavadero.add(obj_info);
             }
             
@@ -278,7 +278,58 @@ public class SLavadero {
             return false;
         }
     }
+    
+    public ArrayList<Modelos.Informacion_Lavadero> loadInforme(Connection conexion,int lavador_codigo,String fecha) 
+    {
+        ArrayList<Modelos.Informacion_Lavadero> lst_lavadero= new ArrayList<>();
+        
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_INFORME_LAVADERO(?,?)}");
+            callProcedure.setString(1, Integer.toString(lavador_codigo));
+            callProcedure.setString(2, fecha);
+            callProcedure.execute();
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+            while(resultado_consulta.next())
+            {
+                String vehiculo_placa = resultado_consulta.getString(1);
+                String tipo_lavada = resultado_consulta.getString(2);
+                float valor_pago=Float.valueOf(resultado_consulta.getString(3));
+                               
+                Modelos.Informacion_Lavadero obj_info = new Modelos.Informacion_Lavadero
+                       (0,0,"",vehiculo_placa,"","",tipo_lavada,0,valor_pago,"");
+                lst_lavadero.add(obj_info);
+            }
+            
+        }catch(Exception e)
+        {
+            System.out.println(e.getLocalizedMessage());
+        }
+        return lst_lavadero;
+    }      
+    
+    public ArrayList<Modelos.Lavador> loadLavador(Connection conexion,int lavador_codigo) {
+        
+        ArrayList<Modelos.Lavador> lst_lavador= new ArrayList<>();
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_NAMES_LAVADOR(?)}");
+            callProcedure.setString(1, Integer.toString(lavador_codigo));
+            callProcedure.execute();
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+          
+            while(resultado_consulta.next())
+            {
+                String lavador_nombre = resultado_consulta.getString(1);
+                String lavador_apellido = resultado_consulta.getString(2);
 
-
+                Modelos.Lavador obj_info = new Modelos.Lavador(0,0,lavador_nombre,lavador_apellido);
+                lst_lavador.add(obj_info);
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return lst_lavador;
+    }
 
 }

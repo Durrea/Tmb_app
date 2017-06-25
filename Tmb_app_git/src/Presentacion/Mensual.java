@@ -261,9 +261,9 @@ public class Mensual extends javax.swing.JPanel {
                                 .addComponent(jPanel_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel_Informe_Entradas_Diarias, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 69, Short.MAX_VALUE))
+                                .addGap(0, 61, Short.MAX_VALUE))
                             .addComponent(jScrollPane2))))
-                .addGap(35, 35, 35))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

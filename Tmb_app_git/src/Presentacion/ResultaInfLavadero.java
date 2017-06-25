@@ -6,6 +6,8 @@
 package Presentacion;
 
 import Modelos.Informacion_Deuda_Lavadero;
+import Modelos.Informacion_Lavadero;
+import Modelos.Lavador;
 import Servicios.Conexion;
 import Servicios.SLavadero;
 import Servicios.Sesion;
@@ -26,18 +28,21 @@ import javax.swing.table.TableRowSorter;
  *
  * @author Santiago Ortega
  */
-public class DeudaLavadero extends javax.swing.JPanel {
+public class ResultaInfLavadero extends javax.swing.JPanel {
 
     /**
      * Creates new form Fraccion
      */
     TableRowSorter filter;
     int rown = -1;
+    String fecha;
+    int lavador_codigo;
     
-    public DeudaLavadero() {
+    public ResultaInfLavadero(int lavador_codigo,String fecha) {
         initComponents();
-        LoadDataTable();
-        LoadDeuda();
+        this.fecha = fecha;
+        this.lavador_codigo=lavador_codigo;
+        LoadDataTable(lavador_codigo,fecha);
     }
     ImageIcon ii;
     /**
@@ -56,10 +61,11 @@ public class DeudaLavadero extends javax.swing.JPanel {
         jTable2 = new javax.swing.JTable();
         jText_Buscador = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel_TotalDeuda = new javax.swing.JLabel();
+        jLabel_Fecha = new javax.swing.JLabel();
         jPanel_Cancelar = new javax.swing.JPanel();
         jLabel_icn_canc = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel_Lavador = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
 
@@ -70,11 +76,11 @@ public class DeudaLavadero extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Placa", "Tipo Vehiculo", "Valor Deuda", "Acciones"
+                "Placa", "Tipo Lavada", "Valor Pago"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -82,11 +88,6 @@ public class DeudaLavadero extends javax.swing.JPanel {
             }
         });
         jTable2.setRowHeight(40);
-        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable2MouseClicked(evt);
-            }
-        });
         jScrollPane2.setViewportView(jTable2);
 
         jText_Buscador.setBackground(new java.awt.Color(36, 47, 65));
@@ -113,11 +114,11 @@ public class DeudaLavadero extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Cancelar Deuda Negocio");
+        jLabel4.setText("Resultado Reporte");
 
-        jLabel_TotalDeuda.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel_TotalDeuda.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_TotalDeuda.setText(" Total Deuda :");
+        jLabel_Fecha.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel_Fecha.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Fecha.setText(" Fecha :");
 
         jPanel_Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -141,41 +142,47 @@ public class DeudaLavadero extends javax.swing.JPanel {
         jLabel9.setText("Volver");
         jPanel_Cancelar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 20));
 
+        jLabel_Lavador.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel_Lavador.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Lavador.setText(" Lavador :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel_icn_add1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jText_Buscador, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(jSeparator4)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_TotalDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel_icn_add1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jText_Buscador, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                    .addComponent(jSeparator4)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(43, 43, 43))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel_Lavador, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                            .addComponent(jLabel_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jLabel_TotalDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel_Lavador)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel_Fecha)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
@@ -185,9 +192,9 @@ public class DeudaLavadero extends javax.swing.JPanel {
                     .addComponent(jLabel_icn_add1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(40, 40, 40)
                 .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -242,84 +249,28 @@ public class DeudaLavadero extends javax.swing.JPanel {
         jLabel_icn_canc.setIcon(ii);
     }//GEN-LAST:event_jPanel_CancelarMouseExited
 
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-        // TODO add your handling code here:
-        rown = jTable2.rowAtPoint(evt.getPoint());
-
-        int column = jTable2.getColumnModel().getColumnIndexAtX(evt.getX());
-        int row = evt.getY()/jTable2.getRowHeight();
-        
-        if(row < jTable2.getRowCount() && row >= 0 && column < jTable2.getColumnCount() && column >= 0){
-            Object value = jTable2.getValueAt(row, column);
-            if(value instanceof JButton){
-                ((JButton)value).doClick();
-                JButton boton = (JButton) value;
-                
-                String placa = jTable2.getValueAt(rown, 0).toString();
-                             
-                if(boton.getName().equals("t")){
-                     
-                    try{
-                        SLavadero obj = new SLavadero();
-                        Sesion instancia = Sesion.getInstanciaSesion(); 
-                       
-                        int res= JOptionPane.showConfirmDialog(null, "¿Desea cancelar la Deuda?");
-                        
-                        if(res == 0)
-                        {   
-                            String resultado=obj.cancelarDeuda(Conexion.obtener(),instancia.getIdentificador(),placa);
-                            JOptionPane.showMessageDialog(null, resultado);
-
-                            DeudaLavadero d=new DeudaLavadero();
-                            this.removeAll();
-                            this.setLayout(new BorderLayout());
-                            this.add(d,BorderLayout.CENTER);
-                            this.repaint();
-                            this.revalidate();
-                        }
-                       
-                    }catch(Exception ex){
-                        System.out.println(ex.getMessage());
-                    }   
-                }
-                
-            }
-        }
-    }//GEN-LAST:event_jTable2MouseClicked
-
-    public final void LoadDataTable()
+    public final void LoadDataTable(int lavador_codigo,String fecha)
     {
         SLavadero obj = new SLavadero();   
-        ArrayList<Informacion_Deuda_Lavadero> datos=obj.loadInformacionDeuda(Conexion.obtener());
-        jTable2.setDefaultRenderer(Object.class, new RenderTabla());
+        ArrayList<Lavador> lavador=obj.loadLavador(Conexion.obtener(),lavador_codigo);
+        jLabel_Lavador.setText("Lavador: " +lavador.get(0).getLavador_nombre()+" "+lavador.get(0).getLavador_apellido());
+        jLabel_Fecha.setText("Fecha: " +fecha);
+        ArrayList<Informacion_Lavadero> datos=obj.loadInforme(Conexion.obtener(),lavador_codigo,fecha);
         DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
-        
-        JButton btn_visualizar = new JButton("Cancelar Deuda");
-        btn_visualizar.setName("t");
-        
+      
         for(int i=0;i<datos.size();i++)
         {
-            Object [] fila = new Object[4];
+            Object [] fila = new Object[3];
             fila[0] = datos.get(i).getVehiculo_placa();
-            fila[1] = datos.get(i).getVehiculo_tipo();
-            fila[2] = datos.get(i).getValor_deuda();
-            fila[3] = btn_visualizar;
+            fila[1] = datos.get(i).getTipo_lavada();
+            fila[2] = datos.get(i).getValor_pago();
             modelo.addRow(fila);
         }
         this.jTable2.setModel(modelo);
+        
     }
     
-    public final void LoadDeuda()
-    {
-        SLavadero obj = new SLavadero();
-        float valor=obj.loadDeuda(Conexion.obtener());
-        if(valor!=0){
-            jLabel_TotalDeuda.setText("Total Deuda: " +Float.toString(valor));
-        }else{
-            JOptionPane.showMessageDialog(null, "Actualmente no existe ninguna Deuda con el Negocio");
-        }  
-    }
-    
+   
     public final String validar(){
         
         String res="Por favor Ingresar:";
@@ -331,7 +282,8 @@ public class DeudaLavadero extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabel_TotalDeuda;
+    private javax.swing.JLabel jLabel_Fecha;
+    private javax.swing.JLabel jLabel_Lavador;
     private javax.swing.JLabel jLabel_icn_add1;
     private javax.swing.JLabel jLabel_icn_canc;
     private javax.swing.JPanel jPanel_Cancelar;
