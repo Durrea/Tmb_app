@@ -165,13 +165,13 @@ public class SLavadero {
                 String fecha_lavada= resultado_consulta.getString(3);
                 String vehiculo_placa = resultado_consulta.getString(4);
                 String vehiculo_tipo = resultado_consulta.getString(5);
-                String vehiculo_marca=resultado_consulta.getString(6);
-                String tipo_lavada=resultado_consulta.getString(7);
-                float valor_lavada=Float.valueOf(resultado_consulta.getString(8));
+                String tipo_lavada=resultado_consulta.getString(6);
+                float valor_lavada=Float.valueOf(resultado_consulta.getString(7));
+                float valor_pago=Float.valueOf(resultado_consulta.getString(8));
                 String estado_pago=resultado_consulta.getString(9);
                                
                 Modelos.Informacion_Lavadero obj_info = new Modelos.Informacion_Lavadero
-                       (id_lava,lavador_codigo,fecha_lavada,vehiculo_placa,vehiculo_tipo,vehiculo_marca,tipo_lavada,valor_lavada,0,estado_pago);
+                       (id_lava,lavador_codigo,fecha_lavada,vehiculo_placa,vehiculo_tipo,"",tipo_lavada,valor_lavada,valor_pago,estado_pago);
                 lst_lavadero.add(obj_info);
             }
             
@@ -330,6 +330,40 @@ public class SLavadero {
             System.out.println(e.getMessage());
         }
         return lst_lavador;
+    }
+    
+    
+    public ArrayList<String> LoadLastRecord(Connection conexion, int tipo)
+    {
+        ArrayList<String> resultado = new ArrayList<String>();
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_FACTURA_LAVADERO(?,?,?,?,?,?,?)}");
+            callProcedure.setString(1, Integer.toString(tipo));
+            callProcedure.registerOutParameter(2, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(3, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(4, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(5, java.sql.Types.DATE);
+            callProcedure.registerOutParameter(6, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(7, java.sql.Types.FLOAT);
+            callProcedure.execute();            
+            for(int i=2;i<=7;i++)
+            {
+                String val = callProcedure.getString(i);
+                if(val != null)
+                {
+                    resultado.add(callProcedure.getString(i));                    
+                }
+                else
+                {
+                    resultado.add("---");
+                }
+            }            
+            return resultado;
+        }catch(Exception e)
+        {            
+            return resultado;
+        }
     }
 
 }

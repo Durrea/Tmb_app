@@ -7,6 +7,7 @@ package Presentacion;
 
 import Modelos.Informacion_Lavadero;
 import Servicios.Conexion;
+import Servicios.ImpresionFacturas;
 import Servicios.SLavadero;
 import Servicios.Sesion;
 import java.awt.BorderLayout;
@@ -149,7 +150,7 @@ public class Lavadero extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Codigo Lavador", "Fecha Lavada", "Placa", "Tipo Vehiculo", "Marca", "Tipo Lavada", "Valor Lavada", "Estado Pago", "Acciones"
+                "ID", "Codigo Lavador", "Fecha Lavada", "Placa", "Tipo Vehiculo", "Tipo Lavada", "Valor Lavada", "Valor Pago", "Estado Pago", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -371,6 +372,17 @@ public class Lavadero extends javax.swing.JPanel {
                                                           codLavador, id_lava, valor_lavada, tipo_pago);
                             JOptionPane.showMessageDialog(null, resultado);
                             
+                            int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?","Imprimir Recibo",JOptionPane.YES_NO_OPTION);                            
+                            if(resultopcion == 0)
+                            {
+                                ImpresionFacturas impfac = new ImpresionFacturas();
+                                boolean res = impfac.FacturaLavadero(id_lava);
+                                if(!res)
+                                {
+                                    JOptionPane.showMessageDialog(null, "Error en la impresion");
+                                }                                    
+                            }   
+                            
                             Lavadero l=new Lavadero();
                             this.removeAll();
                             this.setLayout(new BorderLayout());
@@ -406,9 +418,9 @@ public class Lavadero extends javax.swing.JPanel {
             fila[2] = datos.get(i).getFecha_lavada();
             fila[3] = datos.get(i).getVehiculo_placa();
             fila[4] = datos.get(i).getVehiculo_tipo();
-            fila[5] = datos.get(i).getVehiculo_marca();
-            fila[6] = datos.get(i).getTipo_lavada();
-            fila[7] = datos.get(i).getValor_lavada();
+            fila[5] = datos.get(i).getTipo_lavada();
+            fila[6] = datos.get(i).getValor_lavada();
+            fila[7] = datos.get(i).getValor_pago();
             fila[8] = datos.get(i).getEstado_pago();
             fila[9] = btn_visualizar;
             modelo.addRow(fila);

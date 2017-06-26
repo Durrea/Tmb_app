@@ -275,9 +275,9 @@
                 <Column editable="false" title="Fecha Lavada" type="java.lang.Object"/>
                 <Column editable="false" title="Placa" type="java.lang.Object"/>
                 <Column editable="false" title="Tipo Vehiculo" type="java.lang.Object"/>
-                <Column editable="false" title="Marca" type="java.lang.Object"/>
                 <Column editable="false" title="Tipo Lavada" type="java.lang.Object"/>
                 <Column editable="false" title="Valor Lavada" type="java.lang.Object"/>
+                <Column editable="false" title="Valor Pago" type="java.lang.Object"/>
                 <Column editable="false" title="Estado Pago" type="java.lang.Object"/>
                 <Column editable="false" title="Acciones" type="java.lang.Object"/>
               </Table>
