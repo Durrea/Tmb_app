@@ -273,6 +273,9 @@ public class Informes extends javax.swing.JPanel {
 
     private void Inf_FraccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inf_FraccionMouseClicked
         // TODO add your handling code here:
+        GeneracionInf obj = new GeneracionInf();
+        obj.tipo_informe = 2;
+        obj.setVisible(true);
     }//GEN-LAST:event_Inf_FraccionMouseClicked
 
     private void Inf_FraccionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inf_FraccionMouseEntered
@@ -297,6 +300,9 @@ public class Informes extends javax.swing.JPanel {
 
     private void Inf_MensualMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inf_MensualMouseClicked
         // TODO add your handling code here:
+        GeneracionInf obj = new GeneracionInf();
+        obj.tipo_informe = 1;
+        obj.setVisible(true);
     }//GEN-LAST:event_Inf_MensualMouseClicked
 
     private void Inf_MensualMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inf_MensualMouseEntered

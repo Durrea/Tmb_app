@@ -92,4 +92,37 @@ public class Administrador {
         }
         return tipos;
     }
+    public ArrayList<String> TotalesDiarios(Connection conexion,String fecha)
+    {
+        ArrayList<String> resultado = new ArrayList();
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_TOTALES_DIARIOS(?,?,?)}");
+            callProcedure.setString(1, fecha);
+            callProcedure.registerOutParameter(2, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(3, java.sql.Types.FLOAT);
+            callProcedure.execute();
+            if(callProcedure.getString(2) == null)
+            {
+                resultado.add("0.0");
+            }
+            else
+            {
+                resultado.add(callProcedure.getString(2));
+            }
+            if(callProcedure.getString(3) == null)
+            {
+                resultado.add("0.0");
+            }
+            else
+            {
+                resultado.add(callProcedure.getString(3));
+            }            
+            return resultado;
+        }catch(Exception e)
+        {
+            return resultado;
+        }
+    }
+    
 }
