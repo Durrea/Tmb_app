@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentacion;
+package Presentacion.InterfacesAdmin;
 
+import Presentacion.*;
 import Servicios.Administrador;
 import Servicios.Conexion;
 import Servicios.ParquaderoFraccion;

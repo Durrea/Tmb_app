@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentacion;
+package Presentacion.InterfacesAdmin;
 
+import Presentacion.*;
 import Modelos.Informacion_Total_Mensual;
 import Servicios.Conexion;
 import Servicios.ImpresionFacturas;

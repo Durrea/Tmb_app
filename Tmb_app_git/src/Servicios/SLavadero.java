@@ -177,7 +177,7 @@ public class SLavadero {
             
         }catch(Exception e)
         {
-            System.out.println(e.getLocalizedMessage());
+            System.out.println(e.getLocalizedMessage());            
         }
         return lst_lavadero;
     }        
