@@ -11,8 +11,6 @@ package Servicios;
  */
 import br.com.adilson.util.Extenso;
 import br.com.adilson.util.PrinterMatrix;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

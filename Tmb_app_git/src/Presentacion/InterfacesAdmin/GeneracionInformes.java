@@ -7,48 +7,34 @@ package Presentacion.InterfacesAdmin;
 
 import Modelos.Informacion_Fraccion;
 import Modelos.Recepcionista;
-import Presentacion.*;
 import Servicios.Administrador;
 import Servicios.Conexion;
 import Servicios.GeneradorPDF;
 import Servicios.ParquaderoFraccion;
 import Servicios.ParqueaderoMes;
-import Servicios.Sesion;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfPTable;
-import java.awt.BorderLayout;
-import java.awt.GraphicsEnvironment;
-import java.io.File;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Santiago Ortega
+ * @author Eduardo
  */
-public class GeneracionInf extends javax.swing.JFrame {
+public class GeneracionInformes extends javax.swing.JDialog {
 
     /**
-     * Creates new form Inicio
+     * Creates new form GeneracionInformes
      */
-    
     int tipo_informe = -1;
-    //P.Mensual 1
-    //P.Fraccion 2
-    //Lavadero 3
-    //Hotel 4
-    //Total Mensual 5
-    public GeneracionInf() {
+    public GeneracionInformes(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         this.jTextField1.setText(System.getProperty("user.home"));
         this.fechaInforme.setFormats("yyyy-MM-dd");
         this.fechaInforme.getEditor().setEditable(false);
     }
-    ImageIcon ii;
-    static boolean maximizar = false;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,7 +47,6 @@ public class GeneracionInf extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel_Cerrar = new javax.swing.JLabel();
         fechaInforme = new org.jdesktop.swingx.JXDatePicker();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -75,30 +60,14 @@ public class GeneracionInf extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocationByPlatform(true);
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Generación Informes");
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("La Virgen");
-
-        jLabel_Cerrar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel_Cerrar.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_Cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Close Window_20px_1.png"))); // NOI18N
-        jLabel_Cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_CerrarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel_CerrarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel_CerrarMouseExited(evt);
-            }
-        });
 
         fechaInforme.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
 
@@ -168,9 +137,7 @@ public class GeneracionInf extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel_Cerrar))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -182,20 +149,14 @@ public class GeneracionInf extends javax.swing.JFrame {
                             .addComponent(fechaInforme, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                             .addComponent(jTextField1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 87, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel_Cerrar)))
+                .addGap(10, 10, 10)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -205,10 +166,10 @@ public class GeneracionInf extends javax.swing.JFrame {
                     .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
                 .addGap(44, 44, 44)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel_Informe2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(jPanel_Informe1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel_Informe2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel_Informe1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,24 +187,6 @@ public class GeneracionInf extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void jLabel_CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CerrarMouseClicked
-        // TODO add your handling code here:
-        this.hide();        
-    }//GEN-LAST:event_jLabel_CerrarMouseClicked
-
-    private void jLabel_CerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CerrarMouseEntered
-        // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Close Window_20px.png"));
-        jLabel_Cerrar.setIcon(ii);
-    }//GEN-LAST:event_jLabel_CerrarMouseEntered
-
-    private void jLabel_CerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CerrarMouseExited
-        // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Close Window_20px_1.png"));
-        jLabel_Cerrar.setIcon(ii);
-    }//GEN-LAST:event_jLabel_CerrarMouseExited
-
     private void jPanel_InformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseClicked
         // TODO add your handling code here:
         JFileChooser directorio = new JFileChooser();
@@ -251,7 +194,7 @@ public class GeneracionInf extends javax.swing.JFrame {
         directorio.setDialogTitle("Seleccionar directorio...");
         int resultado = directorio.showOpenDialog(jPanel3);
         if(resultado == JFileChooser.APPROVE_OPTION)
-        {            
+        {
             this.jTextField1.setText(directorio.getSelectedFile().getAbsolutePath());
         }
         else
@@ -270,28 +213,28 @@ public class GeneracionInf extends javax.swing.JFrame {
             switch(this.tipo_informe)
             {
                 case 1: InformeMensual();
-                        this.hide();
-                        break;
+                this.hide();
+                break;
                 case 2: InformeFraccion();
-                        this.hide();
-                        break;
+                this.hide();
+                break;
                 case 3: InformeLavadero();
-                        this.hide();
-                        break;
+                this.hide();
+                break;
                 case 4: InformeHotel();
-                        this.hide();
-                        break;
+                this.hide();
+                break;
                 case 5: InformeTotalMensual();
-                        this.hide();
-                        break;
+                this.hide();
+                break;
                 default: JOptionPane.showMessageDialog(null, "Informe Incorrecto");
-                         break;   
+                break;
             }
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Debe diligenciar una fecha");
-        }        
+        }
     }//GEN-LAST:event_jPanel_Informe1MouseClicked
 
     private void jPanel_Informe2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe2MouseClicked
@@ -440,51 +383,27 @@ public class GeneracionInf extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GeneracionInf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneracionInformes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GeneracionInf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneracionInformes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GeneracionInf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneracionInformes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GeneracionInf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneracionInformes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GeneracionInf().setVisible(true);
+                GeneracionInformes dialog = new GeneracionInformes(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -496,7 +415,6 @@ public class GeneracionInf extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel_Cerrar;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel_Informe;
     private javax.swing.JPanel jPanel_Informe1;
