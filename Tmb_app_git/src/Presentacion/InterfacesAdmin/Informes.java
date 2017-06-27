@@ -249,6 +249,7 @@ public class Informes extends javax.swing.JPanel {
     
     private void Inf_LavaderoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inf_LavaderoMouseClicked
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_Inf_LavaderoMouseClicked
 
     private void Inf_LavaderoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inf_LavaderoMouseEntered
@@ -288,6 +289,9 @@ public class Informes extends javax.swing.JPanel {
 
     private void Inf_HotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inf_HotelMouseClicked
         // TODO add your handling code here:
+        GeneracionInformes obj = new GeneracionInformes( new PrincipalAdmin(),true);
+        obj.tipo_informe = 4;
+        obj.setVisible(true);
     }//GEN-LAST:event_Inf_HotelMouseClicked
 
     private void Inf_HotelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inf_HotelMouseEntered

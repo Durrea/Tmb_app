@@ -6,12 +6,14 @@
 package Presentacion.InterfacesAdmin;
 
 import Modelos.Informacion_Fraccion;
+import Modelos.Informacion_hotel;
 import Modelos.Recepcionista;
 import Servicios.Administrador;
 import Servicios.Conexion;
 import Servicios.GeneradorPDF;
 import Servicios.ParquaderoFraccion;
 import Servicios.ParqueaderoMes;
+import Servicios.S_Hotel;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfPTable;
 import java.util.ArrayList;
@@ -356,7 +358,56 @@ public class GeneracionInformes extends javax.swing.JDialog {
     }
     public void InformeHotel()
     {
-        
+        String fecha = this.fechaInforme.getEditor().getText();
+        try
+        {
+            GeneradorPDF generador = new GeneradorPDF(PageSize.A4,10,7,8);        
+            generador.GenerarPDF(this.jTextField1.getText());
+            generador.openDoc();
+            generador.addTitulo("INFORME CONTABLE PARQUEADERO POR FRACCIÓN");
+            generador.addParagrafo("\n");
+            generador.addParagrafo("\n");
+            generador.addParagrafo("FECHA: "+fecha);
+            generador.addParagrafo("\n");
+            Administrador objadmin = new Administrador();
+            S_Hotel objHotel = new S_Hotel();
+            ArrayList<Recepcionista> listarecep = new ArrayList<Recepcionista>();
+            ArrayList<Informacion_hotel> inforecep = new ArrayList<Informacion_hotel>();
+            listarecep = objadmin.GetInfoRecepcionista(Conexion.obtener());
+            for (int i = 0; i < listarecep.size(); i++) 
+            {
+                generador.addParagrafo("RECEPCIONISTA: "+listarecep.get(i).getRecepcionista_nombres()+" "+listarecep.get(i).getRecepcionista_apellidos());
+                generador.addParagrafo("\n");
+                inforecep = objHotel.LoadInfoPerRecepcionista(Conexion.obtener(), fecha, listarecep.get(i).getIdRecepcionista());
+                if(inforecep.size() !=0)
+                {
+                    PdfPTable tabla = new PdfPTable(2);
+                    generador.AgregarCeldaTabla("N° HABITACIÓN",tabla);
+                    generador.AgregarCeldaTabla("VALOR TOTAL",tabla);                    
+                    for (int j = 0; j < inforecep.size(); j++) 
+                    {
+                        generador.AgregarCeldaTabla(Integer.toString(inforecep.get(j).getNumHabitacion()), tabla);
+                        generador.AgregarCeldaTabla(Long.toString(inforecep.get(j).getTotalPagado()), tabla);                                                
+                    }
+                    generador.addTable(tabla);
+                    generador.addParagrafo("\n");
+                }
+                else
+                {
+                    generador.addParagrafo("No tiene registros asociados");
+                    generador.addParagrafo("\n");
+                }
+            }
+            //ArrayList<String> total = objadmin.TotalesDiarios(Conexion.obtener(), fecha);
+            //generador.addParagrafo("TOTAL: "+total.get(0));
+            //generador.addParagrafo("\n");
+            generador.closeDoc();
+            JOptionPane.showMessageDialog(null, "Reporte creado con exito");
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
     public void InformeLavadero()
     {
