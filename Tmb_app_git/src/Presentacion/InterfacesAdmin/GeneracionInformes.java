@@ -6,50 +6,39 @@
 package Presentacion.InterfacesAdmin;
 
 import Modelos.Informacion_Fraccion;
+import Modelos.Informacion_hotel;
+import Modelos.Informe_Lavadero;
 import Modelos.Recepcionista;
-import Presentacion.*;
 import Servicios.Administrador;
 import Servicios.Conexion;
 import Servicios.GeneradorPDF;
 import Servicios.ParquaderoFraccion;
 import Servicios.ParqueaderoMes;
-import Servicios.Sesion;
+import Servicios.SLavadero;
+import Servicios.S_Hotel;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfPTable;
-import java.awt.BorderLayout;
-import java.awt.GraphicsEnvironment;
-import java.io.File;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JRootPane;
 
 /**
  *
- * @author Santiago Ortega
+ * @author Eduardo
  */
-public class GeneracionInf extends javax.swing.JFrame {
+public class GeneracionInformes extends javax.swing.JDialog {
 
     /**
-     * Creates new form Inicio
+     * Creates new form GeneracionInformes
      */
-    
     int tipo_informe = -1;
-    //P.Mensual 1
-    //P.Fraccion 2
-    //Lavadero 3
-    //Hotel 4
-    //Total Mensual 5
-    public GeneracionInf() {
+    public GeneracionInformes(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         this.jTextField1.setText(System.getProperty("user.home"));
         this.fechaInforme.setFormats("yyyy-MM-dd");
         this.fechaInforme.getEditor().setEditable(false);
     }
-    ImageIcon ii;
-    static boolean maximizar = false;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,6 +50,7 @@ public class GeneracionInf extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         fechaInforme = new org.jdesktop.swingx.JXDatePicker();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -74,12 +64,14 @@ public class GeneracionInf extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocationByPlatform(true);
-        setUndecorated(true);
-        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Generación Informes");
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("La Virgen");
 
         fechaInforme.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
 
@@ -145,59 +137,59 @@ public class GeneracionInf extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jPanel_Informe1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel_Informe2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3)
-                    .addComponent(fechaInforme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93))
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jPanel_Informe1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                                .addComponent(jPanel_Informe2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3)
+                            .addComponent(fechaInforme, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                            .addComponent(jTextField1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fechaInforme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
                 .addGap(44, 44, 44)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel_Informe2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(jPanel_Informe1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(41, 41, 41))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel_Informe2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel_Informe1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
 
     private void jPanel_InformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseClicked
         // TODO add your handling code here:
@@ -206,7 +198,7 @@ public class GeneracionInf extends javax.swing.JFrame {
         directorio.setDialogTitle("Seleccionar directorio...");
         int resultado = directorio.showOpenDialog(jPanel3);
         if(resultado == JFileChooser.APPROVE_OPTION)
-        {            
+        {
             this.jTextField1.setText(directorio.getSelectedFile().getAbsolutePath());
         }
         else
@@ -225,28 +217,28 @@ public class GeneracionInf extends javax.swing.JFrame {
             switch(this.tipo_informe)
             {
                 case 1: InformeMensual();
-                        this.hide();
-                        break;
+                this.hide();
+                break;
                 case 2: InformeFraccion();
-                        this.hide();
-                        break;
+                this.hide();
+                break;
                 case 3: InformeLavadero();
-                        this.hide();
-                        break;
+                this.hide();
+                break;
                 case 4: InformeHotel();
-                        this.hide();
-                        break;
+                this.hide();
+                break;
                 case 5: InformeTotalMensual();
-                        this.hide();
-                        break;
+                this.hide();
+                break;
                 default: JOptionPane.showMessageDialog(null, "Informe Incorrecto");
-                         break;   
+                break;
             }
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Debe diligenciar una fecha");
-        }        
+        }
     }//GEN-LAST:event_jPanel_Informe1MouseClicked
 
     private void jPanel_Informe2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe2MouseClicked
@@ -368,11 +360,109 @@ public class GeneracionInf extends javax.swing.JFrame {
     }
     public void InformeHotel()
     {
-        
+        String fecha = this.fechaInforme.getEditor().getText();
+        try
+        {
+            GeneradorPDF generador = new GeneradorPDF(PageSize.A4,10,7,8);        
+            generador.GenerarPDF(this.jTextField1.getText());
+            generador.openDoc();
+            generador.addTitulo("INFORME CONTABLE PARQUEADERO POR FRACCIÓN");
+            generador.addParagrafo("\n");
+            generador.addParagrafo("\n");
+            generador.addParagrafo("FECHA: "+fecha);
+            generador.addParagrafo("\n");
+            Administrador objadmin = new Administrador();
+            S_Hotel objHotel = new S_Hotel();
+            ArrayList<Recepcionista> listarecep = new ArrayList<Recepcionista>();
+            ArrayList<Informacion_hotel> inforecep = new ArrayList<Informacion_hotel>();
+            listarecep = objadmin.GetInfoRecepcionista(Conexion.obtener());
+            for (int i = 0; i < listarecep.size(); i++) 
+            {
+                generador.addParagrafo("RECEPCIONISTA: "+listarecep.get(i).getRecepcionista_nombres()+" "+listarecep.get(i).getRecepcionista_apellidos());
+                generador.addParagrafo("\n");
+                inforecep = objHotel.LoadInfoPerRecepcionista(Conexion.obtener(), fecha, listarecep.get(i).getIdRecepcionista());
+                if(inforecep.size() !=0)
+                {
+                    PdfPTable tabla = new PdfPTable(2);
+                    generador.AgregarCeldaTabla("N° HABITACIÓN",tabla);
+                    generador.AgregarCeldaTabla("VALOR TOTAL",tabla);                    
+                    for (int j = 0; j < inforecep.size(); j++) 
+                    {
+                        generador.AgregarCeldaTabla(Integer.toString(inforecep.get(j).getNumHabitacion()), tabla);
+                        generador.AgregarCeldaTabla(Long.toString(inforecep.get(j).getTotalPagado()), tabla);                                                
+                    }
+                    generador.addTable(tabla);
+                    generador.addParagrafo("\n");
+                }
+                else
+                {
+                    generador.addParagrafo("No tiene registros asociados");
+                    generador.addParagrafo("\n");
+                }
+            }
+            //ArrayList<String> total = objadmin.TotalesDiarios(Conexion.obtener(), fecha);
+            //generador.addParagrafo("TOTAL: "+total.get(0));
+            //generador.addParagrafo("\n");
+            generador.closeDoc();
+            JOptionPane.showMessageDialog(null, "Reporte creado con exito");
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
     public void InformeLavadero()
     {
-        
+        String fecha = this.fechaInforme.getEditor().getText();
+        try
+        {
+            GeneradorPDF generador = new GeneradorPDF(PageSize.A4,10,7,8);        
+            generador.GenerarPDF(this.jTextField1.getText());
+            generador.openDoc();
+            generador.addTitulo("INFORME CONTABLE LAVADERO");
+            generador.addParagrafo("\n");
+            generador.addParagrafo("\n");
+            generador.addParagrafo("FECHA: "+fecha);
+            generador.addParagrafo("\n");
+            Administrador objadmin = new Administrador();
+            SLavadero lavadero = new SLavadero();
+            ArrayList<Recepcionista> listarecep = new ArrayList<Recepcionista>();
+            ArrayList<Informe_Lavadero> inforecep = new ArrayList<Informe_Lavadero>();
+            listarecep = objadmin.GetInfoRecepcionista(Conexion.obtener());
+            for (int i = 0; i < listarecep.size(); i++) 
+            {
+                generador.addParagrafo("RECEPCIONISTA: "+listarecep.get(i).getRecepcionista_nombres()+" "+listarecep.get(i).getRecepcionista_apellidos());
+                generador.addParagrafo("\n");
+                inforecep = lavadero.LoadInfoPerRecepcionista(Conexion.obtener(), fecha, listarecep.get(i).getIdRecepcionista());
+                if(inforecep.size() !=0)
+                {
+                    PdfPTable tabla = new PdfPTable(2);
+                    generador.AgregarCeldaTabla("LAVADOR",tabla);
+                    generador.AgregarCeldaTabla("VALOR TOTAL",tabla);                    
+                    for (int j = 0; j < inforecep.size(); j++) 
+                    {
+                        generador.AgregarCeldaTabla(inforecep.get(j).getLavador_names(), tabla);
+                        generador.AgregarCeldaTabla(Float.toString(inforecep.get(j).getValor_total()), tabla);                                                
+                    }
+                    generador.addTable(tabla);
+                    generador.addParagrafo("\n");
+                }
+                else
+                {
+                    generador.addParagrafo("No tiene registros asociados");
+                    generador.addParagrafo("\n");
+                }
+            }
+            float total = lavadero.LoadTotalRecep(Conexion.obtener(), fecha);
+            generador.addParagrafo("TOTAL: "+total);
+            generador.addParagrafo("\n");
+            generador.closeDoc();
+            JOptionPane.showMessageDialog(null, "Reporte creado con exito");
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
     public void InformeTotalMensual()
     {
@@ -395,51 +485,27 @@ public class GeneracionInf extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GeneracionInf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneracionInformes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GeneracionInf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneracionInformes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GeneracionInf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneracionInformes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GeneracionInf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneracionInformes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GeneracionInf().setVisible(true);
+                GeneracionInformes dialog = new GeneracionInformes(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -447,6 +513,7 @@ public class GeneracionInf extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXDatePicker fechaInforme;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

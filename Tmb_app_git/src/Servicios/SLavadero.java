@@ -365,5 +365,43 @@ public class SLavadero {
             return resultado;
         }
     }
+    
+    public ArrayList<Modelos.Informe_Lavadero> LoadInfoPerRecepcionista(Connection conexion, String fecha, int idrecep) {
+        ArrayList<Modelos.Informe_Lavadero> lst_lavadero = new ArrayList<Modelos.Informe_Lavadero>();
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_RECEP_LAVADERO(?,?)}");
+            callProcedure.setString(1, fecha);
+            callProcedure.setString(2, Integer.toString(idrecep));
+            callProcedure.execute();
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+            while (resultado_consulta.next()) {
+                String lavador_names = resultado_consulta.getString(1);
+                float valor_total=Float.valueOf(resultado_consulta.getString(2));
+
+                Modelos.Informe_Lavadero obj_info = new Modelos.Informe_Lavadero(lavador_names,valor_total);
+                
+                lst_lavadero.add(obj_info);
+            }
+            return lst_lavadero;
+        } catch (Exception e) {
+            return lst_lavadero;
+        }
+    }
+     
+    public float LoadTotalRecep(Connection conexion, String fecha) {
+        float valor = 0;
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_TOTAL_RECEP_LAVADERO(?,?)}");
+            callProcedure.setString(1, fecha);
+            callProcedure.execute();
+            callProcedure.registerOutParameter(2, java.sql.Types.FLOAT);
+            callProcedure.execute();
+            valor = callProcedure.getFloat(2);
+            return valor;
+        } catch (Exception e) {
+            return valor;
+        }
+    }
+    
 
 }
