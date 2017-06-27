@@ -16,12 +16,16 @@ import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
@@ -45,7 +49,8 @@ public class Informes extends javax.swing.JPanel {
     int rown = -1;
     
     public Informes() {
-        initComponents();        
+        initComponents();  
+        
     }
     
     /**
@@ -276,6 +281,8 @@ public class Informes extends javax.swing.JPanel {
         GeneracionInf obj = new GeneracionInf();
         obj.tipo_informe = 2;
         obj.setVisible(true);
+        PrincipalAdmin ob= new PrincipalAdmin();
+        ob.setEnabled(false);
     }//GEN-LAST:event_Inf_FraccionMouseClicked
 
     private void Inf_FraccionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inf_FraccionMouseEntered
