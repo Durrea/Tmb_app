@@ -271,6 +271,12 @@ public class Informes extends javax.swing.JPanel {
 
     private void Inf_Mensual_TotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inf_Mensual_TotalMouseClicked
         // TODO add your handling code here:
+        GeneracionInformes obj = new GeneracionInformes( new PrincipalAdmin(),true);
+        obj.tipo_informe = 5;
+        obj.setFormatoFecha();
+        obj.setVisible(true);
+        PrincipalAdmin ob= new PrincipalAdmin();
+        ob.setEnabled(false);
     }//GEN-LAST:event_Inf_Mensual_TotalMouseClicked
 
     private void Inf_Mensual_TotalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Inf_Mensual_TotalMouseEntered

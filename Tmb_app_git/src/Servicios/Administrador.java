@@ -124,5 +124,26 @@ public class Administrador {
             return resultado;
         }
     }
-    
+    public ArrayList<String> Informe_Total_Mensual(Connection conexion,String fecha)
+    {
+        ArrayList<String> resultado = new ArrayList();
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORME_TOTAL_MENSUAL(?,?,?,?,?)}");
+            callProcedure.setString(1, fecha);
+            callProcedure.registerOutParameter(2, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(3, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(4, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(5, java.sql.Types.FLOAT);
+            callProcedure.execute();
+            resultado.add(callProcedure.getString(2));
+            resultado.add(callProcedure.getString(3));
+            resultado.add(callProcedure.getString(4));
+            resultado.add(callProcedure.getString(5));
+            return resultado;
+        }catch(Exception e)
+        {
+            return resultado;
+        }
+    }
 }

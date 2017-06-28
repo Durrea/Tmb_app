@@ -466,7 +466,41 @@ public class GeneracionInformes extends javax.swing.JDialog {
     }
     public void InformeTotalMensual()
     {
-        
+        String fecha = this.fechaInforme.getEditor().getText();
+        try
+        {
+            GeneradorPDF generador = new GeneradorPDF(PageSize.A4,10,7,8);        
+            generador.GenerarPDF(this.jTextField1.getText());
+            generador.openDoc();
+            generador.addTitulo("INFORME MENSUAL");
+            generador.addParagrafo("\n");
+            generador.addParagrafo("\n");
+            generador.addParagrafo("MES: "+fecha);
+            generador.addParagrafo("\n");
+            Administrador objadmin = new Administrador();
+            ArrayList<String> datos_mensuales = objadmin.Informe_Total_Mensual(Conexion.obtener(), fecha);
+            generador.addParagrafo("SERVICIO: PARQUEADERO");
+            generador.addParagrafo("TOTAL: "+datos_mensuales.get(0));
+            generador.addParagrafo("\n");
+            generador.addParagrafo("SERVICIO: LAVADERO");
+            generador.addParagrafo("TOTAL: "+datos_mensuales.get(2));
+            generador.addParagrafo("\n");
+            generador.addParagrafo("SERVICIO: HOTEL");
+            generador.addParagrafo("TOTAL: "+datos_mensuales.get(1));
+            generador.addParagrafo("\n");
+            generador.addParagrafo("\n");
+            generador.addParagrafo("\n");
+            generador.addParagrafo("TOTAL MES: "+datos_mensuales.get(3));
+            generador.closeDoc();
+            JOptionPane.showMessageDialog(null, "Reporte creado con exito");
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    public void setFormatoFecha()
+    {
+        this.fechaInforme.setFormats("yyyy-MM");
     }
     /**
      * @param args the command line arguments
