@@ -53,16 +53,15 @@ public class Lavadero extends javax.swing.JPanel {
         jLabel_icn_inf = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jPanel_Registrar = new javax.swing.JPanel();
         jLabel_icn_add = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel_icn_add1 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jPanel_CDeuda = new javax.swing.JPanel();
         jLabel_icn_addE = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jText_Buscador = new javax.swing.JTextField();
@@ -94,10 +93,6 @@ public class Lavadero extends javax.swing.JPanel {
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel_Informe.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel_Informe.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 0, 0, 40));
 
         jPanel_Registrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -144,6 +139,10 @@ public class Lavadero extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel9.setText("Cancelar Deuda Negocio");
         jPanel_CDeuda.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 160, 20));
+
+        jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel_CDeuda.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -197,7 +196,7 @@ public class Lavadero extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(653, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel_icn_add1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -210,10 +209,10 @@ public class Lavadero extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jPanel_CDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 196, Short.MAX_VALUE)))))
                 .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
@@ -443,10 +442,9 @@ public class Lavadero extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel_Informe;
     private javax.swing.JPanel jPanel_Registrar;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jText_Buscador;
     // End of variables declaration//GEN-END:variables
