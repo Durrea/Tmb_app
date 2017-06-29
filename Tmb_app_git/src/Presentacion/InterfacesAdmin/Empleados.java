@@ -19,7 +19,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -44,10 +47,15 @@ public class Empleados extends javax.swing.JPanel {
         Cargar_Datos_Lavador();
         Cargar_Datos_Recepcionista();
         this.jTable2.setRowHeight(40);
-        //editor de caldas
-        //jTable2.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditor("HOTEL", "NUMERO_HABITACION"));//Columna Nombre
-        //jTable2.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditor("HOTEL", "COSTO_HORA"));//Columna Apellido
-        //jTable2.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditor("HOTEL", "COSTO_DIA"));//Columna Edad
+        //editor de celdas lavador
+        jTable2.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditor("LAVADOR", "LAVADOR_NOMBRE"));//Columna Nombre
+        jTable2.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditor("LAVADOR", "LAVADOR_APELLIDO"));//Columna Apellido
+        jTable2.getColumnModel().getColumn(5).setCellEditor(new MyTableCellEditor("LAVADOR", "LAVADOR_TELEFONO"));//Columna Telefono
+        //editor de celdas tercero
+        //jTable3.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditor("HOTEL", "NUMERO_HABITACION"));//Columna Nombre
+        //jTable3.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditor("HOTEL", "COSTO_HORA"));//Columna Apellido
+        //jTable3.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditor("HOTEL", "COSTO_DIA"));//Columna Edad
+        
         //this.jTable2.setEnabled(false);
     }
     ImageIcon ii;
@@ -274,15 +282,63 @@ public class Empleados extends javax.swing.JPanel {
         });
         filter = new TableRowSorter(this.jTable2.getModel());
         this.jTable2.setRowSorter(filter);
-        
+
     }//GEN-LAST:event_jText_BuscadorKeyTyped
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
+        rown = jTable2.rowAtPoint(evt.getPoint());
+
+        int column = jTable2.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY() / jTable2.getRowHeight();
+
+        if (row < jTable2.getRowCount() && row >= 0 && column < jTable2.getColumnCount() && column >= 0) {
+            Object value = jTable2.getValueAt(row, column);
+            if (value instanceof JButton) {
+                ((JButton) value).doClick();
+                JButton boton = (JButton) value;
+
+                String id = "" + jTable2.getValueAt(rown, 0);
+                if (boton.getName().equals("t")) {
+                    S_Empleados servicio = new S_Empleados();
+                    try {
+                        servicio.cambiarEstado(Conexion.obtener(), "Lavador", id);
+                        Cargar_Datos_Lavador();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
+
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
         // TODO add your handling code here:
+
+        rown = jTable3.rowAtPoint(evt.getPoint());
+
+        int column = jTable3.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY() / jTable3.getRowHeight();
+
+        if (row < jTable3.getRowCount() && row >= 0 && column < jTable3.getColumnCount() && column >= 0) {
+            Object value = jTable3.getValueAt(row, column);
+            if (value instanceof JButton) {
+                ((JButton) value).doClick();
+                JButton boton = (JButton) value;
+
+                String id = "" + jTable3.getValueAt(rown, 0);
+                if (boton.getName().equals("t")) {
+                    S_Empleados servicio = new S_Empleados();
+                    try {
+                        servicio.cambiarEstado(Conexion.obtener(), "Recepcionista", id);
+                        Cargar_Datos_Recepcionista();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_jTable3MouseClicked
 
     public void Cargar_Datos_Lavador() {
@@ -300,19 +356,27 @@ public class Empleados extends javax.swing.JPanel {
         for (int i = 0; i < columnas.size(); i++) {
             modelo.addColumn(columnas.get(i));
         }
-        //modelo.addColumn("ACCIONES");
+        modelo.addColumn("ESTADO");
 
         for (int i = 1; i < lista.size(); i++) {
             ArrayList<String> lista_info = new ArrayList<String>();
-            //JButton btn_visualizar_2 = new JButton("Realizar Pago");
-            //btn_visualizar_2.setName("t");
-            //btn_visualizar_2.setBounds(0, 0, 60, 30);
+            JButton btn_visualizar_2;
+
             lista_info = (ArrayList<String>) lista.get(i);
+            if (lista_info.get(6).equals("ACTIVO")) {
+                btn_visualizar_2 = new JButton("Desactivar");
+                btn_visualizar_2.setName("t");
+                btn_visualizar_2.setBounds(0, 0, 60, 30);
+            } else {
+                btn_visualizar_2 = new JButton("Activar");
+                btn_visualizar_2.setName("t");
+                btn_visualizar_2.setBounds(0, 0, 60, 30);
+            }
             Object[] fila = new Object[lista_info.size() + 1];
             for (int j = 0; j < lista_info.size(); j++) {
                 fila[j] = lista_info.get(j);
             }
-            //fila[lista_info.size()] = btn_visualizar_2;            
+            fila[lista_info.size()] = btn_visualizar_2;
             modelo.addRow(fila);
         }
         this.jTable2.setModel(modelo);
@@ -321,6 +385,11 @@ public class Empleados extends javax.swing.JPanel {
         jTable2.getColumnModel().getColumn(0).setMinWidth(0);
         jTable2.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
         jTable2.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
+        //oculta columna estado
+        jTable2.getColumnModel().getColumn(6).setMaxWidth(0);
+        jTable2.getColumnModel().getColumn(6).setMinWidth(0);
+        jTable2.getTableHeader().getColumnModel().getColumn(6).setMaxWidth(0);
+        jTable2.getTableHeader().getColumnModel().getColumn(6).setMinWidth(0);
 
     }
 
@@ -339,19 +408,28 @@ public class Empleados extends javax.swing.JPanel {
         for (int i = 0; i < columnas.size(); i++) {
             modelo.addColumn(columnas.get(i));
         }
-        //modelo.addColumn("ACCIONES");
+        modelo.addColumn("ESTADO");
 
         for (int i = 1; i < lista.size(); i++) {
             ArrayList<String> lista_info = new ArrayList<String>();
-            //JButton btn_visualizar_2 = new JButton("Realizar Pago");
+            JButton btn_visualizar_3;
             //btn_visualizar_2.setName("t");
             //btn_visualizar_2.setBounds(0, 0, 60, 30);
             lista_info = (ArrayList<String>) lista.get(i);
+            if (lista_info.get(7).equals("ACTIVO")) {
+                btn_visualizar_3 = new JButton("Desactivar");
+                btn_visualizar_3.setName("t");
+                btn_visualizar_3.setBounds(0, 0, 60, 30);
+            } else {
+                btn_visualizar_3 = new JButton("Activar");
+                btn_visualizar_3.setName("t");
+                btn_visualizar_3.setBounds(0, 0, 60, 30);
+            }
             Object[] fila = new Object[lista_info.size() + 1];
             for (int j = 0; j < lista_info.size(); j++) {
                 fila[j] = lista_info.get(j);
             }
-            //fila[lista_info.size()] = btn_visualizar_2;            
+            fila[lista_info.size()] = btn_visualizar_3;
             modelo.addRow(fila);
         }
         this.jTable3.setModel(modelo);
@@ -360,7 +438,11 @@ public class Empleados extends javax.swing.JPanel {
         jTable3.getColumnModel().getColumn(0).setMinWidth(0);
         jTable3.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
         jTable3.getTableHeader().getColumnModel().getColumn(0).setMinWidth(0);
-
+        //oculta columna estado
+        jTable3.getColumnModel().getColumn(7).setMaxWidth(0);
+        jTable3.getColumnModel().getColumn(7).setMinWidth(0);
+        jTable3.getTableHeader().getColumnModel().getColumn(7).setMaxWidth(0);
+        jTable3.getTableHeader().getColumnModel().getColumn(7).setMinWidth(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

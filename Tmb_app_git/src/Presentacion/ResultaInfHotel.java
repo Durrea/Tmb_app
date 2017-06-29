@@ -54,11 +54,13 @@ public class ResultaInfHotel extends javax.swing.JPanel {
     TableRowSorter filter;
     int rown = -1;
     String fecha;
+    int habitacion;
 
-    public ResultaInfHotel(String fecha) {
+    public ResultaInfHotel(String fecha, int habitacion) {
         initComponents();
         this.fecha = fecha;
-        this.InformeDiarioFraccion(fecha);
+        this.habitacion = habitacion;
+        this.InformeDiarioFraccion(fecha,habitacion);
     }
 
     /**
@@ -181,16 +183,16 @@ public class ResultaInfHotel extends javax.swing.JPanel {
         ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px.png"));
         jLabel_icn_add1.setIcon(ii);
     }//GEN-LAST:event_jPanel_Ag1MouseExited
-    public void InformeDiarioFraccion(String fecha) {
-        Administrador objadmin = new Administrador();
+    public void InformeDiarioFraccion(String fecha, int habitacion) {
+        //Administrador objadmin = new Administrador();
         S_Hotel objHotel = new S_Hotel();
-        ArrayList<Recepcionista> listarecep = new ArrayList<Recepcionista>();
+        //ArrayList<Recepcionista> listarecep = new ArrayList<Recepcionista>();
         ArrayList<Informacion_hotel> inforecep = new ArrayList<Informacion_hotel>();
-        listarecep = objadmin.GetInfoRecepcionista(Conexion.obtener());
+        //listarecep = objadmin.GetInfoRecepcionista(Conexion.obtener());
         this.jLabel3.setText("Fecha: " + fecha);
-        for (int i = 0; i < listarecep.size(); i++) {
+        //for (int i = 0; i < listarecep.size(); i++) {
             JLabel nombrerecepcionista = new JLabel();
-            nombrerecepcionista.setText("Recepcionista: " + listarecep.get(i).getRecepcionista_nombres() + " " + listarecep.get(i).getRecepcionista_apellidos());
+            nombrerecepcionista.setText("Habitacion: " + habitacion);
             nombrerecepcionista.setForeground(Color.WHITE);
             nombrerecepcionista.setFont(new java.awt.Font("Century Gothic", 1, 14));
             JPanel panel_title = new JPanel();
@@ -198,35 +200,37 @@ public class ResultaInfHotel extends javax.swing.JPanel {
             layout.setColumns(1);
             layout.setRows(0);
             panel_title.setLayout(layout);
-            TitledBorder border = BorderFactory.createTitledBorder("Recepcionista: " + listarecep.get(i).getRecepcionista_nombres() + " " + listarecep.get(i).getRecepcionista_apellidos());
+            TitledBorder border = BorderFactory.createTitledBorder("Habitacion: " + habitacion);
             border.setTitleColor(Color.WHITE);
             panel_title.setBorder(border);
-            inforecep = objHotel.LoadInfoPerRecepcionista(Conexion.obtener(), fecha, listarecep.get(i).getIdRecepcionista());
+            inforecep = objHotel.LoadInfoPerRecepcionistaMensual(Conexion.obtener(), fecha, habitacion );
             JTable tabla;
             tabla = BuildTable(inforecep);
             JScrollPane scroll = new JScrollPane(tabla);
             panel_title.add(scroll);
             panel_title.setBackground(new Color(36, 47, 65));
             this.jPanel2.add(panel_title);
-        }
+        //}
         this.jPanel2.updateUI();
     }
 
     public JTable BuildTable(ArrayList<Informacion_hotel> infoHotel) {
         JTable tabla = new JTable();
         DefaultTableModel modelo = new DefaultTableModel();
-        long valorTotal = 0;
-        modelo.addColumn("N° habitación");
-        modelo.addColumn("Valor total");
+        modelo.addColumn("Fecha entrada");
+        modelo.addColumn("Hora entrada");
         Object[] fila = new Object[2];
         for (int i = 0; i < infoHotel.size(); i++) {
-            fila[0] = infoHotel.get(i).getNumHabitacion();
-            fila[1] = infoHotel.get(i).getTotalPagado();
-            valorTotal = valorTotal + infoHotel.get(i).getTotalPagado();
+            fila[0] = infoHotel.get(i).getFechEntrada();
+            fila[1] = infoHotel.get(i).getHoraEntrada();
             modelo.addRow(fila);
         }
-        fila[0] = "Total";
-        fila[1] = valorTotal;
+        
+           fila[0] = "";
+           fila[1] = "";
+        modelo.addRow(fila);
+           fila[0] = "Cantidad de veces utilizada";
+           fila[1] = infoHotel.size();
         modelo.addRow(fila);
         tabla.setModel(modelo);
         tabla.setVisible(true);

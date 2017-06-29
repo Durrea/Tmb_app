@@ -133,6 +133,26 @@ public class S_Hotel {
         }
     }
 
+    public ArrayList<Modelos.Informacion_hotel> LoadInfoPerRecepcionistaMensual(Connection conexion, String fecha, int numHabitacion) {
+        ArrayList<Modelos.Informacion_hotel> informacion = new ArrayList<Modelos.Informacion_hotel>();
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORME_HOTEL_RECEPCIONISTA(?,?)}");
+            callProcedure.setString(1, fecha);
+            callProcedure.setString(2, Integer.toString(numHabitacion));            
+            callProcedure.execute();
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+            while (resultado_consulta.next()) {
+                Modelos.Informacion_hotel obj;
+                obj = new Modelos.Informacion_hotel(resultado_consulta.getString(1),resultado_consulta.getString(2));
+                informacion.add(obj);
+            }
+            return informacion;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return informacion;
+        }
+    }
+
     public ArrayList<Object> LoadInformacionTarifaHotel(Connection conexion) {
         ArrayList<Object> resultado_lista = new ArrayList<Object>();
         ArrayList<String> columnas = new ArrayList<String>();
@@ -180,6 +200,21 @@ public class S_Hotel {
             return true;
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    public ArrayList<Integer> loadNumHabitaciones(Connection conexion) {
+        ArrayList<Integer> resultado_lista = new ArrayList<>();
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_HABITACIONES()}");
+            callProcedure.execute();
+            ResultSet resultado_consulta = callProcedure.getResultSet();
+            while (resultado_consulta.next()) {
+                resultado_lista.add(Integer.parseInt(resultado_consulta.getString(1)));
+            }
+            return resultado_lista;
+        } catch (Exception e) {
+            return resultado_lista;
         }
     }
 }

@@ -9,6 +9,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -81,6 +82,18 @@ public class S_Empleados {
             callProcedure.setString(6, telefono);
             callProcedure.setString(7, documento);
             callProcedure.setInt(8, CodigoLavador);
+            callProcedure.execute();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean cambiarEstado(Connection conect, String tipoEmpleado, String id) throws SQLException {
+        try {
+            CallableStatement callProcedure = conect.prepareCall("{call PRO_ESTADO_EMPLEADO(?,?)}");
+            callProcedure.setString(1, tipoEmpleado);
+            callProcedure.setInt(2, Integer.parseInt(id));
             callProcedure.execute();
             return true;
         } catch (Exception e) {
