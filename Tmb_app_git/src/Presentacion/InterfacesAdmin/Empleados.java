@@ -48,14 +48,14 @@ public class Empleados extends javax.swing.JPanel {
         Cargar_Datos_Recepcionista();
         this.jTable2.setRowHeight(40);
         //editor de celdas lavador
-        jTable2.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditor("LAVADOR", "LAVADOR_NOMBRE"));//Columna Nombre
-        jTable2.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditor("LAVADOR", "LAVADOR_APELLIDO"));//Columna Apellido
-        jTable2.getColumnModel().getColumn(5).setCellEditor(new MyTableCellEditor("LAVADOR", "LAVADOR_TELEFONO"));//Columna Telefono
-        //editor de celdas tercero
-        //jTable3.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditor("HOTEL", "NUMERO_HABITACION"));//Columna Nombre
-        //jTable3.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditor("HOTEL", "COSTO_HORA"));//Columna Apellido
-        //jTable3.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditor("HOTEL", "COSTO_DIA"));//Columna Edad
-        
+        jTable2.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditorEmpleados("LAVADOR", "LAVADOR_NOMBRE"));//Columna Nombre
+        jTable2.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditorEmpleados("LAVADOR", "LAVADOR_APELLIDOS"));//Columna Apellido
+        jTable2.getColumnModel().getColumn(5).setCellEditor(new MyTableCellEditorEmpleados("LAVADOR", "LAVADOR_TELEFONO"));//Columna Telefono
+        //editor de celdas recepcionista
+        jTable3.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_NOMBRES"));//Columna Nombre
+        jTable3.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_APELLIDOS"));//Columna Apellido
+        jTable3.getColumnModel().getColumn(4).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_CONTRASENIA"));//Columna contrasenia
+        jTable3.getColumnModel().getColumn(6).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_TELEFONO"));//Columna telefono
         //this.jTable2.setEnabled(false);
     }
     ImageIcon ii;
@@ -349,7 +349,7 @@ public class Empleados extends javax.swing.JPanel {
         ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
         DefaultTableModel modelo = new DefaultTableModel() {
             public boolean isCellEditable(int fila, int columna) {
-                return columna == 0 || columna == 1 ? false : true;
+                return columna == 0 || columna == 1 || columna == 4 || columna == 6 ? false : true;
             }
             //public boolean isCellEditable(int rowIndex,int columnIndex){return false;}
         };
@@ -401,7 +401,7 @@ public class Empleados extends javax.swing.JPanel {
         ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
         DefaultTableModel modelo = new DefaultTableModel() {
             public boolean isCellEditable(int fila, int columna) {
-                return columna == 0 || columna == 1 ? false : true;
+                return columna == 0 || columna == 3 || columna == 5 || columna == 7 ? false : true;
             }
             //public boolean isCellEditable(int rowIndex,int columnIndex){return false;}
         };
