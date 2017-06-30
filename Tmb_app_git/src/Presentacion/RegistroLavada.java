@@ -79,11 +79,6 @@ public class RegistroLavada extends javax.swing.JPanel {
         jLabel4.setText("Registrar Lavada");
 
         jText_Placa.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Placa.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_PlacaMouseClicked(evt);
-            }
-        });
         jText_Placa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jText_PlacaKeyReleased(evt);
@@ -490,12 +485,6 @@ public class RegistroLavada extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_jText_ValorOtroKeyTyped
-
-    private void jText_PlacaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_PlacaMouseClicked
-        // TODO add your handling code here:
-        if(jText_Placa.getText().equals("Ingresar Placa Vehiculo")){
-            jText_Placa.setText("");}
-    }//GEN-LAST:event_jText_PlacaMouseClicked
 
     private void jCombo_TpoLvdaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombo_TpoLvdaMouseClicked
         // TODO add your handling code here:

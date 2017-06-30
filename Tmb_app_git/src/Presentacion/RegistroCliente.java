@@ -12,6 +12,7 @@ import Servicios.Conexion;
 import Servicios.ParqueaderoMes;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -61,6 +62,12 @@ public class RegistroCliente extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jCombo_TipoA = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
 
@@ -70,12 +77,6 @@ public class RegistroCliente extends javax.swing.JPanel {
         jLabel4.setText("Registrar Cliente");
 
         jText_Placa.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Placa.setText("Placa");
-        jText_Placa.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_PlacaMouseClicked(evt);
-            }
-        });
         jText_Placa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jText_PlacaKeyReleased(evt);
@@ -86,52 +87,42 @@ public class RegistroCliente extends javax.swing.JPanel {
         });
 
         jText_Color.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Color.setText("Color");
-        jText_Color.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_ColorMouseClicked(evt);
-            }
-        });
         jText_Color.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jText_ColorActionPerformed(evt);
             }
         });
+        jText_Color.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_ColorKeyTyped(evt);
+            }
+        });
 
         jText_Cliente.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Cliente.setText("Nombre");
-        jText_Cliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_ClienteMouseClicked(evt);
+        jText_Cliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_ClienteKeyTyped(evt);
             }
         });
 
         jText_Marca.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Marca.setText("Marca");
-        jText_Marca.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_MarcaMouseClicked(evt);
+        jText_Marca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_MarcaKeyTyped(evt);
             }
         });
 
         jText_Telefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Telefono.setText("Telefono");
-        jText_Telefono.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_TelefonoMouseClicked(evt);
+        jText_Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_TelefonoKeyTyped(evt);
             }
         });
 
         jText_Cedula.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Cedula.setText("Cedula");
-        jText_Cedula.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_CedulaMouseClicked(evt);
-            }
-        });
-        jText_Cedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_CedulaActionPerformed(evt);
+        jText_Cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_CedulaKeyTyped(evt);
             }
         });
 
@@ -185,20 +176,40 @@ public class RegistroCliente extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText(" Tipo Vehiculo");
 
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText(" Cedula");
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText(" Telefono");
+
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText(" Placa");
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText(" Color");
+
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText(" Marca");
+
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText(" Nombre");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(40, 40, 40))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(277, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jText_Cliente, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jText_Telefono, javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,35 +218,54 @@ public class RegistroCliente extends javax.swing.JPanel {
                     .addComponent(jText_Marca, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jText_Cedula)
                     .addComponent(jCombo_TipoA, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(277, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(8, 8, 8)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jText_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jText_Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jText_Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jText_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jText_Placa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCombo_TipoA, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jText_Color, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCombo_TipoA, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jText_Color, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jText_Marca, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -291,6 +321,12 @@ public class RegistroCliente extends javax.swing.JPanel {
                     vehiculo.setVehiculo_marca(this.jText_Marca.getText());
                     String res = obj.RegisterCustomer(Conexion.obtener(), cliente, vehiculo);
                     JOptionPane.showMessageDialog(null, res);
+                    Mensual r=new Mensual();
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(r,BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();
                 }
                 else
                 {
@@ -304,7 +340,7 @@ public class RegistroCliente extends javax.swing.JPanel {
         }
         else
         {
-            JOptionPane.showConfirmDialog(null, "Debe llenar los campos requeridos");
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos requeridos");
         }
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
 
@@ -316,53 +352,7 @@ public class RegistroCliente extends javax.swing.JPanel {
         this.repaint();
         this.revalidate();
     }//GEN-LAST:event_jPanel_CancelarMouseClicked
-
-    private void jText_TelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_TelefonoMouseClicked
-        // TODO add your handling code here:
-        reiniciar();
-        if(jText_Telefono.getText().equals("Telefono")){
-        jText_Telefono.setText("");}
-    }//GEN-LAST:event_jText_TelefonoMouseClicked
-
-    private void jText_PlacaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_PlacaMouseClicked
-        // TODO add your handling code here:
-        reiniciar();
-        if(jText_Placa.getText().equals("Placa")){
-        jText_Placa.setText("");}
-    }//GEN-LAST:event_jText_PlacaMouseClicked
-
-    private void jText_ColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_ColorMouseClicked
-        // TODO add your handling code here:
-        reiniciar();
-        if(jText_Color.getText().equals("Color")){
-        jText_Color.setText("");}
-    }//GEN-LAST:event_jText_ColorMouseClicked
-
-    private void jText_MarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_MarcaMouseClicked
-        // TODO add your handling code here:
-        reiniciar();
-        if(jText_Marca.getText().equals("Marca")){
-        jText_Marca.setText("");}
-    }//GEN-LAST:event_jText_MarcaMouseClicked
     
-    private void jText_ClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_ClienteMouseClicked
-        // TODO add your handling code here:
-        reiniciar();
-        if(jText_Cliente.getText().equals("Nombre")){
-        jText_Cliente.setText("");}
-    }//GEN-LAST:event_jText_ClienteMouseClicked
-
-    private void jText_CedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_CedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_CedulaActionPerformed
-
-    private void jText_CedulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_CedulaMouseClicked
-        // TODO add your handling code here:
-        reiniciar();
-        if(jText_Cedula.getText().equals("Cedula")){
-            jText_Cedula.setText("");}
-    }//GEN-LAST:event_jText_CedulaMouseClicked
-
     private void jText_PlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
@@ -395,28 +385,47 @@ public class RegistroCliente extends javax.swing.JPanel {
                 this.jCombo_TipoA.removeAllItems();
             }
     }//GEN-LAST:event_jText_PlacaKeyReleased
+
+    private void jText_ClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ClienteKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_ClienteKeyTyped
+
+    private void jText_CedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CedulaKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_CedulaKeyTyped
+
+    private void jText_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TelefonoKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_TelefonoKeyTyped
+
+    private void jText_ColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ColorKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_ColorKeyTyped
+
+    private void jText_MarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_MarcaKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_MarcaKeyTyped
     
-    public void reiniciar(){
-        if(jText_Cliente.getText().equals("")){
-            jText_Cliente.setText("Nombre");
-        }
-        if(jText_Telefono.getText().equals("")){
-            jText_Telefono.setText("Telefono");
-        }
-        if(jText_Placa.getText().equals("")){
-            jText_Placa.setText("Placa");
-        }
-        if(jText_Color.getText().equals("")){
-            jText_Color.setText("Color");
-        }
-        if(jText_Marca.getText().equals("")){
-            jText_Marca.setText("Marca");
-        }
-        if(jText_Cedula.getText().equals("")){
-            jText_Cedula.setText("Cedula");
-        }
-        
-    }
     public void LoadVehiculos()
     {
         this.jCombo_TipoA.removeAllItems();
@@ -453,11 +462,18 @@ public class RegistroCliente extends javax.swing.JPanel {
             this.jCombo_TipoA.addItem(tipos.get(i));                       
         }
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jCombo_TipoA;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_icn_add;

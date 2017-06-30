@@ -65,20 +65,22 @@ public class InforEntradasMensual extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jText_Buscar = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        fechaInforme = new org.jdesktop.swingx.JXDatePicker();
         jPanel_Buscar = new javax.swing.JPanel();
         jLabel_icn_buscar = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        fechaInforme = new org.jdesktop.swingx.JXDatePicker();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jPanel_Volver = new javax.swing.JPanel();
+        jLabel_icn_canc = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Informe Entradas Vehiculos Mensual");
@@ -88,7 +90,9 @@ public class InforEntradasMensual extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Para la generación de los reportes diarios, es necesario especificar la fecha del reporte a crear.");
 
-        jPanel3.setBackground(new java.awt.Color(36, 47, 65));
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText(" Buscar por placa");
 
         jText_Buscar.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jText_Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -101,6 +105,14 @@ public class InforEntradasMensual extends javax.swing.JPanel {
                 jText_BuscarKeyTyped(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText(" Fecha");
+
+        fechaInforme.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        fechaInforme.setName(""); // NOI18N
 
         jPanel_Buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -124,96 +136,88 @@ public class InforEntradasMensual extends javax.swing.JPanel {
         jLabel10.setText("Buscar");
         jPanel_Buscar.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 70, 20));
 
-        fechaInforme.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        fechaInforme.setName(""); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("Fecha");
-
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Buscar por placa");
-
         jList1.setAutoscrolls(false);
         jScrollPane1.setViewportView(jList1);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addGap(317, 317, 317)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fechaInforme, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jText_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(361, 361, 361))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jText_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fechaInforme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
+        jPanel_Volver.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Volver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_Volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_VolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_VolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_VolverMouseExited(evt);
+            }
+        });
+        jPanel_Volver.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_icn_canc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Start_20px.png"))); // NOI18N
+        jPanel_Volver.add(jLabel_icn_canc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 20, 40));
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel9.setText("Volver");
+        jPanel_Volver.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 230, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jText_Buscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                    .addComponent(fechaInforme, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(233, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel_Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(33, 33, 33)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel4)
+                .addGap(11, 11, 11)
+                .addComponent(jText_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel3)
+                .addGap(11, 11, 11)
+                .addComponent(fechaInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jPanel_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jPanel_Volver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    private void jText_BuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_BuscarMouseClicked
+    private void jPanel_BuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_BuscarMouseExited
         // TODO add your handling code here:
-        if(jText_Buscar.getText().equals("Buscar por Placa")){
-            jText_Buscar.setText("");}
-    }//GEN-LAST:event_jText_BuscarMouseClicked
+        ii = new ImageIcon(getClass().getResource("/Iconos/Search_20px_2.png"));
+        jLabel_icn_buscar.setIcon(ii);
+    }//GEN-LAST:event_jPanel_BuscarMouseExited
 
-    private void jText_BuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_BuscarKeyTyped
+    private void jPanel_BuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_BuscarMouseEntered
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if(Character.isLowerCase(c))
-        {
-            String cadena = (""+c).toUpperCase();
-            c = cadena.charAt(0);
-            evt.setKeyChar(c);
-        }
-    }//GEN-LAST:event_jText_BuscarKeyTyped
+        ii = new ImageIcon(getClass().getResource("/Iconos/Search_20px.png"));
+        jLabel_icn_buscar.setIcon(ii);
+    }//GEN-LAST:event_jPanel_BuscarMouseEntered
 
     private void jPanel_BuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_BuscarMouseClicked
         // TODO add your handling code here:
@@ -277,18 +281,47 @@ public class InforEntradasMensual extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jPanel_BuscarMouseClicked
 
-    private void jPanel_BuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_BuscarMouseEntered
+    private void jText_BuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_BuscarKeyTyped
         // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Search_20px.png"));
-        jLabel_icn_buscar.setIcon(ii);
-    }//GEN-LAST:event_jPanel_BuscarMouseEntered
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
+    }//GEN-LAST:event_jText_BuscarKeyTyped
 
-    private void jPanel_BuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_BuscarMouseExited
+    private void jText_BuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_BuscarMouseClicked
         // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Search_20px_2.png"));
-        jLabel_icn_buscar.setIcon(ii);
-    }//GEN-LAST:event_jPanel_BuscarMouseExited
-        
+        if(jText_Buscar.getText().equals("Buscar por Placa")){
+            jText_Buscar.setText("");}
+    }//GEN-LAST:event_jText_BuscarMouseClicked
+
+    private void jPanel_VolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_VolverMouseClicked
+        // TODO add your handling code here:
+        Mensual m=new Mensual();
+        this.removeAll();
+        this.setLayout(new BorderLayout());
+        this.add(m,BorderLayout.CENTER);
+        this.repaint();
+        this.revalidate();
+    }//GEN-LAST:event_jPanel_VolverMouseClicked
+
+    private void jPanel_VolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_VolverMouseEntered
+        // TODO add your handling code here:
+        ii = new ImageIcon(getClass().getResource("/Iconos/Start_20px_1.png"));
+        jLabel_icn_canc.setIcon(ii);
+    }//GEN-LAST:event_jPanel_VolverMouseEntered
+
+    private void jPanel_VolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_VolverMouseExited
+        // TODO add your handling code here:
+        ii = new ImageIcon(getClass().getResource("/Iconos/Start_20px.png"));
+        jLabel_icn_canc.setIcon(ii);
+    }//GEN-LAST:event_jPanel_VolverMouseExited
+
+    
+            
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXDatePicker fechaInforme;
@@ -297,10 +330,12 @@ public class InforEntradasMensual extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_icn_buscar;
+    private javax.swing.JLabel jLabel_icn_canc;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel_Buscar;
+    private javax.swing.JPanel jPanel_Volver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jText_Buscar;
