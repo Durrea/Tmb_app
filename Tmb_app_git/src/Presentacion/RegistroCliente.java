@@ -12,6 +12,7 @@ import Servicios.Conexion;
 import Servicios.ParqueaderoMes;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -91,14 +92,39 @@ public class RegistroCliente extends javax.swing.JPanel {
                 jText_ColorActionPerformed(evt);
             }
         });
+        jText_Color.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_ColorKeyTyped(evt);
+            }
+        });
 
         jText_Cliente.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Cliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_ClienteKeyTyped(evt);
+            }
+        });
 
         jText_Marca.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Marca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_MarcaKeyTyped(evt);
+            }
+        });
 
         jText_Telefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_TelefonoKeyTyped(evt);
+            }
+        });
 
         jText_Cedula.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_CedulaKeyTyped(evt);
+            }
+        });
 
         jPanel_Registrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -295,6 +321,12 @@ public class RegistroCliente extends javax.swing.JPanel {
                     vehiculo.setVehiculo_marca(this.jText_Marca.getText());
                     String res = obj.RegisterCustomer(Conexion.obtener(), cliente, vehiculo);
                     JOptionPane.showMessageDialog(null, res);
+                    Mensual r=new Mensual();
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(r,BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();
                 }
                 else
                 {
@@ -308,7 +340,7 @@ public class RegistroCliente extends javax.swing.JPanel {
         }
         else
         {
-            JOptionPane.showConfirmDialog(null, "Debe llenar los campos requeridos");
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos requeridos");
         }
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
 
@@ -353,6 +385,46 @@ public class RegistroCliente extends javax.swing.JPanel {
                 this.jCombo_TipoA.removeAllItems();
             }
     }//GEN-LAST:event_jText_PlacaKeyReleased
+
+    private void jText_ClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ClienteKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_ClienteKeyTyped
+
+    private void jText_CedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CedulaKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_CedulaKeyTyped
+
+    private void jText_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TelefonoKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_TelefonoKeyTyped
+
+    private void jText_ColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ColorKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_ColorKeyTyped
+
+    private void jText_MarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_MarcaKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_MarcaKeyTyped
     
     public void LoadVehiculos()
     {
@@ -390,6 +462,7 @@ public class RegistroCliente extends javax.swing.JPanel {
             this.jCombo_TipoA.addItem(tipos.get(i));                       
         }
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jCombo_TipoA;
