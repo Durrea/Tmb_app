@@ -1,14 +1,14 @@
 ================================================
                     LA VIRGEN                   
-                    800_23243434                
-                    ERRRRR                      
- Placa: FDG567                                  
- Lavador: Miguel Paz                            
- Fecha Lavada: 2017-06-28 19:51:50              
- Tipo de Lavada: Completa                       
- Valor Cobrado: 15000                           
+                    800-23232232                
+                    Ley 2000 de 2017            
+ Habitacion: 1                                  
+ N° personas: 5                                 
+ Tiempo de hospedaje                            
+ Dias: 4                                        
+ Horas: 3                                       
+ Valor Cobrado: 106000                          
 ================================================
-                                                
                                                 
                                                 
                                                 
