@@ -133,11 +133,6 @@ public class RegistroLavada extends javax.swing.JPanel {
         jPanel_Cancelar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 20));
 
         jCombo_TipoV.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jCombo_TipoV.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCombo_TipoVMouseClicked(evt);
-            }
-        });
         jCombo_TipoV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCombo_TipoVActionPerformed(evt);
@@ -153,11 +148,6 @@ public class RegistroLavada extends javax.swing.JPanel {
         jLabel5.setText(" Lavador");
 
         jCombo_TpoLvador.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jCombo_TpoLvador.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCombo_TpoLvadorMouseClicked(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -411,15 +401,6 @@ public class RegistroLavada extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jCombo_TpoLvdaActionPerformed
-
-    private void jCombo_TpoLvadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombo_TpoLvadorMouseClicked
-        // TODO add your handling code here:
-              
-    }//GEN-LAST:event_jCombo_TpoLvadorMouseClicked
-
-    private void jCombo_TipoVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombo_TipoVMouseClicked
-        // TODO add your handling code here:  
-    }//GEN-LAST:event_jCombo_TipoVMouseClicked
 
     private void jCombo_TipoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombo_TipoVActionPerformed
         // TODO add your handling code here:
