@@ -7,6 +7,7 @@ package Presentacion;
 
 import Modelos.Habitacion;
 import Servicios.Conexion;
+import Servicios.ImpresionFacturas;
 import Servicios.ParquaderoFraccion;
 import Servicios.S_Hotel;
 import Servicios.Sesion;
@@ -219,8 +220,15 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
     private void jPanel_AceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AceptarMouseClicked
         // TODO add your handling code here:
 
-        JOptionPane.showMessageDialog(this, "Registro exitoso.");
-
+        //JOptionPane.showMessageDialog(this, "Registro exitoso.");
+        int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?", "Imprimir Recibo", JOptionPane.YES_NO_OPTION);
+        if (resultopcion == 0) {
+            ImpresionFacturas impfac = new ImpresionFacturas();
+            boolean res = impfac.FacturaHotel(Math.round(entradas.get(0)));
+            if (!res) {
+                JOptionPane.showMessageDialog(null, "Error en la impresion");
+            }
+        }
         Hotel h = new Hotel();
         this.removeAll();
         this.setLayout(new BorderLayout());

@@ -217,4 +217,36 @@ public class S_Hotel {
             return resultado_lista;
         }
     }
+    
+    public ArrayList<String> LoadLastRecord(Connection conexion, int id)
+    {
+        ArrayList<String> resultado = new ArrayList<String>();
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_FACTURA_HOTEL(?,?,?,?,?,?)}");
+            callProcedure.setString(1, Integer.toString(id));
+            callProcedure.registerOutParameter(2, java.sql.Types.NUMERIC);
+            callProcedure.registerOutParameter(3, java.sql.Types.NUMERIC);
+            callProcedure.registerOutParameter(4, java.sql.Types.NUMERIC);
+            callProcedure.registerOutParameter(5, java.sql.Types.NUMERIC);
+            callProcedure.registerOutParameter(6, java.sql.Types.FLOAT);
+            callProcedure.execute();            
+            for(int i=2;i<=6;i++)
+            {
+                String val = callProcedure.getString(i);
+                if(val != null)
+                {
+                    resultado.add(callProcedure.getString(i));                    
+                }
+                else
+                {
+                    resultado.add("---");
+                }
+            }            
+            return resultado;
+        }catch(Exception e)
+        {            
+            return resultado;
+        }
+    }
 }
