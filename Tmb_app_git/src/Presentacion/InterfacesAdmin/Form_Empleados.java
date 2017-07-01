@@ -378,7 +378,7 @@ public class Form_Empleados extends javax.swing.JPanel {
                 if (!jText_NombreUsuario.getText().equalsIgnoreCase("") && !jText_Contrasenia.getText().equalsIgnoreCase("")) {
                     //Se registra la recepcionista
                     S_Empleados obj = new S_Empleados();
-                    if (obj.registrarEmpleado(Conexion.obtener(), TipoEmpleado.getSelectedIndex(), jText_Nombres.getText(), jText_Apellidos.getText(), jText_NombreUsuario.getText(), jText_Contrasenia.getText(), jText_Telefono.getText(), jText_Documento.getText(), Integer.parseInt("-1"))) {
+                    if (obj.registrarEmpleado(Conexion.obtener(), TipoEmpleado.getSelectedIndex(), jText_Nombres.getText().toUpperCase(), jText_Apellidos.getText().toUpperCase(), jText_NombreUsuario.getText().toUpperCase(), jText_Contrasenia.getText(), jText_Telefono.getText().toUpperCase(), jText_Documento.getText().toUpperCase(), Integer.parseInt("-1"))) {
                         JOptionPane.showMessageDialog(null, "Registro realizado con exito");
                         Empleados ent = new Empleados();
                         this.removeAll();
@@ -396,7 +396,7 @@ public class Form_Empleados extends javax.swing.JPanel {
                 if (isNumeric(jText_CodigoLavador.getText())) {
                     //Se registra el lavador
                     S_Empleados obj = new S_Empleados();
-                    if (obj.registrarEmpleado(Conexion.obtener(), TipoEmpleado.getSelectedIndex(), jText_Nombres.getText(), jText_Apellidos.getText(), jText_NombreUsuario.getText(), jText_Contrasenia.getText(), jText_Telefono.getText(), jText_Documento.getText(), Integer.parseInt(jText_CodigoLavador.getText()))) {
+                    if (obj.registrarEmpleado(Conexion.obtener(), TipoEmpleado.getSelectedIndex(), jText_Nombres.getText().toUpperCase(), jText_Apellidos.getText().toUpperCase(), jText_NombreUsuario.getText().toUpperCase(), jText_Contrasenia.getText(), jText_Telefono.getText().toUpperCase(), jText_Documento.getText().toUpperCase(), Integer.parseInt(jText_CodigoLavador.getText()))) {
                         JOptionPane.showMessageDialog(null, "Registro realizado con exito");
                         Empleados ent = new Empleados();
                         this.removeAll();
@@ -460,13 +460,7 @@ public class Form_Empleados extends javax.swing.JPanel {
 
     private void jText_NombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombresKeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if (Character.isLowerCase(c)) {
-            String cadena = ("" + c).toUpperCase();
-            c = cadena.charAt(0);
-            evt.setKeyChar(c);
-        }
-
+       
     }//GEN-LAST:event_jText_NombresKeyTyped
 
     private void TipoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoEmpleadoActionPerformed
