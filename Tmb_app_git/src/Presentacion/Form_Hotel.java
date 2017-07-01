@@ -12,6 +12,7 @@ import Servicios.S_Hotel;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -157,8 +158,6 @@ public class Form_Hotel extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Para realizar el registro de un hospedaje debe diligenciar la siguiente información.");
 
-        TipoHospedaje.setBackground(new java.awt.Color(0, 0, 102));
-        TipoHospedaje.setForeground(new java.awt.Color(0, 0, 102));
         TipoHospedaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TipoHospedajeActionPerformed(evt);
@@ -190,6 +189,11 @@ public class Form_Hotel extends javax.swing.JPanel {
         jText_numeroPersonas.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
         jText_numeroPersonas.setToolTipText("");
         jText_numeroPersonas.setEditor(new javax.swing.JSpinner.NumberEditor(jText_numeroPersonas, ""));
+        jText_numeroPersonas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_numeroPersonasKeyTyped(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -332,13 +336,19 @@ public class Form_Hotel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_TipoHospedajeActionPerformed
 
+    private void jText_numeroPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_numeroPersonasKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_numeroPersonasKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> TipoHospedaje;
     private javax.swing.JSpinner extra;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -348,13 +358,9 @@ public class Form_Hotel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_icn_add;
-    private javax.swing.JLabel jLabel_icn_canc;
-    private javax.swing.JLabel jLabel_icn_canc1;
     private javax.swing.JLabel jLabel_icn_canc2;
     private javax.swing.JPanel jPanel_Aceptar;
     private javax.swing.JPanel jPanel_Cancelar;
-    private javax.swing.JPanel jPanel_Cancelar1;
-    private javax.swing.JPanel jPanel_Cancelar2;
     private javax.swing.JSpinner jText_Entrada;
     private javax.swing.JSpinner jText_Salida;
     private javax.swing.JTextField jText_Usuario;

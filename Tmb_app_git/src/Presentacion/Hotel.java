@@ -153,9 +153,11 @@ public class Hotel extends javax.swing.JPanel {
             button.setName(Integer.toString(habitacion.getHabitacion_numero()));
             button.setCursor(new Cursor(HAND_CURSOR));
             if (habitacion.getHabitacion_estado().equalsIgnoreCase("LIBRE")) {
-                button.setBackground(new java.awt.Color(102, 102, 102));
+                button.setBackground(new java.awt.Color(192,192,192));
+                button.setForeground(Color.BLACK);
             } else {
                 button.setBackground(new java.awt.Color(36, 47, 65));
+                button.setForeground(Color.WHITE);
             }
 
             ActionListener listener = new ActionListener() {

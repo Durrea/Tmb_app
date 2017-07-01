@@ -72,42 +72,20 @@ public class ResultaInfHotel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
-        jPanel_Ag1 = new javax.swing.JPanel();
-        jLabel_icn_add1 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
+        jPanel_Cancelar = new javax.swing.JPanel();
+        jLabel_icn_canc2 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
 
-        jPanel_Ag1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel_Ag1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel_Ag1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel_Ag1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel_Ag1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel_Ag1MouseExited(evt);
-            }
-        });
-        jPanel_Ag1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel_icn_add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Add_20px.png"))); // NOI18N
-        jPanel_Ag1.add(jLabel_icn_add1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
-
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel9.setText("Volver");
-        jPanel_Ag1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 60, -1));
-
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Resultado Reporte");
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -122,67 +100,84 @@ public class ResultaInfHotel extends javax.swing.JPanel {
         jPanel2.setLayout(new java.awt.GridLayout(0, 1));
         jScrollPane2.setViewportView(jPanel2);
 
+        jPanel_Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel_Cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_CancelarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_CancelarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_CancelarMouseExited(evt);
+            }
+        });
+        jPanel_Cancelar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel_icn_canc2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Start_20px.png"))); // NOI18N
+        jPanel_Cancelar.add(jLabel_icn_canc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 20, 40));
+
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel11.setText("Volver");
+        jPanel_Cancelar.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(325, 325, 325)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(33, 33, 33)
-                            .addComponent(jLabel3))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(46, 46, 46)
-                            .addComponent(jLabel2))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(342, 342, 342)
-                            .addComponent(jPanel_Ag1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(108, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
-                .addComponent(jLabel2)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel_Ag1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void jPanel_Ag1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag1MouseClicked
-
-        InforDHotelRecep informes = new InforDHotelRecep();
+    private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
+        // TODO add your handling code here:
+        InforDHotelRecep in=new InforDHotelRecep();
         this.removeAll();
         this.setLayout(new BorderLayout());
-        this.add(informes, BorderLayout.CENTER);
+        this.add(in,BorderLayout.CENTER);
         this.repaint();
         this.revalidate();
-    }//GEN-LAST:event_jPanel_Ag1MouseClicked
+    }//GEN-LAST:event_jPanel_CancelarMouseClicked
 
-    private void jPanel_Ag1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag1MouseEntered
+    private void jPanel_CancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseEntered
         // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px_1.png"));
-        jLabel_icn_add1.setIcon(ii);
-    }//GEN-LAST:event_jPanel_Ag1MouseEntered
+        ii = new ImageIcon(getClass().getResource("/Iconos/Start_20px_1.png"));
+        jLabel_icn_canc2.setIcon(ii);
+    }//GEN-LAST:event_jPanel_CancelarMouseEntered
 
-    private void jPanel_Ag1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Ag1MouseExited
+    private void jPanel_CancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseExited
         // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px.png"));
-        jLabel_icn_add1.setIcon(ii);
-    }//GEN-LAST:event_jPanel_Ag1MouseExited
+        ii = new ImageIcon(getClass().getResource("/Iconos/Start_20px.png"));
+        jLabel_icn_canc2.setIcon(ii);
+    }//GEN-LAST:event_jPanel_CancelarMouseExited
+
     public void InformeDiarioFraccion(String fecha, int habitacion) {
         //Administrador objadmin = new Administrador();
         S_Hotel objHotel = new S_Hotel();
@@ -239,13 +234,12 @@ public class ResultaInfHotel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabel_icn_add1;
+    private javax.swing.JLabel jLabel_icn_canc2;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel_Ag1;
+    private javax.swing.JPanel jPanel_Cancelar;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

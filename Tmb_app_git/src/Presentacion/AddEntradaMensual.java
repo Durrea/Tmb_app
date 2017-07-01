@@ -312,6 +312,12 @@ public class AddEntradaMensual extends javax.swing.JPanel {
                 if(res.equalsIgnoreCase("Exitoso"))                    
                 {
                     JOptionPane.showMessageDialog(null, "Registro "+res);
+                    Mensual m=new Mensual();
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(m,BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();
                 }
                 else
                 {

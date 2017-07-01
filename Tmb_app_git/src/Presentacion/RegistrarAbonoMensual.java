@@ -52,8 +52,8 @@ public class RegistrarAbonoMensual extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel_Pagar = new javax.swing.JPanel();
-        jLabel_icn_add = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel_icn_addE = new javax.swing.JLabel();
         jPanel_Cancelar_Pago = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel_icn_canc = new javax.swing.JLabel();
@@ -81,13 +81,13 @@ public class RegistrarAbonoMensual extends javax.swing.JPanel {
         });
         jPanel_Pagar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_icn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Add_20px.png"))); // NOI18N
-        jPanel_Pagar.add(jLabel_icn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 20, 40));
-
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Pagar");
         jPanel_Pagar.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 100, 20));
+
+        jLabel_icn_addE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Refund_20px.png"))); // NOI18N
+        jPanel_Pagar.add(jLabel_icn_addE, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 20, 40));
 
         jPanel_Cancelar_Pago.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Cancelar_Pago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -215,14 +215,14 @@ public class RegistrarAbonoMensual extends javax.swing.JPanel {
 
     private void jPanel_PagarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_PagarMouseEntered
         // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px_1.png"));
-        jLabel_icn_add.setIcon(ii);
+        ii = new ImageIcon(getClass().getResource("/Iconos/Refund_20px_1.png"));
+        jLabel_icn_addE.setIcon(ii);
     }//GEN-LAST:event_jPanel_PagarMouseEntered
 
     private void jPanel_PagarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_PagarMouseExited
         // TODO add your handling code here:
-        ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px.png"));
-        jLabel_icn_add.setIcon(ii);
+        ii = new ImageIcon(getClass().getResource("/Iconos/Refund_20px.png"));
+        jLabel_icn_addE.setIcon(ii);
     }//GEN-LAST:event_jPanel_PagarMouseExited
 
     private void jPanel_Cancelar_PagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Cancelar_PagoMouseClicked
@@ -260,7 +260,7 @@ public class RegistrarAbonoMensual extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabel_icn_add;
+    private javax.swing.JLabel jLabel_icn_addE;
     private javax.swing.JLabel jLabel_icn_canc;
     private javax.swing.JPanel jPanel_Cancelar_Pago;
     private javax.swing.JPanel jPanel_Pagar;

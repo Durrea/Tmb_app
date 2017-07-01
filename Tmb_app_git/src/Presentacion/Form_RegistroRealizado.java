@@ -56,14 +56,11 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel_Cancelar = new javax.swing.JPanel();
-        jLabel_icn_inf = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jText_Usuario = new javax.swing.JTextField();
+        jLabel_icn_canc = new javax.swing.JLabel();
         jPanel_Aceptar = new javax.swing.JPanel();
         jLabel_icn_add = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         costoTotal = new javax.swing.JLabel();
@@ -77,7 +74,6 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(36, 47, 65));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_Cancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -94,36 +90,12 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
         });
         jPanel_Cancelar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_icn_inf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"))); // NOI18N
-        jPanel_Cancelar.add(jLabel_icn_inf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 20, 40));
-
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel5.setText("Cancelar");
-        jPanel_Cancelar.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 20));
+        jPanel_Cancelar.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 20));
 
-        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel_Cancelar.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        jText_Usuario.setBackground(new java.awt.Color(36, 47, 65));
-        jText_Usuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jText_Usuario.setForeground(new java.awt.Color(255, 255, 255));
-        jText_Usuario.setText("Ingresar Usuario");
-        jText_Usuario.setBorder(null);
-        jText_Usuario.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jText_Usuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_UsuarioMouseClicked(evt);
-            }
-        });
-        jText_Usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_UsuarioActionPerformed(evt);
-            }
-        });
-        jPanel_Cancelar.add(jText_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 270, -1));
-
-        add(jPanel_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 180, 40));
+        jLabel_icn_canc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cancel_20px.png"))); // NOI18N
+        jPanel_Cancelar.add(jLabel_icn_canc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 20, 40));
 
         jPanel_Aceptar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Aceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -144,62 +116,114 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
         jPanel_Aceptar.add(jLabel_icn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Añadir Entrada");
-        jPanel_Aceptar.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
-
-        add(jPanel_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 140, 40));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
+        jPanel_Aceptar.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 20));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Registro de entradas al hotel");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("El registro ha sido realizado de manera exitosa, a continuación encontrará el costo total calculado.");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
 
         costoTotal.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         costoTotal.setForeground(new java.awt.Color(255, 255, 255));
         costoTotal.setText(".");
-        add(costoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 329, 130, 20));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Cupo excedido");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Costo total calculado");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Habitación a ocupar");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
 
         cupoExcedido.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         cupoExcedido.setForeground(new java.awt.Color(255, 255, 255));
         cupoExcedido.setText(".");
-        add(cupoExcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 120, 30));
 
         numhabitacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         numhabitacion.setForeground(new java.awt.Color(255, 255, 255));
         numhabitacion.setText(".");
-        add(numhabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 120, -1));
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Capacidad de la habitación");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, 20));
 
         capacidadHabitacion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         capacidadHabitacion.setForeground(new java.awt.Color(255, 255, 255));
         capacidadHabitacion.setText(".");
-        add(capacidadHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 120, 20));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 224, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(costoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jPanel_Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(numhabitacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cupoExcedido, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(capacidadHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 224, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(numhabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(capacidadHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(cupoExcedido, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(costoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel_Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
@@ -245,22 +269,14 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
     private void jPanel_CancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseEntered
         // TODO add your handling code here:
         ii = new ImageIcon(getClass().getResource("/Iconos/Cancel_20px_2.png"));
-        jLabel_icn_inf.setIcon(ii);
+        jLabel_icn_canc.setIcon(ii);
     }//GEN-LAST:event_jPanel_CancelarMouseEntered
 
     private void jPanel_CancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseExited
         // TODO add your handling code here:
         ii = new ImageIcon(getClass().getResource("/Iconos/Cancel_20px.png"));
-        jLabel_icn_inf.setIcon(ii);
+        jLabel_icn_canc.setIcon(ii);
     }//GEN-LAST:event_jPanel_CancelarMouseExited
-
-    private void jText_UsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_UsuarioMouseClicked
-        jText_Usuario.setText("");
-    }//GEN-LAST:event_jText_UsuarioMouseClicked
-
-    private void jText_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_UsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_UsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -276,12 +292,9 @@ public class Form_RegistroRealizado extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_icn_add;
-    private javax.swing.JLabel jLabel_icn_inf;
+    private javax.swing.JLabel jLabel_icn_canc;
     private javax.swing.JPanel jPanel_Aceptar;
     private javax.swing.JPanel jPanel_Cancelar;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jText_Usuario;
     private javax.swing.JLabel numhabitacion;
     // End of variables declaration//GEN-END:variables
 
