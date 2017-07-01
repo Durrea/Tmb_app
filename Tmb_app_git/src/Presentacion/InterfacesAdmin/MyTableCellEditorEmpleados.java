@@ -1,8 +1,9 @@
-package Presentacion;
+package Presentacion.InterfacesAdmin;
 
 import Servicios.Conexion;
 import Servicios.ParqueaderoMes;
 import Servicios.SLavadero;
+import Servicios.S_Empleados;
 import Servicios.S_Hotel;
 import java.awt.Component;
 import javax.swing.AbstractCellEditor;
@@ -44,25 +45,23 @@ public class MyTableCellEditorEmpleados extends AbstractCellEditor implements Ta
     @Override
     public boolean stopCellEditing() {
         NewValue = (String) getCellEditorValue();
-        if (table.equalsIgnoreCase("LAVADOR")) {
-            if (NameColum.equalsIgnoreCase("LAVADOR_NOMBRE")) {
-                if (!NewValue.equals(OldValue)) {
-                    if (!S_Hotel.updateTarifa(Conexion.obtener(), NameColum + "='" + NewValue + "' ", ID)) {   //Si existe algun error al actualizar, escribe viejo valor en la celda
-                        JOptionPane.showMessageDialog(null, "Error: No se puede actualizar");
-                        ((JTextField) component).setText(OldValue);
-                    }
+        if (!NameColum.equalsIgnoreCase("LAVADOR_TELEFONO") && !NameColum.equalsIgnoreCase("RECEPCIONISTA_TELEFONO")) {
+            if (!NewValue.equals(OldValue)) {
+                if (!S_Empleados.updateEmpleado(Conexion.obtener(),table, NameColum + "='" + NewValue + "' ", ID)) {   //Si existe algun error al actualizar, escribe viejo valor en la celda
+                    JOptionPane.showMessageDialog(null, "Error: No se puede actualizar");
+                    ((JTextField) component).setText(OldValue);
                 }
-            } else if (isNumeric(NewValue)) {
-                if (!NewValue.equals(OldValue)) {
-                    if (!S_Hotel.updateTarifa(Conexion.obtener(), NameColum + "='" + NewValue + "' ", ID)) {   //Si existe algun error al actualizar, escribe viejo valor en la celda
-                        JOptionPane.showMessageDialog(null, "Error: No se puede actualizar");
-                        ((JTextField) component).setText(OldValue);
-                    }
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Modificacion invalida", "", JOptionPane.ERROR_MESSAGE);
-                ((JTextField) component).setText(OldValue);
             }
+        } else if (isNumeric(NewValue)) {
+            if (!NewValue.equals(OldValue)) {
+                if (!S_Empleados.updateEmpleado(Conexion.obtener(),table, NameColum + "='" + NewValue + "' ", ID)) {   //Si existe algun error al actualizar, escribe viejo valor en la celda
+                    JOptionPane.showMessageDialog(null, "Error: No se puede actualizar");
+                    ((JTextField) component).setText(OldValue);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Modificacion invalida", "", JOptionPane.ERROR_MESSAGE);
+            ((JTextField) component).setText(OldValue);
         }
 
         return super.stopCellEditing();
@@ -71,20 +70,12 @@ public class MyTableCellEditorEmpleados extends AbstractCellEditor implements Ta
     public static boolean isNumeric(String s) {
         try {
             double y = Double.parseDouble(s);
-            if (y > -1 && esMultiplo(y, 50)) {
+            if (y > -1) {
                 return true;
             } else {
                 return false;
             }
         } catch (NumberFormatException err) {
-            return false;
-        }
-    }
-
-    public static boolean esMultiplo(double n1, double n2) {
-        if (n1 % n2 == 0) {
-            return true;
-        } else {
             return false;
         }
     }

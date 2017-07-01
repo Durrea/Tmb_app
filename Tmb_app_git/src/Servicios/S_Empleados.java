@@ -100,5 +100,18 @@ public class S_Empleados {
             return false;
         }
     }
+    
+    public static boolean updateEmpleado(Connection conect,String tabla, String string, String ID) {
+        try {
+            CallableStatement callProcedure = conect.prepareCall("{call PRO_MODIFICAR_EMPLEADO(?,?,?)}");
+            callProcedure.setString(1, tabla);
+            callProcedure.setString(2, string);
+            callProcedure.setInt(3, Integer.parseInt(ID));
+            callProcedure.execute();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
 }

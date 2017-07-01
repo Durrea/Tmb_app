@@ -48,14 +48,14 @@ public class Empleados extends javax.swing.JPanel {
         Cargar_Datos_Recepcionista();
         this.jTable2.setRowHeight(40);
         //editor de celdas lavador
-        jTable2.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditor("LAVADOR", "LAVADOR_NOMBRE"));//Columna Nombre
-        jTable2.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditor("LAVADOR", "LAVADOR_APELLIDO"));//Columna Apellido
-        jTable2.getColumnModel().getColumn(5).setCellEditor(new MyTableCellEditor("LAVADOR", "LAVADOR_TELEFONO"));//Columna Telefono
-        //editor de celdas tercero
-        //jTable3.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditor("HOTEL", "NUMERO_HABITACION"));//Columna Nombre
-        //jTable3.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditor("HOTEL", "COSTO_HORA"));//Columna Apellido
-        //jTable3.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditor("HOTEL", "COSTO_DIA"));//Columna Edad
-        
+        jTable2.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditorEmpleados("LAVADOR", "LAVADOR_NOMBRE"));//Columna Nombre
+        jTable2.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditorEmpleados("LAVADOR", "LAVADOR_APELLIDOS"));//Columna Apellido
+        jTable2.getColumnModel().getColumn(5).setCellEditor(new MyTableCellEditorEmpleados("LAVADOR", "LAVADOR_TELEFONO"));//Columna Telefono
+        //editor de celdas recepcionista
+        jTable3.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_NOMBRES"));//Columna Nombre
+        jTable3.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_APELLIDOS"));//Columna Apellido
+        jTable3.getColumnModel().getColumn(4).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_CONTRASENIA"));//Columna contrasenia
+        jTable3.getColumnModel().getColumn(6).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_TELEFONO"));//Columna telefono
         //this.jTable2.setEnabled(false);
     }
     ImageIcon ii;
@@ -80,6 +80,9 @@ public class Empleados extends javax.swing.JPanel {
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jText_Buscador1 = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel_icn_add2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -183,6 +186,29 @@ public class Empleados extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(jTable3);
 
+        jText_Buscador1.setBackground(new java.awt.Color(36, 47, 65));
+        jText_Buscador1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Buscador1.setForeground(new java.awt.Color(255, 255, 255));
+        jText_Buscador1.setBorder(null);
+        jText_Buscador1.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jText_Buscador1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jText_Buscador1MouseClicked(evt);
+            }
+        });
+        jText_Buscador1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jText_Buscador1ActionPerformed(evt);
+            }
+        });
+        jText_Buscador1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_Buscador1KeyTyped(evt);
+            }
+        });
+
+        jLabel_icn_add2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Search_20px_1.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -191,6 +217,12 @@ public class Empleados extends javax.swing.JPanel {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel_icn_add2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jText_Buscador1)
+                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(177, 177, 177)
                         .addComponent(jLabel_icn_add1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -218,14 +250,25 @@ public class Empleados extends javax.swing.JPanel {
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jText_Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel_icn_add1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jText_Buscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel_icn_add1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jText_Buscador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel_icn_add2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(144, 144, 144)
@@ -259,7 +302,7 @@ public class Empleados extends javax.swing.JPanel {
     private void jText_BuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_BuscadorMouseClicked
         jText_Buscador.setText("");
     }//GEN-LAST:event_jText_BuscadorMouseClicked
-
+    
     private void jText_BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_BuscadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_BuscadorActionPerformed
@@ -272,17 +315,17 @@ public class Empleados extends javax.swing.JPanel {
             c = cadena.charAt(0);
             evt.setKeyChar(c);
         }
+        //Buscar en la tbla lavador por Documento
         jText_Buscador.addKeyListener(new KeyAdapter() {
             public void keyReleased(final KeyEvent e) {
                 String cadena = (jText_Buscador.getText());
                 jText_Buscador.setText(cadena);
                 repaint();
-                filter.setRowFilter(RowFilter.regexFilter(jText_Buscador.getText(), 1));
+                filter.setRowFilter(RowFilter.regexFilter(jText_Buscador.getText(), 4));
             }
         });
         filter = new TableRowSorter(this.jTable2.getModel());
         this.jTable2.setRowSorter(filter);
-
     }//GEN-LAST:event_jText_BuscadorKeyTyped
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -341,6 +384,35 @@ public class Empleados extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTable3MouseClicked
 
+    private void jText_Buscador1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_Buscador1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jText_Buscador1MouseClicked
+
+    private void jText_Buscador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_Buscador1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jText_Buscador1ActionPerformed
+
+    private void jText_Buscador1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_Buscador1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (Character.isLowerCase(c)) {
+            String cadena = ("" + c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
+        //Buscar en la tbla recepcionista por Documento
+        jText_Buscador1.addKeyListener(new KeyAdapter() {
+            public void keyReleased(final KeyEvent e) {
+                String cadena = (jText_Buscador1.getText());
+                jText_Buscador1.setText(cadena);
+                repaint();
+                filter.setRowFilter(RowFilter.regexFilter(jText_Buscador1.getText(), 5));
+            }
+        });
+        filter = new TableRowSorter(this.jTable3.getModel());
+        this.jTable3.setRowSorter(filter);
+    }//GEN-LAST:event_jText_Buscador1KeyTyped
+
     public void Cargar_Datos_Lavador() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());
         S_Empleados obj = new S_Empleados();
@@ -349,7 +421,7 @@ public class Empleados extends javax.swing.JPanel {
         ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
         DefaultTableModel modelo = new DefaultTableModel() {
             public boolean isCellEditable(int fila, int columna) {
-                return columna == 0 || columna == 1 ? false : true;
+                return columna == 0 || columna == 1 || columna == 4 || columna == 6 ? false : true;
             }
             //public boolean isCellEditable(int rowIndex,int columnIndex){return false;}
         };
@@ -401,7 +473,7 @@ public class Empleados extends javax.swing.JPanel {
         ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
         DefaultTableModel modelo = new DefaultTableModel() {
             public boolean isCellEditable(int fila, int columna) {
-                return columna == 0 || columna == 1 ? false : true;
+                return columna == 0 || columna == 3 || columna == 5 || columna == 7 ? false : true;
             }
             //public boolean isCellEditable(int rowIndex,int columnIndex){return false;}
         };
@@ -449,14 +521,17 @@ public class Empleados extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel_icn_add;
     private javax.swing.JLabel jLabel_icn_add1;
+    private javax.swing.JLabel jLabel_icn_add2;
     private javax.swing.JPanel jPanel_Registrar;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jText_Buscador;
+    private javax.swing.JTextField jText_Buscador1;
     // End of variables declaration//GEN-END:variables
 
 }
