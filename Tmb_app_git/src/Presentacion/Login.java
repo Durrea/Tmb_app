@@ -116,7 +116,7 @@ public class Login extends javax.swing.JFrame {
                 jText_ContrasenaFocusGained(evt);
             }
         });
-        jPanel1.add(jText_Contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 274, 260, -1));
+        jPanel1.add(jText_Contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 260, 20));
 
         jText_Usuario.setBackground(new java.awt.Color(36, 47, 65));
         jText_Usuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
