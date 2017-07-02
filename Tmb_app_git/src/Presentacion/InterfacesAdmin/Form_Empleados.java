@@ -13,6 +13,7 @@ import Servicios.S_Empleados;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -45,16 +46,13 @@ public class Form_Empleados extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel_Informe = new javax.swing.JPanel();
-        jLabel_icn_inf = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         jText_Usuario = new javax.swing.JTextField();
+        jLabel_icn_canc = new javax.swing.JLabel();
         jPanel_Ag = new javax.swing.JPanel();
         jLabel_icn_add = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         TipoEmpleado = new javax.swing.JComboBox<>();
         jText_Nombres = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -74,7 +72,6 @@ public class Form_Empleados extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(36, 47, 65));
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_Informe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Informe.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,16 +87,10 @@ public class Form_Empleados extends javax.swing.JPanel {
         });
         jPanel_Informe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_icn_inf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"))); // NOI18N
-        jPanel_Informe.add(jLabel_icn_inf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 20, 40));
-
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Cancelar");
-        jPanel_Informe.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 20));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel_Informe.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+        jPanel_Informe.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, 20));
 
         jText_Usuario.setBackground(new java.awt.Color(36, 47, 65));
         jText_Usuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -119,7 +110,8 @@ public class Form_Empleados extends javax.swing.JPanel {
         });
         jPanel_Informe.add(jText_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 270, -1));
 
-        add(jPanel_Informe, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, 180, 40));
+        jLabel_icn_canc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cancel_20px.png"))); // NOI18N
+        jPanel_Informe.add(jLabel_icn_canc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 20, 40));
 
         jPanel_Ag.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_Ag.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -136,34 +128,25 @@ public class Form_Empleados extends javax.swing.JPanel {
         jPanel_Ag.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_icn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Add_20px.png"))); // NOI18N
-        jPanel_Ag.add(jLabel_icn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
+        jPanel_Ag.add(jLabel_icn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 20, 40));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel8.setText("Añadir Entrada");
-        jPanel_Ag.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
-
-        add(jPanel_Ag, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, 140, 40));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Registrar");
+        jPanel_Ag.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 20));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Registro entradas por fraccion");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Registrar Empleado");
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Para realizar el registro de un empleado debe diligenciar la siguiente información. Los campos con (*) son obligatorios.");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
-
-        TipoEmpleado.setBackground(new java.awt.Color(0, 0, 102));
-        TipoEmpleado.setForeground(new java.awt.Color(0, 0, 102));
+        TipoEmpleado.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         TipoEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TipoEmpleadoActionPerformed(evt);
             }
         });
-        add(TipoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 260, -1));
 
         jText_Nombres.setBackground(new java.awt.Color(36, 47, 65));
         jText_Nombres.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -175,189 +158,183 @@ public class Form_Empleados extends javax.swing.JPanel {
                 jText_NombresMouseClicked(evt);
             }
         });
-        jText_Nombres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_NombresActionPerformed(evt);
-            }
-        });
         jText_Nombres.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jText_NombresKeyTyped(evt);
             }
         });
-        add(jText_Nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 270, -1));
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Tipo de empleado");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombres");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Apellidos");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
 
         jText_Apellidos.setBackground(new java.awt.Color(36, 47, 65));
         jText_Apellidos.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jText_Apellidos.setForeground(new java.awt.Color(255, 255, 255));
         jText_Apellidos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jText_Apellidos.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jText_Apellidos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_ApellidosMouseClicked(evt);
-            }
-        });
-        jText_Apellidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_ApellidosActionPerformed(evt);
-            }
-        });
         jText_Apellidos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jText_ApellidosKeyTyped(evt);
             }
         });
-        add(jText_Apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 270, -1));
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Telefono");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
 
         jText_Telefono.setBackground(new java.awt.Color(36, 47, 65));
         jText_Telefono.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jText_Telefono.setForeground(new java.awt.Color(255, 255, 255));
         jText_Telefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jText_Telefono.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jText_Telefono.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_TelefonoMouseClicked(evt);
-            }
-        });
-        jText_Telefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_TelefonoActionPerformed(evt);
-            }
-        });
         jText_Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jText_TelefonoKeyTyped(evt);
             }
         });
-        add(jText_Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, 270, -1));
 
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Documento");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
 
         jText_Documento.setBackground(new java.awt.Color(36, 47, 65));
         jText_Documento.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jText_Documento.setForeground(new java.awt.Color(255, 255, 255));
         jText_Documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jText_Documento.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jText_Documento.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_DocumentoMouseClicked(evt);
-            }
-        });
-        jText_Documento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_DocumentoActionPerformed(evt);
-            }
-        });
         jText_Documento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jText_DocumentoKeyTyped(evt);
             }
         });
-        add(jText_Documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 270, -1));
 
-        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Usuario");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, -1, -1));
 
         jText_NombreUsuario.setBackground(new java.awt.Color(36, 47, 65));
         jText_NombreUsuario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jText_NombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jText_NombreUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jText_NombreUsuario.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jText_NombreUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_NombreUsuarioMouseClicked(evt);
-            }
-        });
-        jText_NombreUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_NombreUsuarioActionPerformed(evt);
-            }
-        });
         jText_NombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jText_NombreUsuarioKeyTyped(evt);
             }
         });
-        add(jText_NombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 130, -1));
 
         jText_Contrasenia.setBackground(new java.awt.Color(36, 47, 65));
         jText_Contrasenia.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jText_Contrasenia.setForeground(new java.awt.Color(255, 255, 255));
         jText_Contrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jText_Contrasenia.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jText_Contrasenia.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_ContraseniaMouseClicked(evt);
-            }
-        });
-        jText_Contrasenia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_ContraseniaActionPerformed(evt);
-            }
-        });
         jText_Contrasenia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jText_ContraseniaKeyTyped(evt);
             }
         });
-        add(jText_Contrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 130, -1));
 
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Contraseña");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, -1, -1));
 
         jText_CodigoLavador.setBackground(new java.awt.Color(36, 47, 65));
         jText_CodigoLavador.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jText_CodigoLavador.setForeground(new java.awt.Color(255, 255, 255));
         jText_CodigoLavador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jText_CodigoLavador.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jText_CodigoLavador.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jText_CodigoLavadorMouseClicked(evt);
-            }
-        });
-        jText_CodigoLavador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_CodigoLavadorActionPerformed(evt);
-            }
-        });
         jText_CodigoLavador.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jText_CodigoLavadorKeyTyped(evt);
             }
         });
-        add(jText_CodigoLavador, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 130, -1));
 
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Codigo Lavador");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(280, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TipoEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jText_Nombres, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jText_Apellidos, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jText_Telefono, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jText_Documento, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel_Ag, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                        .addGap(66, 66, 66)
+                        .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jText_CodigoLavador, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jText_Contrasenia)
+                    .addComponent(jText_NombreUsuario)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(281, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(TipoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jText_Nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jText_Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jText_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jText_Documento, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jText_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jText_Contrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jText_CodigoLavador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel_Ag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel_InformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseClicked
@@ -433,13 +410,13 @@ public class Form_Empleados extends javax.swing.JPanel {
     private void jPanel_InformeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseEntered
         // TODO add your handling code here:
         ii = new ImageIcon(getClass().getResource("/Iconos/Cancel_20px_2.png"));
-        jLabel_icn_inf.setIcon(ii);
+        jLabel_icn_canc.setIcon(ii);
     }//GEN-LAST:event_jPanel_InformeMouseEntered
 
     private void jPanel_InformeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseExited
         // TODO add your handling code here:
         ii = new ImageIcon(getClass().getResource("/Iconos/Cancel_20px.png"));
-        jLabel_icn_inf.setIcon(ii);
+        jLabel_icn_canc.setIcon(ii);
     }//GEN-LAST:event_jPanel_InformeMouseExited
 
     private void jText_UsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_UsuarioMouseClicked
@@ -454,14 +431,53 @@ public class Form_Empleados extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_NombresMouseClicked
 
-    private void jText_NombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_NombresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_NombresActionPerformed
-
     private void jText_NombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombresKeyTyped
         // TODO add your handling code here:
-       
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
     }//GEN-LAST:event_jText_NombresKeyTyped
+
+    private void jText_ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ApellidosKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_ApellidosKeyTyped
+
+    private void jText_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TelefonoKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_TelefonoKeyTyped
+
+    private void jText_DocumentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_DocumentoKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_DocumentoKeyTyped
+
+    private void jText_NombreUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombreUsuarioKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_NombreUsuarioKeyTyped
+
+    private void jText_CodigoLavadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CodigoLavadorKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_CodigoLavadorKeyTyped
 
     private void TipoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoEmpleadoActionPerformed
         // TODO add your handling code here:
@@ -483,80 +499,11 @@ public class Form_Empleados extends javax.swing.JPanel {
             jText_Contrasenia.setVisible(false);
             jText_CodigoLavador.setVisible(true);
         }
-
     }//GEN-LAST:event_TipoEmpleadoActionPerformed
-
-    private void jText_ApellidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_ApellidosMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_ApellidosMouseClicked
-
-    private void jText_ApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_ApellidosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_ApellidosActionPerformed
-
-    private void jText_ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ApellidosKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_ApellidosKeyTyped
-
-    private void jText_TelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_TelefonoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_TelefonoMouseClicked
-
-    private void jText_TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_TelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_TelefonoActionPerformed
-
-    private void jText_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TelefonoKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_TelefonoKeyTyped
-
-    private void jText_DocumentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_DocumentoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_DocumentoMouseClicked
-
-    private void jText_DocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_DocumentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_DocumentoActionPerformed
-
-    private void jText_DocumentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_DocumentoKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_DocumentoKeyTyped
-
-    private void jText_NombreUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombreUsuarioKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_NombreUsuarioKeyTyped
-
-    private void jText_NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_NombreUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_NombreUsuarioActionPerformed
-
-    private void jText_NombreUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_NombreUsuarioMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_NombreUsuarioMouseClicked
 
     private void jText_ContraseniaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ContraseniaKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_ContraseniaKeyTyped
-
-    private void jText_ContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_ContraseniaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_ContraseniaActionPerformed
-
-    private void jText_ContraseniaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_ContraseniaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_ContraseniaMouseClicked
-
-    private void jText_CodigoLavadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CodigoLavadorKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_CodigoLavadorKeyTyped
-
-    private void jText_CodigoLavadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_CodigoLavadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_CodigoLavadorActionPerformed
-
-    private void jText_CodigoLavadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_CodigoLavadorMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_CodigoLavadorMouseClicked
 
     public void LoadVehiculos() {
         Administrador obj = new Administrador();
@@ -571,7 +518,6 @@ public class Form_Empleados extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -580,11 +526,9 @@ public class Form_Empleados extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_icn_add;
-    private javax.swing.JLabel jLabel_icn_inf;
+    private javax.swing.JLabel jLabel_icn_canc;
     private javax.swing.JPanel jPanel_Ag;
     private javax.swing.JPanel jPanel_Informe;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jText_Apellidos;
     private javax.swing.JTextField jText_CodigoLavador;
     private javax.swing.JTextField jText_Contrasenia;
