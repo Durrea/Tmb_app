@@ -223,7 +223,7 @@ public class ResultaInfFraccion extends javax.swing.JPanel {
             fila[0] = inforecep.get(i).getVehiculo_placa();
             fila[1] = inforecep.get(i).getFecha_entrada();
             fila[2] = inforecep.get(i).getFecha_salida();
-            fila[3] = inforecep.get(i).getValor_pagar();
+            fila[3] = (long)inforecep.get(i).getValor_pagar();            
             modelo.addRow(fila);
         }
         tabla.setModel(modelo);
