@@ -444,7 +444,7 @@ public class Empleados extends javax.swing.JPanel {
             modelo.addRow(fila);
         }
         this.jTable2.setModel(modelo);
-        /*
+        
         //oculta columna ID
         jTable2.getColumnModel().getColumn(0).setMaxWidth(0);
         jTable2.getColumnModel().getColumn(0).setMinWidth(0);
@@ -455,7 +455,7 @@ public class Empleados extends javax.swing.JPanel {
         jTable2.getColumnModel().getColumn(6).setMinWidth(0);
         jTable2.getTableHeader().getColumnModel().getColumn(6).setMaxWidth(0);
         jTable2.getTableHeader().getColumnModel().getColumn(6).setMinWidth(0);
-        */
+        
     }
 
     public void Cargar_Datos_Recepcionista() {
