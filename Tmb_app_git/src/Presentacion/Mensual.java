@@ -36,10 +36,13 @@ public class Mensual extends javax.swing.JPanel {
      * Creates new form Fraccion
      */
     TableRowSorter filter;
+    TableRowSorter filter1;
     int rown = -1;
     public Mensual() {
         initComponents();
         Cargar_Datos();
+        Cargar_Datos_Men_Ven();
+        this.jTable1.setRowHeight(40);
         this.jTable2.setRowHeight(40);
         //this.jTable2.setEnabled(false);
     }
@@ -73,6 +76,11 @@ public class Mensual extends javax.swing.JPanel {
         jLabel_icn_inf1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jText_Buscador1 = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
+        jLabel_icn_add2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -228,36 +236,87 @@ public class Mensual extends javax.swing.JPanel {
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel_Informe_Entradas_Diarias.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jText_Buscador1.setBackground(new java.awt.Color(36, 47, 65));
+        jText_Buscador1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Buscador1.setForeground(new java.awt.Color(255, 255, 255));
+        jText_Buscador1.setBorder(null);
+        jText_Buscador1.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jText_Buscador1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jText_Buscador1MouseClicked(evt);
+            }
+        });
+        jText_Buscador1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jText_Buscador1ActionPerformed(evt);
+            }
+        });
+        jText_Buscador1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_Buscador1KeyTyped(evt);
+            }
+        });
+
+        jLabel_icn_add2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Search_20px_1.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 582, Short.MAX_VALUE)
-                        .addComponent(jLabel_icn_add1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel_icn_add2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jText_Buscador, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(jSeparator4)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jPanel_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jPanel_Informe_Entradas_Diarias, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 117, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jText_Buscador1)
+                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 582, Short.MAX_VALUE)
+                                .addComponent(jLabel_icn_add1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jText_Buscador, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                    .addComponent(jSeparator4)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jPanel_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jPanel_Informe_Entradas_Diarias, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 117, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING))))
                 .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -273,8 +332,17 @@ public class Mensual extends javax.swing.JPanel {
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel_icn_add1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(164, 164, 164))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jText_Buscador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_icn_add2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -427,6 +495,64 @@ public class Mensual extends javax.swing.JPanel {
         ii = new ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"));
         jLabel_icn_inf1.setIcon(ii);
     }//GEN-LAST:event_jPanel_Informe_Entradas_DiariasMouseExited
+
+    private void jText_Buscador1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_Buscador1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jText_Buscador1MouseClicked
+
+    private void jText_Buscador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_Buscador1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jText_Buscador1ActionPerformed
+
+    private void jText_Buscador1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_Buscador1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
+        jText_Buscador1.addKeyListener(new KeyAdapter() {
+            public void keyReleased(final KeyEvent e) {
+                String cadena = (jText_Buscador1.getText());
+                jText_Buscador1.setText(cadena);
+                repaint();
+                filter1.setRowFilter(RowFilter.regexFilter(jText_Buscador1.getText(), 1));
+            }
+        });
+        filter1 = new TableRowSorter(this.jTable1.getModel());
+        this.jTable1.setRowSorter(filter1);
+    }//GEN-LAST:event_jText_Buscador1KeyTyped
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        rown = jTable1.rowAtPoint(evt.getPoint());
+
+        int column = jTable1.getColumnModel().getColumnIndexAtX(evt.getX());
+        int row = evt.getY()/jTable1.getRowHeight();
+        
+        if(row < jTable1.getRowCount() && row >= 0 && column < jTable1.getColumnCount() && column >= 0){
+            Object value = jTable1.getValueAt(row, column);
+            if(value instanceof JButton){
+                ((JButton)value).doClick();
+                JButton boton = (JButton) value;
+                
+                String placa = ""+jTable1.getValueAt(rown, 1);                                
+                if(boton.getName().equals("t"))
+                {
+                    RegistrarAbonoMensual obj=new RegistrarAbonoMensual();
+                    obj.placa = placa;                    
+                    obj.setLabels();
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(obj,BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();
+                }
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
     
     public void Cargar_Datos()
     {
@@ -469,6 +595,47 @@ public class Mensual extends javax.swing.JPanel {
             this.jTable2.setModel(modelo);
         }                
     }
+    public void Cargar_Datos_Men_Ven()
+    {
+        jTable1.setDefaultRenderer(Object.class, new RenderTabla());
+        ParqueaderoMes obj = new ParqueaderoMes();
+        ArrayList<Object> lista = new ArrayList<Object>();
+        lista = obj.CargarInformacionMensualidadVenc(Conexion.obtener());
+        if(lista.size() == 0)
+        {
+            DefaultTableModel modelo = new DefaultTableModel(){
+            public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
+            modelo.addColumn("No hay registros");
+        }
+        else
+        {
+            ArrayList<String> columnas = (ArrayList<String>) lista.get(0);
+            DefaultTableModel modelo = new DefaultTableModel(){
+            public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
+            for(int i=0;i<columnas.size();i++)
+            {
+                modelo.addColumn(columnas.get(i));            
+            }
+            modelo.addColumn("ACCIONES");
+
+            for(int i=1;i<lista.size();i++)
+            {
+                ArrayList<String> lista_info = new ArrayList<String>();                        
+                JButton btn_visualizar_2 = new JButton("Actualizar/Activar");
+                btn_visualizar_2.setName("t");
+                btn_visualizar_2.setBounds(0, 0, 60, 30);
+                lista_info = (ArrayList<String>) lista.get(i);
+                Object [] fila = new Object[lista_info.size()+1];
+                for(int j=0;j<lista_info.size();j++)
+                {
+                    fila [j] = lista_info.get(j);
+                }                                  
+                fila[lista_info.size()] = btn_visualizar_2;            
+                modelo.addRow(fila);            
+            }
+            this.jTable1.setModel(modelo);
+        }                
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel5;
@@ -477,6 +644,7 @@ public class Mensual extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_icn_add;
     private javax.swing.JLabel jLabel_icn_add1;
+    private javax.swing.JLabel jLabel_icn_add2;
     private javax.swing.JLabel jLabel_icn_addE;
     private javax.swing.JLabel jLabel_icn_inf;
     private javax.swing.JLabel jLabel_icn_inf1;
@@ -484,13 +652,17 @@ public class Mensual extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel_Informe;
     private javax.swing.JPanel jPanel_Informe_Entradas_Diarias;
     private javax.swing.JPanel jPanel_Registrar;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jText_Buscador;
+    private javax.swing.JTextField jText_Buscador1;
     // End of variables declaration//GEN-END:variables
     
 }

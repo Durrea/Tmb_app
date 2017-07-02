@@ -47,6 +47,7 @@ public class Empleados extends javax.swing.JPanel {
         Cargar_Datos_Lavador();
         Cargar_Datos_Recepcionista();
         this.jTable2.setRowHeight(40);
+        this.jTable3.setRowHeight(40);
         //editor de celdas lavador
         jTable2.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditorEmpleados("LAVADOR", "LAVADOR_NOMBRE"));//Columna Nombre
         jTable2.getColumnModel().getColumn(3).setCellEditor(new MyTableCellEditorEmpleados("LAVADOR", "LAVADOR_APELLIDOS"));//Columna Apellido
