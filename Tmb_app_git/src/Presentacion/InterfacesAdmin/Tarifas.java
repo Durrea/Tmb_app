@@ -63,7 +63,7 @@ public class Tarifas extends javax.swing.JPanel {
         );
         jPanelFMLayout.setVerticalGroup(
             jPanelFMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 537, Short.MAX_VALUE)
         );
 
         jPanel_Fraccion.setBackground(new java.awt.Color(102, 102, 102));
@@ -109,13 +109,13 @@ public class Tarifas extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Lavadero");
-        jPanel_Mensual.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel_Mensual.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel_Mensual.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
 
         jLabel_icn_ml.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Sort Down_20px_1.png"))); // NOI18N
-        jPanel_Mensual.add(jLabel_icn_ml, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+        jPanel_Mensual.add(jLabel_icn_ml, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         jPanel_Mensual1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel_Mensual1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -157,7 +157,7 @@ public class Tarifas extends javax.swing.JPanel {
                 .addGap(39, 39, 39)
                 .addComponent(jPanel_Fraccion, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel_Mensual, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_Mensual, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel_Mensual1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -170,7 +170,7 @@ public class Tarifas extends javax.swing.JPanel {
                     .addComponent(jPanel_Fraccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel_Mensual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel_Mensual1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanelFM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
