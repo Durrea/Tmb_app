@@ -52,7 +52,7 @@ public class ParquaderoFraccion {
                         if(resultado_consulta.getString(i+1) == null && 
                             columnas_consulta.getColumnType(i+1) == 7)
                         {
-                            fila.add("0.0");
+                            fila.add("0");
                         }
                         else
                         {
