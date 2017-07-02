@@ -538,11 +538,52 @@ public class Mensual extends javax.swing.JPanel {
                 ((JButton)value).doClick();
                 JButton boton = (JButton) value;
                 
-                String placa = ""+jTable1.getValueAt(rown, 1);                                
+                String placa = ""+jTable1.getValueAt(rown, 1);
+                String tipo = ""+jTable1.getValueAt(rown, 2);
+                String deuda = ""+jTable1.getValueAt(rown, 3);
+                double valor_deuda = Double.parseDouble(deuda);
                 if(boton.getName().equals("t"))
-                {
-                    RegistrarAbonoMensual obj=new RegistrarAbonoMensual();
+                {                    
+                    int result =  JOptionPane.showConfirmDialog(this, "¿Desea renovar la mensualidad de este vehiculo?", "Renovar Mensualidad",JOptionPane.YES_NO_OPTION);
+                    if(result == 0)
+                    {
+                        ParqueaderoMes obj = new ParqueaderoMes();
+                        String resultado = obj.RenovarMensualidad(Conexion.obtener(), placa, tipo);
+                        if(resultado.equalsIgnoreCase("La renovación de la mensualidad ha sido exitosa"))
+                        {
+                            JOptionPane.showMessageDialog(null, resultado);
+                            Mensual f=new Mensual();
+                            this.removeAll();
+                            this.setLayout(new BorderLayout());
+                            this.add(f,BorderLayout.CENTER);
+                            this.repaint();
+                            this.revalidate();
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, resultado);
+                            Mensual f=new Mensual();
+                            this.removeAll();
+                            this.setLayout(new BorderLayout());
+                            this.add(f,BorderLayout.CENTER);
+                            this.repaint();
+                            this.revalidate();
+                        }
+                    }
+                    /*RegistrarAbonoMensual obj=new RegistrarAbonoMensual();
                     obj.placa = placa;                    
+                    obj.setLabels();
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(obj,BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();*/
+                }
+                if(boton.getName().equals("p"))
+                {                 
+                    RegistrarAbonoMensual obj=new RegistrarAbonoMensual();
+                    obj.placa = placa;
+                    obj.deuda = valor_deuda;
                     obj.setLabels();
                     this.removeAll();
                     this.setLayout(new BorderLayout());
@@ -617,20 +658,24 @@ public class Mensual extends javax.swing.JPanel {
                 modelo.addColumn(columnas.get(i));            
             }
             modelo.addColumn("ACCIONES");
-
+            modelo.addColumn("ACCIONES");
             for(int i=1;i<lista.size();i++)
             {
                 ArrayList<String> lista_info = new ArrayList<String>();                        
                 JButton btn_visualizar_2 = new JButton("Actualizar/Activar");
                 btn_visualizar_2.setName("t");
                 btn_visualizar_2.setBounds(0, 0, 60, 30);
+                JButton btn_visualizar_3 = new JButton("Realizar Pago");
+                btn_visualizar_3.setName("p");
+                btn_visualizar_3.setBounds(0, 0, 60, 30);
                 lista_info = (ArrayList<String>) lista.get(i);
-                Object [] fila = new Object[lista_info.size()+1];
+                Object [] fila = new Object[lista_info.size()+2];
                 for(int j=0;j<lista_info.size();j++)
                 {
                     fila [j] = lista_info.get(j);
                 }                                  
-                fila[lista_info.size()] = btn_visualizar_2;            
+                fila[lista_info.size()] = btn_visualizar_2;
+                fila[lista_info.size()+1] = btn_visualizar_3;
                 modelo.addRow(fila);            
             }
             this.jTable1.setModel(modelo);

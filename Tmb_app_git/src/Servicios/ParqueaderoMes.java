@@ -260,4 +260,20 @@ public static boolean updateTarifa(Connection conect, String string, String ID) 
             return resultado_lista;
         }
     }
+    public String RenovarMensualidad(Connection conexion, String placa, String tipo)
+    {
+        String resultado;
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_RENOVAR_MENSUALIDAD(?,?)}");
+            callProcedure.setString(1, placa);
+            callProcedure.setString(2, tipo);
+            callProcedure.execute();
+            resultado = "La renovación de la mensualidad ha sido exitosa";
+        }catch(Exception e)
+        {
+            resultado = e.getMessage();
+        }
+        return resultado;
+    }
 }
