@@ -146,4 +146,42 @@ public class Administrador {
             return resultado;
         }
     }
+    public ArrayList<String> CargarInfoEncabezado(Connection conexion)
+    {
+        ArrayList<String> resultado = new ArrayList();
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_INFO_ENCABEZADO(?,?,?)}");
+            callProcedure.registerOutParameter(1, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(2, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(3, java.sql.Types.VARCHAR);
+            callProcedure.execute();
+            resultado.add(callProcedure.getString(1));
+            resultado.add(callProcedure.getString(2));
+            resultado.add(callProcedure.getString(3));
+            return resultado;
+        }catch(Exception e)
+        {
+            resultado.add(e.getMessage());
+            return resultado;
+        }
+    }
+    public String ActualizarEncabezado(Connection conexion, String iva, String nit, String desc)
+    {
+        String resultado;
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_ACTUALIZACION_ENCABEZADO(?,?,?)}");
+            callProcedure.setString(1, iva);
+            callProcedure.setString(2, nit);
+            callProcedure.setString(3, desc);
+            callProcedure.execute();
+            resultado = "Actualización exitosa";
+            return resultado;
+        }catch(Exception e)
+        {
+            resultado = e.getMessage();
+            return resultado;
+        }
+    }
 }

@@ -399,7 +399,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void jPanel_FactnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_FactnMouseClicked
         // TODO add your handling code here:
-        Hotel h = new Hotel();
+        Facturacion h = new Facturacion();
         jPanel_Principal.removeAll();
         jPanel_Principal.setLayout(new BorderLayout());
         jPanel_Principal.add(h, BorderLayout.CENTER);
