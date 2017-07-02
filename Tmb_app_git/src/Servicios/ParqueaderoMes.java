@@ -230,4 +230,34 @@ public static boolean updateTarifa(Connection conect, String string, String ID) 
         }
         return resultado_lista;
     }
+    public ArrayList<Object> CargarInformacionMensualidadVenc(Connection conexion)
+    {
+        ArrayList<Object> resultado_lista = new ArrayList<Object>();        
+        ArrayList<String> columnas = new ArrayList<String>();
+        try
+        {            
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_VENC_MENSUALIDAD()}");            
+            callProcedure.execute();            
+            ResultSet resultado_consulta = callProcedure.getResultSet();            
+            ResultSetMetaData columnas_consulta = resultado_consulta.getMetaData();            
+            for(int i=0;i<columnas_consulta.getColumnCount();i++)
+            {
+                columnas.add(columnas_consulta.getColumnLabel(i+1));                
+            }
+            resultado_lista.add(columnas);
+            while(resultado_consulta.next())
+            {
+                ArrayList<String> fila = new ArrayList<String>();
+                for(int i =0;i<columnas_consulta.getColumnCount();i++)
+                {
+                    fila.add(resultado_consulta.getString(i+1));
+                }
+                resultado_lista.add(fila);
+            }            
+            return resultado_lista;
+        }catch(Exception e)
+        {            
+            return resultado_lista;
+        }
+    }
 }
