@@ -102,11 +102,12 @@ public class Informes extends javax.swing.JPanel {
         Inf_Lavadero.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_icn_add2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Add_20px.png"))); // NOI18N
-        Inf_Lavadero.add(jLabel_icn_add2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
+        Inf_Lavadero.add(jLabel_icn_add2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 20, 40));
 
-        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Lavadero");
-        Inf_Lavadero.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
+        Inf_Lavadero.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 90, 20));
 
         Inf_Mensual_Total.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Inf_Mensual_Total.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -124,11 +125,12 @@ public class Informes extends javax.swing.JPanel {
         Inf_Mensual_Total.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_icn_add3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Add_20px.png"))); // NOI18N
-        Inf_Mensual_Total.add(jLabel_icn_add3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
+        Inf_Mensual_Total.add(jLabel_icn_add3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 20, 40));
 
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Mensual Total");
-        Inf_Mensual_Total.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
+        Inf_Mensual_Total.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, 20));
 
         Inf_Fraccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Inf_Fraccion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -146,11 +148,12 @@ public class Informes extends javax.swing.JPanel {
         Inf_Fraccion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_icn_add4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Add_20px.png"))); // NOI18N
-        Inf_Fraccion.add(jLabel_icn_add4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
+        Inf_Fraccion.add(jLabel_icn_add4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 20, 40));
 
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("P. Fracción");
-        Inf_Fraccion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
+        Inf_Fraccion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 90, 20));
 
         Inf_Hotel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Inf_Hotel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -168,11 +171,12 @@ public class Informes extends javax.swing.JPanel {
         Inf_Hotel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_icn_add5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Add_20px.png"))); // NOI18N
-        Inf_Hotel.add(jLabel_icn_add5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
+        Inf_Hotel.add(jLabel_icn_add5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 20, 40));
 
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Hotel");
-        Inf_Hotel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
+        Inf_Hotel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 90, 20));
 
         Inf_Mensual.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Inf_Mensual.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -190,44 +194,45 @@ public class Informes extends javax.swing.JPanel {
         Inf_Mensual.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_icn_add6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Add_20px.png"))); // NOI18N
-        Inf_Mensual.add(jLabel_icn_add6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 20, 40));
+        Inf_Mensual.add(jLabel_icn_add6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 20, 40));
 
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("P. Mensual");
-        Inf_Mensual.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, 90, -1));
+        Inf_Mensual.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 90, 20));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(253, 253, 253)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Inf_Mensual_Total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Inf_Lavadero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Inf_Mensual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(221, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(Inf_Mensual, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(Inf_Lavadero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Inf_Mensual_Total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(77, 77, 77)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Inf_Fraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Inf_Hotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(248, Short.MAX_VALUE))
+                    .addComponent(Inf_Fraccion, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Inf_Hotel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Inf_Fraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Inf_Mensual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Inf_Mensual, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(Inf_Fraccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Inf_Lavadero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Inf_Hotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Inf_Hotel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Inf_Lavadero, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Inf_Mensual_Total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Inf_Mensual_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 74, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Informes");
@@ -242,11 +247,11 @@ public class Informes extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
+                .addGap(104, 104, 104)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
