@@ -176,7 +176,7 @@ public class ImpresionFacturas {
 
     public void imprimirFactura(PrinterMatrix printer) {
         printer.toFile("impresion.txt");
-        /*FileInputStream inputStream = null;
+        FileInputStream inputStream = null;
             try {
                 inputStream = new FileInputStream("impresion.txt");
             } catch (FileNotFoundException ex) {
@@ -199,6 +199,6 @@ public class ImpresionFacturas {
                 }
             } else {
                 System.out.println("No existen impresoras instaladas");
-            }*/
+            }
     }
 }

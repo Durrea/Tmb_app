@@ -13,6 +13,8 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import javax.swing.JOptionPane;
@@ -27,6 +29,7 @@ public class GeneradorPDF {
     private float tamTitulo;
     private float tamCuerpo;
     private float tamSubTitulos;
+    public String ruta;
     
     public GeneradorPDF(Rectangle tam)
     {
@@ -126,8 +129,7 @@ public class GeneradorPDF {
         try {
             FileOutputStream archivo = new FileOutputStream(path+"\\"+nombre);
             PdfWriter.getInstance(this.doc, archivo);
-            
-
+            this.ruta = path+"\\"+nombre;                        
         } catch (Exception e) {
             
             JOptionPane.showMessageDialog(null, "Error"+e.getMessage());
