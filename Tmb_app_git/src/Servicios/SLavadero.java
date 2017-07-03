@@ -333,21 +333,24 @@ public class SLavadero {
     }
     
     
-    public ArrayList<String> LoadLastRecord(Connection conexion, int tipo)
+    public ArrayList<String> LoadLastRecord(Connection conexion, int tipo,int recep)
     {
         ArrayList<String> resultado = new ArrayList<String>();
         try
         {
             CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_FACTURA_LAVADERO(?,?,?,?,?,?,?)}");
             callProcedure.setString(1, Integer.toString(tipo));
-            callProcedure.registerOutParameter(2, java.sql.Types.VARCHAR);
+            callProcedure.setString(2, Integer.toString(recep));
             callProcedure.registerOutParameter(3, java.sql.Types.VARCHAR);
             callProcedure.registerOutParameter(4, java.sql.Types.VARCHAR);
-            callProcedure.registerOutParameter(5, java.sql.Types.DATE);
-            callProcedure.registerOutParameter(6, java.sql.Types.VARCHAR);
-            callProcedure.registerOutParameter(7, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(5, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(6, java.sql.Types.DATE);
+            callProcedure.registerOutParameter(7, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(8, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(9, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(10, java.sql.Types.FLOAT);
             callProcedure.execute();            
-            for(int i=2;i<=7;i++)
+            for(int i=3;i<=10;i++)
             {
                 String val = callProcedure.getString(i);
                 if(val != null)

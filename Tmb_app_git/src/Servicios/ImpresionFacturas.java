@@ -75,7 +75,7 @@ public class ImpresionFacturas {
         ArrayList<String> encabezado = new ArrayList<String>();
         encabezado = servadmin.EncabezadoRecibos(Conexion.obtener());
         ArrayList<String> ultimoregistro = new ArrayList<String>();
-        ultimoregistro = lavadero.LoadLastRecord(Conexion.obtener(), idLavada);
+        ultimoregistro = lavadero.LoadLastRecord(Conexion.obtener(), idLavada,Sesion.getInstanciaSesion().getIdentificador());
         //ultimoregistro = serparqfraccion.LoadLastRecord(Conexion.obtener(), tipo, placa);        
         int columnas = 48;
         int lineas = 20;
@@ -95,12 +95,20 @@ public class ImpresionFacturas {
             printer.printTextWrap(2, 3, 20, 50, encabezado.get(1));
             printer.printTextWrap(3, 4, 20, 50, encabezado.get(2));
             //printer.printTextWrap(linI, linE, colI, colE, null);
-            printer.printTextWrap(4, 5, 1, columnas, "Placa: " + ultimoregistro.get(0));
-            printer.printTextWrap(5, 6, 1, columnas, "Lavador: " + ultimoregistro.get(1) + " " + ultimoregistro.get(2));
-            printer.printTextWrap(6, 7, 1, columnas, "Fecha Lavada: " + ultimoregistro.get(3));
-            printer.printTextWrap(7, 8, 1, columnas, "Tipo de Lavada: " + ultimoregistro.get(4));
-            printer.printTextWrap(8, 9, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(5));
-            printer.printCharAtCol(10, 1, columnas, "=");
+            printer.printTextWrap(4, 5, 1, columnas, "Recepcionista: " + ultimoregistro.get(0));
+            printer.printTextWrap(5, 6, 1, columnas, "Placa: " + ultimoregistro.get(1));
+            printer.printTextWrap(6, 7, 1, columnas, "Lavador: " + ultimoregistro.get(2));
+            printer.printTextWrap(7, 8, 1, columnas, "Fecha Lavada: " + ultimoregistro.get(3));
+            printer.printTextWrap(8, 9, 1, columnas, "Tipo de Lavada: " + ultimoregistro.get(4));
+            if (!ultimoregistro.get(6).equalsIgnoreCase("0")) {
+                printer.printTextWrap(9, 10, 1, columnas, "SubTotal: " + ultimoregistro.get(5));
+                printer.printTextWrap(10, 11, 1, columnas, "Valor IVA: " + ultimoregistro.get(6));
+                printer.printTextWrap(11, 12, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(7));
+                printer.printCharAtCol(13, 1, columnas, "=");
+            } else {
+                printer.printTextWrap(9, 10, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(7));
+                printer.printCharAtCol(11, 1, columnas, "=");
+            }
             imprimirFactura(printer);
             resultado = true;
             return resultado;
