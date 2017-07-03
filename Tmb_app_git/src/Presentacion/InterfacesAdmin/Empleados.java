@@ -339,6 +339,7 @@ public class Empleados extends javax.swing.JPanel {
                     S_Empleados servicio = new S_Empleados();
                     try {
                         servicio.cambiarEstado(Conexion.obtener(), "Lavador", id);
+                        JOptionPane.showMessageDialog(null, "Estado actualizado");
                         Cargar_Datos_Lavador();
                     } catch (SQLException ex) {
                         Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
@@ -368,6 +369,7 @@ public class Empleados extends javax.swing.JPanel {
                     S_Empleados servicio = new S_Empleados();
                     try {
                         servicio.cambiarEstado(Conexion.obtener(), "Recepcionista", id);
+                        JOptionPane.showMessageDialog(null, "Estado actualizado");
                         Cargar_Datos_Recepcionista();
                     } catch (SQLException ex) {
                         Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
