@@ -236,7 +236,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
                         if(resultopcion == 0)
                         {
                             ImpresionFacturas impfac = new ImpresionFacturas();
-                            boolean res = impfac.FacturaFraccion(0, jText_Placa.getText());
+                            boolean res = impfac.FacturaFraccion(0, jText_Placa.getText(),Sesion.getInstanciaSesion().getIdentificador());
                             if(!res)
                             {
                                 JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la impresión");
