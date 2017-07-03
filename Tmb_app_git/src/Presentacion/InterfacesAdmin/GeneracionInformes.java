@@ -18,6 +18,8 @@ import Servicios.SLavadero;
 import Servicios.S_Hotel;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfPTable;
+import java.awt.Desktop;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -295,6 +297,8 @@ public class GeneracionInformes extends javax.swing.JDialog {
             generador.addParagrafo("\n");
             generador.closeDoc();
             JOptionPane.showMessageDialog(null, "Reporte creado con exito");
+            File file = new File (generador.ruta);
+            Desktop.getDesktop().open(file);
         }
         catch(Exception e)
         {
@@ -352,6 +356,8 @@ public class GeneracionInformes extends javax.swing.JDialog {
             generador.addParagrafo("\n");
             generador.closeDoc();
             JOptionPane.showMessageDialog(null, "Reporte creado con exito");
+            File file = new File (generador.ruta);
+            Desktop.getDesktop().open(file);
         }
         catch(Exception e)
         {
@@ -405,6 +411,8 @@ public class GeneracionInformes extends javax.swing.JDialog {
             //generador.addParagrafo("\n");
             generador.closeDoc();
             JOptionPane.showMessageDialog(null, "Reporte creado con exito");
+            File file = new File (generador.ruta);
+            Desktop.getDesktop().open(file);
         }
         catch(Exception e)
         {
@@ -458,6 +466,8 @@ public class GeneracionInformes extends javax.swing.JDialog {
             generador.addParagrafo("\n");
             generador.closeDoc();
             JOptionPane.showMessageDialog(null, "Reporte creado con exito");
+            File file = new File (generador.ruta);
+            Desktop.getDesktop().open(file);
         }
         catch(Exception e)
         {
@@ -493,6 +503,8 @@ public class GeneracionInformes extends javax.swing.JDialog {
             generador.addParagrafo("TOTAL MES: "+datos_mensuales.get(3));
             generador.closeDoc();
             JOptionPane.showMessageDialog(null, "Reporte creado con exito");
+            File file = new File (generador.ruta);
+            Desktop.getDesktop().open(file);
         }catch(Exception e)
         {
             JOptionPane.showMessageDialog(null, e.getMessage());
