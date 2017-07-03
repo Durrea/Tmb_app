@@ -22,9 +22,10 @@ import javax.print.PrintServiceLookup;
 import javax.print.SimpleDoc;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
+
 public class ImpresionFacturas {
-    
-    public boolean FacturaFraccion(int tipo, String placa){
+
+    public boolean FacturaFraccion(int tipo, String placa) {
         // tipo : 0 para entrada en fraccion y 1 para salida 
         boolean resultado;
         Administrador servadmin = new Administrador();
@@ -32,11 +33,10 @@ public class ImpresionFacturas {
         ArrayList<String> encabezado = new ArrayList<String>();
         encabezado = servadmin.EncabezadoRecibos(Conexion.obtener());
         ArrayList<String> ultimoregistro = new ArrayList<String>();
-        ultimoregistro = serparqfraccion.LoadLastRecord(Conexion.obtener(), tipo, placa);        
+        ultimoregistro = serparqfraccion.LoadLastRecord(Conexion.obtener(), tipo, placa);
         int columnas = 48;
         int lineas = 20;
-        if(encabezado.size() != 0 && ultimoregistro.size() != 0)
-        {
+        if (encabezado.size() != 0 && ultimoregistro.size() != 0) {
             /*Datos a imprimir*/
             PrinterMatrix printer = new PrinterMatrix();
             Extenso e = new Extenso();
@@ -55,34 +55,31 @@ public class ImpresionFacturas {
             printer.printTextWrap(4, 5, 1, columnas, "Placa: " + ultimoregistro.get(0));
             printer.printTextWrap(5, 6, 1, columnas, "Tipo de vehiculo: " + ultimoregistro.get(1));
             printer.printTextWrap(6, 7, 1, columnas, "Fecha Entrada: " + ultimoregistro.get(2));
-            printer.printTextWrap(7, 8, 1, columnas, "Fecha Salida: "+ ultimoregistro.get(3));
-            printer.printTextWrap(8, 9, 1, columnas, "Valor a cobrar: " + ultimoregistro.get(4));                   
+            printer.printTextWrap(7, 8, 1, columnas, "Fecha Salida: " + ultimoregistro.get(3));
+            printer.printTextWrap(8, 9, 1, columnas, "Valor a cobrar: " + ultimoregistro.get(4));
             printer.printCharAtCol(10, 1, columnas, "=");
             imprimirFactura(printer);
             resultado = true;
             return resultado;
-        }
-        else
-        {
+        } else {
             resultado = false;
             return resultado;
-        }                     
+        }
     }
-    
-    public boolean FacturaLavadero(int idLavada){
-        
+
+    public boolean FacturaLavadero(int idLavada) {
+
         boolean resultado;
         Administrador servadmin = new Administrador();
         SLavadero lavadero = new SLavadero();
         ArrayList<String> encabezado = new ArrayList<String>();
         encabezado = servadmin.EncabezadoRecibos(Conexion.obtener());
         ArrayList<String> ultimoregistro = new ArrayList<String>();
-        ultimoregistro = lavadero.LoadLastRecord(Conexion.obtener(),idLavada);        
+        ultimoregistro = lavadero.LoadLastRecord(Conexion.obtener(), idLavada);
         //ultimoregistro = serparqfraccion.LoadLastRecord(Conexion.obtener(), tipo, placa);        
         int columnas = 48;
         int lineas = 20;
-        if(encabezado.size() != 0 && ultimoregistro.size() != 0)
-        {
+        if (encabezado.size() != 0 && ultimoregistro.size() != 0) {
             /*Datos a imprimir*/
             PrinterMatrix printer = new PrinterMatrix();
             Extenso e = new Extenso();
@@ -99,37 +96,33 @@ public class ImpresionFacturas {
             printer.printTextWrap(3, 4, 20, 50, encabezado.get(2));
             //printer.printTextWrap(linI, linE, colI, colE, null);
             printer.printTextWrap(4, 5, 1, columnas, "Placa: " + ultimoregistro.get(0));
-            printer.printTextWrap(5, 6, 1, columnas, "Lavador: " + ultimoregistro.get(1)+" "+ultimoregistro.get(2));
+            printer.printTextWrap(5, 6, 1, columnas, "Lavador: " + ultimoregistro.get(1) + " " + ultimoregistro.get(2));
             printer.printTextWrap(6, 7, 1, columnas, "Fecha Lavada: " + ultimoregistro.get(3));
             printer.printTextWrap(7, 8, 1, columnas, "Tipo de Lavada: " + ultimoregistro.get(4));
-            printer.printTextWrap(8, 9, 1, columnas, "Valor Cobrado: "+ ultimoregistro.get(5));
+            printer.printTextWrap(8, 9, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(5));
             printer.printCharAtCol(10, 1, columnas, "=");
             imprimirFactura(printer);
             resultado = true;
             return resultado;
-        }
-        else
-        {
+        } else {
             resultado = false;
             return resultado;
-        }                     
+        }
     }
-    
-    
-    public boolean FacturaHotel(int idRegistro){
-        
+
+    public boolean FacturaHotel(int idRegistro) {
+
         boolean resultado;
         Administrador servadmin = new Administrador();
         S_Hotel servicio = new S_Hotel();
         ArrayList<String> encabezado = new ArrayList<String>();
         encabezado = servadmin.EncabezadoRecibos(Conexion.obtener());
         ArrayList<String> ultimoregistro = new ArrayList<String>();
-        ultimoregistro = servicio.LoadLastRecord(Conexion.obtener(),idRegistro);        
+        ultimoregistro = servicio.LoadLastRecord(Conexion.obtener(), idRegistro, Sesion.getInstanciaSesion().getIdentificador());
         //ultimoregistro = serparqfraccion.LoadLastRecord(Conexion.obtener(), tipo, placa);        
         int columnas = 48;
         int lineas = 20;
-        if(encabezado.size() != 0 && ultimoregistro.size() != 0)
-        {
+        if (encabezado.size() != 0 && ultimoregistro.size() != 0) {
             /*Datos a imprimir*/
             PrinterMatrix printer = new PrinterMatrix();
             Extenso e = new Extenso();
@@ -145,27 +138,32 @@ public class ImpresionFacturas {
             printer.printTextWrap(2, 3, 20, 50, encabezado.get(1));
             printer.printTextWrap(3, 4, 20, 50, encabezado.get(2));
             //printer.printTextWrap(linI, linE, colI, colE, null);
-            printer.printTextWrap(4, 5, 1, columnas, "Habitacion: " + ultimoregistro.get(0));
-            printer.printTextWrap(5, 6, 1, columnas, "N° personas: " + ultimoregistro.get(3));
-            printer.printTextWrap(6, 7, 1, columnas, "Tiempo de hospedaje");
-            printer.printTextWrap(7, 8, 1, columnas, "Dias: " + ultimoregistro.get(1));
-            printer.printTextWrap(8, 9, 1, columnas, "Horas: " + ultimoregistro.get(2));
-            printer.printTextWrap(9, 10, 1, columnas, "Valor Cobrado: "+ ultimoregistro.get(4));
-            printer.printCharAtCol(11, 1, columnas, "=");
+            printer.printTextWrap(4, 5, 1, columnas, "Recepcionista: " + ultimoregistro.get(0));
+            printer.printTextWrap(5, 6, 1, columnas, "Habitacion: " + ultimoregistro.get(1));
+            printer.printTextWrap(6, 7, 1, columnas, "N° personas: " + ultimoregistro.get(2));
+            printer.printTextWrap(7, 8, 1, columnas, "Tiempo de hospedaje");
+            printer.printTextWrap(8, 9, 1, columnas, "Dias: " + ultimoregistro.get(3));
+            printer.printTextWrap(9, 10, 1, columnas, "Horas: " + ultimoregistro.get(4));
+            if (!ultimoregistro.get(6).equalsIgnoreCase("0")) {
+                printer.printTextWrap(10, 11, 1, columnas, "SubTotal: " + ultimoregistro.get(5));
+                printer.printTextWrap(11, 12, 1, columnas, "Valor iva: " + ultimoregistro.get(6));
+                printer.printTextWrap(12, 13, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(7));
+                printer.printCharAtCol(14, 1, columnas, "=");
+            } else {
+                printer.printTextWrap(10, 11, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(7));
+                printer.printCharAtCol(12, 1, columnas, "=");
+            }
+
             imprimirFactura(printer);
             resultado = true;
             return resultado;
-        }
-        else
-        {
+        } else {
             resultado = false;
             return resultado;
-        }                     
+        }
     }
-    
-    
-    public void imprimirFactura(PrinterMatrix printer)
-    {
+
+    public void imprimirFactura(PrinterMatrix printer) {
         printer.toFile("impresion.txt");
         /*FileInputStream inputStream = null;
             try {

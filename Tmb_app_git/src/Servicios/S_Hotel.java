@@ -218,20 +218,24 @@ public class S_Hotel {
         }
     }
     
-    public ArrayList<String> LoadLastRecord(Connection conexion, int id)
+    public ArrayList<String> LoadLastRecord(Connection conexion, int id, int idRecep)
     {
         ArrayList<String> resultado = new ArrayList<String>();
         try
         {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_FACTURA_HOTEL(?,?,?,?,?,?)}");
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_FACTURA_HOTEL(?,?,?,?,?,?,?,?,?,?)}");
             callProcedure.setString(1, Integer.toString(id));
-            callProcedure.registerOutParameter(2, java.sql.Types.NUMERIC);
-            callProcedure.registerOutParameter(3, java.sql.Types.NUMERIC);
+            callProcedure.setString(2, Integer.toString(idRecep));
+            callProcedure.registerOutParameter(3, java.sql.Types.VARCHAR);
             callProcedure.registerOutParameter(4, java.sql.Types.NUMERIC);
             callProcedure.registerOutParameter(5, java.sql.Types.NUMERIC);
-            callProcedure.registerOutParameter(6, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(6, java.sql.Types.NUMERIC);
+            callProcedure.registerOutParameter(7, java.sql.Types.NUMERIC);
+            callProcedure.registerOutParameter(8, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(9, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(10, java.sql.Types.FLOAT);
             callProcedure.execute();            
-            for(int i=2;i<=6;i++)
+            for(int i=3;i<=10;i++)
             {
                 String val = callProcedure.getString(i);
                 if(val != null)
@@ -246,6 +250,7 @@ public class S_Hotel {
             return resultado;
         }catch(Exception e)
         {            
+            System.out.println(e.getMessage());
             return resultado;
         }
     }
