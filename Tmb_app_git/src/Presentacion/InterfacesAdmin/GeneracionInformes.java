@@ -372,7 +372,7 @@ public class GeneracionInformes extends javax.swing.JDialog {
             GeneradorPDF generador = new GeneradorPDF(PageSize.A4,10,7,8);        
             generador.GenerarPDF(this.jTextField1.getText());
             generador.openDoc();
-            generador.addTitulo("INFORME CONTABLE PARQUEADERO POR FRACCIÓN");
+            generador.addTitulo("INFORME CONTABLE HOTEL");
             generador.addParagrafo("\n");
             generador.addParagrafo("\n");
             generador.addParagrafo("FECHA: "+fecha);
@@ -406,9 +406,9 @@ public class GeneracionInformes extends javax.swing.JDialog {
                     generador.addParagrafo("\n");
                 }
             }
-            //ArrayList<String> total = objadmin.TotalesDiarios(Conexion.obtener(), fecha);
-            //generador.addParagrafo("TOTAL: "+total.get(0));
-            //generador.addParagrafo("\n");
+            ArrayList<String> total = objadmin.TotalesDiarios(Conexion.obtener(), fecha);
+            generador.addParagrafo("TOTAL: "+total.get(2));
+            generador.addParagrafo("\n");
             generador.closeDoc();
             JOptionPane.showMessageDialog(null, "Reporte creado con exito");
             File file = new File (generador.ruta);
