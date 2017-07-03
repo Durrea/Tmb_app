@@ -178,11 +178,6 @@ public class Lavadero extends javax.swing.JPanel {
                 jText_BuscadorMouseClicked(evt);
             }
         });
-        jText_Buscador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_BuscadorActionPerformed(evt);
-            }
-        });
         jText_Buscador.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jText_BuscadorKeyTyped(evt);
@@ -307,10 +302,6 @@ public class Lavadero extends javax.swing.JPanel {
     private void jText_BuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_BuscadorMouseClicked
         jText_Buscador.setText("");
     }//GEN-LAST:event_jText_BuscadorMouseClicked
-
-    private void jText_BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_BuscadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_BuscadorActionPerformed
 
     private void jText_BuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_BuscadorKeyTyped
         // TODO add your handling code here:
