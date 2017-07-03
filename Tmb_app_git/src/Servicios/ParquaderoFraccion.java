@@ -106,21 +106,25 @@ public class ParquaderoFraccion {
         }
         return resultado;
     }
-    public ArrayList<String> LoadLastRecord(Connection conexion, int tipo, String placa)
+    public ArrayList<String> LoadLastRecord(Connection conexion, int tipo, String placa, int idrecep)
     {
         ArrayList<String> resultado = new ArrayList<String>();
         try
         {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_ULTIMO_REGISTRO_FRACCION(?,?,?,?,?,?,?)}");
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_ULTIMO_REGISTRO_FRACCION(?,?,?,?,?,?,?,?,?,?,?)}");
             callProcedure.setString(1, Integer.toString(tipo));
             callProcedure.setString(2, placa);
-            callProcedure.registerOutParameter(3, java.sql.Types.VARCHAR);
+            callProcedure.setString(3, Integer.toString(idrecep));
             callProcedure.registerOutParameter(4, java.sql.Types.VARCHAR);
-            callProcedure.registerOutParameter(5, java.sql.Types.DATE);
-            callProcedure.registerOutParameter(6, java.sql.Types.DATE);
-            callProcedure.registerOutParameter(7, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(5, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(6, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(7, java.sql.Types.DATE);
+            callProcedure.registerOutParameter(8, java.sql.Types.DATE);
+            callProcedure.registerOutParameter(9, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(10, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(11, java.sql.Types.FLOAT);
             callProcedure.execute();            
-            for(int i=3;i<=7;i++)
+            for(int i=4;i<=11;i++)
             {
                 String val = callProcedure.getString(i);
                 if(val != null)
@@ -134,7 +138,8 @@ public class ParquaderoFraccion {
             }            
             return resultado;
         }catch(Exception e)
-        {            
+        {      
+            System.out.println(e.getMessage());
             return resultado;
         }
     }

@@ -321,7 +321,7 @@ public class Fraccion extends javax.swing.JPanel {
                                 if(resultopcion == 0)
                                 {
                                     ImpresionFacturas impfac = new ImpresionFacturas();
-                                    boolean res = impfac.FacturaFraccion(1, placa);
+                                    boolean res = impfac.FacturaFraccion(1, placa,Sesion.getInstanciaSesion().getIdentificador());
                                     if(!res)
                                     {
                                         JOptionPane.showMessageDialog(null, "Error en la impresion");
