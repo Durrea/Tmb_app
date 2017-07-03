@@ -78,7 +78,7 @@ public class ImpresionFacturas {
         }
     }
 
-    public boolean FacturaLavadero(int idLavada) {
+    public boolean FacturaLavadero(int idLavada, int idrecep) {
 
         boolean resultado;
         Administrador servadmin = new Administrador();
@@ -86,7 +86,7 @@ public class ImpresionFacturas {
         ArrayList<String> encabezado = new ArrayList<String>();
         encabezado = servadmin.EncabezadoRecibos(Conexion.obtener());
         ArrayList<String> ultimoregistro = new ArrayList<String>();
-        ultimoregistro = lavadero.LoadLastRecord(Conexion.obtener(), idLavada,Sesion.getInstanciaSesion().getIdentificador());
+        ultimoregistro = lavadero.LoadLastRecord(Conexion.obtener(), idLavada,idrecep);
         //ultimoregistro = serparqfraccion.LoadLastRecord(Conexion.obtener(), tipo, placa);        
         int columnas = 48;
         int lineas = 20;

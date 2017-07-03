@@ -189,11 +189,14 @@ public class TarifaLavadero extends javax.swing.JPanel {
             }
         });
 
+        registrar_tipoV.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         registrar_tipoV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrar_tipoVActionPerformed(evt);
             }
         });
+
+        registrar_tipoL.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -262,7 +265,7 @@ public class TarifaLavadero extends javax.swing.JPanel {
                     .addComponent(registrar_tipoL, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

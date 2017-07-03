@@ -366,7 +366,7 @@ public class Lavadero extends javax.swing.JPanel {
                             if(resultopcion == 0)
                             {
                                 ImpresionFacturas impfac = new ImpresionFacturas();
-                                boolean res = impfac.FacturaLavadero(id_lava);
+                                boolean res = impfac.FacturaLavadero(id_lava,instancia.getIdentificador());
                                 if(!res)
                                 {
                                     JOptionPane.showMessageDialog(null, "Error en la impresion");

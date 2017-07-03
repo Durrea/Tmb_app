@@ -338,7 +338,7 @@ public class SLavadero {
         ArrayList<String> resultado = new ArrayList<String>();
         try
         {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_FACTURA_LAVADERO(?,?,?,?,?,?,?)}");
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_FACTURA_LAVADERO(?,?,?,?,?,?,?,?,?,?)}");
             callProcedure.setString(1, Integer.toString(tipo));
             callProcedure.setString(2, Integer.toString(recep));
             callProcedure.registerOutParameter(3, java.sql.Types.VARCHAR);
