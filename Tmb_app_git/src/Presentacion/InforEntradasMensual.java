@@ -24,6 +24,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.ListModel;
 import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
@@ -234,7 +235,7 @@ public class InforEntradasMensual extends javax.swing.JPanel {
                     //no existe un vehiculo con esa placa en mensual
                     JOptionPane.showMessageDialog(null, "No existe un vehiculo registrado en parqueadero mensual con esta placa");
                     DefaultListModel modelo = new DefaultListModel();
-                    this.jList1.setModel(modelo);
+                    this.jList1.setModel((ListModel<String>)modelo);
                     this.jText_Buscar.setText("");
                     this.fechaInforme.getEditor().setText("");
                 }
@@ -250,13 +251,13 @@ public class InforEntradasMensual extends javax.swing.JPanel {
                         {
                             modelo.addElement(entradas.get(i));
                         }
-                        this.jList1.setModel(modelo);
+                        this.jList1.setModel((ListModel<String>)modelo);
                     }
                     else
                     {
                         JOptionPane.showMessageDialog(null, "No se encontraron resultados");
                         DefaultListModel modelo = new DefaultListModel();
-                        this.jList1.setModel(modelo);
+                        this.jList1.setModel((ListModel<String>)modelo);
                         this.jText_Buscar.setText("");
                         this.fechaInforme.getEditor().setText("");
                     }
@@ -266,7 +267,7 @@ public class InforEntradasMensual extends javax.swing.JPanel {
             {
                 JOptionPane.showMessageDialog(null, "Formato de placa incorrecto");
                 DefaultListModel modelo = new DefaultListModel();
-                this.jList1.setModel(modelo);
+                this.jList1.setModel((ListModel<String>)modelo);
                 this.jText_Buscar.setText("");
                 this.fechaInforme.getEditor().setText("");
             }
@@ -275,7 +276,7 @@ public class InforEntradasMensual extends javax.swing.JPanel {
         {
             JOptionPane.showMessageDialog(null,"Debe llenar los campos");
             DefaultListModel modelo = new DefaultListModel();
-            this.jList1.setModel(modelo);
+            this.jList1.setModel((ListModel<String>)modelo);
             this.jText_Buscar.setText("");
             this.fechaInforme.getEditor().setText("");
         }

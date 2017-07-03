@@ -22,8 +22,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.RowFilter;
+import javax.swing.RowSorter;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 
@@ -286,7 +288,7 @@ public class Fraccion extends javax.swing.JPanel {
             }
         });
         filter = new TableRowSorter(this.jTable2.getModel());
-        this.jTable2.setRowSorter(filter);
+        this.jTable2.setRowSorter((RowSorter<TableModel>)filter);
     }//GEN-LAST:event_jText_BuscadorKeyTyped
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -361,7 +363,7 @@ public class Fraccion extends javax.swing.JPanel {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());        
         
         ParquaderoFraccion obj = new ParquaderoFraccion();
-        ArrayList<Object> datos = new ArrayList();
+        ArrayList<Object> datos = new ArrayList<Object>();
         datos = obj.CargaInformacionPorFraccion(Conexion.obtener());
         if(datos.size() == 0)
         {

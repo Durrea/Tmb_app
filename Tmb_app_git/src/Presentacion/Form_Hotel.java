@@ -281,7 +281,7 @@ public class Form_Hotel extends javax.swing.JPanel {
     private void jPanel_AceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AceptarMouseClicked
         // TODO add your handling code here:
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        ArrayList entradas = servicio.ocuparHabitacion(Conexion.obtener(), habitacion, TipoHospedaje.getSelectedItem().toString(), Integer.parseInt(jText_numeroPersonas.getValue().toString()), dateFormat.format(jText_Entrada.getValue()), dateFormat.format(jText_Salida.getValue()), Float.parseFloat(extra.getValue().toString()));
+        ArrayList<Float> entradas = servicio.ocuparHabitacion(Conexion.obtener(), habitacion, TipoHospedaje.getSelectedItem().toString(), Integer.parseInt(jText_numeroPersonas.getValue().toString()), dateFormat.format(jText_Entrada.getValue()), dateFormat.format(jText_Salida.getValue()), Float.parseFloat(extra.getValue().toString()));
         Form_RegistroRealizado h = new Form_RegistroRealizado(entradas, habitacion);
         this.removeAll();
         this.setLayout(new BorderLayout());

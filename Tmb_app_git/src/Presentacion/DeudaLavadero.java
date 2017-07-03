@@ -17,7 +17,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
+import javax.swing.RowSorter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 
@@ -217,7 +219,7 @@ public class DeudaLavadero extends javax.swing.JPanel {
             }
         });
         filter = new TableRowSorter(this.jTable2.getModel());
-        this.jTable2.setRowSorter(filter);
+        this.jTable2.setRowSorter((RowSorter<TableModel>)filter);
     }//GEN-LAST:event_jText_BuscadorKeyTyped
 
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
