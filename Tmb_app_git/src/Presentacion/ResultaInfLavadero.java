@@ -265,7 +265,7 @@ public class ResultaInfLavadero extends javax.swing.JPanel {
             Object [] fila = new Object[3];
             fila[0] = datos.get(i).getVehiculo_placa();
             fila[1] = datos.get(i).getTipo_lavada();
-            fila[2] = datos.get(i).getValor_pago();
+            fila[2] = (long)datos.get(i).getValor_pago();
             modelo.addRow(fila);
         }
         this.jTable2.setModel(modelo);

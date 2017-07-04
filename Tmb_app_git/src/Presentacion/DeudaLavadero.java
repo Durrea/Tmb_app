@@ -265,7 +265,7 @@ public class DeudaLavadero extends javax.swing.JPanel {
                         SLavadero obj = new SLavadero();
                         Sesion instancia = Sesion.getInstanciaSesion(); 
                        
-                        int res= JOptionPane.showConfirmDialog(null, "¿Desea cancelar la Deuda?");
+                        int res= JOptionPane.showConfirmDialog(null, "¿Desea cancelar la Deuda?","Deuda", JOptionPane.YES_NO_OPTION);
                         
                         if(res == 0)
                         {   
@@ -316,7 +316,7 @@ public class DeudaLavadero extends javax.swing.JPanel {
         SLavadero obj = new SLavadero();
         float valor=obj.loadDeuda(Conexion.obtener());
         if(valor!=0){
-            jLabel_TotalDeuda.setText("Total Deuda: " +Float.toString(valor));
+            jLabel_TotalDeuda.setText("Total Deuda: " +(long)valor);
         }else{
             JOptionPane.showMessageDialog(null, "Actualmente no existe ninguna Deuda con el Negocio");
         }  
