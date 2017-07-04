@@ -304,7 +304,7 @@ public class DeudaLavadero extends javax.swing.JPanel {
             Object [] fila = new Object[4];
             fila[0] = datos.get(i).getVehiculo_placa();
             fila[1] = datos.get(i).getVehiculo_tipo();
-            fila[2] = datos.get(i).getValor_deuda();
+            fila[2] = (long)datos.get(i).getValor_deuda();
             fila[3] = btn_visualizar;
             modelo.addRow(fila);
         }

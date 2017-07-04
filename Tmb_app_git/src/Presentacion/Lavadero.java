@@ -437,8 +437,8 @@ public class Lavadero extends javax.swing.JPanel {
             fila[3] = datos.get(i).getVehiculo_placa();
             fila[4] = datos.get(i).getVehiculo_tipo();
             fila[5] = datos.get(i).getTipo_lavada();
-            fila[6] = datos.get(i).getValor_lavada();
-            fila[7] = datos.get(i).getValor_pago();
+            fila[6] = (long)datos.get(i).getValor_lavada();
+            fila[7] = (long)datos.get(i).getValor_pago();
             fila[8] = btn_visualizar1;
             fila[9] = btn_visualizar;
             modelo.addRow(fila);
