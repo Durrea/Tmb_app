@@ -452,6 +452,11 @@ public class Form_Empleados extends javax.swing.JPanel {
     private void jText_NombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombresKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
+        if (Character.isLowerCase(c)) {
+            String cadena = ("" + c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
         if ((Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
@@ -460,6 +465,11 @@ public class Form_Empleados extends javax.swing.JPanel {
     private void jText_ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ApellidosKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
+        if (Character.isLowerCase(c)) {
+            String cadena = ("" + c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
         if ((Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
@@ -484,6 +494,11 @@ public class Form_Empleados extends javax.swing.JPanel {
     private void jText_NombreUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombreUsuarioKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
+        if (Character.isLowerCase(c)) {
+            String cadena = ("" + c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
         if ((Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }

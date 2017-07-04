@@ -9,6 +9,7 @@ import Presentacion.InterfacesAdmin.PrincipalAdmin;
 import Servicios.Conexion;
 import Servicios.Sesion;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -24,6 +25,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         panel_Img.setBackground(new Color(0,0,0,200));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/Iconos/Icono.png")));
         
     }
 

@@ -8,6 +8,7 @@ package Presentacion;
 import Servicios.Sesion;
 import java.awt.BorderLayout;
 import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -24,6 +25,7 @@ public class PrincipalRecep extends javax.swing.JFrame {
     public PrincipalRecep() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/Iconos/Icono.png")));
 
     }
     ImageIcon ii;
