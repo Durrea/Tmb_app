@@ -581,8 +581,9 @@ public class RegistroLavada extends javax.swing.JPanel {
                 float valor=obj.costoLavada(Conexion.obtener(),
                         String.valueOf(jCombo_TipoV.getSelectedItem()),
                         String.valueOf(jCombo_TpoLvda.getSelectedItem()) );
+                long valorFinal=(long)valor;
                 if(valor!=0){
-                    jText_ValorLavdo.setText(Float.toString(valor));
+                    jText_ValorLavdo.setText(Long.toString(valorFinal));
                 }else{
                     JOptionPane.showMessageDialog(new JPanel(), "Tarifa no Existe", "Error", JOptionPane.ERROR_MESSAGE);
                     jCombo_TpoLvda.removeAllItems();
