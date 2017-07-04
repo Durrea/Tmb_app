@@ -253,7 +253,7 @@ public class GeneracionInformes extends javax.swing.JDialog {
         String fecha = this.fechaInforme.getEditor().getText();
         try
         {
-            GeneradorPDF generador = new GeneradorPDF(PageSize.A4,10,7,8);        
+            GeneradorPDF generador = new GeneradorPDF(PageSize.LETTER,14,12,12);        
             generador.GenerarPDF(this.jTextField1.getText());
             generador.openDoc();
             generador.addTitulo("INFORME CONTABLE PARQUEADERO MENSUAL");
@@ -310,7 +310,7 @@ public class GeneracionInformes extends javax.swing.JDialog {
         String fecha = this.fechaInforme.getEditor().getText();
         try
         {
-            GeneradorPDF generador = new GeneradorPDF(PageSize.A4,10,7,8);        
+            GeneradorPDF generador = new GeneradorPDF(PageSize.LETTER,14,12,12);        
             generador.GenerarPDF(this.jTextField1.getText());
             generador.openDoc();
             generador.addTitulo("INFORME CONTABLE PARQUEADERO POR FRACCIÓN");
@@ -369,7 +369,7 @@ public class GeneracionInformes extends javax.swing.JDialog {
         String fecha = this.fechaInforme.getEditor().getText();
         try
         {
-            GeneradorPDF generador = new GeneradorPDF(PageSize.A4,10,7,8);        
+            GeneradorPDF generador = new GeneradorPDF(PageSize.LETTER,14,12,12);        
             generador.GenerarPDF(this.jTextField1.getText());
             generador.openDoc();
             generador.addTitulo("INFORME CONTABLE HOTEL");
@@ -424,7 +424,7 @@ public class GeneracionInformes extends javax.swing.JDialog {
         String fecha = this.fechaInforme.getEditor().getText();
         try
         {
-            GeneradorPDF generador = new GeneradorPDF(PageSize.A4,10,7,8);        
+            GeneradorPDF generador = new GeneradorPDF(PageSize.LETTER,14,12,12);        
             generador.GenerarPDF(this.jTextField1.getText());
             generador.openDoc();
             generador.addTitulo("INFORME CONTABLE LAVADERO");
@@ -479,10 +479,10 @@ public class GeneracionInformes extends javax.swing.JDialog {
         String fecha = this.fechaInforme.getEditor().getText();
         try
         {
-            GeneradorPDF generador = new GeneradorPDF(PageSize.A4,10,7,8);        
+            GeneradorPDF generador = new GeneradorPDF(PageSize.LETTER,14,12,12);        
             generador.GenerarPDF(this.jTextField1.getText());
             generador.openDoc();
-            generador.addTitulo("INFORME MENSUAL");
+            generador.addTitulo("INFORME TOTAL MENSUAL");
             generador.addParagrafo("\n");
             generador.addParagrafo("\n");
             generador.addParagrafo("MES: "+fecha);
