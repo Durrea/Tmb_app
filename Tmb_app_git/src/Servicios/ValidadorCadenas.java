@@ -38,7 +38,7 @@ public class ValidadorCadenas {
                         numeros = numeros + 1;
                     }
                 }
-                if(letras != 3 || numeros < 2)
+                if(letras != 3 || numeros < 2 || !Character.isDigit(cadena.charAt(3))|| !Character.isDigit(cadena.charAt(4)))
                 {
                     resultado = 0;
                 }

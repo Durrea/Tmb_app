@@ -330,14 +330,26 @@ public class TarifaHotel extends javax.swing.JPanel {
     private void jButton_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_aceptarActionPerformed
         // TODO add your handling code here:
         S_Hotel obj = new S_Hotel();
-        if (obj.registrarTarifa(Conexion.obtener(), (int) registrar_habitacion.getValue(), (int) registrar_hora.getValue(), (int) registrar_dia.getValue()) && validarRegistro()) {
-            JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
-            Cargar_Datos();
-            ocultarFormulario();
+        if (validarRegistro()) {
+            if (obj.registrarTarifa(Conexion.obtener(), (int) registrar_habitacion.getValue(), (int) registrar_hora.getValue(), (int) registrar_dia.getValue())) {
+                JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
+
+                TarifaHotel e = new TarifaHotel();
+                this.removeAll();
+                this.setLayout(new BorderLayout());
+                this.add(e, BorderLayout.CENTER);
+                this.repaint();
+                this.revalidate();
+
+            } else {
+                JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
+                registrar_habitacion.setValue(0);
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
+            JOptionPane.showMessageDialog(this, "La tarifas deben ser multiplos de 50");
             registrar_habitacion.setValue(0);
         }
+
     }//GEN-LAST:event_jButton_aceptarActionPerformed
 
     public void Cargar_Datos() {
@@ -411,7 +423,7 @@ public class TarifaHotel extends javax.swing.JPanel {
         registrar_dia.setValue(0);
         registrar_hora.setValue(0);
         registrar_habitacion.setValue(0);
-        
+
     }
 
     private void habilitarFormulario() {

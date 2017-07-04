@@ -117,13 +117,15 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel_Hora" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel_Hora1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel_Hora2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel_Dia" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel_Mes" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel_TipoV" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_Hora" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_Hora1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_Dia" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_Mes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_TipoV" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -134,9 +136,9 @@
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton_aceptar" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jButton_cancelar" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="jButton_aceptar" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
           </Group>
@@ -334,6 +336,7 @@
     <Component class="javax.swing.JTextField" name="registrar_tipoV">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrar_tipoVActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="registrar_tipoVKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel_Mes">

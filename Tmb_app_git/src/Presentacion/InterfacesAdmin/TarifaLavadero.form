@@ -288,6 +288,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrar_tipoVActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="registrar_tipoVKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="registrar_tipoL">
@@ -296,6 +297,9 @@
           <Font name="Century Gothic" size="12" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="registrar_tipoLKeyTyped"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

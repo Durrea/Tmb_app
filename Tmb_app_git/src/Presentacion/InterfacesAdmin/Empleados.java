@@ -55,7 +55,7 @@ public class Empleados extends javax.swing.JPanel {
         //editor de celdas recepcionista
         jTable3.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_NOMBRES"));//Columna Nombre
         jTable3.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_APELLIDOS"));//Columna Apellido
-        jTable3.getColumnModel().getColumn(4).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_CONTRASENIA"));//Columna contrasenia
+        jTable3.getColumnModel().getColumn(4).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_CONSTRASENIA"));//Columna contrasenia
         jTable3.getColumnModel().getColumn(6).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_TELEFONO"));//Columna telefono
         //this.jTable2.setEnabled(false);
     }
