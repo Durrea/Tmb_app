@@ -14,16 +14,19 @@ import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Event;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.KeyStroke;
 import javax.swing.ListModel;
 import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
@@ -51,7 +54,8 @@ public class InforEntradasMensual extends javax.swing.JPanel {
         initComponents();
         this.fechaInforme.setFormats("yyyy-MM");
         this.fechaInforme.getEditor().setEditable(false);
-        //this.fechaInforme.setEnabled(false);
+        InputMap map2 = this.jText_Buscar.getInputMap(this.jText_Buscar.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
     }
     
     /**
@@ -290,6 +294,10 @@ public class InforEntradasMensual extends javax.swing.JPanel {
             String cadena = (""+c).toUpperCase();
             c = cadena.charAt(0);
             evt.setKeyChar(c);
+        }
+        if((c==KeyEvent.VK_SPACE) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)||(c==KeyEvent.VK_CONTROL))
+        {
+            evt.consume();
         }
     }//GEN-LAST:event_jText_BuscarKeyTyped
 

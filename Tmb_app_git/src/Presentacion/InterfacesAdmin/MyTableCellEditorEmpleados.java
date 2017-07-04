@@ -47,6 +47,7 @@ public class MyTableCellEditorEmpleados extends AbstractCellEditor implements Ta
         NewValue = (String) getCellEditorValue();
         if (!NameColum.equalsIgnoreCase("LAVADOR_TELEFONO") && !NameColum.equalsIgnoreCase("RECEPCIONISTA_TELEFONO")) {
             if (!NewValue.equals(OldValue)) {
+                NewValue = NewValue.toUpperCase();
                 if (!S_Empleados.updateEmpleado(Conexion.obtener(),table, NameColum + "='" + NewValue + "' ", ID)) {   //Si existe algun error al actualizar, escribe viejo valor en la celda
                     JOptionPane.showMessageDialog(null, "Error: No se puede actualizar");
                     ((JTextField) component).setText(OldValue);

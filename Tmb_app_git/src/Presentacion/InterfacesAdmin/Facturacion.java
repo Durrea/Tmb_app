@@ -9,10 +9,13 @@ import Presentacion.*;
 import Servicios.Administrador;
 import Servicios.Conexion;
 import java.awt.BorderLayout;
+import java.awt.Event;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -27,6 +30,8 @@ public class Facturacion extends javax.swing.JPanel {
     public Facturacion() {
         initComponents();
         this.Cargar_Informacion();
+        InputMap map2 = this.jText_IVA.getInputMap(this.jText_IVA.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
         //this.jText_IVA.setEditable(false);
         //this.jText_Desc.setEditable(false);
         //this.jText_NIT.setEditable(false);

@@ -13,10 +13,13 @@ import Servicios.S_Empleados;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
+import java.awt.Event;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,6 +33,21 @@ public class Form_Empleados extends javax.swing.JPanel {
      */
     public Form_Empleados() {
         initComponents();
+        InputMap map2 = this.jText_Apellidos.getInputMap(jText_Apellidos.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_CodigoLavador.getInputMap(jText_CodigoLavador.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_Contrasenia.getInputMap(jText_Contrasenia.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_Documento.getInputMap(jText_Documento.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_NombreUsuario.getInputMap(jText_NombreUsuario.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_Nombres.getInputMap(jText_Nombres.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_Telefono.getInputMap(jText_Telefono.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+
         LoadTipo();
         //LoadVehiculos();
     }
@@ -433,48 +451,48 @@ public class Form_Empleados extends javax.swing.JPanel {
 
     private void jText_NombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombresKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        char c = evt.getKeyChar();
+        if ((Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_NombresKeyTyped
 
     private void jText_ApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ApellidosKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        char c = evt.getKeyChar();
+        if ((Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_ApellidosKeyTyped
 
     private void jText_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TelefonoKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_TelefonoKeyTyped
 
     private void jText_DocumentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_DocumentoKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_DocumentoKeyTyped
 
     private void jText_NombreUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombreUsuarioKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        char c = evt.getKeyChar();
+        if ((Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_NombreUsuarioKeyTyped
 
     private void jText_CodigoLavadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CodigoLavadorKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_CodigoLavadorKeyTyped

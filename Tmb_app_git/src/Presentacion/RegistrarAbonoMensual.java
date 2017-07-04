@@ -13,14 +13,17 @@ import Servicios.ParqueaderoMes;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
+import java.awt.Event;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -40,6 +43,8 @@ public class RegistrarAbonoMensual extends javax.swing.JPanel {
     double deuda;
     public RegistrarAbonoMensual() {
         initComponents();        
+        InputMap map2 = this.jTextField1.getInputMap(jTextField1.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
     }
     ImageIcon ii;
     /**

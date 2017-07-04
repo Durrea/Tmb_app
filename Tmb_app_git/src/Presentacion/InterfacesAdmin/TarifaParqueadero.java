@@ -14,14 +14,17 @@ import Servicios.ParqueaderoMes;
 import Servicios.S_Hotel;
 import Servicios.Sesion;
 import java.awt.BorderLayout;
+import java.awt.Event;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -40,6 +43,8 @@ public class TarifaParqueadero extends javax.swing.JPanel {
 
     public TarifaParqueadero() {
         initComponents();
+        InputMap map2 = this.registrar_tipoV.getInputMap(registrar_tipoV.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
         Cargar_Datos();
         //Ocultar campos del formulario
         ocultarFormulario();
@@ -135,6 +140,11 @@ public class TarifaParqueadero extends javax.swing.JPanel {
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable2MouseClicked(evt);
+            }
+        });
+        jTable2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTable2KeyTyped(evt);
             }
         });
         jScrollPane2.setViewportView(jTable2);
@@ -434,10 +444,23 @@ public class TarifaParqueadero extends javax.swing.JPanel {
             c = cadena.charAt(0);
             evt.setKeyChar(c);
         }
-        if ((Character.isDigit(c)) || (c == KeyEvent.VK_SPACE) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE)) {
+        if ((Character.isDigit(c)) || (c == KeyEvent.VK_SPACE) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE)||(c==KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_registrar_tipoVKeyTyped
+
+    private void jTable2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (Character.isLowerCase(c)) {
+            String cadena = ("" + c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
+        if ((Character.isDigit(c)) || (c == KeyEvent.VK_SPACE) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE)||(c==KeyEvent.VK_CONTROL)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTable2KeyTyped
 
     public void Cargar_Datos() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());

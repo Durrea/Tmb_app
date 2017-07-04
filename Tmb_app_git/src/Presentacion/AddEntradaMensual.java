@@ -9,8 +9,12 @@ import Servicios.Conexion;
 import Servicios.ParqueaderoMes;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
+import java.awt.Event;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 
 /**
@@ -24,6 +28,8 @@ public class AddEntradaMensual extends javax.swing.JPanel {
      */
     public AddEntradaMensual() {
         initComponents();
+        InputMap map2 = this.jText_Buscar.getInputMap(jText_Buscar.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
         
     }
     ImageIcon ii;
@@ -297,6 +303,10 @@ public class AddEntradaMensual extends javax.swing.JPanel {
             String cadena = (""+c).toUpperCase();            
             c = cadena.charAt(0);
             evt.setKeyChar(c);            
+        }
+        if((c==KeyEvent.VK_SPACE) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)||(c==KeyEvent.VK_CONTROL))
+        {
+            evt.consume();
         }
     }//GEN-LAST:event_jText_BuscarKeyTyped
 

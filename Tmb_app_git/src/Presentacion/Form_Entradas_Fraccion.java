@@ -12,13 +12,14 @@ import Servicios.ParquaderoFraccion;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
+import java.awt.Event;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 import javax.swing.table.DefaultTableModel;
-
-
 
 /**
  *
@@ -31,18 +32,14 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
      */
     public Form_Entradas_Fraccion() {
         initComponents();
-        //this.setLayout(new BorderLayout());
-        //this.add(this.jLabel1,BorderLayout.NORTH);
-        //this.add(this.jLabel2,BorderLayout.NORTH);
-        //this.add(this.jLabel3,BorderLayout.CENTER);
-        //this.add(this.jText_Placa,BorderLayout.CENTER);
-        //this.add(this.jLabel4,BorderLayout.CENTER);
-        //this.add(this.TipoVehiculo,BorderLayout.CENTER);
+        InputMap map2 = this.jText_Placa.getInputMap(jText_Placa.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
         LoadAllVehiculos();
         //hhhhhh
     }
     ImageIcon ii;
     public int idRecep;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -206,66 +203,53 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
 
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
         // TODO add your handling code here:        
-        Fraccion f=new Fraccion();
+        Fraccion f = new Fraccion();
         this.removeAll();
         this.setLayout(new BorderLayout());
-        this.add(f,BorderLayout.CENTER);
+        this.add(f, BorderLayout.CENTER);
         this.repaint();
         this.revalidate();
     }//GEN-LAST:event_jPanel_CancelarMouseClicked
 
-    
-    
+
     private void jPanel_AgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseClicked
         // TODO add your handling code here:
-        if(!jText_Placa.getText().equalsIgnoreCase(""))
-        {
+        if (!jText_Placa.getText().equalsIgnoreCase("")) {
             ValidadorCadenas val = new ValidadorCadenas();
-            if(val.ValidarCadenasPlaca(jText_Placa.getText())!=0)
-            {
-                int resultopcion_registrar = JOptionPane.showConfirmDialog(null, "¿Desea realizar el registro?","Registro Fracción",JOptionPane.YES_NO_OPTION);
-                if(resultopcion_registrar == 0)
-                {
+            if (val.ValidarCadenasPlaca(jText_Placa.getText()) != 0) {
+                int resultopcion_registrar = JOptionPane.showConfirmDialog(null, "¿Desea realizar el registro?", "Registro Fracción", JOptionPane.YES_NO_OPTION);
+                if (resultopcion_registrar == 0) {
                     ParquaderoFraccion obj = new ParquaderoFraccion();
                     Sesion instancia = Sesion.getInstanciaSesion();
                     //System.out.println(instancia.getIdentificador());
                     String resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Placa.getText(), (String) TipoVehiculo.getSelectedItem(), instancia.getIdentificador());
-                    if(resultado.equalsIgnoreCase("Se ha realizado el registro"))
-                    {                        
-                        int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?","Imprimir Factura",JOptionPane.YES_NO_OPTION);
-                        if(resultopcion == 0)
-                        {
+                    if (resultado.equalsIgnoreCase("Se ha realizado el registro")) {
+                        int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?", "Imprimir Factura", JOptionPane.YES_NO_OPTION);
+                        if (resultopcion == 0) {
                             ImpresionFacturas impfac = new ImpresionFacturas();
-                            boolean res = impfac.FacturaFraccion(0, jText_Placa.getText(),Sesion.getInstanciaSesion().getIdentificador());
-                            if(!res)
-                            {
+                            boolean res = impfac.FacturaFraccion(0, jText_Placa.getText(), Sesion.getInstanciaSesion().getIdentificador());
+                            if (!res) {
                                 JOptionPane.showMessageDialog(null, "Ha ocurrido un error en la impresión");
                             }
-                        }                                                                                        
-                        Fraccion f=new Fraccion();
+                        }
+                        Fraccion f = new Fraccion();
                         this.removeAll();
                         this.setLayout(new BorderLayout());
-                        this.add(f,BorderLayout.CENTER);
+                        this.add(f, BorderLayout.CENTER);
                         this.repaint();
                         this.revalidate();
-                    }
-                    else
-                    {
+                    } else {
                         JOptionPane.showMessageDialog(null, resultado);
                     }
-                }                
-            }
-            else
-            {
+                }
+            } else {
                 JOptionPane.showMessageDialog(null, "Formato incorrecto. Formato para las placas ej: AAA123");
             }
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Debe llenar los campos requeridos");
-        }       
-        
-        
+        }
+
+
     }//GEN-LAST:event_jPanel_AgMouseClicked
 
     private void jPanel_AgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AgMouseEntered
@@ -288,7 +272,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
 
     private void jPanel_CancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseExited
         // TODO add your handling code here:
-         ii = new ImageIcon(getClass().getResource("/Iconos/Cancel_20px.png"));
+        ii = new ImageIcon(getClass().getResource("/Iconos/Cancel_20px.png"));
         jLabel_icn_inf.setIcon(ii);
     }//GEN-LAST:event_jPanel_CancelarMouseExited
 
@@ -303,14 +287,12 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
     private void jText_PlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(Character.isLowerCase(c))
-        {
-            String cadena = (""+c).toUpperCase();            
+        if (Character.isLowerCase(c)) {
+            String cadena = ("" + c).toUpperCase();
             c = cadena.charAt(0);
-            evt.setKeyChar(c);            
+            evt.setKeyChar(c);
         }
-        if((c==KeyEvent.VK_SPACE) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE))
-        {
+        if ((c == KeyEvent.VK_SPACE) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_PlacaKeyTyped
@@ -319,59 +301,46 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         // TODO add your handling code here:
         String cadena = this.jText_Placa.getText();
         ValidadorCadenas val = new ValidadorCadenas();
-            int res = val.ValidarCadenasPlaca(cadena);
-            if(res !=0)
-            {
-                if(res == 1)
-                {
-                    LoadMotos();
-                }
-                else
-                {
-                    LoadVehiculos();
-                }
+        int res = val.ValidarCadenasPlaca(cadena);
+        if (res != 0) {
+            if (res == 1) {
+                LoadMotos();
+            } else {
+                LoadVehiculos();
             }
-            else
-            {
-                this.TipoVehiculo.removeAllItems();
-            }
+        } else {
+            this.TipoVehiculo.removeAllItems();
+        }
     }//GEN-LAST:event_jText_PlacaKeyReleased
-    
-    
-    public void LoadAllVehiculos()
-    {
+
+    public void LoadAllVehiculos() {
         this.TipoVehiculo.removeAllItems();
-        Administrador obj = new Administrador();        
+        Administrador obj = new Administrador();
         ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
-        for (int i = 0; i < tipos.size(); i++) 
-        {
-            this.TipoVehiculo.addItem(tipos.get(i));                       
+        for (int i = 0; i < tipos.size(); i++) {
+            this.TipoVehiculo.addItem(tipos.get(i));
         }
     }
-    public void LoadVehiculos()
-    {
+
+    public void LoadVehiculos() {
         this.TipoVehiculo.removeAllItems();
-        Administrador obj = new Administrador();        
+        Administrador obj = new Administrador();
         ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
-        for (int i = 0; i < tipos.size(); i++) 
-        {
-            if(!tipos.get(i).equalsIgnoreCase("MOTO"))
-            {
+        for (int i = 0; i < tipos.size(); i++) {
+            if (!tipos.get(i).equalsIgnoreCase("MOTO")) {
                 this.TipoVehiculo.addItem(tipos.get(i));
-            }            
+            }
         }
     }
-    public void LoadMotos()
-    {
+
+    public void LoadMotos() {
         this.TipoVehiculo.removeAllItems();
-        Administrador obj = new Administrador();        
+        Administrador obj = new Administrador();
         ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
-        for (int i = 0; i < tipos.size(); i++) 
-        {
-            if(tipos.get(i).equalsIgnoreCase("MOTO"))
-            {
+        for (int i = 0; i < tipos.size(); i++) {
+            if (tipos.get(i).equalsIgnoreCase("MOTO")) {
                 this.TipoVehiculo.addItem(tipos.get(i));
-            }            
+            }
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

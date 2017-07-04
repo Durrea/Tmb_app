@@ -12,15 +12,14 @@ import Servicios.Conexion;
 import Servicios.ParqueaderoMes;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
+import java.awt.Event;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JOptionPane;
-
-
-
-
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -33,11 +32,24 @@ public class RegistroCliente extends javax.swing.JPanel {
      */
     public RegistroCliente() {
         initComponents();
+        InputMap map2 = this.jText_Placa.getInputMap(jText_Placa.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_Cedula.getInputMap(jText_Cedula.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_Telefono.getInputMap(jText_Telefono.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_Cliente.getInputMap(jText_Cliente.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_Marca.getInputMap(jText_Marca.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_Color.getInputMap(jText_Color.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+
         LoadAllVehiculos();
         //jCombo_TipoA.setSelectedItem(null); 
     }
     ImageIcon ii;
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,6 +90,9 @@ public class RegistroCliente extends javax.swing.JPanel {
 
         jText_Placa.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jText_Placa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_PlacaKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jText_PlacaKeyReleased(evt);
             }
@@ -298,17 +313,14 @@ public class RegistroCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel_CancelarMouseExited
 
     private void jPanel_RegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_RegistrarMouseClicked
-       // TODO add your handling code here:
+        // TODO add your handling code here:
         ValidadorCadenas val = new ValidadorCadenas();
-        if(!this.jText_Cliente.getText().equalsIgnoreCase("")&&!this.jText_Cedula.getText().equalsIgnoreCase("")&&
-           !this.jText_Telefono.getText().equalsIgnoreCase("")&&!this.jText_Placa.getText().equalsIgnoreCase("")&&
-           !this.jCombo_TipoA.getSelectedItem().toString().equalsIgnoreCase("")&&!this.jText_Color.getText().equalsIgnoreCase("")&&
-           !this.jText_Marca.getText().equalsIgnoreCase(""))
-        {
-            if(val.ValidarCadenasPlaca(this.jText_Placa.getText())!=0)
-            {
-                if(val.validarNumeros(this.jText_Cedula.getText()) &&val.validarNumeros(this.jText_Telefono.getText()))
-                {
+        if (!this.jText_Cliente.getText().equalsIgnoreCase("") && !this.jText_Cedula.getText().equalsIgnoreCase("")
+                && !this.jText_Telefono.getText().equalsIgnoreCase("") && !this.jText_Placa.getText().equalsIgnoreCase("")
+                && !this.jCombo_TipoA.getSelectedItem().toString().equalsIgnoreCase("") && !this.jText_Color.getText().equalsIgnoreCase("")
+                && !this.jText_Marca.getText().equalsIgnoreCase("")) {
+            if (val.ValidarCadenasPlaca(this.jText_Placa.getText()) != 0) {
+                if (val.validarNumeros(this.jText_Cedula.getText()) && val.validarNumeros(this.jText_Telefono.getText())) {
                     ParqueaderoMes obj = new ParqueaderoMes();
                     Cliente cliente = new Cliente();
                     cliente.setCliente_nombre(this.jText_Cliente.getText());
@@ -320,105 +332,94 @@ public class RegistroCliente extends javax.swing.JPanel {
                     vehiculo.setVehiculo_color(this.jText_Color.getText());
                     vehiculo.setVehiculo_marca(this.jText_Marca.getText());
                     String res = obj.RegisterCustomer(Conexion.obtener(), cliente, vehiculo);
-                    if(res.equalsIgnoreCase("Registro realizado con exito"))
-                    {
+                    if (res.equalsIgnoreCase("Registro realizado con exito")) {
                         JOptionPane.showMessageDialog(null, res);
-                        Mensual r=new Mensual();
+                        Mensual r = new Mensual();
                         this.removeAll();
                         this.setLayout(new BorderLayout());
-                        this.add(r,BorderLayout.CENTER);
+                        this.add(r, BorderLayout.CENTER);
                         this.repaint();
                         this.revalidate();
-                    }
-                    else
-                    {
+                    } else {
                         JOptionPane.showMessageDialog(null, res);
                     }
-                }
-                else
-                {
+                } else {
                     JOptionPane.showMessageDialog(null, "Los campos cedula y telefono deben ser numericos");
                 }
-            }
-            else
-            {
+            } else {
                 JOptionPane.showMessageDialog(null, "Formato incorrecto. Formato para las placas ej: AAA123");
             }
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Debe llenar los campos requeridos");
         }
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
 
     private void jPanel_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_CancelarMouseClicked
-        Mensual m=new Mensual();
+        Mensual m = new Mensual();
         this.removeAll();
         this.setLayout(new BorderLayout());
-        this.add(m,BorderLayout.CENTER);
+        this.add(m, BorderLayout.CENTER);
         this.repaint();
         this.revalidate();
     }//GEN-LAST:event_jPanel_CancelarMouseClicked
-    
+
     private void jText_PlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(Character.isLowerCase(c))
-        {
-            String cadena = (""+c).toUpperCase();            
+        if (Character.isLowerCase(c)) {
+            String cadena = ("" + c).toUpperCase();
             c = cadena.charAt(0);
-            evt.setKeyChar(c);            
-        } 
+            evt.setKeyChar(c);
+        }
+        if ((c == KeyEvent.VK_SPACE) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+        if ((c == KeyEvent.VK_V && c == KeyEvent.VK_CONTROL)) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jText_PlacaKeyTyped
 
     private void jText_PlacaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyReleased
         // TODO add your handling code here:
         String cadena = this.jText_Placa.getText();
         ValidadorCadenas val = new ValidadorCadenas();
-            int res = val.ValidarCadenasPlaca(cadena);
-            if(res !=0)
-            {
-                if(res == 1)
-                {
-                    LoadMotos();
-                }
-                else
-                {
-                    LoadVehiculos();
-                }
+        int res = val.ValidarCadenasPlaca(cadena);
+        if (res != 0) {
+            if (res == 1) {
+                LoadMotos();
+            } else {
+                LoadVehiculos();
             }
-            else
-            {
-                this.jCombo_TipoA.removeAllItems();
-            }
+        } else {
+            this.jCombo_TipoA.removeAllItems();
+        }
     }//GEN-LAST:event_jText_PlacaKeyReleased
 
     private void jText_ClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ClienteKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(Character.isLowerCase(c))
-        {
-            String cadena = (""+c).toUpperCase();            
+        if (Character.isLowerCase(c)) {
+            String cadena = ("" + c).toUpperCase();
             c = cadena.charAt(0);
-            evt.setKeyChar(c);            
-        }         
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.setKeyChar(c);
+        }
+        if ((Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_ClienteKeyTyped
 
     private void jText_CedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CedulaKeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar();        
-        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_CedulaKeyTyped
 
     private void jText_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TelefonoKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_TelefonoKeyTyped
@@ -426,13 +427,12 @@ public class RegistroCliente extends javax.swing.JPanel {
     private void jText_ColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ColorKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(Character.isLowerCase(c))
-        {
-            String cadena = (""+c).toUpperCase();            
+        if (Character.isLowerCase(c)) {
+            String cadena = ("" + c).toUpperCase();
             c = cadena.charAt(0);
-            evt.setKeyChar(c);            
-        }         
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.setKeyChar(c);
+        }
+        if ((Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_ColorKeyTyped
@@ -440,54 +440,56 @@ public class RegistroCliente extends javax.swing.JPanel {
     private void jText_MarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_MarcaKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(Character.isLowerCase(c))
-        {
-            String cadena = (""+c).toUpperCase();            
+        if (Character.isLowerCase(c)) {
+            String cadena = ("" + c).toUpperCase();
             c = cadena.charAt(0);
-            evt.setKeyChar(c);            
-        } 
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.setKeyChar(c);
+        }
+        if ((Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_MarcaKeyTyped
-    
-    public void LoadVehiculos()
-    {
+
+    private void jText_PlacaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if ((c == KeyEvent.VK_V && c == KeyEvent.VK_CONTROL)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_PlacaKeyPressed
+
+    public void LoadVehiculos() {
         this.jCombo_TipoA.removeAllItems();
-        Administrador obj = new Administrador();        
+        Administrador obj = new Administrador();
         ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
-        for (int i = 0; i < tipos.size(); i++) 
-        {
-            if(!tipos.get(i).equalsIgnoreCase("MOTO"))
-            {
+        for (int i = 0; i < tipos.size(); i++) {
+            if (!tipos.get(i).equalsIgnoreCase("MOTO")) {
                 this.jCombo_TipoA.addItem(tipos.get(i));
-            }            
+            }
         }
     }
-    public void LoadMotos()
-    {
+
+    public void LoadMotos() {
         this.jCombo_TipoA.removeAllItems();
-        Administrador obj = new Administrador();        
+        Administrador obj = new Administrador();
         ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
-        for (int i = 0; i < tipos.size(); i++) 
-        {
-            if(tipos.get(i).equalsIgnoreCase("MOTO"))
-            {
+        for (int i = 0; i < tipos.size(); i++) {
+            if (tipos.get(i).equalsIgnoreCase("MOTO")) {
                 this.jCombo_TipoA.addItem(tipos.get(i));
-            }            
+            }
         }
     }
-    public void LoadAllVehiculos()
-    {
+
+    public void LoadAllVehiculos() {
         this.jCombo_TipoA.removeAllItems();
-        Administrador obj = new Administrador();        
+        Administrador obj = new Administrador();
         ArrayList<String> tipos = obj.LoadTiposVehiculos(Conexion.obtener());
-        for (int i = 0; i < tipos.size(); i++) 
-        {
-            this.jCombo_TipoA.addItem(tipos.get(i));                       
+        for (int i = 0; i < tipos.size(); i++) {
+            this.jCombo_TipoA.addItem(tipos.get(i));
         }
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jCombo_TipoA;
