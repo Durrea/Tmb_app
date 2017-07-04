@@ -395,7 +395,13 @@ public class RegistroCliente extends javax.swing.JPanel {
 
     private void jText_ClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ClienteKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();            
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);            
+        }         
         if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
             evt.consume();
         }
@@ -403,7 +409,7 @@ public class RegistroCliente extends javax.swing.JPanel {
 
     private void jText_CedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CedulaKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
+        char c = evt.getKeyChar();        
         if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
             evt.consume();
         }
@@ -419,7 +425,13 @@ public class RegistroCliente extends javax.swing.JPanel {
 
     private void jText_ColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ColorKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();            
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);            
+        }         
         if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
             evt.consume();
         }
@@ -427,7 +439,13 @@ public class RegistroCliente extends javax.swing.JPanel {
 
     private void jText_MarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_MarcaKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();            
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);            
+        } 
         if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
             evt.consume();
         }
