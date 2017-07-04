@@ -9,6 +9,7 @@ import Presentacion.InterfacesAdmin.PrincipalAdmin;
 import Servicios.Conexion;
 import Servicios.Sesion;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -116,6 +117,11 @@ public class Login extends javax.swing.JFrame {
                 jText_ContrasenaFocusGained(evt);
             }
         });
+        jText_Contrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_ContrasenaKeyPressed(evt);
+            }
+        });
         jPanel1.add(jText_Contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 260, 20));
 
         jText_Usuario.setBackground(new java.awt.Color(36, 47, 65));
@@ -132,6 +138,11 @@ public class Login extends javax.swing.JFrame {
         jText_Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jText_UsuarioActionPerformed(evt);
+            }
+        });
+        jText_Usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_UsuarioKeyPressed(evt);
             }
         });
         jPanel1.add(jText_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 260, 20));
@@ -276,6 +287,110 @@ public class Login extends javax.swing.JFrame {
         xx = evt.getX();
         xy = evt.getY();
     }//GEN-LAST:event_panel_ImgMousePressed
+
+    private void jText_UsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_UsuarioKeyPressed
+        // TODO add your handling code here:
+         char c = evt.getKeyChar();   
+        if((c==KeyEvent.VK_ENTER) )
+        {
+            try {
+            //Servicios.Administrador administrador = new Servicios.Administrador();
+            Sesion instanciaSesion = Sesion.getInstanciaSesion();
+            String nombreUsuario = jText_Usuario.getText();
+            //NombreUsuario.setVisible(false);
+            String passwordUsuario =  new String (jText_Contrasena.getPassword());
+            //ArrayList resultado_autenticacion = administrador.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
+            instanciaSesion.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
+            if (instanciaSesion.sesionActiva()) 
+            {
+                if(instanciaSesion.getRolAutenticado().equals("Administrador"))
+                {
+                    //String resultado = resultado_autenticacion.get(0)+":"+resultado_autenticacion.get(1);
+                    //ResultadoAutenticacion.setText(resultado);
+                    new PrincipalAdmin().setVisible(true);
+                    this.setVisible(false);
+                    passwordUsuario = "";//Clareo por cuestion de seguridad.
+                }
+                else
+                {
+                    //String resultado = resultado_autenticacion.get(0)+":"+resultado_autenticacion.get(1);
+                    //ResultadoAutenticacion.setText(resultado);
+                    PrincipalRecep obj = new PrincipalRecep();
+                    obj.setVisible(true);
+                    obj.idRecep = instanciaSesion.getIdentificador();
+                    //1new PrincipalRecep().setVisible(true);
+                    this.setVisible(false);
+                    passwordUsuario = "";//Clareo por cuestion de seguridad.
+                }
+            }
+            else
+            {
+                passwordUsuario = ""; //Clareo por cuestion de seguridad.
+                //JOptionPane.showMessageDialog(null,"Error de autenticacion");
+                //ResultadoAutenticacion.setText("Error de autenticacion");
+                jText_Usuario.setText("");
+                jText_Contrasena.setText("");
+                }
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+            //setVisible(false);
+            //Principal p= new Principal();
+            //p.setVisible(true);
+        }
+    }//GEN-LAST:event_jText_UsuarioKeyPressed
+
+    private void jText_ContrasenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ContrasenaKeyPressed
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();   
+        if((c==KeyEvent.VK_ENTER) )
+        {
+            try {
+            //Servicios.Administrador administrador = new Servicios.Administrador();
+            Sesion instanciaSesion = Sesion.getInstanciaSesion();
+            String nombreUsuario = jText_Usuario.getText();
+            //NombreUsuario.setVisible(false);
+            String passwordUsuario =  new String (jText_Contrasena.getPassword());
+            //ArrayList resultado_autenticacion = administrador.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
+            instanciaSesion.autenticarUsuario(Conexion.obtener(), nombreUsuario, passwordUsuario);
+            if (instanciaSesion.sesionActiva()) 
+            {
+                if(instanciaSesion.getRolAutenticado().equals("Administrador"))
+                {
+                    //String resultado = resultado_autenticacion.get(0)+":"+resultado_autenticacion.get(1);
+                    //ResultadoAutenticacion.setText(resultado);
+                    new PrincipalAdmin().setVisible(true);
+                    this.setVisible(false);
+                    passwordUsuario = "";//Clareo por cuestion de seguridad.
+                }
+                else
+                {
+                    //String resultado = resultado_autenticacion.get(0)+":"+resultado_autenticacion.get(1);
+                    //ResultadoAutenticacion.setText(resultado);
+                    PrincipalRecep obj = new PrincipalRecep();
+                    obj.setVisible(true);
+                    obj.idRecep = instanciaSesion.getIdentificador();
+                    //1new PrincipalRecep().setVisible(true);
+                    this.setVisible(false);
+                    passwordUsuario = "";//Clareo por cuestion de seguridad.
+                }
+            }
+            else
+            {
+                passwordUsuario = ""; //Clareo por cuestion de seguridad.
+                //JOptionPane.showMessageDialog(null,"Error de autenticacion");
+                //ResultadoAutenticacion.setText("Error de autenticacion");
+                jText_Usuario.setText("");
+                jText_Contrasena.setText("");
+                }
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+            //setVisible(false);
+            //Principal p= new Principal();
+            //p.setVisible(true);
+        }
+    }//GEN-LAST:event_jText_ContrasenaKeyPressed
 
     
       
