@@ -283,12 +283,15 @@ public class Form_Hotel extends javax.swing.JPanel {
         // TODO add your handling code here:
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ArrayList<Float> entradas = servicio.ocuparHabitacion(Conexion.obtener(), habitacion, TipoHospedaje.getSelectedItem().toString(), Integer.parseInt(jText_numeroPersonas.getValue().toString()), dateFormat.format(jText_Entrada.getValue()), dateFormat.format(jText_Salida.getValue()), Float.parseFloat(extra.getValue().toString()));
-        Form_RegistroRealizado h = new Form_RegistroRealizado(entradas, habitacion);
-        this.removeAll();
-        this.setLayout(new BorderLayout());
-        this.add(h, BorderLayout.CENTER);
-        this.repaint();
-        this.revalidate();
+        if (entradas.size() != 0) {
+            Form_RegistroRealizado h = new Form_RegistroRealizado(entradas, habitacion);
+            this.removeAll();
+            this.setLayout(new BorderLayout());
+            this.add(h, BorderLayout.CENTER);
+            this.repaint();
+            this.revalidate();
+        }
+
 
     }//GEN-LAST:event_jPanel_AceptarMouseClicked
 
@@ -339,8 +342,8 @@ public class Form_Hotel extends javax.swing.JPanel {
 
     private void jText_numeroPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_numeroPersonasKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c)) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE)) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_numeroPersonasKeyTyped

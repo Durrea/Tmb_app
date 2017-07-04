@@ -78,7 +78,7 @@ public class S_Hotel {
 
         } catch (Exception e) {
             //System.out.println("Error al ocupar");
-            JOptionPane.showMessageDialog(null, "Registro fallido");
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return retorno;
     }
