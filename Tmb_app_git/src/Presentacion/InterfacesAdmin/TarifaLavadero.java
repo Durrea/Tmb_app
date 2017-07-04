@@ -353,28 +353,31 @@ public class TarifaLavadero extends javax.swing.JPanel {
     private void jButton_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_aceptarActionPerformed
         // TODO add your handling code here:
         SLavadero obj = new SLavadero();
-        if (validarRegistro()) {
-            if (obj.registrarTarifa(Conexion.obtener(), registrar_tipoV.getText().toUpperCase(), (int) registrar_valor.getValue(), registrar_tipoL.getText().toUpperCase())) {
-                JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
+        if (registrar_tipoL.getText().equalsIgnoreCase("")  ||  registrar_tipoV.getText().equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(this, "El tipo de vehiculo & de lavada no pueden ser vacios");
+        } else {
+            if (validarRegistro()) {
+                if (obj.registrarTarifa(Conexion.obtener(), registrar_tipoV.getText().toUpperCase(), (int) registrar_valor.getValue(), registrar_tipoL.getText().toUpperCase())) {
+                    JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
 
-                TarifaLavadero e = new TarifaLavadero();
-                this.removeAll();
-                this.setLayout(new BorderLayout());
-                this.add(e, BorderLayout.CENTER);
-                this.repaint();
-                this.revalidate();
+                    TarifaLavadero e = new TarifaLavadero();
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(e, BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();
 
+                } else {
+                    JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
+                    registrar_tipoL.setText("");
+                    registrar_tipoV.setText("");
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
+                JOptionPane.showMessageDialog(this, "Las tarifas deben ser multiplos de 50");
                 registrar_tipoL.setText("");
                 registrar_tipoV.setText("");
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Las tarifas deben ser multiplos de 50");
-            registrar_tipoL.setText("");
-            registrar_tipoV.setText("");
         }
-
     }//GEN-LAST:event_jButton_aceptarActionPerformed
 
     private void registrar_tipoLKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registrar_tipoLKeyTyped

@@ -412,27 +412,29 @@ public class TarifaParqueadero extends javax.swing.JPanel {
     private void jButton_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_aceptarActionPerformed
         // TODO add your handling code here:
         ParqueaderoMes obj = new ParqueaderoMes();
-        if (validarRegistro()) {
-            if (obj.registrarTarifa(Conexion.obtener(), registrar_tipoV.getText().toUpperCase(), (int) registrar_mes.getValue(), (int) registrar_dia.getValue(), (int) registrar_hora2.getValue(), (int) registrar_hora1.getValue(), (int) registrar_adicional.getValue())) {
-                JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
+        if (registrar_tipoV.getText().equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(this, "El tipo del vehiculo no puede quedar vacio");
+        } else {
+            if (validarRegistro()) {
+                if (obj.registrarTarifa(Conexion.obtener(), registrar_tipoV.getText().toUpperCase(), (int) registrar_mes.getValue(), (int) registrar_dia.getValue(), (int) registrar_hora2.getValue(), (int) registrar_hora1.getValue(), (int) registrar_adicional.getValue())) {
+                    JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
 
-                TarifaParqueadero e = new TarifaParqueadero();
-                this.removeAll();
-                this.setLayout(new BorderLayout());
-                this.add(e, BorderLayout.CENTER);
-                this.repaint();
-                this.revalidate();
+                    TarifaParqueadero e = new TarifaParqueadero();
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(e, BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();
 
+                } else {
+                    JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
+                    registrar_tipoV.setText("");
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
-                registrar_tipoV.setText("");
-            }
-        }
-        else {
                 JOptionPane.showMessageDialog(this, "Las tarifas deben ser multiplos de 50");
                 registrar_tipoV.setText("");
             }
-            
+        }
 
     }//GEN-LAST:event_jButton_aceptarActionPerformed
 
@@ -444,7 +446,7 @@ public class TarifaParqueadero extends javax.swing.JPanel {
             c = cadena.charAt(0);
             evt.setKeyChar(c);
         }
-        if ((Character.isDigit(c)) || (c == KeyEvent.VK_SPACE) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE)||(c==KeyEvent.VK_CONTROL)) {
+        if ((Character.isDigit(c)) || (c == KeyEvent.VK_SPACE) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_registrar_tipoVKeyTyped
@@ -457,7 +459,7 @@ public class TarifaParqueadero extends javax.swing.JPanel {
             c = cadena.charAt(0);
             evt.setKeyChar(c);
         }
-        if ((Character.isDigit(c)) || (c == KeyEvent.VK_SPACE) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE)||(c==KeyEvent.VK_CONTROL)) {
+        if ((Character.isDigit(c)) || (c == KeyEvent.VK_SPACE) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE) || (c == KeyEvent.VK_CONTROL)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTable2KeyTyped
