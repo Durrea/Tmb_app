@@ -250,7 +250,7 @@ public class RegistrarAbonoMensual extends javax.swing.JPanel {
     public void setLabels()
     {
         this.jLabel2.setText("Vehiculo: "+this.placa);
-        this.jLabel4.setText("Valor deuda actual: "+this.deuda);
+        this.jLabel4.setText("Valor deuda actual: "+(long)this.deuda);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

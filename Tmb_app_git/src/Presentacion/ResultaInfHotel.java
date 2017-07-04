@@ -211,7 +211,8 @@ public class ResultaInfHotel extends javax.swing.JPanel {
 
     public JTable BuildTable(ArrayList<Informacion_hotel> infoHotel) {
         JTable tabla = new JTable();
-        DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel(){
+            public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
         modelo.addColumn("Fecha entrada");
         modelo.addColumn("Hora entrada");
         Object[] fila = new Object[2];

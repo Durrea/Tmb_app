@@ -213,7 +213,8 @@ public class ResultaInfMensual extends javax.swing.JPanel {
 
     public JTable BuildTable(ArrayList<Object> inforecep) {
         JTable tabla = new JTable();
-        DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel(){
+            public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
         ArrayList<String> columnas = new ArrayList();
         columnas = (ArrayList<String>) inforecep.get(0);
         for(int i=0;i<columnas.size();i++)

@@ -9,6 +9,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -72,7 +73,7 @@ public class Sesion {
             System.out.println(identificador + "/" + rolAutenticado);
 
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null,ex.getMessage());
         }
         return autenticado;
     }

@@ -244,7 +244,7 @@ public class Login extends javax.swing.JFrame {
             else
             {
                 passwordUsuario = ""; //Clareo por cuestion de seguridad.
-                JOptionPane.showMessageDialog(null,"Error de autenticacion");
+                //JOptionPane.showMessageDialog(null,"Error de autenticacion");
                 //ResultadoAutenticacion.setText("Error de autenticacion");
                 jText_Usuario.setText("");
                 jText_Contrasena.setText("");
