@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -397,9 +398,10 @@ public class Lavadero extends javax.swing.JPanel {
                         String resultado=obj.descripcionLavada(Conexion.obtener(),id_lava);
                         
                         JPanel myPanel = new JPanel();
-                        JTextArea area=new JTextArea(resultado);
+                        JTextArea area=new JTextArea(resultado,5,15);
+                        JScrollPane scrollPane = new JScrollPane(area);
                         area.setEditable(false);
-                        myPanel.add(area);
+                        myPanel.add(scrollPane);
                         
                         
                         JOptionPane.showMessageDialog(null, myPanel, 
