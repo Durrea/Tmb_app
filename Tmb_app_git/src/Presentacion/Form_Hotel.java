@@ -185,6 +185,7 @@ public class Form_Hotel extends javax.swing.JPanel {
 
         JSpinner.DateEditor de = new JSpinner.DateEditor(jText_Entrada,"yyyy-MM-dd HH:mm:ss");
         jText_Entrada.setEditor(de);
+        jText_Entrada.setEnabled(false);
 
         jText_numeroPersonas.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
         jText_numeroPersonas.setToolTipText("");

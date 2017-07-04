@@ -183,10 +183,11 @@ public class ImpresionFacturas {
     }
 
     public void imprimirFactura(PrinterMatrix printer) {
-        printer.toFile("impresion.txt");
+        String ruta = System.getProperty("user.home");
+        printer.toFile(ruta+"\\impresion.txt");
         FileInputStream inputStream = null;
             try {
-                inputStream = new FileInputStream("impresion.txt");
+                inputStream = new FileInputStream(ruta+"\\impresion.txt");
             } catch (FileNotFoundException ex) {
                 System.out.println(ex.getMessage());
             }

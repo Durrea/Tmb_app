@@ -37,7 +37,7 @@ public class TarifaParqueadero extends javax.swing.JPanel {
      */
     TableRowSorter filter;
     int rown = -1;
-    
+
     public TarifaParqueadero() {
         initComponents();
         Cargar_Datos();
@@ -402,18 +402,33 @@ public class TarifaParqueadero extends javax.swing.JPanel {
     private void jButton_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_aceptarActionPerformed
         // TODO add your handling code here:
         ParqueaderoMes obj = new ParqueaderoMes();
-        if (obj.registrarTarifa(Conexion.obtener(), registrar_tipoV.getText().toUpperCase(), (int) registrar_mes.getValue(), (int) registrar_dia.getValue(), (int) registrar_hora2.getValue(), (int) registrar_hora1.getValue(), (int) registrar_adicional.getValue()) && validarRegistro()) {
-            JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
-            Cargar_Datos();
-            ocultarFormulario();
-        } else {
-            JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
-            registrar_tipoV.setText("");
+        if (validarRegistro()) {
+            if (obj.registrarTarifa(Conexion.obtener(), registrar_tipoV.getText().toUpperCase(), (int) registrar_mes.getValue(), (int) registrar_dia.getValue(), (int) registrar_hora2.getValue(), (int) registrar_hora1.getValue(), (int) registrar_adicional.getValue())) {
+                JOptionPane.showMessageDialog(this, "Tarifa registrada con exito");
+
+                TarifaParqueadero e = new TarifaParqueadero();
+                this.removeAll();
+                this.setLayout(new BorderLayout());
+                this.add(e, BorderLayout.CENTER);
+                this.repaint();
+                this.revalidate();
+
+            } else {
+                JOptionPane.showMessageDialog(this, "La tarifa no ha sido registrada");
+                registrar_tipoV.setText("");
+            }
         }
+        else {
+                JOptionPane.showMessageDialog(this, "Las tarifas deben ser multiplos de 50");
+                registrar_tipoV.setText("");
+            }
+            
+
     }//GEN-LAST:event_jButton_aceptarActionPerformed
 
     private void registrar_tipoVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registrar_tipoVKeyTyped
         // TODO add your handling code here:
+<<<<<<< HEAD
         char c=evt.getKeyChar();
         if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
             evt.consume();
@@ -427,6 +442,19 @@ public class TarifaParqueadero extends javax.swing.JPanel {
         } 
     }//GEN-LAST:event_registrar_tipoVKeyTyped
     
+=======
+        char c = evt.getKeyChar();
+        if (Character.isLowerCase(c)) {
+            String cadena = ("" + c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
+        if ((Character.isDigit(c)) || (c == KeyEvent.VK_SPACE) || (c == KeyEvent.VK_ESCAPE) || (c == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_registrar_tipoVKeyTyped
+
+>>>>>>> origin/master
     public void Cargar_Datos() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());
         ParqueaderoMes obj = new ParqueaderoMes();
@@ -438,11 +466,11 @@ public class TarifaParqueadero extends javax.swing.JPanel {
                 return columna == 0 || columna == 1 ? false : true;
             }
         };
-        
+
         for (int i = 0; i < columnas.size(); i++) {
             modelo.addColumn(columnas.get(i));
         }
-        
+
         for (int i = 1; i < lista.size(); i++) {
             ArrayList<String> lista_info = new ArrayList<String>();
             lista_info = (ArrayList<String>) lista.get(i);
@@ -505,7 +533,7 @@ public class TarifaParqueadero extends javax.swing.JPanel {
         registrar_mes.setValue(0);
         registrar_tipoV.setText("");
     }
-    
+
     private void habilitarFormulario() {
         jLabel_Dia.setVisible(true);
         jLabel_Hora.setVisible(true);
@@ -522,7 +550,7 @@ public class TarifaParqueadero extends javax.swing.JPanel {
         jButton_aceptar.setVisible(true);
         jButton_cancelar.setVisible(true);
     }
-    
+
     public static boolean validarNum(int n1, int n2) {
         if (n1 % n2 == 0) {
             return true;
@@ -530,9 +558,9 @@ public class TarifaParqueadero extends javax.swing.JPanel {
             return false;
         }
     }
-    
+
     private boolean validarRegistro() {
-        if (validarNum((int) registrar_dia.getValue(), 50) && validarNum((int) registrar_hora1.getValue(), 50) && validarNum((int) registrar_adicional.getValue(), 50)&& validarNum((int) registrar_hora2.getValue(), 50) && validarNum((int) registrar_mes.getValue(), 50)) {
+        if (validarNum((int) registrar_dia.getValue(), 50) && validarNum((int) registrar_hora1.getValue(), 50) && validarNum((int) registrar_adicional.getValue(), 50) && validarNum((int) registrar_hora2.getValue(), 50) && validarNum((int) registrar_mes.getValue(), 50)) {
             return true;
         } else {
             return false;

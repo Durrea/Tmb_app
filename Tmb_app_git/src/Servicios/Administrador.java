@@ -97,10 +97,11 @@ public class Administrador {
         ArrayList<String> resultado = new ArrayList();
         try
         {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_TOTALES_DIARIOS(?,?,?)}");
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_TOTALES_DIARIOS(?,?,?,?)}");
             callProcedure.setString(1, fecha);
             callProcedure.registerOutParameter(2, java.sql.Types.FLOAT);
             callProcedure.registerOutParameter(3, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(4, java.sql.Types.FLOAT);
             callProcedure.execute();
             if(callProcedure.getString(2) == null)
             {
@@ -117,6 +118,14 @@ public class Administrador {
             else
             {
                 resultado.add(callProcedure.getString(3));
+            }           
+            if(callProcedure.getString(4) == null)
+            {
+                resultado.add("0.0");
+            }
+            else
+            {
+                resultado.add(callProcedure.getString(4));
             }            
             return resultado;
         }catch(Exception e)

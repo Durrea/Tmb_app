@@ -12,6 +12,7 @@ import Servicios.ParquaderoFraccion;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -308,7 +309,11 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
             String cadena = (""+c).toUpperCase();            
             c = cadena.charAt(0);
             evt.setKeyChar(c);            
-        }        
+        }
+        if((c==KeyEvent.VK_SPACE) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE))
+        {
+            evt.consume();
+        }
     }//GEN-LAST:event_jText_PlacaKeyTyped
 
     private void jText_PlacaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyReleased

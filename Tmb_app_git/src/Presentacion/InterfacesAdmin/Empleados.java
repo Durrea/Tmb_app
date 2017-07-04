@@ -55,7 +55,7 @@ public class Empleados extends javax.swing.JPanel {
         //editor de celdas recepcionista
         jTable3.getColumnModel().getColumn(1).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_NOMBRES"));//Columna Nombre
         jTable3.getColumnModel().getColumn(2).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_APELLIDOS"));//Columna Apellido
-        jTable3.getColumnModel().getColumn(4).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_CONTRASENIA"));//Columna contrasenia
+        jTable3.getColumnModel().getColumn(4).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_CONSTRASENIA"));//Columna contrasenia
         jTable3.getColumnModel().getColumn(6).setCellEditor(new MyTableCellEditorEmpleados("RECEPCIONISTA", "RECEPCIONISTA_TELEFONO"));//Columna telefono
         //this.jTable2.setEnabled(false);
     }
@@ -339,6 +339,7 @@ public class Empleados extends javax.swing.JPanel {
                     S_Empleados servicio = new S_Empleados();
                     try {
                         servicio.cambiarEstado(Conexion.obtener(), "Lavador", id);
+                        JOptionPane.showMessageDialog(null, "Estado actualizado");
                         Cargar_Datos_Lavador();
                     } catch (SQLException ex) {
                         Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
@@ -368,6 +369,7 @@ public class Empleados extends javax.swing.JPanel {
                     S_Empleados servicio = new S_Empleados();
                     try {
                         servicio.cambiarEstado(Conexion.obtener(), "Recepcionista", id);
+                        JOptionPane.showMessageDialog(null, "Estado actualizado");
                         Cargar_Datos_Recepcionista();
                     } catch (SQLException ex) {
                         Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
