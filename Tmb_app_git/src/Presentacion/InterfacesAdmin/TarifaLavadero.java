@@ -195,8 +195,18 @@ public class TarifaLavadero extends javax.swing.JPanel {
                 registrar_tipoVActionPerformed(evt);
             }
         });
+        registrar_tipoV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                registrar_tipoVKeyTyped(evt);
+            }
+        });
 
         registrar_tipoL.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        registrar_tipoL.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                registrar_tipoLKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -345,6 +355,36 @@ public class TarifaLavadero extends javax.swing.JPanel {
             registrar_tipoV.setText("");
         }
     }//GEN-LAST:event_jButton_aceptarActionPerformed
+
+    private void registrar_tipoVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registrar_tipoVKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+        
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();            
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);            
+        } 
+    }//GEN-LAST:event_registrar_tipoVKeyTyped
+
+    private void registrar_tipoLKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registrar_tipoLKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+        
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();            
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);            
+        } 
+    }//GEN-LAST:event_registrar_tipoLKeyTyped
 
     public void Cargar_Datos() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());

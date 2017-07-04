@@ -9,6 +9,7 @@ import Presentacion.*;
 import Servicios.Administrador;
 import Servicios.Conexion;
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -77,6 +78,11 @@ public class Facturacion extends javax.swing.JPanel {
         jText_Desc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jText_Desc.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jText_Desc.setEnabled(false);
+        jText_Desc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_DescKeyTyped(evt);
+            }
+        });
 
         jText_NIT.setBackground(new java.awt.Color(36, 47, 65));
         jText_NIT.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
@@ -91,6 +97,11 @@ public class Facturacion extends javax.swing.JPanel {
         jText_IVA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jText_IVA.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jText_IVA.setEnabled(false);
+        jText_IVA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_IVAKeyTyped(evt);
+            }
+        });
 
         jPanel_EditDesc.setBackground(new java.awt.Color(102, 102, 102));
         jPanel_EditDesc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -285,6 +296,29 @@ public class Facturacion extends javax.swing.JPanel {
             }
         }        
     }//GEN-LAST:event_jPanel_GuardarMouseClicked
+
+    private void jText_DescKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_DescKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+        
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();            
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);            
+        } 
+    }//GEN-LAST:event_jText_DescKeyTyped
+
+    private void jText_IVAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_IVAKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_IVAKeyTyped
 
     public void Cargar_Informacion()
     {

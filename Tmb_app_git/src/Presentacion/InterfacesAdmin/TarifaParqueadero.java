@@ -212,6 +212,11 @@ public class TarifaParqueadero extends javax.swing.JPanel {
                 registrar_tipoVActionPerformed(evt);
             }
         });
+        registrar_tipoV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                registrar_tipoVKeyTyped(evt);
+            }
+        });
 
         jLabel_Mes.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel_Mes.setForeground(new java.awt.Color(255, 255, 255));
@@ -306,22 +311,23 @@ public class TarifaParqueadero extends javax.swing.JPanel {
                                 .addComponent(registrar_tipoV, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(registrar_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel_Hora)
-                            .addComponent(jLabel_Hora1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_Hora2)
-                            .addComponent(jLabel_Dia)
-                            .addComponent(jLabel_Mes)
-                            .addComponent(jLabel_TipoV))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel_Hora)
+                                .addComponent(jLabel_Hora1)
+                                .addComponent(jLabel_Dia)
+                                .addComponent(jLabel_Mes)
+                                .addComponent(jLabel_TipoV)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(registrar_hora2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(registrar_hora1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(registrar_adicional, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -405,6 +411,21 @@ public class TarifaParqueadero extends javax.swing.JPanel {
             registrar_tipoV.setText("");
         }
     }//GEN-LAST:event_jButton_aceptarActionPerformed
+
+    private void registrar_tipoVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registrar_tipoVKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+        
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();            
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);            
+        } 
+    }//GEN-LAST:event_registrar_tipoVKeyTyped
     
     public void Cargar_Datos() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());

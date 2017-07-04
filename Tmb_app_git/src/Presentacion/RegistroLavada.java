@@ -70,6 +70,9 @@ public class RegistroLavada extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabelVTipoLavadoN = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea = new javax.swing.JTextArea();
+        jLabelVTipoLavadoN1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
 
@@ -154,11 +157,6 @@ public class RegistroLavada extends javax.swing.JPanel {
         jLabel10.setText(" Tipo de Lavado");
 
         jCombo_TpoLvda.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jCombo_TpoLvda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCombo_TpoLvdaMouseClicked(evt);
-            }
-        });
         jCombo_TpoLvda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCombo_TpoLvdaActionPerformed(evt);
@@ -199,14 +197,23 @@ public class RegistroLavada extends javax.swing.JPanel {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText(" Marca Vehiculo");
 
+        jTextArea.setColumns(20);
+        jTextArea.setRows(5);
+        jTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextAreaKeyTyped(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTextArea);
+
+        jLabelVTipoLavadoN1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabelVTipoLavadoN1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelVTipoLavadoN1.setText(" Descripcion");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(40, 40, 40))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(276, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -221,21 +228,24 @@ public class RegistroLavada extends javax.swing.JPanel {
                     .addComponent(jText_MarcaV)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jText_ValorLavdo)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelVTipoLavadoN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCombo_TpoLvador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jCombo_TpoLvador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelVTipoLavadoN1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(276, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCombo_TpoLvador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,11 +273,15 @@ public class RegistroLavada extends javax.swing.JPanel {
                 .addComponent(jLabelVTipoLavadoN)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jText_ValorOtro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelVTipoLavadoN1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel_Registrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(51, 51, 51))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -323,7 +337,8 @@ public class RegistroLavada extends javax.swing.JPanel {
                     tarifa.setValor_lavada(Float.valueOf(jText_ValorLavdo.getText()));
                 }
             }
-            String msj = obj.registerLavadores(Conexion.obtener(),lavador,vehiculo,tarifa,instancia.getIdentificador());
+            String msj = obj.registerLavadores
+                            (Conexion.obtener(),lavador,vehiculo,tarifa,jTextArea.getText(),instancia.getIdentificador());
             JOptionPane.showMessageDialog(null, msj);
             
             Lavadero lavadero=new Lavadero();
@@ -345,6 +360,7 @@ public class RegistroLavada extends javax.swing.JPanel {
         if(jText_Placa.getText().equals("")){res+="\nPlaca Vehiculo";}
         if(jCombo_TipoV.getSelectedIndex()==-1 && jCombo_TipoV.getItemCount()==0){res+="\nTipo Vehiculo";}
         if(jText_MarcaV.getText().equals("")){res+="\nMarca Vehiculo";}
+        if(jTextArea.getText().equals("")){res+="\nDescripcion";}
         
         if(jCombo_TpoLvda.getSelectedIndex()!=-1 && jCombo_TpoLvda.getItemCount()!=0){
             if(jCombo_TpoLvda.getSelectedItem().equals("Otro")){
@@ -456,6 +472,13 @@ public class RegistroLavada extends javax.swing.JPanel {
         if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
             evt.consume();
         }
+        
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();            
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);            
+        } 
                 
     }//GEN-LAST:event_jText_MarcaVKeyTyped
 
@@ -467,11 +490,20 @@ public class RegistroLavada extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jText_ValorOtroKeyTyped
 
-    private void jCombo_TpoLvdaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombo_TpoLvdaMouseClicked
+    private void jTextAreaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAreaKeyTyped
         // TODO add your handling code here:
-
-        //reiniciar();
-    }//GEN-LAST:event_jCombo_TpoLvdaMouseClicked
+        char c=evt.getKeyChar();
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+            evt.consume();
+        }
+        
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();            
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);            
+        } 
+    }//GEN-LAST:event_jTextAreaKeyTyped
         
     
     public final void LoadVehiculos()
@@ -579,10 +611,13 @@ public class RegistroLavada extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelVTipoLavado;
     private javax.swing.JLabel jLabelVTipoLavadoN;
+    private javax.swing.JLabel jLabelVTipoLavadoN1;
     private javax.swing.JLabel jLabel_icn_add;
     private javax.swing.JLabel jLabel_icn_canc;
     private javax.swing.JPanel jPanel_Cancelar;
     private javax.swing.JPanel jPanel_Registrar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea;
     private javax.swing.JTextField jText_MarcaV;
     private javax.swing.JTextField jText_Placa;
     private javax.swing.JTextField jText_ValorLavdo;

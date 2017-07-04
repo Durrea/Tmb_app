@@ -16,7 +16,10 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -149,11 +152,11 @@ public class Lavadero extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Codigo Lavador", "Fecha Lavada", "Placa", "Tipo Vehiculo", "Tipo Lavada", "Valor Lavada", "Valor Pago", "Estado Pago", "Acciones"
+                "ID", "Codigo Lavador", "Fecha Lavada", "Placa", "Tipo Vehiculo", "Tipo Lavada", "Valor Lavada", "Valor Pago", "Estado Pago", "Comentarios", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -207,7 +210,7 @@ public class Lavadero extends javax.swing.JPanel {
                                 .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jPanel_CDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 196, Short.MAX_VALUE)))))
+                                .addGap(0, 205, Short.MAX_VALUE)))))
                 .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
@@ -386,6 +389,26 @@ public class Lavadero extends javax.swing.JPanel {
                     }   
                 }
                 
+                if(boton.getName().equals("d")){
+                     
+                    try{
+                        SLavadero obj = new SLavadero();
+                        String resultado=obj.descripcionLavada(Conexion.obtener(),id_lava);
+                        
+                        JPanel myPanel = new JPanel();
+                        JTextArea area=new JTextArea(resultado);
+                        area.setEditable(false);
+                        myPanel.add(area);
+                        
+                        
+                        JOptionPane.showMessageDialog(null, myPanel, 
+                        "Comentarios Descripcion", JOptionPane.INFORMATION_MESSAGE);
+                         
+                    }catch(Exception ex){
+                        System.out.println(ex.getMessage());
+                    }  
+                }
+                
             }
         }
     }//GEN-LAST:event_jTable2MouseClicked
@@ -398,11 +421,13 @@ public class Lavadero extends javax.swing.JPanel {
         DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
         
         JButton btn_visualizar = new JButton("Realizar Pago");
+        JButton btn_visualizar1 = new JButton("Descripcion");
         btn_visualizar.setName("t");
+        btn_visualizar1.setName("d");
         
         for(int i=0;i<datos.size();i++)
         {
-            Object [] fila = new Object[10];
+            Object [] fila = new Object[11];
             fila[0] = datos.get(i).getId_lava();
             fila[1] = datos.get(i).getLavadorCodigo();
             fila[2] = datos.get(i).getFecha_lavada();
@@ -412,7 +437,8 @@ public class Lavadero extends javax.swing.JPanel {
             fila[6] = datos.get(i).getValor_lavada();
             fila[7] = datos.get(i).getValor_pago();
             fila[8] = datos.get(i).getEstado_pago();
-            fila[9] = btn_visualizar;
+            fila[9] = btn_visualizar1;
+            fila[10] = btn_visualizar;
             modelo.addRow(fila);
         }
         
