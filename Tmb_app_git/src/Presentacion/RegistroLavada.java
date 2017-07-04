@@ -37,7 +37,7 @@ public class RegistroLavada extends javax.swing.JPanel {
         LoadLavadores();
         LoadAllVehiculos();
         LoadLavadas();
-        calcularValor();
+        
         jText_ValorOtro.setVisible(false);
         jLabelVTipoLavadoN.setVisible(false);
         InputMap map2 = this.jText_Placa.getInputMap(jText_Placa.WHEN_FOCUSED);
@@ -46,8 +46,7 @@ public class RegistroLavada extends javax.swing.JPanel {
         map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
         map2 = this.jText_ValorOtro.getInputMap(jText_ValorOtro.WHEN_FOCUSED);
         map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
-        map2 = this.jTextArea.getInputMap(jTextArea.WHEN_FOCUSED);
-        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        calcularValor();
     }
     ImageIcon ii;
     
@@ -406,18 +405,53 @@ public class RegistroLavada extends javax.swing.JPanel {
 
     private void jCombo_TpoLvdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombo_TpoLvdaActionPerformed
         // TODO add your handling code here:
-        if(jCombo_TpoLvda.getItemCount()!=0){
-            if(jCombo_TpoLvda.getSelectedItem().equals("Otro")){
+        
+        if(jCombo_TipoV.getItemCount()!=0 && jCombo_TpoLvda.getItemCount()!=0){
+            if(!jCombo_TpoLvda.getSelectedItem().equals("Otro")){
+                SLavadero obj = new SLavadero();
+                boolean res=obj.validarTarifa(Conexion.obtener(),
+                String.valueOf(jCombo_TipoV.getSelectedItem()),
+                String.valueOf(jCombo_TpoLvda.getSelectedItem()) );
+                if(res==false){
+                    JOptionPane.showMessageDialog(new JPanel(), "Tarifa no Existe", "Error", JOptionPane.ERROR_MESSAGE);
+                    jCombo_TpoLvda.removeAllItems();
+                    LoadLavadas();
+                }
                 
+                jText_ValorOtro.setVisible(false);
+                jLabelVTipoLavadoN.setVisible(false);
+                jText_ValorLavdo.setVisible(true);   
+                jLabelVTipoLavado.setVisible(true);
+                calcularValor();
+                this.revalidate();
+                this.repaint();
+            }else{
                 jText_ValorOtro.setVisible(true);
                 jText_ValorLavdo.setVisible(false);
                 jLabelVTipoLavado.setVisible(false);
                 jLabelVTipoLavadoN.setVisible(true);
                 this.revalidate();
                 this.repaint();
+            }
+        }
+        
+    }//GEN-LAST:event_jCombo_TpoLvdaActionPerformed
 
-            }else{
-
+    private void jCombo_TipoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombo_TipoVActionPerformed
+        // TODO add your handling code here:
+        
+        if(jCombo_TipoV.getItemCount()!=0 && jCombo_TpoLvda.getItemCount()!=0){
+            if(!jCombo_TpoLvda.getSelectedItem().equals("Otro")){
+                SLavadero obj = new SLavadero();
+                boolean res=obj.validarTarifa(Conexion.obtener(),
+                String.valueOf(jCombo_TipoV.getSelectedItem()),
+                String.valueOf(jCombo_TpoLvda.getSelectedItem()) );
+                if(res==false){
+                    JOptionPane.showMessageDialog(new JPanel(), "Tarifa no Existe", "Error", JOptionPane.ERROR_MESSAGE);
+                    jCombo_TpoLvda.removeAllItems();
+                    LoadLavadas();
+                }
+                
                 jText_ValorOtro.setVisible(false);
                 jLabelVTipoLavadoN.setVisible(false);
                 jText_ValorLavdo.setVisible(true);   
@@ -427,13 +461,8 @@ public class RegistroLavada extends javax.swing.JPanel {
                 this.repaint();
             }
         }
-    }//GEN-LAST:event_jCombo_TpoLvdaActionPerformed
-
-    private void jCombo_TipoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombo_TipoVActionPerformed
-        // TODO add your handling code here:
-        calcularValor();
-        this.revalidate();
-        this.repaint();
+            
+        
     }//GEN-LAST:event_jCombo_TipoVActionPerformed
 
     private void jText_PlacaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyReleased
@@ -507,7 +536,7 @@ public class RegistroLavada extends javax.swing.JPanel {
     private void jTextAreaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAreaKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE) ||(c==KeyEvent.VK_SPACE) ||(c==KeyEvent.VK_CONTROL)){
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
             evt.consume();
         }
         
@@ -596,14 +625,8 @@ public class RegistroLavada extends javax.swing.JPanel {
                         String.valueOf(jCombo_TipoV.getSelectedItem()),
                         String.valueOf(jCombo_TpoLvda.getSelectedItem()) );
                 long valorFinal=(long)valor;
-                if(valor!=0){
+                
                     jText_ValorLavdo.setText(Long.toString(valorFinal));
-                }else{
-                    JOptionPane.showMessageDialog(new JPanel(), "Tarifa no Existe", "Error", JOptionPane.ERROR_MESSAGE);
-                    jCombo_TpoLvda.removeAllItems();
-                    LoadLavadas();
-                    calcularValor();
-                }
             }
         }
         

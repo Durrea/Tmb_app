@@ -421,4 +421,21 @@ public class SLavadero {
         }
         return descripcion;
     }
+    
+    public boolean validarTarifa(Connection conexion, String tipoVehiculo, String tipoLavada) {
+
+        boolean respuesta = true;
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_VALIDAR_TARIFA_LAVADERO(?,?,?)}");
+            callProcedure.setString(1, tipoVehiculo);
+            callProcedure.setString(2, tipoLavada);
+            callProcedure.registerOutParameter(3, java.sql.Types.BOOLEAN);
+            callProcedure.execute();
+            respuesta = callProcedure.getBoolean(3);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return respuesta;
+    }
 }
