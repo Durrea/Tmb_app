@@ -14,11 +14,14 @@ import Servicios.SLavadero;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
+import java.awt.Event;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -37,6 +40,14 @@ public class RegistroLavada extends javax.swing.JPanel {
         calcularValor();
         jText_ValorOtro.setVisible(false);
         jLabelVTipoLavadoN.setVisible(false);
+        InputMap map2 = this.jText_Placa.getInputMap(jText_Placa.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_MarcaV.getInputMap(jText_MarcaV.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jText_ValorOtro.getInputMap(jText_ValorOtro.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        map2 = this.jTextArea.getInputMap(jTextArea.WHEN_FOCUSED);
+        map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
     }
     ImageIcon ii;
     
@@ -463,13 +474,16 @@ public class RegistroLavada extends javax.swing.JPanel {
             String cadena = (""+c).toUpperCase();            
             c = cadena.charAt(0);
             evt.setKeyChar(c);            
-        } 
+        }
+        if((c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE) ||(c==KeyEvent.VK_SPACE) ||(c==KeyEvent.VK_CONTROL)){
+            evt.consume();
+        }
     }//GEN-LAST:event_jText_PlacaKeyTyped
 
     private void jText_MarcaVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_MarcaVKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE) ||(c==KeyEvent.VK_SPACE) ||(c==KeyEvent.VK_CONTROL)){
             evt.consume();
         }
         
@@ -485,7 +499,7 @@ public class RegistroLavada extends javax.swing.JPanel {
     private void jText_ValorOtroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ValorOtroKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
-        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        if(!(Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE) ||(c==KeyEvent.VK_SPACE) ||(c==KeyEvent.VK_CONTROL)){
             evt.consume();
         }
     }//GEN-LAST:event_jText_ValorOtroKeyTyped
@@ -493,7 +507,7 @@ public class RegistroLavada extends javax.swing.JPanel {
     private void jTextAreaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAreaKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE) ||(c==KeyEvent.VK_SPACE) ||(c==KeyEvent.VK_CONTROL)){
             evt.consume();
         }
         

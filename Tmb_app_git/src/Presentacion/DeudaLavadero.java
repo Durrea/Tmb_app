@@ -210,6 +210,9 @@ public class DeudaLavadero extends javax.swing.JPanel {
             c = cadena.charAt(0);
             evt.setKeyChar(c);
         }
+        if((c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE) ||(c==KeyEvent.VK_SPACE) ||(c==KeyEvent.VK_CONTROL)){
+            evt.consume();
+        }
         jText_Buscador.addKeyListener(new KeyAdapter() {
             public void keyReleased(final KeyEvent e) {
                 String cadena = (jText_Buscador.getText());
