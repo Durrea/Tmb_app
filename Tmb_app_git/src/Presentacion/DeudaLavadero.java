@@ -319,6 +319,12 @@ public class DeudaLavadero extends javax.swing.JPanel {
             jLabel_TotalDeuda.setText("Total Deuda: " +(long)valor);
         }else{
             JOptionPane.showMessageDialog(null, "Actualmente no existe ninguna Deuda con el Negocio");
+            Lavadero d=new Lavadero();
+            this.removeAll();
+            this.setLayout(new BorderLayout());
+            this.add(d,BorderLayout.CENTER);
+            this.repaint();
+            this.revalidate();
         }  
     }
     
