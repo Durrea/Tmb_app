@@ -364,7 +364,7 @@ public class Form_Empleados extends javax.swing.JPanel {
                         this.repaint();
                         this.revalidate();
                     } else {
-                        JOptionPane.showMessageDialog(null, "El registro no ha sido realizado");
+                        JOptionPane.showMessageDialog(null, "Verifique que los campos 'Documento' y 'Usuario' no existan");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Los campos Usuario y Contraseña con necesarios para el registro de una nueva recepcionista");
@@ -382,7 +382,7 @@ public class Form_Empleados extends javax.swing.JPanel {
                         this.repaint();
                         this.revalidate();
                     } else {
-                        JOptionPane.showMessageDialog(null, "El registro no ha sido realizado");
+                        JOptionPane.showMessageDialog(null, "Verifique que los campos 'Documento' y 'Codigo' no existan");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "El campo Codigo debe ser numerico");
