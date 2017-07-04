@@ -271,29 +271,36 @@ public class Facturacion extends javax.swing.JPanel {
         int result =  JOptionPane.showConfirmDialog(this, "¿Desea guardar los cambios?", "Guardar",JOptionPane.YES_NO_OPTION);
         if(result == 0)
         {
-            Administrador admin = new Administrador();
-            String resultado = admin.ActualizarEncabezado(Conexion.obtener(), 
-                    this.jText_IVA.getText(), this.jText_NIT.getText(), this.jText_Desc.getText());
-            if(resultado.equalsIgnoreCase("Actualización exitosa"))
+            if(!this.jText_IVA.getText().equalsIgnoreCase("")&&!this.jText_NIT.getText().equalsIgnoreCase("")&&!this.jText_Desc.getText().equalsIgnoreCase(""))
             {
-                JOptionPane.showMessageDialog(null, resultado);
-                Facturacion h = new Facturacion();
-                this.removeAll();
-                this.setLayout(new BorderLayout());
-                this.add(h, BorderLayout.CENTER);
-                this.repaint();
-                this.revalidate();
+                Administrador admin = new Administrador();
+                String resultado = admin.ActualizarEncabezado(Conexion.obtener(), 
+                        this.jText_IVA.getText(), this.jText_NIT.getText(), this.jText_Desc.getText());
+                if(resultado.equalsIgnoreCase("Actualización exitosa"))
+                {
+                    JOptionPane.showMessageDialog(null, resultado);
+                    Facturacion h = new Facturacion();
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(h, BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, resultado);
+                    Facturacion h = new Facturacion();
+                    this.removeAll();
+                    this.setLayout(new BorderLayout());
+                    this.add(h, BorderLayout.CENTER);
+                    this.repaint();
+                    this.revalidate();
+                }
             }
             else
             {
-                JOptionPane.showMessageDialog(null, resultado);
-                Facturacion h = new Facturacion();
-                this.removeAll();
-                this.setLayout(new BorderLayout());
-                this.add(h, BorderLayout.CENTER);
-                this.repaint();
-                this.revalidate();
-            }
+                JOptionPane.showMessageDialog(null, "Los campos no pueden estar vacios.");
+            }            
         }        
     }//GEN-LAST:event_jPanel_GuardarMouseClicked
 

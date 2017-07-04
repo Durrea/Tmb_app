@@ -223,7 +223,7 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
             ValidadorCadenas val = new ValidadorCadenas();
             if(val.ValidarCadenasPlaca(jText_Placa.getText())!=0)
             {
-                int resultopcion_registrar = JOptionPane.showConfirmDialog(null, "¿Desea realizar el registro?");
+                int resultopcion_registrar = JOptionPane.showConfirmDialog(null, "¿Desea realizar el registro?","Registro Fracción",JOptionPane.YES_NO_OPTION);
                 if(resultopcion_registrar == 0)
                 {
                     ParquaderoFraccion obj = new ParquaderoFraccion();
@@ -231,9 +231,8 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
                     //System.out.println(instancia.getIdentificador());
                     String resultado = obj.RegisterEntryFraccion(Conexion.obtener(), jText_Placa.getText(), (String) TipoVehiculo.getSelectedItem(), instancia.getIdentificador());
                     if(resultado.equalsIgnoreCase("Se ha realizado el registro"))
-                    {
-                        JOptionPane.showMessageDialog(null, resultado);
-                        int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?");
+                    {                        
+                        int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?","Imprimir Factura",JOptionPane.YES_NO_OPTION);
                         if(resultopcion == 0)
                         {
                             ImpresionFacturas impfac = new ImpresionFacturas();

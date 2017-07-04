@@ -213,7 +213,8 @@ public class ResultaInfFraccion extends javax.swing.JPanel {
 
     public JTable BuildTable(ArrayList<Informacion_Fraccion> inforecep) {
         JTable tabla = new JTable();
-        DefaultTableModel modelo = new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel(){
+            public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
         modelo.addColumn("Placa");
         modelo.addColumn("Fecha Entrada");
         modelo.addColumn("Fecha Salida");
