@@ -20,9 +20,8 @@ public class Informacion_Lavadero {
     String tipo_lavada;
     float valor_lavada;
     float valor_pago;
-    String estado_pago;
-
-    public Informacion_Lavadero(int id_lava,int lavador_codigo, String fecha_lavada, String vehiculo_placa, String vehiculo_tipo, String vehiculo_marca, String tipo_lavada, float valor_lavada,float valor_pago,String estado_pago) {
+    
+    public Informacion_Lavadero(int id_lava,int lavador_codigo, String fecha_lavada, String vehiculo_placa, String vehiculo_tipo, String vehiculo_marca, String tipo_lavada, float valor_lavada,float valor_pago) {
         this.id_lava=id_lava;
         this.lavador_codigo = lavador_codigo;
         this.fecha_lavada = fecha_lavada;
@@ -32,7 +31,7 @@ public class Informacion_Lavadero {
         this.tipo_lavada = tipo_lavada;
         this.valor_lavada = valor_lavada;
         this.valor_pago=valor_pago;
-        this.estado_pago = estado_pago;
+        
     }
 
     public int getId_lava() {
@@ -106,15 +105,5 @@ public class Informacion_Lavadero {
     public void setValor_pago(float valor_pago) {
         this.valor_pago = valor_pago;
     }
-    
-    public String getEstado_pago() {
-        return estado_pago;
-    }
-
-    public void setEstado_pago(String estado_pago) {
-        this.estado_pago = estado_pago;
-    }
-    
-    
             
 }

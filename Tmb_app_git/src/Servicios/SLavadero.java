@@ -126,12 +126,12 @@ public class SLavadero {
         }
     }
     
-    public String registerLavadores(Connection conexion, Lavador lavador, Vehiculo vehiculo,Tarifa_lavadero tarifa,int recep)
+    public String registerLavadores(Connection conexion, Lavador lavador, Vehiculo vehiculo,Tarifa_lavadero tarifa,String descripcion,int recep)
     {
         String resultado;
         try
         {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_REGISTRO_LAVADO(?,?,?,?,?,?,?)}");
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_REGISTRO_LAVADO(?,?,?,?,?,?,?,?)}");
             callProcedure.setString(1, Integer.toString(recep));
             callProcedure.setString(2, Integer.toString(lavador.getLavador_codigo()));
             callProcedure.setString(3, vehiculo.getVehiculo_placa());
@@ -139,6 +139,7 @@ public class SLavadero {
             callProcedure.setString(5, vehiculo.getVehiculo_marca());
             callProcedure.setString(6, tarifa.getTipo_lavada());
             callProcedure.setString(7, Float.toString(tarifa.getValor_lavada()));
+            callProcedure.setString(8, descripcion);
             callProcedure.execute();
             resultado = "Registro realizado con exito";
         }catch(Exception e)
@@ -168,10 +169,9 @@ public class SLavadero {
                 String tipo_lavada=resultado_consulta.getString(6);
                 float valor_lavada=Float.valueOf(resultado_consulta.getString(7));
                 float valor_pago=Float.valueOf(resultado_consulta.getString(8));
-                String estado_pago=resultado_consulta.getString(9);
                                
                 Modelos.Informacion_Lavadero obj_info = new Modelos.Informacion_Lavadero
-                       (id_lava,lavador_codigo,fecha_lavada,vehiculo_placa,vehiculo_tipo,"",tipo_lavada,valor_lavada,valor_pago,estado_pago);
+                       (id_lava,lavador_codigo,fecha_lavada,vehiculo_placa,vehiculo_tipo,"",tipo_lavada,valor_lavada,valor_pago);
                 lst_lavadero.add(obj_info);
             }
             
@@ -297,7 +297,7 @@ public class SLavadero {
                 float valor_pago=Float.valueOf(resultado_consulta.getString(3));
                                
                 Modelos.Informacion_Lavadero obj_info = new Modelos.Informacion_Lavadero
-                       (0,0,"",vehiculo_placa,"","",tipo_lavada,0,valor_pago,"");
+                       (0,0,"",vehiculo_placa,"","",tipo_lavada,0,valor_pago);
                 lst_lavadero.add(obj_info);
             }
             
@@ -406,5 +406,19 @@ public class SLavadero {
         }
     }
     
+    public String descripcionLavada(Connection conexion,int id_lava) {
 
+        String descripcion = "";
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_DESCRIPCION_LAVADERO(?,?)}");
+            callProcedure.setString(1, Integer.toString(id_lava));
+            callProcedure.registerOutParameter(2, java.sql.Types.VARCHAR);
+            callProcedure.execute();
+            descripcion = callProcedure.getString(2);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return descripcion;
+    }
 }
