@@ -428,21 +428,6 @@ public class TarifaParqueadero extends javax.swing.JPanel {
 
     private void registrar_tipoVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registrar_tipoVKeyTyped
         // TODO add your handling code here:
-<<<<<<< HEAD
-        char c=evt.getKeyChar();
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
-            evt.consume();
-        }
-        
-        if(Character.isLowerCase(c))
-        {
-            String cadena = (""+c).toUpperCase();            
-            c = cadena.charAt(0);
-            evt.setKeyChar(c);            
-        } 
-    }//GEN-LAST:event_registrar_tipoVKeyTyped
-    
-=======
         char c = evt.getKeyChar();
         if (Character.isLowerCase(c)) {
             String cadena = ("" + c).toUpperCase();
@@ -454,7 +439,6 @@ public class TarifaParqueadero extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_registrar_tipoVKeyTyped
 
->>>>>>> origin/master
     public void Cargar_Datos() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());
         ParqueaderoMes obj = new ParqueaderoMes();

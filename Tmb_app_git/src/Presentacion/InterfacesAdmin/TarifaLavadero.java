@@ -369,37 +369,6 @@ public class TarifaLavadero extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton_aceptarActionPerformed
 
-
-    private void registrar_tipoVKeyTyped(java.awt.event.KeyEvent evt) {                                         
-        // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
-            evt.consume();
-        }
-        
-        if(Character.isLowerCase(c))
-        {
-            String cadena = (""+c).toUpperCase();            
-            c = cadena.charAt(0);
-            evt.setKeyChar(c);            
-        } 
-    }                                        
-
-    private void registrar_tipoLKeyTyped(java.awt.event.KeyEvent evt) {                                         
-        // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
-            evt.consume();
-        }
-        
-        if(Character.isLowerCase(c))
-        {
-            String cadena = (""+c).toUpperCase();            
-            c = cadena.charAt(0);
-            evt.setKeyChar(c);            
-        } 
-    }                                        
-
     private void registrar_tipoLKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registrar_tipoLKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
@@ -425,7 +394,6 @@ public class TarifaLavadero extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_registrar_tipoVKeyTyped
-
 
     public void Cargar_Datos() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());

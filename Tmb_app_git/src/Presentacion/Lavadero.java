@@ -152,11 +152,11 @@ public class Lavadero extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Codigo Lavador", "Fecha Lavada", "Placa", "Tipo Vehiculo", "Tipo Lavada", "Valor Lavada", "Valor Pago", "Estado Pago", "Comentarios", "Acciones"
+                "ID", "Codigo Lavador", "Fecha Lavada", "Placa", "Tipo Vehiculo", "Tipo Lavada", "Valor Lavada", "Valor Pago", "Comentarios", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -386,7 +386,8 @@ public class Lavadero extends javax.swing.JPanel {
                        
                     }catch(Exception ex){
                         System.out.println(ex.getMessage());
-                    }   
+                    }
+                    jTable2.clearSelection();
                 }
                 
                 if(boton.getName().equals("d")){
@@ -406,8 +407,10 @@ public class Lavadero extends javax.swing.JPanel {
                          
                     }catch(Exception ex){
                         System.out.println(ex.getMessage());
-                    }  
+                    }
+                    jTable2.clearSelection();
                 }
+                
                 
             }
         }
@@ -427,7 +430,7 @@ public class Lavadero extends javax.swing.JPanel {
         
         for(int i=0;i<datos.size();i++)
         {
-            Object [] fila = new Object[11];
+            Object [] fila = new Object[10];
             fila[0] = datos.get(i).getId_lava();
             fila[1] = datos.get(i).getLavadorCodigo();
             fila[2] = datos.get(i).getFecha_lavada();
@@ -436,9 +439,8 @@ public class Lavadero extends javax.swing.JPanel {
             fila[5] = datos.get(i).getTipo_lavada();
             fila[6] = datos.get(i).getValor_lavada();
             fila[7] = datos.get(i).getValor_pago();
-            fila[8] = datos.get(i).getEstado_pago();
-            fila[9] = btn_visualizar1;
-            fila[10] = btn_visualizar;
+            fila[8] = btn_visualizar1;
+            fila[9] = btn_visualizar;
             modelo.addRow(fila);
         }
         

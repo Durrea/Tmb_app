@@ -169,10 +169,9 @@ public class SLavadero {
                 String tipo_lavada=resultado_consulta.getString(6);
                 float valor_lavada=Float.valueOf(resultado_consulta.getString(7));
                 float valor_pago=Float.valueOf(resultado_consulta.getString(8));
-                String estado_pago=resultado_consulta.getString(9);
                                
                 Modelos.Informacion_Lavadero obj_info = new Modelos.Informacion_Lavadero
-                       (id_lava,lavador_codigo,fecha_lavada,vehiculo_placa,vehiculo_tipo,"",tipo_lavada,valor_lavada,valor_pago,estado_pago);
+                       (id_lava,lavador_codigo,fecha_lavada,vehiculo_placa,vehiculo_tipo,"",tipo_lavada,valor_lavada,valor_pago);
                 lst_lavadero.add(obj_info);
             }
             
@@ -298,7 +297,7 @@ public class SLavadero {
                 float valor_pago=Float.valueOf(resultado_consulta.getString(3));
                                
                 Modelos.Informacion_Lavadero obj_info = new Modelos.Informacion_Lavadero
-                       (0,0,"",vehiculo_placa,"","",tipo_lavada,0,valor_pago,"");
+                       (0,0,"",vehiculo_placa,"","",tipo_lavada,0,valor_pago);
                 lst_lavadero.add(obj_info);
             }
             
