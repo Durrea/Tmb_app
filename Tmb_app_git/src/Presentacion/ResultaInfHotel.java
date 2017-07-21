@@ -56,11 +56,10 @@ public class ResultaInfHotel extends javax.swing.JPanel {
     String fecha;
     int habitacion;
 
-    public ResultaInfHotel(String fecha, int habitacion) {
+    public ResultaInfHotel(String fecha) {
         initComponents();
-        this.fecha = fecha;
-        this.habitacion = habitacion;
-        this.InformeDiarioFraccion(fecha,habitacion);
+        this.fecha = fecha;        
+        this.InformeDiarioFraccion(fecha);
     }
 
     /**
@@ -178,58 +177,59 @@ public class ResultaInfHotel extends javax.swing.JPanel {
         jLabel_icn_canc2.setIcon(ii);
     }//GEN-LAST:event_jPanel_CancelarMouseExited
 
-    public void InformeDiarioFraccion(String fecha, int habitacion) {
-        //Administrador objadmin = new Administrador();
+    public void InformeDiarioFraccion(String fecha) {
+        Administrador objadmin = new Administrador();
         S_Hotel objHotel = new S_Hotel();
-        //ArrayList<Recepcionista> listarecep = new ArrayList<Recepcionista>();
+        ArrayList<Recepcionista> listarecep = new ArrayList<Recepcionista>();
         ArrayList<Informacion_hotel> inforecep = new ArrayList<Informacion_hotel>();
-        //listarecep = objadmin.GetInfoRecepcionista(Conexion.obtener());
+        listarecep = objadmin.GetInfoRecepcionista(Conexion.obtener());       
         this.jLabel3.setText("Fecha: " + fecha);
-        //for (int i = 0; i < listarecep.size(); i++) {
-            JLabel nombrerecepcionista = new JLabel();
-            nombrerecepcionista.setText("Habitacion: " + habitacion);
-            nombrerecepcionista.setForeground(Color.WHITE);
-            nombrerecepcionista.setFont(new java.awt.Font("Century Gothic", 1, 14));
-            JPanel panel_title = new JPanel();
-            GridLayout layout = new GridLayout();
-            layout.setColumns(1);
-            layout.setRows(0);
-            panel_title.setLayout(layout);
-            TitledBorder border = BorderFactory.createTitledBorder("Habitacion: " + habitacion);
-            border.setTitleColor(Color.WHITE);
-            panel_title.setBorder(border);
-            inforecep = objHotel.LoadInfoPerRecepcionistaMensual(Conexion.obtener(), fecha, habitacion );
-            JTable tabla;
-            tabla = BuildTable(inforecep);
-            JScrollPane scroll = new JScrollPane(tabla);
-            panel_title.add(scroll);
-            panel_title.setBackground(new Color(36, 47, 65));
-            this.jPanel2.add(panel_title);
-        //}
+        for (int i = 0; i < listarecep.size(); i++) 
+        {
+            inforecep = objHotel.LoadInfoPerRecepcionista(Conexion.obtener(), fecha, listarecep.get(i).getIdRecepcionista());
+            if(inforecep.size() !=0)
+            {
+                JPanel panel_title = new JPanel();
+                GridLayout layout = new GridLayout();
+                layout.setColumns(1);
+                layout.setRows(0);
+                panel_title.setLayout(layout);
+                TitledBorder border = BorderFactory.createTitledBorder("Recepcionista: " + listarecep.get(i).getRecepcionista_nombres() + " " + listarecep.get(i).getRecepcionista_apellidos());
+                border.setTitleColor(Color.WHITE);
+                panel_title.setBorder(border);
+                JTable tabla;
+                tabla = BuildTable(inforecep);
+                JScrollPane scroll = new JScrollPane(tabla);
+                panel_title.add(scroll);
+                //this.jPanel2.add(panel_title);
+                panel_title.setBackground(new Color(36, 47, 65));
+                //panel_cuerpo.add(scroll);
+                this.jPanel2.add(panel_title);
+            }
+        }       
         this.jPanel2.updateUI();
     }
 
     public JTable BuildTable(ArrayList<Informacion_hotel> infoHotel) {
         JTable tabla = new JTable();
+        float total=0;
         DefaultTableModel modelo = new DefaultTableModel(){
             public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
-        modelo.addColumn("Fecha entrada");
-        modelo.addColumn("Hora entrada");
+        modelo.addColumn("N° HABITACIÓN");
+        modelo.addColumn("VALOR TOTAL");
         Object[] fila = new Object[2];
         for (int i = 0; i < infoHotel.size(); i++) {
-            fila[0] = infoHotel.get(i).getFechEntrada();
-            fila[1] = infoHotel.get(i).getHoraEntrada();
+            fila[0] = infoHotel.get(i).getNumHabitacion();
+            fila[1] = infoHotel.get(i).getTotalPagado();
+            total = total + infoHotel.get(i).getTotalPagado();
             modelo.addRow(fila);
         }
-        
-           fila[0] = "";
-           fila[1] = "";
-        modelo.addRow(fila);
-           fila[0] = "Cantidad de veces utilizada";
-           fila[1] = infoHotel.size();
-        modelo.addRow(fila);
         tabla.setModel(modelo);
         tabla.setVisible(true);
+        
+        fila[0] = "Total";
+        fila[1] = (long) total;
+        modelo.addRow(fila);
         return tabla;
     }
 

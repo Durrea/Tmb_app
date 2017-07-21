@@ -198,6 +198,9 @@ public class TarifaParqueadero extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton_aceptarMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton_aceptarMouseEntered(evt);
+            }
         });
         jButton_aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -463,6 +466,11 @@ public class TarifaParqueadero extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_jTable2KeyTyped
+
+    private void jButton_aceptarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_aceptarMouseEntered
+        // TODO add your handling code here:
+        registrar_tipoV.requestFocus();
+    }//GEN-LAST:event_jButton_aceptarMouseEntered
 
     public void Cargar_Datos() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());

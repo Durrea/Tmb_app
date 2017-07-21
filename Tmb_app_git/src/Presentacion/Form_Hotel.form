@@ -250,11 +250,14 @@
     <Component class="javax.swing.JComboBox" name="TipoHospedaje">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="2">
+            <StringItem index="0" value="DIA"/>
+            <StringItem index="1" value="HORA"/>
+          </StringArray>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TipoHospedajeActionPerformed"/>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TipoHospedajeItemStateChanged"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -279,7 +282,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cargo extra"/>
+        <Property name="text" type="java.lang.String" value="Valor habitacion"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
@@ -305,9 +308,12 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="jText_Salida">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jText_SalidaStateChanged"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(sm1)"/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="Date date1 = new Date();&#xa;SpinnerDateModel sm1 = &#xa;new SpinnerDateModel(date1,null,null,Calendar.HOUR_OF_DAY);"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="Date date1 = new Date();&#xa;Calendar calendar = Calendar.getInstance();&#xa;calendar.setTime(date1);&#xa;calendar.add(Calendar.SECOND, 1);&#xa;SpinnerDateModel sm1 = &#xa;new SpinnerDateModel(calendar.getTime(),null,null,Calendar.HOUR_OF_DAY);"/>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JSpinner.DateEditor de1 = new JSpinner.DateEditor(jText_Salida,&quot;yyyy-MM-dd HH:mm:ss&quot;);&#xa;jText_Salida.setEditor(de1);"/>
       </AuxValues>
     </Component>
@@ -355,6 +361,9 @@
           <SpinnerEditor format="" type="3"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="extraStateChanged"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

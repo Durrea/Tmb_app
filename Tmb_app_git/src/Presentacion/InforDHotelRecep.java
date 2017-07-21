@@ -46,9 +46,8 @@ public class InforDHotelRecep extends javax.swing.JPanel {
     
     public InforDHotelRecep() {
         initComponents();
-        this.fechaInforme.setFormats("yyyy-MM");
+        this.fechaInforme.setFormats("yyyy-MM-dd");
         this.fechaInforme.getEditor().setEditable(false);
-        LoadHabitaciones();
     }
     
     /**
@@ -72,8 +71,6 @@ public class InforDHotelRecep extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         fechaInforme = new org.jdesktop.swingx.JXDatePicker();
-        habitaciones = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
 
@@ -142,12 +139,6 @@ public class InforDHotelRecep extends javax.swing.JPanel {
 
         fechaInforme.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
 
-        habitaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Habitacion");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,9 +153,7 @@ public class InforDHotelRecep extends javax.swing.JPanel {
                         .addGap(23, 23, 23)
                         .addComponent(jPanel_Ag1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3)
-                    .addComponent(fechaInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(habitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(fechaInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -178,11 +167,7 @@ public class InforDHotelRecep extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fechaInforme, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(habitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118)
+                .addGap(208, 208, 208)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel_Ag1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,7 +179,7 @@ public class InforDHotelRecep extends javax.swing.JPanel {
         // TODO add your handling code here:        
         if(!fechaInforme.getEditor().getText().equalsIgnoreCase(""))
         {
-            ResultaInfHotel f = new ResultaInfHotel(fechaInforme.getEditor().getText(), Integer.parseInt(habitaciones.getSelectedItem().toString()));
+            ResultaInfHotel f = new ResultaInfHotel(fechaInforme.getEditor().getText());
             //f.idRecep = this.idRecep;
             this.removeAll();
             this.setLayout(new BorderLayout());
@@ -208,17 +193,6 @@ public class InforDHotelRecep extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jPanel_InformeMouseClicked
 
-    public final void LoadHabitaciones()
-    {
-        
-        S_Hotel obj = new S_Hotel();
-        habitaciones.removeAllItems();
-        ArrayList<Integer> hab = obj.loadNumHabitaciones(Conexion.obtener());
-        for (int i = 0; i < hab.size(); i++) 
-        {
-            habitaciones.addItem(Integer.toString(hab.get(i)));
-        }  
-    }
     
     private void jPanel_InformeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_InformeMouseEntered
         // TODO add your handling code here:
@@ -257,11 +231,9 @@ public class InforDHotelRecep extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXDatePicker fechaInforme;
-    private javax.swing.JComboBox<String> habitaciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_icn_canc;
