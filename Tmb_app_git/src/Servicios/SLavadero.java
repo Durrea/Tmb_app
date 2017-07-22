@@ -438,4 +438,19 @@ public class SLavadero {
         }
         return respuesta;
     }
+    
+    public boolean updateLavador(Connection conexion,int id_lava,String id_lavador) {
+        
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_MODIFICAR_CODIGO_LAVADOR(?,?)}");
+            callProcedure.setString(1, Integer.toString(id_lava));
+            callProcedure.setString(2, id_lavador);
+            callProcedure.execute();
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        }
+        
+   }
 }

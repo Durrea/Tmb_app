@@ -11,11 +11,16 @@ import Servicios.ImpresionFacturas;
 import Servicios.SLavadero;
 import Servicios.Sesion;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,8 +28,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-
 
 
 /**
@@ -42,6 +49,7 @@ public class Lavadero extends javax.swing.JPanel {
     public Lavadero() {
         initComponents();
         LoadDataTable();
+        //loadComboBox();
     }
     ImageIcon ii;
     /**
@@ -53,6 +61,7 @@ public class Lavadero extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox = new javax.swing.JComboBox<>();
         jPanel_Informe = new javax.swing.JPanel();
         jLabel_icn_inf = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -153,11 +162,11 @@ public class Lavadero extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Codigo Lavador", "Fecha Lavada", "Placa", "Tipo Vehiculo", "Tipo Lavada", "Valor Lavada", "Valor Pago", "Comentarios", "Acciones"
+                "ID", "Codigo Lavador", "Fecha Lavada", "Placa", "Tipo Vehiculo", "Tipo Lavada", "Valor Lavada", "Valor Pago", "Modificar", "Comentarios", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -345,7 +354,7 @@ public class Lavadero extends javax.swing.JPanel {
                 JButton boton = (JButton) value;
                 
                 int id_lava = Integer.parseInt(jTable2.getValueAt(rown, 0).toString());
-                int codLavador = Integer.parseInt(jTable2.getValueAt(rown, 1).toString());            
+                int codLavador = Integer.parseInt(jTable2.getValueAt(rown, 1).toString());
                 float valor_lavada=Float.valueOf(jTable2.getValueAt(rown, 7).toString());
                 
                 if(boton.getName().equals("t")){
@@ -386,6 +395,7 @@ public class Lavadero extends javax.swing.JPanel {
                             this.add(l,BorderLayout.CENTER);
                             this.repaint();
                             this.revalidate();
+                            LoadDataTable();
                         }
                        
                     }catch(Exception ex){
@@ -415,10 +425,53 @@ public class Lavadero extends javax.swing.JPanel {
                     }
                     jTable2.clearSelection();
                 }
-                
-                
+                if(boton.getName().equals("m")){
+                     
+                    try{
+                        SLavadero obj = new SLavadero();
+                        ArrayList<String> tipos = obj.loadCodLavadores(Conexion.obtener());
+                        
+                        String[] list = new String[tipos.size()];
+                        
+                        for (int i = 0; i < tipos.size(); i++) 
+                        {
+                            list[i]=tipos.get(i);
+                            
+                        } 
+                        
+                        String tipo_lavador = (String) JOptionPane.showInputDialog(null, 
+                            "Seleccionar el codigo del Lavador,?",
+                            "Modificar Lavada",
+                            JOptionPane.QUESTION_MESSAGE, 
+                            null, 
+                            list, 
+                            list[0]);
+                        
+                        if(!tipo_lavador.equals("")){
+                            
+                            if(obj.updateLavador(Conexion.obtener(), id_lava, tipo_lavador)){
+                                JOptionPane.showMessageDialog(null,"Lavada Actualizada"); 
+                            }else{
+                                JOptionPane.showMessageDialog(null,"Error No se puede Actualizar");
+                            }
+                            
+                            Lavadero l=new Lavadero();
+                            this.removeAll();
+                            this.setLayout(new BorderLayout());
+                            this.add(l,BorderLayout.CENTER);
+                            this.repaint();
+                            this.revalidate();
+                            
+                        }
+                       
+                    }catch(Exception ex){
+                        System.out.println(ex.getMessage());
+                    }
+                    jTable2.clearSelection();
+                }
             }
         }
+      
     }//GEN-LAST:event_jTable2MouseClicked
 
     public final void LoadDataTable()
@@ -429,13 +482,16 @@ public class Lavadero extends javax.swing.JPanel {
         DefaultTableModel modelo = (DefaultTableModel) jTable2.getModel();
         
         JButton btn_visualizar = new JButton("Realizar Pago");
-        JButton btn_visualizar1 = new JButton("Descripcion");
+        JButton btn_descripcion = new JButton("Descripcion");
+        JButton btn_modificar = new JButton("Modificar");
+        
+        btn_modificar.setName("m");
         btn_visualizar.setName("t");
-        btn_visualizar1.setName("d");
+        btn_descripcion.setName("d");
         
         for(int i=0;i<datos.size();i++)
         {
-            Object [] fila = new Object[10];
+            Object [] fila = new Object[11];
             fila[0] = datos.get(i).getId_lava();
             fila[1] = datos.get(i).getLavadorCodigo();
             fila[2] = datos.get(i).getFecha_lavada();
@@ -444,17 +500,54 @@ public class Lavadero extends javax.swing.JPanel {
             fila[5] = datos.get(i).getTipo_lavada();
             fila[6] = (long)datos.get(i).getValor_lavada();
             fila[7] = (long)datos.get(i).getValor_pago();
-            fila[8] = btn_visualizar1;
-            fila[9] = btn_visualizar;
+            fila[8] = btn_modificar;
+            fila[9] = btn_descripcion;
+            fila[10] = btn_visualizar;
+            
             modelo.addRow(fila);
         }
         
         this.jTable2.setModel(modelo);
         this.jTable2.getColumnModel().getColumn(0).setMinWidth(0);
         this.jTable2.getColumnModel().getColumn(0).setMaxWidth(0);
+        
     }
-
+    
+    public final void loadComboBox()
+    {   
+        /*
+        SLavadero obj = new SLavadero();
+        ArrayList<String> tipos = obj.loadCodLavadores(Conexion.obtener());
+        
+        for (int i = 0; i < tipos.size(); i++) 
+        {
+            jComboBox.addItem(tipos.get(i));
+        } 
+        
+        TableColumn tc= jTable2.getColumnModel().getColumn(1);
+        TableCellEditor tce=new DefaultCellEditor(jComboBox);
+        tc.setCellEditor(tce);
+        
+        jComboBox.addActionListener(new ActionListener() {
+        @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                int column = 0;
+                int row = jTable2.getSelectedRow();
+                String id_lava = jTable2.getModel().getValueAt(row, column).toString();
+                
+                if(obj.updateLavador(Conexion.obtener(), id_lava, (String)jComboBox.getSelectedItem())){
+                    //JOptionPane.showMessageDialog(null,"Lavada Actualizada, asignada al Lavador:"+(String)jComboBox.getSelectedItem()); 
+                }else{
+                    JOptionPane.showMessageDialog(null,"Error No se puede Actualizar");
+                }
+            }            
+        });
+        */
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

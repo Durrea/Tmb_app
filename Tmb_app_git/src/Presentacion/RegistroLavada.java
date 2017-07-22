@@ -40,12 +40,14 @@ public class RegistroLavada extends javax.swing.JPanel {
         
         jText_ValorOtro.setVisible(false);
         jLabelVTipoLavadoN.setVisible(false);
+        
         InputMap map2 = this.jText_Placa.getInputMap(jText_Placa.WHEN_FOCUSED);
         map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
         map2 = this.jText_MarcaV.getInputMap(jText_MarcaV.WHEN_FOCUSED);
         map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
         map2 = this.jText_ValorOtro.getInputMap(jText_ValorOtro.WHEN_FOCUSED);
         map2.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");
+        
         calcularValor();
     }
     ImageIcon ii;
@@ -504,7 +506,7 @@ public class RegistroLavada extends javax.swing.JPanel {
             c = cadena.charAt(0);
             evt.setKeyChar(c);            
         }
-        if((c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE) ||(c==KeyEvent.VK_SPACE) ||(c==KeyEvent.VK_CONTROL)){
+        if(!(Character.isLetterOrDigit(c)) ||(c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE) ||(c==KeyEvent.VK_SPACE) ||(c==KeyEvent.VK_CONTROL)){
             evt.consume();
         }
     }//GEN-LAST:event_jText_PlacaKeyTyped
@@ -512,7 +514,7 @@ public class RegistroLavada extends javax.swing.JPanel {
     private void jText_MarcaVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_MarcaVKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE) ||(c==KeyEvent.VK_SPACE) ||(c==KeyEvent.VK_CONTROL)){
+        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE) ||(c==KeyEvent.VK_SPACE) ||(c==KeyEvent.VK_CONTROL)){
             evt.consume();
         }
         
@@ -536,7 +538,7 @@ public class RegistroLavada extends javax.swing.JPanel {
     private void jTextAreaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAreaKeyTyped
         // TODO add your handling code here:
         char c=evt.getKeyChar();
-        if((Character.isDigit(c)) || (c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE)){
+        if((c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE) ){
             evt.consume();
         }
         
@@ -548,7 +550,6 @@ public class RegistroLavada extends javax.swing.JPanel {
         } 
     }//GEN-LAST:event_jTextAreaKeyTyped
         
-    
     public final void LoadVehiculos()
     {
         jCombo_TipoV.removeAllItems();
