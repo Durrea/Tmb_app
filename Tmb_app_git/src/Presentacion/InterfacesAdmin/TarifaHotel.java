@@ -176,6 +176,11 @@ public class TarifaHotel extends javax.swing.JPanel {
         jLabel_dia.setText("Día");
 
         jButton_aceptar.setText("Aceptar");
+        jButton_aceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton_aceptarMouseEntered(evt);
+            }
+        });
         jButton_aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_aceptarActionPerformed(evt);
@@ -351,6 +356,11 @@ public class TarifaHotel extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_jButton_aceptarActionPerformed
+
+    private void jButton_aceptarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_aceptarMouseEntered
+        // TODO add your handling code here:
+        jButton_aceptar.requestFocus();
+    }//GEN-LAST:event_jButton_aceptarMouseEntered
 
     public void Cargar_Datos() {
         jTable2.setDefaultRenderer(Object.class, new RenderTabla());

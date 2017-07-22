@@ -6,11 +6,11 @@
 package tmb_app;
 
 import Servicios.ValidadorCadenas;
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,6 +24,7 @@ public class Prueba {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         // TODO code application logic here
 
         /*String cadena = "Hola";
@@ -51,7 +52,6 @@ public class Prueba {
             System.out.println("Antes");
         }*/
         //System.out.println(isNumeric("dasda"));
-
     }
 
     //Esto es un comentario

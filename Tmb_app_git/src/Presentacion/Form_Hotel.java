@@ -38,8 +38,7 @@ public class Form_Hotel extends javax.swing.JPanel {
     private S_Hotel servicio;
 
     public Form_Hotel(Habitacion habitacion) {
-        initComponents();
-        LoadTipo();
+        initComponents();        
         this.habitacion = habitacion;
         servicio = new S_Hotel();
         jText_numeroPersonas.setValue(habitacion.getHabitacion_capacidad());
@@ -71,8 +70,11 @@ public class Form_Hotel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         Date date1 = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date1);
+        calendar.add(Calendar.SECOND, 1);
         SpinnerDateModel sm1 =
-        new SpinnerDateModel(date1,null,null,Calendar.HOUR_OF_DAY);
+        new SpinnerDateModel(calendar.getTime(),null,null,Calendar.HOUR_OF_DAY);
         jText_Salida = new javax.swing.JSpinner(sm1);
         Date date = new Date();
         SpinnerDateModel sm =
@@ -158,9 +160,10 @@ public class Form_Hotel extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Para realizar el registro de un hospedaje debe diligenciar la siguiente información.");
 
-        TipoHospedaje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TipoHospedajeActionPerformed(evt);
+        TipoHospedaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DIA", "HORA" }));
+        TipoHospedaje.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TipoHospedajeItemStateChanged(evt);
             }
         });
 
@@ -170,7 +173,7 @@ public class Form_Hotel extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Cargo extra");
+        jLabel4.setText("Valor habitacion");
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,6 +185,11 @@ public class Form_Hotel extends javax.swing.JPanel {
 
         JSpinner.DateEditor de1 = new JSpinner.DateEditor(jText_Salida,"yyyy-MM-dd HH:mm:ss");
         jText_Salida.setEditor(de1);
+        jText_Salida.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jText_SalidaStateChanged(evt);
+            }
+        });
 
         JSpinner.DateEditor de = new JSpinner.DateEditor(jText_Entrada,"yyyy-MM-dd HH:mm:ss");
         jText_Entrada.setEditor(de);
@@ -202,6 +210,11 @@ public class Form_Hotel extends javax.swing.JPanel {
 
         extra.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 5000));
         extra.setEditor(new javax.swing.JSpinner.NumberEditor(extra, ""));
+        extra.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                extraStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -281,6 +294,7 @@ public class Form_Hotel extends javax.swing.JPanel {
 
     private void jPanel_AceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AceptarMouseClicked
         // TODO add your handling code here:
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ArrayList<Float> entradas = servicio.ocuparHabitacion(Conexion.obtener(), habitacion, TipoHospedaje.getSelectedItem().toString(), Integer.parseInt(jText_numeroPersonas.getValue().toString()), dateFormat.format(jText_Entrada.getValue()), dateFormat.format(jText_Salida.getValue()), Float.parseFloat(extra.getValue().toString()));
         if (entradas.size() != 0) {
@@ -297,6 +311,7 @@ public class Form_Hotel extends javax.swing.JPanel {
 
     private void jPanel_AceptarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AceptarMouseEntered
         // TODO add your handling code here:
+        TipoHospedaje.requestFocus();
         ii = new ImageIcon(getClass().getResource("/Iconos/Add_20px_1.png"));
         jLabel_icn_add.setIcon(ii);
     }//GEN-LAST:event_jPanel_AceptarMouseEntered
@@ -328,18 +343,6 @@ public class Form_Hotel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_UsuarioActionPerformed
 
-    private void TipoHospedajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoHospedajeActionPerformed
-        // TODO add your handling code here:
-        int tipo = TipoHospedaje.getSelectedIndex();
-        System.out.println("Seleccion:" + tipo);
-        if (tipo == 0) {
-
-        } else {
-
-        }
-
-    }//GEN-LAST:event_TipoHospedajeActionPerformed
-
     private void jText_numeroPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_numeroPersonasKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
@@ -347,6 +350,27 @@ public class Form_Hotel extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_jText_numeroPersonasKeyTyped
+
+    private void extraStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_extraStateChanged
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_extraStateChanged
+
+    private void jText_SalidaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jText_SalidaStateChanged
+        // TODO add your handling code here:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        float valor = servicio.calcularCostoHabitacion(Conexion.obtener(), habitacion, TipoHospedaje.getSelectedItem().toString(), Integer.parseInt(jText_numeroPersonas.getValue().toString()), dateFormat.format(jText_Entrada.getValue()), dateFormat.format(jText_Salida.getValue()));
+
+        extra.setValue(valor);
+    }//GEN-LAST:event_jText_SalidaStateChanged
+
+    private void TipoHospedajeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TipoHospedajeItemStateChanged
+        // TODO add your handling code here:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        float valor = servicio.calcularCostoHabitacion(Conexion.obtener(), habitacion, TipoHospedaje.getSelectedItem().toString(), Integer.parseInt(jText_numeroPersonas.getValue().toString()), dateFormat.format(jText_Entrada.getValue()), dateFormat.format(jText_Salida.getValue()));
+
+        extra.setValue(valor);
+    }//GEN-LAST:event_TipoHospedajeItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -371,8 +395,4 @@ public class Form_Hotel extends javax.swing.JPanel {
     private javax.swing.JSpinner jText_numeroPersonas;
     // End of variables declaration//GEN-END:variables
 
-    private void LoadTipo() {
-        TipoHospedaje.addItem("DIA");
-        TipoHospedaje.addItem("HORA");
-    }
 }

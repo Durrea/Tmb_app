@@ -254,4 +254,30 @@ public class S_Hotel {
             return resultado;
         }
     }
+    
+    public float
+            calcularCostoHabitacion(Connection conexion, Habitacion habitacion, String tipo, int numP, String entrada, String salida) {
+        Sesion sesion = Sesion.getInstanciaSesion();
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CALCULAR_COSTO_HABITACION(?,?,?,?,?,?,?,?)}");
+            callProcedure.setInt(1, sesion.getIdentificador());
+            callProcedure.setInt(2, habitacion.getIdHabitacion());
+            callProcedure.setInt(3, habitacion.getHabitacion_numero());
+            callProcedure.setString(4, entrada);
+            callProcedure.setString(5, salida);
+            callProcedure.setInt(6, numP);
+            callProcedure.setString(7, tipo);
+            callProcedure.registerOutParameter(8, java.sql.Types.NUMERIC);
+            callProcedure.execute();
+            float costo = callProcedure.getInt(8);
+            return costo;
+            //JOptionPane.showMessageDialog(null, idRegistro + " - " + excedida);
+
+        } catch (Exception e) {
+            //System.out.println("Error al ocupar");
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return 0;
+    }
+
 }
