@@ -66,6 +66,7 @@ public class ResultaInfLavadero extends javax.swing.JPanel {
         jLabel_icn_canc = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel_Lavador = new javax.swing.JLabel();
+        jLabel_Total = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
 
@@ -76,11 +77,11 @@ public class ResultaInfLavadero extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Placa", "Tipo Lavada", "Valor Pago"
+                "Placa", "Tipo Vehiculo", "Tipo Lavada", "Valor Pago"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -98,11 +99,6 @@ public class ResultaInfLavadero extends javax.swing.JPanel {
         jText_Buscador.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jText_BuscadorMouseClicked(evt);
-            }
-        });
-        jText_Buscador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_BuscadorActionPerformed(evt);
             }
         });
         jText_Buscador.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -146,34 +142,35 @@ public class ResultaInfLavadero extends javax.swing.JPanel {
         jLabel_Lavador.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Lavador.setText(" Lavador :");
 
+        jLabel_Total.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
+        jLabel_Total.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Total.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel_Total.setText("Total :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel_icn_add1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jText_Buscador, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                    .addComponent(jSeparator4))))
-                        .addGap(43, 43, 43))
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                    .addComponent(jLabel_Fecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel_Lavador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel_icn_add1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel_Lavador, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                            .addComponent(jLabel_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jText_Buscador)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel_Total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +181,7 @@ public class ResultaInfLavadero extends javax.swing.JPanel {
                 .addComponent(jLabel_Lavador)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel_Fecha)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
@@ -194,19 +191,17 @@ public class ResultaInfLavadero extends javax.swing.JPanel {
                     .addComponent(jLabel_icn_add1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel_Total)
+                .addGap(20, 20, 20)
                 .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
     
     private void jText_BuscadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jText_BuscadorMouseClicked
         jText_Buscador.setText("");
     }//GEN-LAST:event_jText_BuscadorMouseClicked
-
-    private void jText_BuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_BuscadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_BuscadorActionPerformed
 
     private void jText_BuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_BuscadorKeyTyped
         // TODO add your handling code here:
@@ -222,7 +217,7 @@ public class ResultaInfLavadero extends javax.swing.JPanel {
                 String cadena = (jText_Buscador.getText());
                 jText_Buscador.setText(cadena);
                 repaint();
-                filter.setRowFilter(RowFilter.regexFilter(jText_Buscador.getText(), 1));
+                filter.setRowFilter(RowFilter.regexFilter(jText_Buscador.getText(), 0));
             }
         });
         filter = new TableRowSorter(this.jTable2.getModel());
@@ -262,13 +257,22 @@ public class ResultaInfLavadero extends javax.swing.JPanel {
       
         for(int i=0;i<datos.size();i++)
         {
-            Object [] fila = new Object[3];
+            Object [] fila = new Object[4];
             fila[0] = datos.get(i).getVehiculo_placa();
-            fila[1] = datos.get(i).getTipo_lavada();
-            fila[2] = (long)datos.get(i).getValor_pago();
+            fila[1] = datos.get(i).getVehiculo_tipo();
+            fila[2] = datos.get(i).getTipo_lavada();
+            fila[3] = (long)datos.get(i).getValor_pago();
             modelo.addRow(fila);
         }
         this.jTable2.setModel(modelo);
+        
+        float valor=obj.loadTotalInforme(Conexion.obtener(),lavador_codigo,fecha);
+        if(valor!=0){
+            jLabel_Total.setText("Total: " +(long)valor+" ");
+        }else{
+            jLabel_Total.setText("");
+        }
+        
         
     }
     
@@ -286,6 +290,7 @@ public class ResultaInfLavadero extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_Fecha;
     private javax.swing.JLabel jLabel_Lavador;
+    private javax.swing.JLabel jLabel_Total;
     private javax.swing.JLabel jLabel_icn_add1;
     private javax.swing.JLabel jLabel_icn_canc;
     private javax.swing.JPanel jPanel_Cancelar;

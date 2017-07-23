@@ -202,8 +202,6 @@ public class SLavadero {
         return resultado;
     }
     
-
-
     public float loadDeuda(Connection conexion) {
         
         float valor = 0;
@@ -285,7 +283,7 @@ public class SLavadero {
         
         try
         {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORMACION_INFORME_LAVADERO(?,?)}");
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_INFORME_DIARIA_LAVADOR(?,?)}");
             callProcedure.setString(1, Integer.toString(lavador_codigo));
             callProcedure.setString(2, fecha);
             callProcedure.execute();
@@ -293,11 +291,12 @@ public class SLavadero {
             while(resultado_consulta.next())
             {
                 String vehiculo_placa = resultado_consulta.getString(1);
-                String tipo_lavada = resultado_consulta.getString(2);
-                float valor_pago=Float.valueOf(resultado_consulta.getString(3));
+                String vehiculo_tipo= resultado_consulta.getString(2);
+                String tipo_lavada = resultado_consulta.getString(3);
+                float valor_pago=Float.valueOf(resultado_consulta.getString(4));
                                
                 Modelos.Informacion_Lavadero obj_info = new Modelos.Informacion_Lavadero
-                       (0,0,"",vehiculo_placa,"","",tipo_lavada,0,valor_pago);
+                       (0,0,"",vehiculo_placa,vehiculo_tipo,"",tipo_lavada,0,valor_pago);
                 lst_lavadero.add(obj_info);
             }
             
@@ -453,4 +452,21 @@ public class SLavadero {
         }
         
    }
+    
+   public float loadTotalInforme(Connection conexion,int lavador_codigo,String fecha) {
+        
+        float valor = 0;
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_TOTAL_INFORME_DIARIO_LAVADERO(?,?,?)}");
+            callProcedure.setString(1, Integer.toString(lavador_codigo));
+            callProcedure.setString(2, fecha);
+            callProcedure.registerOutParameter(3, java.sql.Types.FLOAT);
+            callProcedure.execute();
+            valor = callProcedure.getFloat(3);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return valor;
+    }
 }
