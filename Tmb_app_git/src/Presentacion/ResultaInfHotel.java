@@ -217,10 +217,12 @@ public class ResultaInfHotel extends javax.swing.JPanel {
             public boolean isCellEditable(int rowIndex,int columnIndex){return false;}};
         modelo.addColumn("N° HABITACIÓN");
         modelo.addColumn("VALOR TOTAL");
-        Object[] fila = new Object[2];
+        modelo.addColumn("NUMERO ENTRADAS");
+        Object[] fila = new Object[3];
         for (int i = 0; i < infoHotel.size(); i++) {
             fila[0] = infoHotel.get(i).getNumHabitacion();
             fila[1] = infoHotel.get(i).getTotalPagado();
+            fila[2] = infoHotel.get(i).getNumentradas();
             total = total + infoHotel.get(i).getTotalPagado();
             modelo.addRow(fila);
         }
@@ -229,6 +231,7 @@ public class ResultaInfHotel extends javax.swing.JPanel {
         
         fila[0] = "Total";
         fila[1] = (long) total;
+        fila[2] = "";
         modelo.addRow(fila);
         return tabla;
     }

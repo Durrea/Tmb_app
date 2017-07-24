@@ -13,6 +13,7 @@ public class Informacion_hotel {
 
     private int numHabitacion;
     private float totalPagado;
+    private int numentradas;
     
     
     private String fechEntrada;
@@ -66,4 +67,12 @@ public class Informacion_hotel {
         this.totalPagado = totalPagado;
     }
 
+    public int getNumentradas() {
+        return numentradas;
+    }
+
+    public void setNumentradas(int numentradas) {
+        this.numentradas = numentradas;
+    }
+    
 }

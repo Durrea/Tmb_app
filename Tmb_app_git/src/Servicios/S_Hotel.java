@@ -125,6 +125,7 @@ public class S_Hotel {
                     obj = new Modelos.Informacion_hotel(Integer.parseInt(resultado_consulta.getString(1)),
                             Float.parseFloat(resultado_consulta.getString(2)));
                 }
+                obj.setNumentradas(Integer.parseInt(resultado_consulta.getString(3)));
                 informacion.add(obj);
             }
             return informacion;
