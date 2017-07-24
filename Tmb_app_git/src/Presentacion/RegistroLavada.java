@@ -10,6 +10,7 @@ import Modelos.Tarifa_lavadero;
 import Modelos.Vehiculo;
 
 import Servicios.Conexion;
+import Servicios.ImpresionFacturas;
 import Servicios.SLavadero;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
@@ -352,6 +353,16 @@ public class RegistroLavada extends javax.swing.JPanel {
             String msj = obj.registerLavadores
                             (Conexion.obtener(),lavador,vehiculo,tarifa,jTextArea.getText(),instancia.getIdentificador());
             JOptionPane.showMessageDialog(null, msj);
+            int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?","Imprimir Recibo",JOptionPane.YES_NO_OPTION);
+            if(resultopcion == 0)
+            {
+                ImpresionFacturas impfac = new ImpresionFacturas();
+                boolean res1 = impfac.FacturaLavadero(instancia.getIdentificador());
+                if(!res1)
+                {
+                    JOptionPane.showMessageDialog(null, "Error en la impresion");
+                } 
+            }
             
             Lavadero lavadero=new Lavadero();
             this.removeAll();

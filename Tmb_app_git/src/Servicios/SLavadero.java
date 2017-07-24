@@ -368,6 +368,36 @@ public class SLavadero {
         }
     }
     
+    public ArrayList<String> LoadLastRecord(Connection conexion,int recep)
+    {
+        ArrayList<String> resultado = new ArrayList<String>();
+        try
+        {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_FACTURA_REG_LAVADERO(?,?,?,?)}");            
+            callProcedure.setString(1, Integer.toString(recep));
+            callProcedure.registerOutParameter(2, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(3, java.sql.Types.VARCHAR);            
+            callProcedure.registerOutParameter(4, java.sql.Types.DATE);
+            callProcedure.execute();            
+            for(int i=2;i<=4;i++)
+            {
+                String val = callProcedure.getString(i);
+                if(val != null)
+                {
+                    resultado.add(callProcedure.getString(i));                    
+                }
+                else
+                {
+                    resultado.add("---");
+                }
+            }            
+            return resultado;
+        }catch(Exception e)
+        {            
+            return resultado;
+        }
+    }
+    
     public ArrayList<Modelos.Informe_Lavadero> LoadInfoPerRecepcionista(Connection conexion, String fecha, int idrecep) {
         ArrayList<Modelos.Informe_Lavadero> lst_lavadero = new ArrayList<Modelos.Informe_Lavadero>();
         try {
