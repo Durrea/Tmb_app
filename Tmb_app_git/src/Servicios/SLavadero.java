@@ -163,7 +163,7 @@ public class SLavadero {
             {
                 int id_lava=Integer.parseInt(resultado_consulta.getString(1));
                 int lavador_codigo = Integer.parseInt(resultado_consulta.getString(2));
-                String fecha_lavada= resultado_consulta.getString(3);
+                String fecha_entrada= resultado_consulta.getString(3);
                 String vehiculo_placa = resultado_consulta.getString(4);
                 String vehiculo_tipo = resultado_consulta.getString(5);
                 String tipo_lavada=resultado_consulta.getString(6);
@@ -171,7 +171,7 @@ public class SLavadero {
                 float valor_pago=Float.valueOf(resultado_consulta.getString(8));
                                
                 Modelos.Informacion_Lavadero obj_info = new Modelos.Informacion_Lavadero
-                       (id_lava,lavador_codigo,fecha_lavada,vehiculo_placa,vehiculo_tipo,"",tipo_lavada,valor_lavada,valor_pago);
+                       (id_lava,lavador_codigo,fecha_entrada,"",vehiculo_placa,vehiculo_tipo,"",tipo_lavada,valor_lavada,valor_pago);
                 lst_lavadero.add(obj_info);
             }
             
@@ -296,7 +296,7 @@ public class SLavadero {
                 float valor_pago=Float.valueOf(resultado_consulta.getString(4));
                                
                 Modelos.Informacion_Lavadero obj_info = new Modelos.Informacion_Lavadero
-                       (0,0,"",vehiculo_placa,vehiculo_tipo,"",tipo_lavada,0,valor_pago);
+                       (0,0,"","",vehiculo_placa,vehiculo_tipo,"",tipo_lavada,0,valor_pago);
                 lst_lavadero.add(obj_info);
             }
             

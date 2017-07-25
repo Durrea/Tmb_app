@@ -51,12 +51,12 @@
                           <Group type="102" attributes="0">
                               <Component id="jPanel_Registrar" min="-2" pref="160" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="jPanel_Informe" min="-2" pref="206" max="-2" attributes="0"/>
+                              <Component id="jPanel_Informe" min="-2" pref="188" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="jPanel_CDeuda" min="-2" pref="218" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel_Informe1" min="-2" pref="129" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
+                              <Component id="jPanel_Informe1" min="-2" pref="161" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Component id="jPanel_CDeuda" min="-2" pref="219" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="45" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -69,11 +69,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jPanel_Registrar" max="32767" attributes="0"/>
                       <Component id="jPanel_Informe" max="32767" attributes="0"/>
-                      <Component id="jPanel_CDeuda" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel_CDeuda" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jPanel_Informe1" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -124,7 +124,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="170" y="0" width="20" height="40"/>
+              <AbsoluteConstraints x="150" y="0" width="20" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -133,7 +133,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Generar Informe Diario"/>
+            <Property name="text" type="java.lang.String" value="Informe por Lavador"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -287,7 +287,7 @@
               <Table columnCount="11" rowCount="0">
                 <Column editable="false" title="ID" type="java.lang.Object"/>
                 <Column editable="false" title="Codigo Lavador" type="java.lang.Object"/>
-                <Column editable="false" title="Fecha Lavada" type="java.lang.Object"/>
+                <Column editable="false" title="Fecha Entrada" type="java.lang.Object"/>
                 <Column editable="false" title="Placa" type="java.lang.Object"/>
                 <Column editable="false" title="Tipo Vehiculo" type="java.lang.Object"/>
                 <Column editable="false" title="Tipo Lavada" type="java.lang.Object"/>
@@ -420,7 +420,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="100" y="0" width="20" height="40"/>
+              <AbsoluteConstraints x="120" y="0" width="20" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -429,11 +429,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="0"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Informe Diario"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="10" width="-1" height="20"/>
+              <AbsoluteConstraints x="20" y="10" width="100" height="20"/>
             </Constraint>
           </Constraints>
         </Component>

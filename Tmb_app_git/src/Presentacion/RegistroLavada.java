@@ -353,15 +353,18 @@ public class RegistroLavada extends javax.swing.JPanel {
             String msj = obj.registerLavadores
                             (Conexion.obtener(),lavador,vehiculo,tarifa,jTextArea.getText(),instancia.getIdentificador());
             JOptionPane.showMessageDialog(null, msj);
-            int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?","Imprimir Recibo",JOptionPane.YES_NO_OPTION);
-            if(resultopcion == 0)
-            {
-                ImpresionFacturas impfac = new ImpresionFacturas();
-                boolean res1 = impfac.FacturaLavadero(instancia.getIdentificador());
-                if(!res1)
+            
+            if(msj.equals("Registro realizado con exito")){
+                int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?","Imprimir Recibo",JOptionPane.YES_NO_OPTION);
+                if(resultopcion == 0)
                 {
-                    JOptionPane.showMessageDialog(null, "Error en la impresion");
-                } 
+                    ImpresionFacturas impfac = new ImpresionFacturas();
+                    boolean res1 = impfac.FacturaLavadero(instancia.getIdentificador());
+                    if(!res1)
+                    {
+                        JOptionPane.showMessageDialog(null, "Error en la impresion");
+                    } 
+                }
             }
             
             Lavadero lavadero=new Lavadero();
@@ -383,7 +386,6 @@ public class RegistroLavada extends javax.swing.JPanel {
         if(jText_Placa.getText().equals("")){res+="\nPlaca Vehiculo";}
         if(jCombo_TipoV.getSelectedIndex()==-1 && jCombo_TipoV.getItemCount()==0){res+="\nTipo Vehiculo";}
         if(jText_MarcaV.getText().equals("")){res+="\nMarca Vehiculo";}
-        if(jTextArea.getText().equals("")){res+="\nDescripcion";}
         
         if(jCombo_TpoLvda.getSelectedIndex()!=-1 && jCombo_TpoLvda.getItemCount()!=0){
             if(jCombo_TpoLvda.getSelectedItem().equals("Otro")){

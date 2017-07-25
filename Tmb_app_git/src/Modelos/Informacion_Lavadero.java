@@ -13,7 +13,8 @@ public class Informacion_Lavadero {
     
     int id_lava;
     int lavador_codigo;
-    String fecha_lavada;
+    String fecha_entrada;
+    String fecha_salida;
     String vehiculo_placa;
     String vehiculo_tipo;
     String vehiculo_marca;
@@ -21,10 +22,11 @@ public class Informacion_Lavadero {
     float valor_lavada;
     float valor_pago;
     
-    public Informacion_Lavadero(int id_lava,int lavador_codigo, String fecha_lavada, String vehiculo_placa, String vehiculo_tipo, String vehiculo_marca, String tipo_lavada, float valor_lavada,float valor_pago) {
+    public Informacion_Lavadero(int id_lava,int lavador_codigo, String fecha_entrada,String fecha_salida,String vehiculo_placa, String vehiculo_tipo, String vehiculo_marca, String tipo_lavada, float valor_lavada,float valor_pago) {
         this.id_lava=id_lava;
         this.lavador_codigo = lavador_codigo;
-        this.fecha_lavada = fecha_lavada;
+        this.fecha_entrada = fecha_entrada;
+        this.fecha_salida = fecha_salida;
         this.vehiculo_placa = vehiculo_placa;
         this.vehiculo_tipo = vehiculo_tipo;
         this.vehiculo_marca = vehiculo_marca;
@@ -50,12 +52,20 @@ public class Informacion_Lavadero {
         this.lavador_codigo = lavadorCodigo;
     }
 
-    public String getFecha_lavada() {
-        return fecha_lavada;
+     public String getFecha_entrada() {
+        return fecha_entrada;
     }
 
-    public void setFecha_lavada(String fecha_lavada) {
-        this.fecha_lavada = fecha_lavada;
+    public void setFecha_entrada(String fecha_entrada) {
+        this.fecha_entrada = fecha_entrada;
+    }
+
+    public String getFecha_salida() {
+        return fecha_salida;
+    }
+
+    public void setFecha_salida(String fecha_salida) {
+        this.fecha_salida = fecha_salida;
     }
 
     public String getVehiculo_placa() {

@@ -101,10 +101,10 @@ public class Lavadero extends javax.swing.JPanel {
         jPanel_Informe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_icn_inf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"))); // NOI18N
-        jPanel_Informe.add(jLabel_icn_inf, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 20, 40));
+        jPanel_Informe.add(jLabel_icn_inf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 20, 40));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jLabel5.setText("Generar Informe Diario");
+        jLabel5.setText("Informe por Lavador");
         jPanel_Informe.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 20));
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
@@ -166,7 +166,7 @@ public class Lavadero extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Codigo Lavador", "Fecha Lavada", "Placa", "Tipo Vehiculo", "Tipo Lavada", "Valor Lavada", "Valor Pago", "Modificar", "Comentarios", "Acciones"
+                "ID", "Codigo Lavador", "Fecha Entrada", "Placa", "Tipo Vehiculo", "Tipo Lavada", "Valor Lavada", "Valor Pago", "Modificar", "Comentarios", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -217,11 +217,12 @@ public class Lavadero extends javax.swing.JPanel {
         jPanel_Informe1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_icn_inf1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"))); // NOI18N
-        jPanel_Informe1.add(jLabel_icn_inf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 20, 40));
+        jPanel_Informe1.add(jLabel_icn_inf1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 20, 40));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Informe Diario");
-        jPanel_Informe1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+        jPanel_Informe1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 100, 20));
 
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -247,23 +248,23 @@ public class Lavadero extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel_Registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel_Informe, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(jPanel_CDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel_Informe1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 70, Short.MAX_VALUE)))))
+                                .addComponent(jPanel_Informe1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jPanel_CDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 45, Short.MAX_VALUE)))))
                 .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(106, 106, 106)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jPanel_Registrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel_Informe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel_CDeuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel_CDeuda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel_Informe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -421,7 +422,7 @@ public class Lavadero extends javax.swing.JPanel {
                                 {
                                     JOptionPane.showMessageDialog(null, "Error en la impresion");
                                 }                                    
-                            }   
+                            }
                             
                             Lavadero l=new Lavadero();
                             this.removeAll();
@@ -444,15 +445,19 @@ public class Lavadero extends javax.swing.JPanel {
                         SLavadero obj = new SLavadero();
                         String resultado=obj.descripcionLavada(Conexion.obtener(),id_lava);
                         
-                        JPanel myPanel = new JPanel();
-                        JTextArea area=new JTextArea(resultado,5,15);
-                        JScrollPane scrollPane = new JScrollPane(area);
-                        area.setEditable(false);
-                        myPanel.add(scrollPane);
-                        
-                        
-                        JOptionPane.showMessageDialog(null, myPanel, 
-                        "Comentarios Descripcion", JOptionPane.INFORMATION_MESSAGE);
+                        if(!resultado.isEmpty()){
+                            JPanel myPanel = new JPanel();
+                            JTextArea area=new JTextArea(resultado,5,15);
+                            JScrollPane scrollPane = new JScrollPane(area);
+                            area.setEditable(false);
+                            myPanel.add(scrollPane);
+
+
+                            JOptionPane.showMessageDialog(null, myPanel, 
+                            "Comentarios Descripcion", JOptionPane.INFORMATION_MESSAGE);
+                        }else{
+                            JOptionPane.showMessageDialog(null,"No hay Comentarios Descripcion"); 
+                        }
                          
                     }catch(Exception ex){
                         System.out.println(ex.getMessage());
@@ -520,10 +525,14 @@ public class Lavadero extends javax.swing.JPanel {
 
     private void jPanel_Informe1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe1MouseEntered
         // TODO add your handling code here:
+        ii = new ImageIcon(getClass().getResource("/Iconos/Report Card_20px_1.png"));
+        jLabel_icn_inf1.setIcon(ii);
     }//GEN-LAST:event_jPanel_Informe1MouseEntered
 
     private void jPanel_Informe1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_Informe1MouseExited
         // TODO add your handling code here:
+        ii = new ImageIcon(getClass().getResource("/Iconos/Report Card_20px.png"));
+        jLabel_icn_inf1.setIcon(ii);
     }//GEN-LAST:event_jPanel_Informe1MouseExited
 
     public final void LoadDataTable()
@@ -546,7 +555,7 @@ public class Lavadero extends javax.swing.JPanel {
             Object [] fila = new Object[11];
             fila[0] = datos.get(i).getId_lava();
             fila[1] = datos.get(i).getLavadorCodigo();
-            fila[2] = datos.get(i).getFecha_lavada();
+            fila[2] = datos.get(i).getFecha_entrada();
             fila[3] = datos.get(i).getVehiculo_placa();
             fila[4] = datos.get(i).getVehiculo_tipo();
             fila[5] = datos.get(i).getTipo_lavada();

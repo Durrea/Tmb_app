@@ -118,7 +118,7 @@ public class ImpresionFacturas {
             printer.printTextWrap(4, 5, 1, columnas, "Recepcionista: " + ultimoregistro.get(0));
             printer.printTextWrap(5, 6, 1, columnas, "Placa: " + ultimoregistro.get(1));
             printer.printTextWrap(6, 7, 1, columnas, "Lavador: " + ultimoregistro.get(2));
-            printer.printTextWrap(7, 8, 1, columnas, "Fecha Lavada: " + ultimoregistro.get(3));
+            printer.printTextWrap(7, 8, 1, columnas, "Fecha Salida: " + ultimoregistro.get(3));
             printer.printTextWrap(8, 9, 1, columnas, "Tipo de Lavada: " + ultimoregistro.get(4));
             if (!ultimoregistro.get(6).equalsIgnoreCase("0")) {
                 printer.printTextWrap(9, 10, 1, columnas, "SubTotal: " + ultimoregistro.get(5));
@@ -168,7 +168,7 @@ public class ImpresionFacturas {
             //printer.printTextWrap(linI, linE, colI, colE, null);
             printer.printTextWrap(4, 5, 1, columnas, "Recepcionista: " + ultimoregistro.get(0));
             printer.printTextWrap(5, 6, 1, columnas, "Placa: " + ultimoregistro.get(1));
-            printer.printTextWrap(6, 7, 1, columnas, "Fecha Lavada: " + ultimoregistro.get(2));
+            printer.printTextWrap(6, 7, 1, columnas, "Fecha Entrada: " + ultimoregistro.get(2));
             printer.printCharAtCol(8, 1, columnas, "=");
             imprimirFactura(printer);
             resultado = true;
