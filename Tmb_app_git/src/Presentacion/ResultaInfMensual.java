@@ -220,7 +220,8 @@ public class ResultaInfMensual extends javax.swing.JPanel {
         for(int i=0;i<columnas.size();i++)
         {
             modelo.addColumn(columnas.get(i));
-        }                
+        }
+        double suma = 0;
         for(int i=1;i<inforecep.size();i++)
         {
             ArrayList<String> datos = new ArrayList();
@@ -229,9 +230,17 @@ public class ResultaInfMensual extends javax.swing.JPanel {
             for(int j=0;j<datos.size();j++)
             {
                 fila[j] = datos.get(j);
+                if(j == (datos.size()-1))
+                {
+                    suma = suma + Double.parseDouble(datos.get(j));
+                }
             }
             modelo.addRow(fila);
-        }        
+        }
+        Object[] fila = new Object[2];
+        fila[0] = "Total";
+        fila[1] = (long)suma;
+        modelo.addRow(fila);
         tabla.setModel(modelo);               
         //tabla.setEnabled(false);
         tabla.setVisible(true);

@@ -190,22 +190,26 @@ public class RegistrarAbonoMensual extends javax.swing.JPanel {
                 ParqueaderoMes obj = new ParqueaderoMes();
                 Sesion instancia = Sesion.getInstanciaSesion();
                 int idrecep = instancia.getIdentificador();
-                String resultado = obj.RegistrarAbonoMensual(Conexion.obtener(), Double.parseDouble(valor_pagar), this.placa, idrecep);
-                if(resultado.equalsIgnoreCase("Se ha realizado el abono de la mensualidad con exito"))
+                int result =  JOptionPane.showConfirmDialog(this, "¿Desea realizar el pago del abono mensual?", "Pago Abono Mensual",JOptionPane.YES_NO_OPTION);
+                if(result == 0)
                 {
-                    JOptionPane.showMessageDialog(null, resultado);
-                    Mensual r=new Mensual();
-                    this.removeAll();
-                    this.setLayout(new BorderLayout());
-                    this.add(r,BorderLayout.CENTER);
-                    this.repaint();
-                    this.revalidate();
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null, resultado);
-                    this.jTextField1.setText("");
-                }                
+                    String resultado = obj.RegistrarAbonoMensual(Conexion.obtener(), Double.parseDouble(valor_pagar), this.placa, idrecep);
+                    if(resultado.equalsIgnoreCase("Se ha realizado el abono de la mensualidad con exito"))
+                    {
+                        JOptionPane.showMessageDialog(null, resultado);
+                        Mensual r=new Mensual();
+                        this.removeAll();
+                        this.setLayout(new BorderLayout());
+                        this.add(r,BorderLayout.CENTER);
+                        this.repaint();
+                        this.revalidate();
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, resultado);
+                        this.jTextField1.setText("");
+                    }  
+                }                              
             }
             else
             {

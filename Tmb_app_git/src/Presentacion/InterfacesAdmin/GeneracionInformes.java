@@ -281,7 +281,8 @@ public class GeneracionInformes extends javax.swing.JDialog {
                         ArrayList<String> datos = new ArrayList();
                         datos = (ArrayList<String>) inforecep.get(j);
                         generador.AgregarCeldaTabla(datos.get(1), tabla);
-                        generador.AgregarCeldaTabla(datos.get(3), tabla);                                                
+                        long valor = Long.parseLong(datos.get(3));
+                        generador.AgregarCeldaTabla(Long.toString(valor), tabla);                                                
                     }
                     generador.addTable(tabla);
                     generador.addParagrafo("\n");
@@ -340,7 +341,7 @@ public class GeneracionInformes extends javax.swing.JDialog {
                         generador.AgregarCeldaTabla(inforecep.get(j).getVehiculo_placa(), tabla);
                         generador.AgregarCeldaTabla(inforecep.get(j).getFecha_entrada(), tabla);
                         generador.AgregarCeldaTabla(inforecep.get(j).getFecha_salida(), tabla);
-                        generador.AgregarCeldaTabla(Double.toString(inforecep.get(j).getValor_pagar()), tabla);
+                        generador.AgregarCeldaTabla(Long.toString((long) inforecep.get(j).getValor_pagar()), tabla);
                     }
                     generador.addTable(tabla);
                     generador.addParagrafo("\n");
@@ -450,7 +451,7 @@ public class GeneracionInformes extends javax.swing.JDialog {
                     for (int j = 0; j < inforecep.size(); j++) 
                     {
                         generador.AgregarCeldaTabla(inforecep.get(j).getLavador_names(), tabla);
-                        generador.AgregarCeldaTabla(Float.toString(inforecep.get(j).getValor_total()), tabla);                                                
+                        generador.AgregarCeldaTabla(Long.toString((long) inforecep.get(j).getValor_total()), tabla);                                                
                     }
                     generador.addTable(tabla);
                     generador.addParagrafo("\n");
@@ -490,17 +491,17 @@ public class GeneracionInformes extends javax.swing.JDialog {
             Administrador objadmin = new Administrador();
             ArrayList<String> datos_mensuales = objadmin.Informe_Total_Mensual(Conexion.obtener(), fecha);
             generador.addParagrafo("SERVICIO: PARQUEADERO");
-            generador.addParagrafo("TOTAL: "+datos_mensuales.get(0));
+            generador.addParagrafo("TOTAL: "+Long.parseLong(datos_mensuales.get(0)));
             generador.addParagrafo("\n");
             generador.addParagrafo("SERVICIO: LAVADERO");
-            generador.addParagrafo("TOTAL: "+datos_mensuales.get(2));
+            generador.addParagrafo("TOTAL: "+Long.parseLong(datos_mensuales.get(2)));
             generador.addParagrafo("\n");
             generador.addParagrafo("SERVICIO: HOTEL");
-            generador.addParagrafo("TOTAL: "+datos_mensuales.get(1));
+            generador.addParagrafo("TOTAL: "+Long.parseLong(datos_mensuales.get(1)));
             generador.addParagrafo("\n");
             generador.addParagrafo("\n");
             generador.addParagrafo("\n");
-            generador.addParagrafo("TOTAL MES: "+datos_mensuales.get(3));
+            generador.addParagrafo("TOTAL MES: "+Long.parseLong(datos_mensuales.get(3)));
             generador.closeDoc();
             JOptionPane.showMessageDialog(null, "Reporte creado con exito");
             File file = new File (generador.ruta);

@@ -219,14 +219,21 @@ public class ResultaInfFraccion extends javax.swing.JPanel {
         modelo.addColumn("Fecha Entrada");
         modelo.addColumn("Fecha Salida");
         modelo.addColumn("Valor cobrado");
+        double suma = 0;
         Object[] fila = new Object[4];
         for (int i = 0; i < inforecep.size(); i++) {
             fila[0] = inforecep.get(i).getVehiculo_placa();
             fila[1] = inforecep.get(i).getFecha_entrada();
             fila[2] = inforecep.get(i).getFecha_salida();
-            fila[3] = (long)inforecep.get(i).getValor_pagar();            
+            fila[3] = (long)inforecep.get(i).getValor_pagar();
+            suma = suma + inforecep.get(i).getValor_pagar();
             modelo.addRow(fila);
         }
+        fila[0] = "Total";
+        fila[1] = (long)suma;
+        fila[2] = "";
+        fila[3] = "";
+        modelo.addRow(fila);
         tabla.setModel(modelo);
         //tabla.setEnabled(false);
         tabla.setVisible(true);
