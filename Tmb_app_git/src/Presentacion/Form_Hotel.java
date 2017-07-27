@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
+import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerNumberModel;
@@ -42,6 +43,7 @@ public class Form_Hotel extends javax.swing.JPanel {
         this.habitacion = habitacion;
         servicio = new S_Hotel();
         jText_numeroPersonas.setValue(habitacion.getHabitacion_capacidad());
+        LoadAllVehiculos();
     }
     ImageIcon ii;
     public int idRecep;
@@ -83,6 +85,10 @@ public class Form_Hotel extends javax.swing.JPanel {
         jText_numeroPersonas = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
         extra = new javax.swing.JSpinner();
+        jText_Placa = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jCombo_TipoV = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(36, 47, 65));
 
@@ -216,6 +222,26 @@ public class Form_Hotel extends javax.swing.JPanel {
             }
         });
 
+        jText_Placa.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jText_Placa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jText_PlacaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_PlacaKeyTyped(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText(" Placa Vehiculo");
+
+        jCombo_TipoV.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText(" Tipo Vehiculo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -243,41 +269,53 @@ public class Form_Hotel extends javax.swing.JPanel {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jPanel_Aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGap(51, 51, 51)
-                            .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jText_Placa, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCombo_TipoV, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(6, 6, 6)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(jText_numeroPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(6, 6, 6)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(6, 6, 6)
                 .addComponent(jText_Entrada, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(6, 6, 6)
                 .addComponent(jLabel7)
-                .addGap(5, 5, 5)
+                .addGap(6, 6, 6)
                 .addComponent(jText_Salida, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(6, 6, 6)
                 .addComponent(jLabel4)
-                .addGap(5, 5, 5)
+                .addGap(6, 6, 6)
                 .addComponent(extra, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(6, 6, 6)
                 .addComponent(jLabel3)
-                .addGap(5, 5, 5)
+                .addGap(6, 6, 6)
                 .addComponent(TipoHospedaje, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel10)
+                .addGap(6, 6, 6)
+                .addComponent(jText_Placa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel11)
+                .addGap(6, 6, 6)
+                .addComponent(jCombo_TipoV, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel_Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -305,8 +343,6 @@ public class Form_Hotel extends javax.swing.JPanel {
             this.repaint();
             this.revalidate();
         }
-
-
     }//GEN-LAST:event_jPanel_AceptarMouseClicked
 
     private void jPanel_AceptarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_AceptarMouseEntered
@@ -372,11 +408,93 @@ public class Form_Hotel extends javax.swing.JPanel {
         extra.setValue(valor);
     }//GEN-LAST:event_TipoHospedajeItemStateChanged
 
+    private void jText_PlacaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyReleased
+        // TODO add your handling code here:
+        String cadena = this.jText_Placa.getText();
+        ValidadorCadenas val = new ValidadorCadenas();
+        int res = val.ValidarCadenasPlaca(cadena);
+        if(res !=0)
+        {
+            S_Hotel obj = new S_Hotel();
+            boolean vlr=obj.validarPlaca(Conexion.obtener()); 
+            if(vlr==true){
+                if(res == 1)
+                {
+                    LoadMotos();
+                }
+                else
+                {
+                    LoadVehiculos();
+                }
+            }
+        }
+        else
+        {
+            jCombo_TipoV.removeAllItems();
+        }
+    }//GEN-LAST:event_jText_PlacaKeyReleased
+
+    private void jText_PlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isLowerCase(c))
+        {
+            String cadena = (""+c).toUpperCase();
+            c = cadena.charAt(0);
+            evt.setKeyChar(c);
+        }
+        if(!(Character.isLetterOrDigit(c)) ||(c==KeyEvent.VK_ESCAPE) || (c==KeyEvent.VK_DELETE) ||(c==KeyEvent.VK_SPACE) ||(c==KeyEvent.VK_CONTROL)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_PlacaKeyTyped
+    
+    public final void LoadAllVehiculos()
+    {
+        jCombo_TipoV.removeAllItems();
+        S_Hotel obj = new S_Hotel();        
+        ArrayList<String> tipos = obj.loadTiposVehiculos(Conexion.obtener());
+        for (int i = 0; i < tipos.size(); i++) 
+        {
+            jCombo_TipoV.addItem(tipos.get(i));                       
+        }
+    }
+    
+    public void LoadMotos()
+    {
+        jCombo_TipoV.removeAllItems();
+        S_Hotel obj = new S_Hotel();      
+        ArrayList<String> tipos = obj.loadTiposVehiculos(Conexion.obtener());
+        for (int i = 0; i < tipos.size(); i++) 
+        {
+            if(tipos.get(i).equalsIgnoreCase("MOTO"))
+            {
+                this.jCombo_TipoV.addItem(tipos.get(i));
+            }            
+        }
+    }
+    
+     public final void LoadVehiculos()
+    {
+        jCombo_TipoV.removeAllItems();
+        S_Hotel obj = new S_Hotel();
+        ArrayList<String> tipos = obj.loadTiposVehiculos(Conexion.obtener());
+        for (int i = 0; i < tipos.size(); i++) 
+        {
+            if(!tipos.get(i).equalsIgnoreCase("MOTO"))
+            {
+                jCombo_TipoV.addItem(tipos.get(i));
+            }
+        }   
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> TipoHospedaje;
     private javax.swing.JSpinner extra;
+    private javax.swing.JComboBox<String> jCombo_TipoV;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -390,6 +508,7 @@ public class Form_Hotel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel_Aceptar;
     private javax.swing.JPanel jPanel_Cancelar;
     private javax.swing.JSpinner jText_Entrada;
+    private javax.swing.JTextField jText_Placa;
     private javax.swing.JSpinner jText_Salida;
     private javax.swing.JTextField jText_Usuario;
     private javax.swing.JSpinner jText_numeroPersonas;

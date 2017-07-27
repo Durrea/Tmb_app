@@ -350,33 +350,47 @@ public class RegistroLavada extends javax.swing.JPanel {
                     tarifa.setValor_lavada(Float.valueOf(jText_ValorLavdo.getText()));
                 }
             }
-            String msj = obj.registerLavadores
-                            (Conexion.obtener(),lavador,vehiculo,tarifa,jTextArea.getText(),instancia.getIdentificador());
-            JOptionPane.showMessageDialog(null, msj);
             
-            if(msj.equals("Registro realizado con exito")){
-                int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?","Imprimir Recibo",JOptionPane.YES_NO_OPTION);
-                if(resultopcion == 0)
-                {
-                    ImpresionFacturas impfac = new ImpresionFacturas();
-                    boolean res1 = impfac.FacturaLavadero(instancia.getIdentificador());
-                    if(!res1)
+            if(validarNum(Integer.parseInt(jText_ValorOtro.getText()),50)){
+                String msj = obj.registerLavadores
+                                (Conexion.obtener(),lavador,vehiculo,tarifa,jTextArea.getText(),instancia.getIdentificador());
+                JOptionPane.showMessageDialog(null, msj);
+
+                if(msj.equals("Registro realizado con exito")){
+                    int resultopcion = JOptionPane.showConfirmDialog(null, "¿Desea imprimir el recibo correspondiente?","Imprimir Recibo",JOptionPane.YES_NO_OPTION);
+                    if(resultopcion == 0)
                     {
-                        JOptionPane.showMessageDialog(null, "Error en la impresion");
-                    } 
+                        ImpresionFacturas impfac = new ImpresionFacturas();
+                        boolean res1 = impfac.FacturaLavadero(instancia.getIdentificador());
+                        if(!res1)
+                        {
+                            JOptionPane.showMessageDialog(null, "Error en la impresion");
+                        } 
+                    }
                 }
+                Lavadero lavadero=new Lavadero();
+                this.removeAll();
+                this.setLayout(new BorderLayout());
+                this.add(lavadero,BorderLayout.CENTER);
+                this.repaint();
+                this.revalidate();
+            }else{
+                JOptionPane.showMessageDialog(null, "Valor Tipo de Lavada debe ser multiplo de 50");
             }
             
-            Lavadero lavadero=new Lavadero();
-            this.removeAll();
-            this.setLayout(new BorderLayout());
-            this.add(lavadero,BorderLayout.CENTER);
-            this.repaint();
-            this.revalidate();
+            
             
         }
         
     }//GEN-LAST:event_jPanel_RegistrarMouseClicked
+    
+    public boolean validarNum(int n1, int n2) {
+        if (n1 % n2 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     
     public final String validar(){
         
