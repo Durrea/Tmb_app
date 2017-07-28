@@ -298,16 +298,19 @@ public class S_Hotel {
         return tipos;
     }
     
-    public boolean validarPlaca(Connection conexion) {
-
+    public String validarPlaca(Connection conexion, String placa) {
+        String resultado;
         try {
-            
-            return true;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
-        
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_TIPO_VEHICULO_EXISTENTE(?,?)}");
+            callProcedure.setString(1, placa);
+            callProcedure.registerOutParameter(2, java.sql.Types.VARCHAR);
+            callProcedure.execute();
+            resultado = callProcedure.getString(2);
+            return resultado;
+        } catch (Exception e) {            
+            resultado = e.getMessage();
+            return resultado;
+        }       
     }        
             
             

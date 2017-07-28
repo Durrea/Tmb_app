@@ -416,8 +416,8 @@ public class Form_Hotel extends javax.swing.JPanel {
         if(res !=0)
         {
             S_Hotel obj = new S_Hotel();
-            boolean vlr=obj.validarPlaca(Conexion.obtener()); 
-            if(vlr==true){
+            String vlr=obj.validarPlaca(Conexion.obtener(),cadena); 
+            if(!vlr.equalsIgnoreCase("SIN TIPO")){
                 if(res == 1)
                 {
                     LoadMotos();
