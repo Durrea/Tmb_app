@@ -334,7 +334,7 @@ public class Form_Hotel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        ArrayList<Float> entradas = servicio.ocuparHabitacion(Conexion.obtener(), habitacion, TipoHospedaje.getSelectedItem().toString(), Integer.parseInt(jText_numeroPersonas.getValue().toString()), dateFormat.format(jText_Entrada.getValue()), dateFormat.format(jText_Salida.getValue()), Float.parseFloat(extra.getValue().toString()));
+        ArrayList<Float> entradas = servicio.ocuparHabitacion(Conexion.obtener(), habitacion, TipoHospedaje.getSelectedItem().toString(), Integer.parseInt(jText_numeroPersonas.getValue().toString()), dateFormat.format(jText_Entrada.getValue()), dateFormat.format(jText_Salida.getValue()), Float.parseFloat(extra.getValue().toString()), jText_Placa.getText(), jCombo_TipoV.getSelectedItem().toString());
         if (entradas.size() != 0) {
             Form_RegistroRealizado h = new Form_RegistroRealizado(entradas, habitacion);
             this.removeAll();

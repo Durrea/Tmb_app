@@ -41,8 +41,8 @@ public class ImpresionFacturas {
             int lineas = 20;
             if (encabezado.size() != 0 && ultimoregistro.size() != 0) {
                 /*Datos a imprimir*/
-                PrinterMatrix printer = new PrinterMatrix();
-                Extenso e = new Extenso();
+                PrinterMatrix printer = new PrinterMatrix();               
+                Extenso e = new Extenso();                
                 e.setNumber(101.85);
                 //Definir el tamanho del papel para la impresion  aca 25 lineas y 80 columnas
                 printer.setOutSize(lineas, columnas);

@@ -51,11 +51,11 @@ public class S_Hotel {
     }
 
     public ArrayList<Float>
-            ocuparHabitacion(Connection conexion, Habitacion habitacion, String tipo, int numP, String entrada, String salida, float extra) {
+            ocuparHabitacion(Connection conexion, Habitacion habitacion, String tipo, int numP, String entrada, String salida, float extra, String placa, String tipoV) {
         ArrayList<Float> retorno = new ArrayList<>();
         Sesion sesion = Sesion.getInstanciaSesion();
         try {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_OCUPAR_HABITACION(?,?,?,?,?,?,?,?,?,?,?)}");
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_OCUPAR_HABITACION(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
             callProcedure.setInt(1, sesion.getIdentificador());
             callProcedure.setInt(2, habitacion.getIdHabitacion());
             callProcedure.setInt(3, habitacion.getHabitacion_numero());
@@ -67,6 +67,8 @@ public class S_Hotel {
             callProcedure.registerOutParameter(9, java.sql.Types.NUMERIC);
             callProcedure.setFloat(10, extra);
             callProcedure.registerOutParameter(11, java.sql.Types.FLOAT);
+            callProcedure.setString(12, placa);
+            callProcedure.setString(13, tipo);
             callProcedure.execute();
             int idRegistro = callProcedure.getInt(8);
             int excedida = callProcedure.getInt(9);
