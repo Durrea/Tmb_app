@@ -310,7 +310,7 @@ public class S_Hotel {
             resultado = callProcedure.getString(2);
             return resultado;
         } catch (Exception e) {            
-            resultado = e.getMessage();
+            resultado = "Error Java";
             return resultado;
         }       
     }        

@@ -9,12 +9,14 @@ import Servicios.Administrador;
 import Servicios.Conexion;
 import Servicios.ImpresionFacturas;
 import Servicios.ParquaderoFraccion;
+import Servicios.S_Hotel;
 import Servicios.Sesion;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
 import java.awt.Event;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JOptionPane;
@@ -303,12 +305,34 @@ public class Form_Entradas_Fraccion extends javax.swing.JPanel {
         ValidadorCadenas val = new ValidadorCadenas();
         int res = val.ValidarCadenasPlaca(cadena);
         if (res != 0) {
-            if (res == 1) {
-                LoadMotos();
-            } else {
-                LoadVehiculos();
+            S_Hotel obj = new S_Hotel();
+            String vlr=obj.validarPlaca(Conexion.obtener(),cadena);
+            if(vlr.equalsIgnoreCase("SIN TIPO")){
+                if (res == 1) {
+                   this.TipoVehiculo.setEnabled(true);
+                   LoadMotos();
+               } else {
+                   this.TipoVehiculo.setEnabled(true);
+                   LoadVehiculos();
+               }                
+            }
+            else
+            {
+                if(vlr.equalsIgnoreCase("Error Java"))
+                {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+                else
+                {
+                    String[] lista = new String[1];
+                    lista[0] = vlr;
+                    DefaultComboBoxModel model = new DefaultComboBoxModel(lista);
+                    this.TipoVehiculo.setModel(model);
+                    this.TipoVehiculo.setEnabled(false);
+                }                                
             }
         } else {
+            this.TipoVehiculo.setEnabled(true);
             this.TipoVehiculo.removeAllItems();
         }
     }//GEN-LAST:event_jText_PlacaKeyReleased

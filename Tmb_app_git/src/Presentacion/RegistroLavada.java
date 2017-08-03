@@ -507,13 +507,14 @@ public class RegistroLavada extends javax.swing.JPanel {
                 if(vlr.equalsIgnoreCase("SIN TIPO")){    
                     if(res == 1)
                     {
-
+                        jCombo_TipoV.setEnabled(true);
                         LoadMotos();
                         LoadLavadas();
                         calcularValor();
                     }
                     else
                     {
+                        jCombo_TipoV.setEnabled(true);
                         LoadVehiculos();
                         LoadLavadas();
                         calcularValor();
@@ -533,11 +534,12 @@ public class RegistroLavada extends javax.swing.JPanel {
                         model.setSelectedItem(vlr);
                         JOptionPane.showMessageDialog(null, "Placa Vehiculo ya Existe,Tipo Vehiculo: "+jCombo_TipoV.getSelectedItem());
                         jCombo_TipoV.setEnabled(false);
-                    }
+                    }     
                 }
             }
             else
             {
+                jCombo_TipoV.setEnabled(true);
                 jCombo_TipoV.removeAllItems();
                 jText_ValorLavdo.setText("");
                 jCombo_TpoLvda.removeAllItems();

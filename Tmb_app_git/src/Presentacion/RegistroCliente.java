@@ -10,12 +10,14 @@ import Modelos.Vehiculo;
 import Servicios.Administrador;
 import Servicios.Conexion;
 import Servicios.ParqueaderoMes;
+import Servicios.S_Hotel;
 import Servicios.ValidadorCadenas;
 import java.awt.BorderLayout;
 import java.awt.Event;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JOptionPane;
@@ -385,12 +387,34 @@ public class RegistroCliente extends javax.swing.JPanel {
         ValidadorCadenas val = new ValidadorCadenas();
         int res = val.ValidarCadenasPlaca(cadena);
         if (res != 0) {
-            if (res == 1) {
-                LoadMotos();
-            } else {
-                LoadVehiculos();
+            S_Hotel obj = new S_Hotel();
+            String vlr=obj.validarPlaca(Conexion.obtener(),cadena);
+            if(vlr.equalsIgnoreCase("SIN TIPO")){
+                if (res == 1) {
+                    this.jCombo_TipoA.setEnabled(true);
+                    LoadMotos();
+                } else {
+                    this.jCombo_TipoA.setEnabled(true);
+                    LoadVehiculos();
+                }
+            }
+            else
+            {
+                if(vlr.equalsIgnoreCase("Error Java"))
+                {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+                else
+                {
+                    String[] lista = new String[1];
+                    lista[0] = vlr;
+                    DefaultComboBoxModel model = new DefaultComboBoxModel(lista);
+                    this.jCombo_TipoA.setModel(model);
+                    this.jCombo_TipoA.setEnabled(false);
+                }    
             }
         } else {
+            this.jCombo_TipoA.setEnabled(true);
             this.jCombo_TipoA.removeAllItems();
         }
     }//GEN-LAST:event_jText_PlacaKeyReleased
