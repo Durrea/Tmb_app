@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
@@ -410,6 +411,7 @@ public class Form_Hotel extends javax.swing.JPanel {
 
     private void jText_PlacaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_PlacaKeyReleased
         // TODO add your handling code here:
+        jCombo_TipoV.setEnabled(true);
         String cadena = this.jText_Placa.getText();
         ValidadorCadenas val = new ValidadorCadenas();
         int res = val.ValidarCadenasPlaca(cadena);
@@ -417,7 +419,7 @@ public class Form_Hotel extends javax.swing.JPanel {
         {
             S_Hotel obj = new S_Hotel();
             String vlr=obj.validarPlaca(Conexion.obtener(),cadena); 
-            if(!vlr.equalsIgnoreCase("SIN TIPO")){
+            if(vlr.equalsIgnoreCase("SIN TIPO")){
                 if(res == 1)
                 {
                     LoadMotos();
@@ -425,6 +427,22 @@ public class Form_Hotel extends javax.swing.JPanel {
                 else
                 {
                     LoadVehiculos();
+                }
+            }else{
+                
+                ArrayList<String> tipos = obj.loadTiposVehiculos(Conexion.obtener());
+                String[] lista = new String[tipos.size()];
+                for (int i = 0; i < tipos.size(); i++) {
+                    lista[i]=tipos.get(i);
+                }
+                DefaultComboBoxModel model = new DefaultComboBoxModel(lista);
+                
+                jCombo_TipoV.setModel(model);
+                
+                if(model.getIndexOf(vlr) != -1 ) {
+                    model.setSelectedItem(vlr);
+                    JOptionPane.showMessageDialog(null, "Placa Vehiculo ya Existe,Tipo Vehiculo: "+jCombo_TipoV.getSelectedItem());
+                    jCombo_TipoV.setEnabled(false);
                 }
             }
         }

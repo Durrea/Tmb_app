@@ -18,6 +18,7 @@ import java.awt.BorderLayout;
 import java.awt.Event;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JOptionPane;
@@ -501,19 +502,38 @@ public class RegistroLavada extends javax.swing.JPanel {
             int res = val.ValidarCadenasPlaca(cadena);
             if(res !=0)
             {
-                if(res == 1)
-                {
-                    
-                    LoadMotos();
-                    LoadLavadas();
-                    calcularValor();
-                }
-                else
-                {
-                    
-                    LoadVehiculos();
-                    LoadLavadas();
-                    calcularValor();
+                SLavadero obj = new SLavadero();
+                String vlr=obj.validarPlaca(Conexion.obtener(),cadena); 
+                if(vlr.equalsIgnoreCase("SIN TIPO")){    
+                    if(res == 1)
+                    {
+
+                        LoadMotos();
+                        LoadLavadas();
+                        calcularValor();
+                    }
+                    else
+                    {
+                        LoadVehiculos();
+                        LoadLavadas();
+                        calcularValor();
+                    }
+                }else{
+                
+                    ArrayList<String> tipos = obj.loadTiposVehiculos(Conexion.obtener());
+                    String[] lista = new String[tipos.size()];
+                    for (int i = 0; i < tipos.size(); i++) {
+                        lista[i]=tipos.get(i);
+                    }
+                    DefaultComboBoxModel model = new DefaultComboBoxModel(lista);
+
+                    jCombo_TipoV.setModel(model);
+
+                    if(model.getIndexOf(vlr) != -1 ) {
+                        model.setSelectedItem(vlr);
+                        JOptionPane.showMessageDialog(null, "Placa Vehiculo ya Existe,Tipo Vehiculo: "+jCombo_TipoV.getSelectedItem());
+                        jCombo_TipoV.setEnabled(false);
+                    }
                 }
             }
             else
@@ -521,6 +541,7 @@ public class RegistroLavada extends javax.swing.JPanel {
                 jCombo_TipoV.removeAllItems();
                 jText_ValorLavdo.setText("");
                 jCombo_TpoLvda.removeAllItems();
+                
             }
     }//GEN-LAST:event_jText_PlacaKeyReleased
 

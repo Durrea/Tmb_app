@@ -483,7 +483,7 @@ public class SLavadero {
         
    }
     
-   public float loadTotalInforme(Connection conexion,int lavador_codigo,String fecha) {
+    public float loadTotalInforme(Connection conexion,int lavador_codigo,String fecha) {
         
         float valor = 0;
         try {
@@ -498,5 +498,20 @@ public class SLavadero {
             System.out.println(e.getMessage());
         }
         return valor;
+    }
+    
+    public String validarPlaca(Connection conexion, String placa) {
+        String resultado;
+        try {
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_TIPO_VEHICULO_EXISTENTE(?,?)}");
+            callProcedure.setString(1, placa);
+            callProcedure.registerOutParameter(2, java.sql.Types.VARCHAR);
+            callProcedure.execute();
+            resultado = callProcedure.getString(2);
+            return resultado;
+        } catch (Exception e) {            
+            resultado = e.getMessage();
+            return resultado;
+        }       
     }
 }
