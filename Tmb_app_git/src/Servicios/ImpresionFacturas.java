@@ -213,14 +213,16 @@ public class ImpresionFacturas {
             printer.printTextWrap(7, 8, 1, columnas, "Tiempo de hospedaje");
             printer.printTextWrap(8, 9, 1, columnas, "Dias: " + ultimoregistro.get(3));
             printer.printTextWrap(9, 10, 1, columnas, "Horas: " + ultimoregistro.get(4));
+            printer.printTextWrap(10, 11, 1, columnas, "Placa Vehiculo: " + ultimoregistro.get(8));
+            printer.printTextWrap(11, 12, 1, columnas, "Tipo Vehiculo: " + ultimoregistro.get(9));
             if (!ultimoregistro.get(6).equalsIgnoreCase("0")) {
-                printer.printTextWrap(10, 11, 1, columnas, "SubTotal: " + ultimoregistro.get(5));
-                printer.printTextWrap(11, 12, 1, columnas, "Valor iva: " + ultimoregistro.get(6));
+                printer.printTextWrap(12, 13, 1, columnas, "SubTotal: " + ultimoregistro.get(5));
+                printer.printTextWrap(13, 14, 1, columnas, "Valor iva: " + ultimoregistro.get(6));
+                printer.printTextWrap(14, 15, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(7));
+                printer.printCharAtCol(16, 1, columnas, "=");
+            } else {
                 printer.printTextWrap(12, 13, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(7));
                 printer.printCharAtCol(14, 1, columnas, "=");
-            } else {
-                printer.printTextWrap(10, 11, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(7));
-                printer.printCharAtCol(12, 1, columnas, "=");
             }
 
             imprimirFactura(printer);

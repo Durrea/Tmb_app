@@ -235,8 +235,8 @@ public class S_Hotel {
             callProcedure.registerOutParameter(6, java.sql.Types.NUMERIC);
             callProcedure.registerOutParameter(7, java.sql.Types.NUMERIC);
             callProcedure.registerOutParameter(8, java.sql.Types.FLOAT);
-            callProcedure.registerOutParameter(9, java.sql.Types.FLOAT);
-            callProcedure.registerOutParameter(10, java.sql.Types.FLOAT);
+            callProcedure.registerOutParameter(9, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(10, java.sql.Types.VARCHAR);
             callProcedure.execute();            
             for(int i=3;i<=10;i++)
             {

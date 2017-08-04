@@ -521,20 +521,20 @@ public class RegistroLavada extends javax.swing.JPanel {
                     }
                 }else{
                 
-                    ArrayList<String> tipos = obj.loadTiposVehiculos(Conexion.obtener());
-                    String[] lista = new String[tipos.size()];
-                    for (int i = 0; i < tipos.size(); i++) {
-                        lista[i]=tipos.get(i);
+                    if(vlr.equalsIgnoreCase("Error Java"))
+                    {
+                        JOptionPane.showMessageDialog(null, "Error");
                     }
-                    DefaultComboBoxModel model = new DefaultComboBoxModel(lista);
-
-                    jCombo_TipoV.setModel(model);
-
-                    if(model.getIndexOf(vlr) != -1 ) {
-                        model.setSelectedItem(vlr);
-                        JOptionPane.showMessageDialog(null, "Placa Vehiculo ya Existe,Tipo Vehiculo: "+jCombo_TipoV.getSelectedItem());
-                        jCombo_TipoV.setEnabled(false);
-                    }     
+                    else
+                    {
+                        String[] lista = new String[1];
+                        lista[0] = vlr;
+                        DefaultComboBoxModel model = new DefaultComboBoxModel(lista);
+                        this.jCombo_TipoV.setModel(model);
+                        this.jCombo_TipoV.setEnabled(false);
+                        LoadLavadas();
+                        calcularValor();
+                    }  
                 }
             }
             else
@@ -542,8 +542,7 @@ public class RegistroLavada extends javax.swing.JPanel {
                 jCombo_TipoV.setEnabled(true);
                 jCombo_TipoV.removeAllItems();
                 jText_ValorLavdo.setText("");
-                jCombo_TpoLvda.removeAllItems();
-                
+                jCombo_TpoLvda.removeAllItems();   
             }
     }//GEN-LAST:event_jText_PlacaKeyReleased
 
