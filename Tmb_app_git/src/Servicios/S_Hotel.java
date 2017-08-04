@@ -226,7 +226,7 @@ public class S_Hotel {
         ArrayList<String> resultado = new ArrayList<String>();
         try
         {
-            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_FACTURA_HOTEL(?,?,?,?,?,?,?,?,?,?)}");
+            CallableStatement callProcedure = conexion.prepareCall("{call PRO_CARGAR_FACTURA_HOTEL(?,?,?,?,?,?,?,?,?,?,?,?)}");
             callProcedure.setString(1, Integer.toString(id));
             callProcedure.setString(2, Integer.toString(idRecep));
             callProcedure.registerOutParameter(3, java.sql.Types.VARCHAR);
@@ -237,8 +237,10 @@ public class S_Hotel {
             callProcedure.registerOutParameter(8, java.sql.Types.FLOAT);
             callProcedure.registerOutParameter(9, java.sql.Types.VARCHAR);
             callProcedure.registerOutParameter(10, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(11, java.sql.Types.VARCHAR);
+            callProcedure.registerOutParameter(12, java.sql.Types.VARCHAR);
             callProcedure.execute();            
-            for(int i=3;i<=10;i++)
+            for(int i=3;i<=12;i++)
             {
                 String val = callProcedure.getString(i);
                 if(val != null)
