@@ -50,27 +50,33 @@ public class ImpresionFacturas {
                 // printer.printCharAtLin(2, 25, 1, "*");
                 //Imprimir * 1ra linea de la columa de 1 a 80
                 printer.printCharAtCol(1, 1, columnas, "=");
-                //Imprimir Encabezado nombre del La EMpresa
-                printer.printTextWrap(1, 2, 20, 50, "LA VIRGEN");
-                printer.printTextWrap(2, 3, 20, 50, encabezado.get(1));
-                printer.printTextWrap(3, 4, 20, 50, encabezado.get(2));
+                //Imprimir Encabezado nombre del La EMpresa                
+                printer.printTextWrap(1, 2, 10, 50, "HOTEL, PARQUEADERO Y LAVADERO");
+                printer.printTextWrap(2, 3, 11, 50, "LOS APOSENTOS DE LA VIRGEN");
+                printer.printTextWrap(3, 4, 9, 50, "CALLE 17 No. 14-45 TIMBIO-CAUCA");
+                printer.printTextWrap(4, 5, 20, 50, encabezado.get(1));
+                printer.printTextWrap(5, 6, 1, 50, encabezado.get(2));
                 //printer.printTextWrap(linI, linE, colI, colE, null);
-                printer.printTextWrap(4, 5, 1, columnas, "Recepcionista: " + ultimoregistro.get(0));
-                printer.printTextWrap(5, 6, 1, columnas, "Placa: " + ultimoregistro.get(1));
-                printer.printTextWrap(6, 7, 1, columnas, "Tipo de vehiculo: " + ultimoregistro.get(2));
-                printer.printTextWrap(7, 8, 1, columnas, "Fecha Entrada: " + ultimoregistro.get(3));
-                printer.printTextWrap(8, 9, 1, columnas, "Fecha Salida: " + ultimoregistro.get(4));
+                printer.printTextWrap(7, 8, 1, columnas, "RECEPCIONISTA: " + ultimoregistro.get(0));
+                printer.printTextWrap(8, 9, 1, columnas, "PLACA: " + ultimoregistro.get(1));
+                printer.printTextWrap(9, 10, 1, columnas, "TIPO DE VEHICULO: " + ultimoregistro.get(2));
+                printer.printTextWrap(10, 11, 1, columnas, "FECHA ENTRADA: " + ultimoregistro.get(3));
+                printer.printTextWrap(11, 12, 1, columnas, "FECHA SALIDA: " + ultimoregistro.get(4));
                 if (!ultimoregistro.get(7).equalsIgnoreCase("0")&&!ultimoregistro.get(7).equalsIgnoreCase("---")) 
                 {
-                    printer.printTextWrap(9, 10, 1, columnas, "SubTotal: " + ultimoregistro.get(6));
-                    printer.printTextWrap(10, 11, 1, columnas, "Valor iva: " + ultimoregistro.get(7));
-                    printer.printTextWrap(11, 12, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(5));
-                    printer.printCharAtCol(13, 1, columnas, "=");
+                    printer.printTextWrap(12, 13, 1, columnas, "SUBTOTAL: " + ultimoregistro.get(6));
+                    printer.printTextWrap(13, 14, 1, columnas, "VALOR IVA: " + ultimoregistro.get(7));
+                    printer.printTextWrap(14, 15, 1, columnas, "VALOR COBRADO: " + ultimoregistro.get(5));
+                    printer.printCharAtCol(16, 1, columnas, "=");
+                    printer.printTextWrap(16, 17, 7, columnas, "CON ESTE RECIBO RECLAME SU VEHICULO");
+                    printer.printTextWrap(17, 18, 12, columnas, "GRACIAS POR PREFERIRNOS!");
                 }
                 else
                 {
-                    printer.printTextWrap(9, 10, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(5));
-                    printer.printCharAtCol(11, 1, columnas, "=");
+                    printer.printTextWrap(12, 13, 1, columnas, "VALOR COBRADO: " + ultimoregistro.get(5));
+                    printer.printCharAtCol(14, 1, columnas, "=");
+                    printer.printTextWrap(14, 15, 7, columnas, "CON ESTE RECIBO RECLAME SU VEHICULO");
+                    printer.printTextWrap(15, 16, 12, columnas, "GRACIAS POR PREFERIRNOS!");
                 }            
                 imprimirFactura(printer);
                 resultado = true;
@@ -111,23 +117,29 @@ public class ImpresionFacturas {
             //Imprimir * 1ra linea de la columa de 1 a 80
             printer.printCharAtCol(1, 1, columnas, "=");
             //Imprimir Encabezado nombre del La EMpresa
-            printer.printTextWrap(1, 2, 20, 50, "LA VIRGEN");
-            printer.printTextWrap(2, 3, 20, 50, encabezado.get(1));
-            printer.printTextWrap(3, 4, 20, 50, encabezado.get(2));
+            printer.printTextWrap(1, 2, 10, 50, "HOTEL, PARQUEADERO Y LAVADERO");
+            printer.printTextWrap(2, 3, 11, 50, "LOS APOSENTOS DE LA VIRGEN");
+            printer.printTextWrap(3, 4, 9, 50, "CALLE 17 No. 14-45 TIMBIO-CAUCA");
+            printer.printTextWrap(4, 5, 20, 50, encabezado.get(1));
+            printer.printTextWrap(5, 6, 1, 50, encabezado.get(2));
             //printer.printTextWrap(linI, linE, colI, colE, null);
-            printer.printTextWrap(4, 5, 1, columnas, "Recepcionista: " + ultimoregistro.get(0));
-            printer.printTextWrap(5, 6, 1, columnas, "Placa: " + ultimoregistro.get(1));
-            printer.printTextWrap(6, 7, 1, columnas, "Lavador: " + ultimoregistro.get(2));
-            printer.printTextWrap(7, 8, 1, columnas, "Fecha Salida: " + ultimoregistro.get(3));
-            printer.printTextWrap(8, 9, 1, columnas, "Tipo de Lavada: " + ultimoregistro.get(4));
+            printer.printTextWrap(7, 8, 1, columnas, "RECEPCIONISTA: " + ultimoregistro.get(0));
+            printer.printTextWrap(8, 9, 1, columnas, "PLACA: " + ultimoregistro.get(1));
+            printer.printTextWrap(9, 10, 1, columnas, "LAVADOR: " + ultimoregistro.get(2));
+            printer.printTextWrap(10, 11, 1, columnas, "FECHA SALIDA: " + ultimoregistro.get(3));
+            printer.printTextWrap(11, 12, 1, columnas, "TIPO DE LAVADA: " + ultimoregistro.get(4));
             if (!ultimoregistro.get(6).equalsIgnoreCase("0")) {
-                printer.printTextWrap(9, 10, 1, columnas, "SubTotal: " + ultimoregistro.get(5));
-                printer.printTextWrap(10, 11, 1, columnas, "Valor IVA: " + ultimoregistro.get(6));
-                printer.printTextWrap(11, 12, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(7));
-                printer.printCharAtCol(13, 1, columnas, "=");
+                printer.printTextWrap(12, 13, 1, columnas, "SUBTOTAL: " + ultimoregistro.get(5));
+                printer.printTextWrap(13, 14, 1, columnas, "VALOR IVA: " + ultimoregistro.get(6));
+                printer.printTextWrap(14, 15, 1, columnas, "VALOR COBRADO: " + ultimoregistro.get(7));
+                printer.printCharAtCol(16, 1, columnas, "=");
+                printer.printTextWrap(16, 17, 7, columnas, "CON ESTE RECIBO RECLAME SU VEHICULO");
+                printer.printTextWrap(17, 18, 12, columnas, "GRACIAS POR PREFERIRNOS!");
             } else {
-                printer.printTextWrap(9, 10, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(7));
-                printer.printCharAtCol(11, 1, columnas, "=");
+                printer.printTextWrap(12, 13, 1, columnas, "VALOR COBRADO: " + ultimoregistro.get(7));
+                printer.printCharAtCol(14, 1, columnas, "=");
+                printer.printTextWrap(14, 15, 7, columnas, "CON ESTE RECIBO RECLAME SU VEHICULO");
+                printer.printTextWrap(15, 16, 12, columnas, "GRACIAS POR PREFERIRNOS!");
             }
             imprimirFactura(printer);
             resultado = true;
@@ -162,14 +174,18 @@ public class ImpresionFacturas {
             //Imprimir * 1ra linea de la columa de 1 a 80
             printer.printCharAtCol(1, 1, columnas, "=");
             //Imprimir Encabezado nombre del La EMpresa
-            printer.printTextWrap(1, 2, 20, 50, "LA VIRGEN");
-            printer.printTextWrap(2, 3, 20, 50, encabezado.get(1));
-            printer.printTextWrap(3, 4, 20, 50, encabezado.get(2));
+            printer.printTextWrap(1, 2, 10, 50, "HOTEL, PARQUEADERO Y LAVADERO");
+            printer.printTextWrap(2, 3, 11, 50, "LOS APOSENTOS DE LA VIRGEN");
+            printer.printTextWrap(3, 4, 9, 50, "CALLE 17 No. 14-45 TIMBIO-CAUCA");
+            printer.printTextWrap(4, 5, 20, 50, encabezado.get(1));
+            printer.printTextWrap(5, 6, 1, 50, encabezado.get(2));
             //printer.printTextWrap(linI, linE, colI, colE, null);
-            printer.printTextWrap(4, 5, 1, columnas, "Recepcionista: " + ultimoregistro.get(0));
-            printer.printTextWrap(5, 6, 1, columnas, "Placa: " + ultimoregistro.get(1));
-            printer.printTextWrap(6, 7, 1, columnas, "Fecha Entrada: " + ultimoregistro.get(2));
-            printer.printCharAtCol(8, 1, columnas, "=");
+            printer.printTextWrap(7, 8, 1, columnas, "RECEPCIONISTA: " + ultimoregistro.get(0));
+            printer.printTextWrap(8, 9, 1, columnas, "PLACA: " + ultimoregistro.get(1));
+            printer.printTextWrap(9, 10, 1, columnas, "FECHA ENTRADA: " + ultimoregistro.get(2));
+            printer.printCharAtCol(11, 1, columnas, "=");
+            printer.printTextWrap(11, 12, 7, columnas, "CON ESTE RECIBO RECLAME SU VEHICULO");
+            printer.printTextWrap(12, 13, 12, columnas, "GRACIAS POR PREFERIRNOS!");
             imprimirFactura(printer);
             resultado = true;
             return resultado;
@@ -203,26 +219,32 @@ public class ImpresionFacturas {
             //Imprimir * 1ra linea de la columa de 1 a 80
             printer.printCharAtCol(1, 1, columnas, "=");
             //Imprimir Encabezado nombre del La EMpresa
-            printer.printTextWrap(1, 2, 20, 50, "LA VIRGEN");
-            printer.printTextWrap(2, 3, 20, 50, encabezado.get(1));
-            printer.printTextWrap(3, 4, 20, 50, encabezado.get(2));
+            printer.printTextWrap(1, 2, 10, 50, "HOTEL, PARQUEADERO Y LAVADERO");
+            printer.printTextWrap(2, 3, 11, 50, "LOS APOSENTOS DE LA VIRGEN");
+            printer.printTextWrap(3, 4, 9, 50, "CALLE 17 No. 14-45 TIMBIO-CAUCA");
+            printer.printTextWrap(4, 5, 20, 50, encabezado.get(1));
+            printer.printTextWrap(5, 6, 1, 50, encabezado.get(2));
             //printer.printTextWrap(linI, linE, colI, colE, null);
-            printer.printTextWrap(4, 5, 1, columnas, "Recepcionista: " + ultimoregistro.get(0));
-            printer.printTextWrap(5, 6, 1, columnas, "Habitacion: " + ultimoregistro.get(1));
-            printer.printTextWrap(6, 7, 1, columnas, "N° personas: " + ultimoregistro.get(2));
-            printer.printTextWrap(7, 8, 1, columnas, "Tiempo de hospedaje");
-            printer.printTextWrap(8, 9, 1, columnas, "Dias: " + ultimoregistro.get(3));
-            printer.printTextWrap(9, 10, 1, columnas, "Horas: " + ultimoregistro.get(4));
-            printer.printTextWrap(10, 11, 1, columnas, "Placa Vehiculo: " + ultimoregistro.get(8));
-            printer.printTextWrap(11, 12, 1, columnas, "Tipo Vehiculo: " + ultimoregistro.get(9));
+            printer.printTextWrap(7, 8, 1, columnas, "RECEPCIONISTA: " + ultimoregistro.get(0));
+            printer.printTextWrap(8, 9, 1, columnas, "HABITACION: " + ultimoregistro.get(1));
+            printer.printTextWrap(9, 10, 1, columnas, "N° PERSONAS: " + ultimoregistro.get(2));
+            printer.printTextWrap(10, 11, 1, columnas, "TIEMPO DE HOSPEDAJE");
+            printer.printTextWrap(11, 12, 1, columnas, "DIAS: " + ultimoregistro.get(3));
+            printer.printTextWrap(12, 13, 1, columnas, "HORAS: " + ultimoregistro.get(4));
+            printer.printTextWrap(13, 14, 1, columnas, "PLACA VEHICULO: " + ultimoregistro.get(8));
+            printer.printTextWrap(14, 15, 1, columnas, "TIPO VEHICULO: " + ultimoregistro.get(9));
             if (!ultimoregistro.get(6).equalsIgnoreCase("0")) {
-                printer.printTextWrap(12, 13, 1, columnas, "SubTotal: " + ultimoregistro.get(5));
-                printer.printTextWrap(13, 14, 1, columnas, "Valor iva: " + ultimoregistro.get(6));
-                printer.printTextWrap(14, 15, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(7));
-                printer.printCharAtCol(16, 1, columnas, "=");
+                printer.printTextWrap(15, 16, 1, columnas, "SUBTOTAL: " + ultimoregistro.get(5));
+                printer.printTextWrap(16, 17, 1, columnas, "VALOR IVA: " + ultimoregistro.get(6));
+                printer.printTextWrap(17, 18, 1, columnas, "VALOR COBRADO: " + ultimoregistro.get(7));
+                printer.printCharAtCol(19, 1, columnas, "=");
+                printer.printTextWrap(19, 20, 7, columnas, "CON ESTE RECIBO RECLAME SU VEHICULO");
+                printer.printTextWrap(20, 21, 12, columnas, "GRACIAS POR PREFERIRNOS!");
             } else {
-                printer.printTextWrap(12, 13, 1, columnas, "Valor Cobrado: " + ultimoregistro.get(7));
-                printer.printCharAtCol(14, 1, columnas, "=");
+                printer.printTextWrap(15, 16, 1, columnas, "VALOR COBRADO: " + ultimoregistro.get(7));
+                printer.printCharAtCol(17, 1, columnas, "=");
+                printer.printTextWrap(17, 18, 7, columnas, "CON ESTE RECIBO RECLAME SU VEHICULO");
+                printer.printTextWrap(18, 19, 12, columnas, "GRACIAS POR PREFERIRNOS!");
             }
 
             imprimirFactura(printer);
